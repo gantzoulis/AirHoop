@@ -6,6 +6,7 @@ using UnityEngine;
 public class AircraftScriptable : ScriptableObject 
 {
 	public string aircraftName;
+	public GameObject aircraftModel;
 	public float aircraftFuel;
 	public float aircraftSpeed;
 	public float aircraftManeuver;
