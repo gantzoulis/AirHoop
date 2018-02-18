@@ -205,7 +205,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309aecdb9728ea84f868e71380f492a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aircrafts: []
+  aircrafts:
+  - {fileID: 11400000, guid: 039e7e0da1a55bb4a9e2a582efcd98f2, type: 2}
+  - {fileID: 11400000, guid: a5d92de65b97dee4596e4577c9329af5, type: 2}
+  - {fileID: 11400000, guid: 26338e30cfc36fb408280e9dc3242a6c, type: 2}
+  choosenAircraft: {fileID: 0}
   time: 0
 --- !u!4 &1069515725
 Transform:

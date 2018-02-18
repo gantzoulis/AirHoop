@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Aircraft1
   m_EditorClassIdentifier: 
   aircraftName: Spitfire
-  aircraftModel: {fileID: 0}
+  aircraftModel: {fileID: 1385582216100906, guid: f923c73d124d03e498d310fb367fd4ec,
+    type: 2}
   aircraftFuel: 100
   aircraftSpeed: 10
   aircraftManeuver: 5
