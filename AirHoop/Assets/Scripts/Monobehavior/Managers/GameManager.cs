@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
 
 	public AircraftScriptable[] aircrafts;
+	public AircraftScriptable choosenAircraft;
 	public float time;
 
 	// Use this for initialization

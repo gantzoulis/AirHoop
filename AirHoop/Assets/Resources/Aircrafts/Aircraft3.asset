@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8e426cf5a6de9649bfe5309b6a35da0, type: 3}
-  m_Name: Trexadiri
+  m_Name: Aircraft3
   m_EditorClassIdentifier: 
-  aircraftName: Spitfire
+  aircraftName: 
   aircraftModel: {fileID: 0}
-  aircraftFuel: 100
-  aircraftSpeed: 10
-  aircraftManeuver: 5
+  aircraftFuel: 0
+  aircraftSpeed: 0
+  aircraftManeuver: 0
