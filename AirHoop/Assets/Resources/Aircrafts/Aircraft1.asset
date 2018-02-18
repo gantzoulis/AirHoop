@@ -16,4 +16,4 @@ MonoBehaviour:
     type: 2}
   aircraftFuel: 100
   aircraftSpeed: 10
-  aircraftManeuver: 5
+  aircraftManeuver: 4
