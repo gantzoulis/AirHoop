@@ -11,4 +11,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d442eac72e89db14babc392b0e309ae8, type: 3}
   m_Name: AllAircrafts
   m_EditorClassIdentifier: 
-  aircrafts: []
+  aircrafts:
+  - {fileID: 114996578109179934}
+--- !u!114 &114996578109179934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e426cf5a6de9649bfe5309b6a35da0, type: 3}
+  m_Name: Souzi
+  m_EditorClassIdentifier: 
+  aircraftName: Souzi
+  model: []
+  fuel: 0
+  speed: 0
+  maneuver: 0
+  hash: 1766868840
