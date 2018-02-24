@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: AllAircrafts
   m_EditorClassIdentifier: 
   aircrafts:
-  - {fileID: 114413154534437406}
---- !u!114 &114413154534437406
+  - {fileID: 114555435808623308}
+--- !u!114 &114555435808623308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -22,12 +22,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8e426cf5a6de9649bfe5309b6a35da0, type: 3}
-  m_Name: Spitfire
+  m_Name: Pifire
   m_EditorClassIdentifier: 
-  aircraftName: Spitfire
+  aircraftName: Pifire
   model:
-  - {fileID: 1385582216100906, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
-  fuel: 100
-  speed: 10
-  maneuver: 8
-  hash: 147862825
+  - {fileID: 100004, guid: 2e83c1934a135b24d8e3c8e84187fa23, type: 2}
+  fuel: 0
+  speed: 0
+  maneuver: 0
+  hash: 1358195387
