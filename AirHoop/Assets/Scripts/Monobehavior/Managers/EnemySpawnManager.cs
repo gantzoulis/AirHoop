@@ -29,7 +29,7 @@ public class EnemySpawnManager : MonoBehaviour
 		if(Time.time > nextSpawn)
 		{
 			nextSpawn = Time.time + spawnRate;
-			randY = Random.Range();
+			//randY = Random.Range();
 
 		}
 	}

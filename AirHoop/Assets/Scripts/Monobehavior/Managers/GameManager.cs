@@ -22,9 +22,12 @@ public class GameManager : MonoBehaviour
 	public Aircraft choosenAircraft;
 	public float time;
     public GameObject playerObject;
-
-    
+        
     public float distanceRatio;
+
+    //Remember that the default Height is 0
+    public float maxAirplaneHeight;
+    public float minAirplaneHeight;
 
     private void OnEnable()
     {
