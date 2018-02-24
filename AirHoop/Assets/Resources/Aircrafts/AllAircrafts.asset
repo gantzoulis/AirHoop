@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Name: AllAircrafts
   m_EditorClassIdentifier: 
   aircrafts:
-  - {fileID: 114558997784146866}
-  - {fileID: 114292566518839638}
---- !u!114 &114292566518839638
+  - {fileID: 114996578109179934}
+--- !u!114 &114996578109179934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -23,29 +22,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8e426cf5a6de9649bfe5309b6a35da0, type: 3}
-  m_Name: PifosBuas
+  m_Name: Souzi
   m_EditorClassIdentifier: 
-  aircraftName: PifosBuas
+  aircraftName: Souzi
   model: []
-  fuel: 111
+  fuel: 0
   speed: 0
   maneuver: 0
-  hash: 579137642
---- !u!114 &114558997784146866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8e426cf5a6de9649bfe5309b6a35da0, type: 3}
-  m_Name: Pifire
-  m_EditorClassIdentifier: 
-  aircraftName: Pifire
-  model:
-  - {fileID: 100006, guid: ee03d42e55643d349a100cfbce5a8cc2, type: 2}
-  fuel: 100
-  speed: 14
-  maneuver: 3
-  hash: 1358195387
+  hash: 1766868840
