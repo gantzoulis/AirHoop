@@ -18,10 +18,8 @@ public class GameManager : MonoBehaviour
 			return instance;
 		}
 	}
-
-
-	public AircraftScriptable[] aircrafts;
-	public AircraftScriptable choosenAircraft;
+		
+	public Aircraft choosenAircraft;
 	public float time;
     public GameObject playerObject;
 

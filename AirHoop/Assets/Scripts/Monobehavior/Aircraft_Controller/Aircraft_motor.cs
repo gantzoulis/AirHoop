@@ -5,7 +5,7 @@ using UnityEngine;
 public class Aircraft_motor : MonoBehaviour 
 {
 	[SerializeField]
-	private AircraftScriptable aircraft;
+	private Aircraft aircraft;
 	private Quaternion aircraftRotation;
 	[SerializeField]
 	private GameObject propeler;
@@ -31,7 +31,7 @@ public class Aircraft_motor : MonoBehaviour
 	{
 		if (gameObject)
 		{
-			gameObject.transform.Translate(Vector3.right * Time.deltaTime * aircraft.aircraftSpeed);
+			gameObject.transform.Translate(Vector3.right * Time.deltaTime * aircraft.speed);
 		}
 	}
 
@@ -49,7 +49,7 @@ public class Aircraft_motor : MonoBehaviour
 				aircraftRotation *= Quaternion.AngleAxis(1, Vector3.forward);
 			}
 
-			transform.rotation = Quaternion.Lerp(transform.rotation, aircraftRotation, aircraft.aircraftManeuver * Time.deltaTime);
+			transform.rotation = Quaternion.Lerp(transform.rotation, aircraftRotation, aircraft.maneuver * Time.deltaTime);
 		}
 	}
 

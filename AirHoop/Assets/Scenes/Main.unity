@@ -635,13 +635,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309aecdb9728ea84f868e71380f492a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aircrafts:
-  - {fileID: 11400000, guid: 039e7e0da1a55bb4a9e2a582efcd98f2, type: 2}
-  - {fileID: 11400000, guid: a5d92de65b97dee4596e4577c9329af5, type: 2}
-  - {fileID: 11400000, guid: 26338e30cfc36fb408280e9dc3242a6c, type: 2}
-  choosenAircraft: {fileID: 11400000, guid: 039e7e0da1a55bb4a9e2a582efcd98f2, type: 2}
+  choosenAircraft: {fileID: 114728121098019738, guid: ad3f129293bbf3644914b7c44d8208b1,
+    type: 2}
   time: 0
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 110344953}
   distanceRatio: 5
 --- !u!4 &1069515725
 Transform:
