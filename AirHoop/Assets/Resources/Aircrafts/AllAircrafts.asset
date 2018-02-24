@@ -13,6 +13,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aircrafts:
   - {fileID: 114996578109179934}
+  - {fileID: 114438329659518500}
+--- !u!114 &114438329659518500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e426cf5a6de9649bfe5309b6a35da0, type: 3}
+  m_Name: SpitInYourFace
+  m_EditorClassIdentifier: 
+  aircraftName: SpitInYourFace
+  model:
+  - {fileID: 1385582216100906, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
+  fuel: 1001
+  speed: 11
+  maneuver: 222
+  hash: 1445141192
 --- !u!114 &114996578109179934
 MonoBehaviour:
   m_ObjectHideFlags: 0
