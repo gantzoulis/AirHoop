@@ -640,6 +640,8 @@ MonoBehaviour:
   time: 0
   playerObject: {fileID: 110344953}
   distanceRatio: 5
+  maxAirplaneHeight: 0
+  minAirplaneHeight: 0
 --- !u!4 &1069515725
 Transform:
   m_ObjectHideFlags: 0
@@ -727,6 +729,16 @@ Prefab:
     - target: {fileID: 1638840847759488, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 65309392100023318, guid: f923c73d124d03e498d310fb367fd4ec,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 65309392100023318, guid: f923c73d124d03e498d310fb367fd4ec,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
