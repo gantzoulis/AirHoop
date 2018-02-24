@@ -13,6 +13,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aircrafts:
   - {fileID: 114996578109179934}
+  - {fileID: 114417734050326794}
+--- !u!114 &114417734050326794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e426cf5a6de9649bfe5309b6a35da0, type: 3}
+  m_Name: Tsouzi
+  m_EditorClassIdentifier: 
+  aircraftName: Tsouzi
+  model: []
+  fuel: 222
+  speed: 22
+  maneuver: 2
+  hash: 1215198259
 --- !u!114 &114996578109179934
 MonoBehaviour:
   m_ObjectHideFlags: 0
