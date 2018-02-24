@@ -23,9 +23,18 @@ public class GameManager : MonoBehaviour
 	public AircraftScriptable[] aircrafts;
 	public AircraftScriptable choosenAircraft;
 	public float time;
+    public GameObject playerObject;
 
-	// Use this for initialization
-	void Start () 
+    
+    public float distanceRatio;
+
+    private void OnEnable()
+    {
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    // Use this for initialization
+    void Start () 
 	{
 		
 	}
@@ -33,6 +42,6 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		
+        
 	}
 }
