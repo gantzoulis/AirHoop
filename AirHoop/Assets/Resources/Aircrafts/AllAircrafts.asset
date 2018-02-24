@@ -12,26 +12,8 @@ MonoBehaviour:
   m_Name: AllAircrafts
   m_EditorClassIdentifier: 
   aircrafts:
-  - {fileID: 114728121098019738}
-  - {fileID: 114085465350182716}
---- !u!114 &114085465350182716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8e426cf5a6de9649bfe5309b6a35da0, type: 3}
-  m_Name: Bomber
-  m_EditorClassIdentifier: 
-  aircraftName: Bomber
-  model: []
-  fuel: 0
-  speed: 0
-  maneuver: 0
-  hash: -860990150
---- !u!114 &114728121098019738
+  - {fileID: 114413154534437406}
+--- !u!114 &114413154534437406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -43,8 +25,9 @@ MonoBehaviour:
   m_Name: Spitfire
   m_EditorClassIdentifier: 
   aircraftName: Spitfire
-  model: []
-  fuel: 0
-  speed: 0
-  maneuver: 0
-  hash: 0
+  model:
+  - {fileID: 1385582216100906, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
+  fuel: 100
+  speed: 10
+  maneuver: 8
+  hash: 147862825

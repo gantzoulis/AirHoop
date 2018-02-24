@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     public float maxAirplaneHeight;
     public float minAirplaneHeight;
 
+    public GameObject planeExplosionObject;
+
     private void OnEnable()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
