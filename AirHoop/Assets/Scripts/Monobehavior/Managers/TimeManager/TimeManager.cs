@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimeManager : MonoBehaviour
 {
@@ -9,11 +10,16 @@ public class TimeManager : MonoBehaviour
     public float flightDuration;
 
     public bool pauseGame;
+    public float timeLapseRatio;
+
+    [SerializeField]
+    private GameObject timeLapseUImage;
+
 
 	// Use this for initialization
 	void Start ()
     {
-		
+        timeLapseRatio = timeLapseRatio / 100;
 	}
 	
 	// Update is called once per frame
@@ -21,6 +27,7 @@ public class TimeManager : MonoBehaviour
     {
         GameTimer();
         CheckGameStatePaused();
+        timeLapseUImage.GetComponent<Image>().fillAmount += timeLapseRatio * Time.deltaTime;
 	}
 
     public void PauseGame()
