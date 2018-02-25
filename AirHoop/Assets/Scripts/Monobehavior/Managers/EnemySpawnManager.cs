@@ -10,7 +10,7 @@ public class EnemySpawnManager : MonoBehaviour
 
 	private float maxDist;
 	private float curDist;
-	private float enemySize = 0.0f;
+	private float enemySize = 10.0f;
 
 	private float randX;
 	private const float distX = 60.0f; 
@@ -36,22 +36,19 @@ public class EnemySpawnManager : MonoBehaviour
 	{
 		curDist = GameManager.Instance.playerObject.transform.position.x;
 			
-		if(Time.time > nextSpawn && curDist > maxDist + enemySize)
+		if(Time.time > nextSpawn && (curDist > maxDist + enemySize))
 		{
 			randEnemy = Random.Range(0, enemy.Length);
 			spawnEnemy = enemy[randEnemy];
 
 			nextSpawn = Time.time + spawnRate;
 
-			randX = GameManager.Instance.playerObject.transform.position.x + distX;
+			randX = GameManager.Instance.playerObject.transform.position.x + distX + enemySize;
 			randY = Random.Range(GameManager.Instance.minAirplaneHeight + distY, GameManager.Instance.maxAirplaneHeight);
 			whereToSpawn = new Vector3(randX, randY, 0);
 
 			Instantiate(spawnEnemy, whereToSpawn, Quaternion.identity);
-		}
 
-		if(curDist >= maxDist)
-		{
 			maxDist = curDist;
 		}
 	}
