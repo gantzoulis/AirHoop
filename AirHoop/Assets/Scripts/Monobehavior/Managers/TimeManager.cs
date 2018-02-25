@@ -6,7 +6,7 @@ public class TimeManager : MonoBehaviour
 {
 
     [SerializeField]
-    private float flightDuration;
+    public float flightDuration;
 
 	// Use this for initialization
 	void Start ()
