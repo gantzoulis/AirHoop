@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 0d0c8363cd13b904f9a6faff8ec4656b
+timeCreated: 1519552324
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Super Webcomic Bros.
+  fontNames:
+  - Super Webcomic Bros.
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
