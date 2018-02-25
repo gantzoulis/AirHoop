@@ -6,7 +6,7 @@ public class DistanceManager : MonoBehaviour
 {
 
     [SerializeField]
-    private float playerDistanceCovered;
+    public float playerDistanceCovered;
 
 	// Use this for initialization
 	void Start ()
