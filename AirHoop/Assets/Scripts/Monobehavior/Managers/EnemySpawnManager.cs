@@ -8,6 +8,10 @@ public class EnemySpawnManager : MonoBehaviour
 	private int randEnemy;
 	private GameObject spawnEnemy;
 
+	private float maxDist;
+	private float curDist;
+	private float enemySize = 0.0f;
+
 	private float randX;
 	private const float distX = 60.0f; 
 	private float randY;
@@ -18,14 +22,21 @@ public class EnemySpawnManager : MonoBehaviour
 	public float spawnRate = 2.5f;
 	private float nextSpawn = 0.0f;
 
-	void Update()
+	void Start()
+	{
+		maxDist = GameManager.Instance.playerObject.transform.position.x;
+	}
+
+	void FixedUpdate()
 	{
 		SpawnEngine();
 	}
 
 	private void SpawnEngine()
 	{
-		if(Time.time > nextSpawn)
+		curDist = GameManager.Instance.playerObject.transform.position.x;
+			
+		if(Time.time > nextSpawn && curDist > maxDist + enemySize)
 		{
 			randEnemy = Random.Range(0, enemy.Length);
 			spawnEnemy = enemy[randEnemy];
@@ -37,6 +48,11 @@ public class EnemySpawnManager : MonoBehaviour
 			whereToSpawn = new Vector3(randX, randY, 0);
 
 			Instantiate(spawnEnemy, whereToSpawn, Quaternion.identity);
+		}
+
+		if(curDist >= maxDist)
+		{
+			maxDist = curDist;
 		}
 	}
 
