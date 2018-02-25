@@ -28,7 +28,7 @@ public class UI_MainCanvas : MonoBehaviour
 	void Update ()
     {
         timeText.text = Mathf.RoundToInt(timeManager.flightDuration).ToString();
-        distanceText.text = Mathf.RoundToInt(distanceManager.maxDistance).ToString();
+        distanceText.text = Mathf.RoundToInt(distanceManager.maxDistance).ToString() + "  meters";
         CheckGameOver();
 	}
 
