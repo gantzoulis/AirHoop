@@ -18,11 +18,13 @@ public class Aircraft_motor : MonoBehaviour
     private bool planeIsStalling = false;
 
     private AudioSource planeAudio;
+    private TimeBody timeMachine;
 
 
     void OnEnable()
 	{
 		aircraft = Object.Instantiate(GameManager.Instance.choosenAircraft);
+        timeMachine = GetComponent<TimeBody>();
 	}
 
 	void Start()
@@ -32,8 +34,11 @@ public class Aircraft_motor : MonoBehaviour
 
 	void Update()
 	{
-		AircraftMoveHorizontal();
-		AircraftMoveVertical();
+        if (!timeMachine.isRewinding)
+        {
+            AircraftMoveHorizontal();
+            AircraftMoveVertical();
+        }
 		PropelerRotation();
         CheckAirplaneHeight();
 	}
@@ -94,6 +99,8 @@ public class Aircraft_motor : MonoBehaviour
 
     private void OnDestroy()
     {
+        
         Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
+        GameManager.Instance.gameOver = true;
     }
 }

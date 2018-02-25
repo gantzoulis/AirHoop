@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 	public Aircraft choosenAircraft;
 	public float time;
     public GameObject playerObject;
+    public bool gameOver = false;
         
     public float distanceRatio;
 
@@ -30,6 +31,10 @@ public class GameManager : MonoBehaviour
     public float minAirplaneHeight;
 
     public GameObject planeExplosionObject;
+
+    public float maxTimeLapse = 5f;
+
+    
 
     private void OnEnable()
     {
@@ -47,4 +52,7 @@ public class GameManager : MonoBehaviour
 	{
         
 	}
+
+
+   
 }
