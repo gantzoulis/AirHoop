@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySpawnManager : MonoBehaviour 
 {
+	private const string ENEMY_PREFAB_PATH = "Prefabs/Enemies/Baloon";
+
 	public GameObject[] enemy;
 	private int randEnemy;
 	private GameObject spawnEnemy;
@@ -47,7 +49,15 @@ public class EnemySpawnManager : MonoBehaviour
 			randY = Random.Range(GameManager.Instance.minAirplaneHeight + distY, GameManager.Instance.maxAirplaneHeight);
 			whereToSpawn = new Vector3(randX, randY, 0);
 
-			Instantiate(spawnEnemy, whereToSpawn, Quaternion.identity);
+			//Instantiate(spawnEnemy, whereToSpawn, Quaternion.identity);
+			//PoolingManager.InstantiatePooled(spawnEnemy, whereToSpawn, Quaternion.identity);
+
+			var theEnemy = ObjectPooler.Instance.GetPooledObject(ENEMY_PREFAB_PATH);
+
+				//ObjectPooler.GetPooledObject(ENEMY_PREFAB_PATH);
+			theEnemy.transform.position = whereToSpawn;
+			theEnemy.transform.rotation = Quaternion.identity;
+			theEnemy.SetActive(true);
 
 			maxDist = curDist;
 		}
