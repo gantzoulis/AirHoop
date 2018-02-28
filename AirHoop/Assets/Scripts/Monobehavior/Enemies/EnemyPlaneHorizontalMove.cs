@@ -2,21 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+public class EnemyPlaneHorizontalMove : MonoBehaviour
 {
-
     [SerializeField]
-    public float flightDuration;
-
+    private float airplaneSpeed = 5.0f;
 	// Use this for initialization
-	void Start ()
-    {
+	void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        flightDuration += Time.deltaTime;
-	}
+        gameObject.transform.Translate(Vector3.left * Time.deltaTime * airplaneSpeed);
+    }
 }

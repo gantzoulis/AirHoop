@@ -14,6 +14,9 @@ public class UI_MainCanvas : MonoBehaviour
     [SerializeField]
     private Text timeText;
 
+    [SerializeField]
+    private GameObject gameOverImage;
+
     // Use this for initialization
     void Start ()
     {
@@ -25,6 +28,22 @@ public class UI_MainCanvas : MonoBehaviour
 	void Update ()
     {
         timeText.text = Mathf.RoundToInt(timeManager.flightDuration).ToString();
-        distanceText.text = Mathf.RoundToInt(distanceManager.playerDistanceCovered).ToString();
+        distanceText.text = Mathf.RoundToInt(distanceManager.maxDistance).ToString() + "  meters";
+        CheckGameOver();
 	}
+
+    void CheckGameOver()
+    {
+        if (GameManager.Instance.gameOver)
+        {
+            StartCoroutine(ShowGameOverText());
+        }
+    }
+
+    IEnumerator ShowGameOverText()
+    {
+        yield return new WaitForSeconds(3);
+        gameOverImage.SetActive(true);
+        timeManager.pauseGame = true;
+    }
 }
