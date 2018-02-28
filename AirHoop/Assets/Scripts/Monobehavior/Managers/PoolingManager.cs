@@ -4,111 +4,98 @@ using UnityEngine;
 
 public class PoolingManager : MonoBehaviour 
 {
+	private static GameObject pm = new GameObject("#PoolingManager", typeof(PoolingManager));
 
-	private static PoolingManager instance;
+	private const int defaultPoolSize = 5;
 
-	private static PoolingManager Instance
+	public static bool expandWhenNecessary = true;
+
+	public static Dictionary<string, List<GameObject>> objectPools = new Dictionary<string, List<GameObject>>();
+
+	private static bool PoolExistsForPrefab(string prefabPath)
 	{
-		get
+		return objectPools.ContainsKey(prefabPath);
+	}
+
+	private static bool IsAvailableForReuse(GameObject gameObject)
+	{
+		return !gameObject.activeSelf;	
+	}
+
+
+	private static GameObject ExpandPoolAndGetObject(string prefabPath, List<GameObject> pool)
+	{
+		if(!expandWhenNecessary)
 		{
-			if(!instance)
+			return null;
+		}
+
+		GameObject prefab = Resources.Load<GameObject>(prefabPath);
+		GameObject goInstance = Object.Instantiate(prefab) as GameObject;
+
+		goInstance.name = prefab.name;
+		goInstance.transform.parent = pm.transform;
+
+		pool.Add(goInstance);
+		return goInstance;
+	}
+
+	public static List<GameObject> CreateObjectPool(string prefabPath, int count)
+	{
+		if(count <= 0)
+		{
+			count = 1;
+		}
+
+		GameObject prefab = Resources.Load<GameObject>(prefabPath);
+		List<GameObject> objects = new List<GameObject>();
+
+		for(int i = 0; i < count; i++)
+		{
+			GameObject goInstance = Object.Instantiate<GameObject>(prefab);
+
+			goInstance.name = prefab.name;
+			goInstance.transform.parent = pm.transform;
+
+			objects.Add(goInstance);
+
+			goInstance.SetActive(false);
+		}
+
+		objectPools.Add(prefabPath, objects);
+		return objects;
+	}
+
+	public static GameObject GetPooledObject(string prefabPath, int poolSize = defaultPoolSize)
+	{
+		if(!PoolExistsForPrefab(prefabPath))
+		{
+			return CreateAndRetrieveFromPool(prefabPath, poolSize);
+		}
+
+		var pool = objectPools[prefabPath];
+
+		GameObject goInstance;
+
+		return (goInstance = FindFirstAvailablePooledObject(pool)) != null ?
+			goInstance: ExpandPoolAndGetObject(prefabPath, pool);
+	}
+
+	private static GameObject CreateAndRetrieveFromPool(string prefabPath, int poolSize = defaultPoolSize)
+	{
+		CreateObjectPool(prefabPath, poolSize);
+		return GetPooledObject(prefabPath);
+	}
+
+	private static GameObject FindFirstAvailablePooledObject(List<GameObject> pool)
+	{
+		for(int i = 0; i < pool.Count; i++)
+		{
+			if(IsAvailableForReuse(pool[i]))
 			{
-				new GameObject("#PoolingManager", typeof(PoolingManager));
-			}
-			return instance;
-		}
-	}
-
-	private Dictionary<int, Queue<GameObject>> pool = new Dictionary<int, Queue<GameObject>>();
-
-	void Awake()
-	{
-		if(!instance)
-		{
-			instance = this;
-		}
-		else if(instance != this)
-		{
-			Destroy(this);
-		}
-	}
-
-	private void AddInstanceToPool(GameObject argPrefab)
-	{
-		int goID = argPrefab.GetInstanceID();
-		argPrefab.SetActive(false);
-		GameObject go = Instantiate(argPrefab);
-		argPrefab.SetActive(true);
-		go.name = argPrefab.name;
-		go.transform.parent = transform;
-		if(pool.ContainsKey(goID) == false)
-		{
-			pool.Add(goID, new Queue<GameObject>());
-		}
-		pool[goID].Enqueue(go);
-	}
-
-	private GameObject GetPooledInstance(GameObject argPrefab, Vector3 argPosition, Quaternion argRotation)
-	{
-		int goID = argPrefab.GetInstanceID();
-		GameObject go = null;
-		if(pool.ContainsKey(goID) && pool[goID].Count != 0)
-		{
-			if(pool[goID].Peek().activeSelf == false)
-			{
-				go = pool[goID].Dequeue();
-				pool[goID].Enqueue(go);
-				Debug.Log("HERE");
-			}
-			else
-			{
-				AddInstanceToPool(argPrefab);
-				go = pool[goID].Dequeue();
-				pool[goID].Enqueue(go);
-				Debug.Log("HERE");
+				return pool[i];
 			}
 		}
-		else
-		{
-			AddInstanceToPool(argPrefab);
-			go = pool[goID].Dequeue();
-			pool[goID].Enqueue(go);
-		}
-
-		go.transform.position = argPosition;
-		go.transform.rotation = argRotation;
-		go.SetActive(true);
-
-		return go;
-	}
-
-	public static void InstantiatePooled(GameObject argPrefab, Vector3 argPosition, Quaternion argRotation)
-	{
-		Instance.GetPooledInstance(argPrefab, argPosition, argRotation);
-	}
-
-	public static void InstantiatePooled<T>(GameObject argPrefab, Vector3 argPosition, Quaternion argRotation, System.Action<T> argAction)
-	{
-		GameObject go = Instance.GetPooledInstance(argPrefab, argPosition, argRotation);
-
-		T[] tComponents = go.GetComponentsInChildren<T>();
-		for (int i = 0; i < tComponents.Length; i++)
-		{
-			argAction(tComponents[i]);
-		}
-	}
-
-	public static void InstantiatePooled(GameObject argPrefab, Vector3 argPosition, Quaternion argRotation, Transform argParentTo)
-	{
-		GameObject go = Instance.GetPooledInstance(argPrefab, argPosition, argRotation);
-
-		if(Instance.GetComponent<Rigidbody>() != null && argParentTo.GetComponent<Rigidbody>() != null)
-		{
-			Debug.LogWarning("Avoid parenting rigidbodies to another rigidbody. This will cause problems. i.e.: "+go.name+".transform.parent("+argParentTo.name+".transform)");
-			Debug.Break();
-			return;
-		}
-
-		go.transform.SetParent(argParentTo, true);
+		return null;
 	}
 }

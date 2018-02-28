@@ -51,7 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777d4ad9ac95db94bb40aecb99274b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
+  buffChance: 50
+  enemyList:
   - {fileID: 1103414053835306, guid: f859c46f46e62d441b5b8b7f26021b2b, type: 2}
-  - {fileID: 1322139870062798, guid: dc3e5ad531239664ca5a594a1f7e3b85, type: 2}
+  - {fileID: 1583164693740256, guid: 321fe850f5601e84589e080d39eb668b, type: 2}
+  buffList:
+  - {fileID: 1723156176145020, guid: e43cf46c6ec82024cb3fc9cda7810dc2, type: 2}
   spawnRate: 2.5

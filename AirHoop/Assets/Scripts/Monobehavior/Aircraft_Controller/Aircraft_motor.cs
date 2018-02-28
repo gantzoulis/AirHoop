@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Aircraft_motor : MonoBehaviour 
 {
-	[SerializeField]
-	private Aircraft aircraft;
+	public Aircraft aircraft;
 	private Quaternion aircraftRotation;
 	[SerializeField]
 	private GameObject propeler;
+
+	public bool useFuel = true;
+	public float fuelUsePerSecond = 5;
 
     [SerializeField]
     private float airPlaneStallThreshold;
@@ -23,6 +25,11 @@ public class Aircraft_motor : MonoBehaviour
     void OnEnable()
 	{
 		aircraft = Object.Instantiate(GameManager.Instance.choosenAircraft);
+	}
+
+	void Awake()
+	{
+		StartCoroutine(FuelUse());
 	}
 
 	void Start()
@@ -96,4 +103,13 @@ public class Aircraft_motor : MonoBehaviour
     {
         Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
     }
+
+	private IEnumerator FuelUse()
+	{
+		while(useFuel)
+		{
+			yield return new WaitForSeconds(1);
+			aircraft.fuel -= fuelUsePerSecond;
+		}
+	}
 }

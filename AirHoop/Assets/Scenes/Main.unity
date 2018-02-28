@@ -202,21 +202,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1385582216100906, guid: f923c73d124d03e498d310fb367fd4ec,
     type: 2}
   m_PrefabInternal: {fileID: 1455995313}
---- !u!54 &110344955
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 110344953}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!82 &110344956
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1493,6 +1478,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1269664569508276, guid: 804d4b6d23553a84e82ecba03f92c5ef, type: 2}
+      propertyPath: m_Name
+      value: SpawnManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 114727932730918642, guid: 804d4b6d23553a84e82ecba03f92c5ef,
+        type: 2}
+      propertyPath: buffChance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 804d4b6d23553a84e82ecba03f92c5ef, type: 2}
   m_IsPrefabParent: 0
@@ -1560,6 +1554,11 @@ Prefab:
       value: 
       objectReference: {fileID: 114843877549600012, guid: ad3f129293bbf3644914b7c44d8208b1,
         type: 2}
+    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
+        type: 2}
+      propertyPath: fuelUsePerSecond
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
   m_IsPrefabParent: 0
