@@ -67,7 +67,9 @@ public class AircraftEditor: Editor
 		EditorGUILayout.BeginVertical(GUI.skin.box);
 
 		EditorGUILayout.LabelField(aircraft.aircraftName);
-
+		//Checking Variables i.e.
+		//EditorGUILayout.PropertyField(fuelProperty);
+		//serializedObject.Update();
 		EditorGUILayout.EndVertical();
 	}
 

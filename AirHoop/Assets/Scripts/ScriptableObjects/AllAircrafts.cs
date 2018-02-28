@@ -6,7 +6,7 @@ public class AllAircrafts : ScriptableObject
 
 	private static AllAircrafts instance;
 
-	private const string loadPath = "Aircrafts/AllAircrafts";
+	private const string loadPath = "ScriptableCollections/AllAircrafts";
 
 	public static AllAircrafts Instance
 	{
