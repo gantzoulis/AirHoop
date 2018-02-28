@@ -757,9 +757,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777d4ad9ac95db94bb40aecb99274b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 1103414053835306, guid: f859c46f46e62d441b5b8b7f26021b2b, type: 2}
-  - {fileID: 1322139870062798, guid: dc3e5ad531239664ca5a594a1f7e3b85, type: 2}
+  buffChance: 30
+  enemyList: []
+  buffList: []
   spawnRate: 2.5
 --- !u!1 &382784204
 GameObject:
@@ -1697,6 +1697,11 @@ Prefab:
     - target: {fileID: 4648998069411868, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
       propertyPath: m_LocalPosition.y
       value: -0.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
+        type: 2}
+      propertyPath: useFuel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}

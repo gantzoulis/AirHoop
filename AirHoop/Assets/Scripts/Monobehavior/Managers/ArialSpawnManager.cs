@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ArialSpawnManager : MonoBehaviour 
 {
-	private const string ENEMY_PREFAB_PATH = "Prefabs/Enemies/";
+	private const string ENEMY_PREFAB_PATH = "Prefabs/Enemies";
 	private string enemyPrefabName;
-	private const string BUFF_PREFAB_PATH = "Prefabs/Buffs/";
+	private const string BUFF_PREFAB_PATH = "Prefabs/Buffs";
 	private string buffPrefabName;
 	private string spawnString;
 
@@ -15,11 +15,13 @@ public class ArialSpawnManager : MonoBehaviour
 	public float buffChance;
 	private float enemyChance;
 
-	public GameObject[] enemyList;
+	[SerializeField]
+	private GameObject[] enemyList;
 	private int randEnemy;
 	private GameObject spawnEnemy;
 
-	public GameObject[] buffList;
+	[SerializeField]
+	private GameObject[] buffList;
 	private int randBuff;
 	private GameObject spawnBuff;
 
@@ -40,6 +42,8 @@ public class ArialSpawnManager : MonoBehaviour
 	void Start()
 	{
 		maxDist = GameManager.Instance.playerObject.transform.position.x;
+		enemyList = Resources.LoadAll<GameObject>(ENEMY_PREFAB_PATH);
+		buffList = Resources.LoadAll<GameObject>(BUFF_PREFAB_PATH);
 	}
 
 	void FixedUpdate()
@@ -53,7 +57,6 @@ public class ArialSpawnManager : MonoBehaviour
 			
 		if(Time.time > nextSpawn && (curDist > maxDist + overlapSize))
 		{
-			//new Entry
 			randSpawnedObj = Random.Range(0, 100);
 
 			if(randSpawnedObj <= buffChance)
@@ -62,7 +65,7 @@ public class ArialSpawnManager : MonoBehaviour
 				spawnBuff = buffList[randBuff];
 
 				buffPrefabName = spawnBuff.name.ToString();
-				spawnString = BUFF_PREFAB_PATH + buffPrefabName;
+				spawnString = BUFF_PREFAB_PATH + "/" + buffPrefabName;
 			}
 			else
 			{
@@ -70,7 +73,7 @@ public class ArialSpawnManager : MonoBehaviour
 				spawnEnemy = enemyList[randEnemy];
 
 				enemyPrefabName = spawnEnemy.name.ToString();
-				spawnString = ENEMY_PREFAB_PATH + enemyPrefabName;
+				spawnString = ENEMY_PREFAB_PATH + "/" + enemyPrefabName;
 			}
 
 			nextSpawn = Time.time + spawnRate;
