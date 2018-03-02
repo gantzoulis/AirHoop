@@ -27,8 +27,18 @@ public class BuffGiver : MonoBehaviour
 		switch(buff.type)
 		{
 		case BuffType.Fuel:
-			go.GetComponent<Aircraft_motor>().aircraft.fuel += addedBuffAmount;
-			break;
+			float newFuel = go.GetComponent<Aircraft_motor>().aircraft.fuel += addedBuffAmount;
+			if(newFuel <= go.GetComponent<Aircraft_motor>().aircraft.totalFuel)
+			{
+				go.GetComponent<Aircraft_motor>().aircraft.fuel = newFuel;
+				break;
+			}
+			else
+			{
+				go.GetComponent<Aircraft_motor>().aircraft.fuel = go.GetComponent<Aircraft_motor>().aircraft.totalFuel;
+				break;
+			}
+
 		case BuffType.Speed:
 			go.GetComponent<Aircraft_motor>().aircraft.speed += addedBuffAmount;
 			break;

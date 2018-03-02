@@ -10,7 +10,7 @@ public class Aircraft_motor : MonoBehaviour
 	private GameObject propeler;
 
 	public bool useFuel = true;
-	public float fuelUsePerSecond = 5;
+	public float fuelUsePerMeter = 0.1f;
 
     [SerializeField]
     private float airPlaneStallThreshold;
@@ -31,6 +31,7 @@ public class Aircraft_motor : MonoBehaviour
 
 	void Awake()
 	{
+		aircraft.fuel = aircraft.totalFuel;
 		StartCoroutine(FuelUse());
 	}
 
@@ -116,7 +117,8 @@ public class Aircraft_motor : MonoBehaviour
 		while(useFuel)
 		{
 			yield return new WaitForSeconds(1);
-			aircraft.fuel -= fuelUsePerSecond;
+			float distancePerSecond = aircraft.speed;
+			aircraft.fuel -= distancePerSecond * fuelUsePerMeter;
 		}
 	}
 }

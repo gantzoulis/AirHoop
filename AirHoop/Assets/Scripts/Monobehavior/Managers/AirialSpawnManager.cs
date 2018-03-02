@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArialSpawnManager : MonoBehaviour 
+public class AirialSpawnManager : MonoBehaviour 
 {
 	private const string ENEMY_PREFAB_PATH = "Prefabs/Enemies";
 	private string enemyPrefabName;
@@ -79,7 +79,7 @@ public class ArialSpawnManager : MonoBehaviour
 			nextSpawn = Time.time + spawnRate;
 
 			randX = GameManager.Instance.playerObject.transform.position.x + distX + overlapSize;
-			randY = Random.Range(GameManager.Instance.minAirplaneHeight + distY, GameManager.Instance.maxAirplaneHeight);
+			randY = Random.Range(GameManager.Instance.minAirplaneHeight + distY, GameManager.Instance.maxAirplaneHeight - overlapSize);
 			whereToSpawn = new Vector3(randX, randY, 0);
 
 			var theSpwanedItem = PoolingManager.GetPooledObject(spawnString);

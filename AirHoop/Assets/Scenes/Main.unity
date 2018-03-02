@@ -1703,6 +1703,11 @@ Prefab:
       propertyPath: useFuel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
+        type: 2}
+      propertyPath: fuelUsePerMeter
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
   m_IsPrefabParent: 0

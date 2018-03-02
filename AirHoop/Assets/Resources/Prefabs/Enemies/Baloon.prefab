@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4643107218927920}
   - component: {fileID: 65269853748170468}
+  - component: {fileID: 114587970431717022}
   m_Layer: 0
   m_Name: BaloonCollider
   m_TagString: Untagged
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1103414053835306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.566645, y: -2.4302313, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4667459626778090}
@@ -183,4 +184,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61df292cad72ff34999e18e9ca9d097b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 10
+  distMoving: 5
+  speed: 1
+--- !u!114 &114587970431717022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1936262456426026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6927dcda3fdf9b946a14d05c7b26c4c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
