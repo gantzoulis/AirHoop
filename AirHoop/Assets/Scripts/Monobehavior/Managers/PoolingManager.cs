@@ -6,6 +6,7 @@ public class PoolingManager : MonoBehaviour
 {
 	private static GameObject pmEnemies = new GameObject("#EnemiesPoolingManager", typeof(PoolingManager));
 	private static GameObject pmBuff = new GameObject("#BuffPoolingManager", typeof(PoolingManager));
+	private static GameObject pmGround = new GameObject("#GroundPoolingManager", typeof(PoolingManager));
 
 	private const int defaultPoolSize = 5;
 
@@ -43,6 +44,10 @@ public class PoolingManager : MonoBehaviour
 		{
 			goInstance.transform.parent = pmEnemies.transform;
 		}
+		else if (prefabPath.Contains("Grounds"))
+		{
+			goInstance.transform.parent = pmGround.transform;
+		}
 		pool.Add(goInstance);
 		return goInstance;
 	}
@@ -67,9 +72,13 @@ public class PoolingManager : MonoBehaviour
 			{
 				goInstance.transform.parent = pmBuff.transform;
 			}
-			else if (prefabPath.Contains("Enemies"))
+			else if(prefabPath.Contains("Enemies"))
 			{
 				goInstance.transform.parent = pmEnemies.transform;
+			}
+			else if (prefabPath.Contains("Grounds"))
+			{
+				goInstance.transform.parent = pmGround.transform;
 			}
 
 			objects.Add(goInstance);

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GroundSpawnManager : MonoBehaviour 
 {
+	private const string GROUND_PREFAB_PATH = "Prefabs/Grounds";
+
 	private float screenWidth;
 	private float targetPlayerX;
 	private float currentPlayerX;
@@ -13,11 +15,16 @@ public class GroundSpawnManager : MonoBehaviour
 	[SerializeField]
 	private GameObject player;
 	[SerializeField]
-	private GameObject groundTileGroup;
+	private GameObject[] groundList;
+
+	private int randGround;
+	private GameObject spawnedGround;
+	private string spawnString;
 
 	// Use this for initialization
 	void Start () 
 	{
+		groundList = Resources.LoadAll<GameObject>(GROUND_PREFAB_PATH);
 		screenWidth = Screen.width;
 		targetPlayerX = 0;
 	}
@@ -30,11 +37,20 @@ public class GroundSpawnManager : MonoBehaviour
 
 	private void SpawnGround()
 	{
+		randGround = Random.Range(0, groundList.Length);
+		spawnedGround = groundList[randGround];
+		spawnString = GROUND_PREFAB_PATH + "/" + spawnedGround.name.ToString();
+
 		currentPlayerX = player.transform.position.x;
 		if (currentPlayerX >= targetPlayerX)
 		{
 			targetPlayerX += groundLength;
-			Instantiate(groundTileGroup, new Vector3(currentEnd, -12, 0), Quaternion.identity);
+
+			var theSpwanedItem = PoolingManager.GetPooledObject(spawnString);
+			theSpwanedItem.transform.position = new Vector3(currentEnd, -12, 0);
+			theSpwanedItem.transform.rotation = Quaternion.identity;
+			theSpwanedItem.SetActive(true);
+
 			currentEnd += groundLength;
 		}
 	}
