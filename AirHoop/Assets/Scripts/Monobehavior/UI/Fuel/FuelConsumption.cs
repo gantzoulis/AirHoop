@@ -31,7 +31,7 @@ public class FuelConsumption : MonoBehaviour
     {
         float currentFuel = playerPlane.GetComponent<Aircraft_motor>().aircraft.fuel;
         float fuelBarFill = currentFuel / fullFuel;
-        Debug.Log("fuel " + currentFuel  + " of "+ fullFuel + "(" + fuelBarFill +")");
+        //Debug.Log("fuel " + currentFuel  + " of "+ fullFuel + "(" + fuelBarFill +")");
         fuelImage.GetComponent<Image>().fillAmount = fuelBarFill;
     }
 }

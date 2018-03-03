@@ -20,7 +20,10 @@ public class Aircraft_motor : MonoBehaviour
 
     [SerializeField]
     private float airPlaneStallThreshold;
-    
+    private int propelerCurrentSpeed;
+    private int propelerNormalSpeed = 5000;
+    private int propelerFastSpeed = 9000;
+    private int propelerSlowSpeed = 1000;
 
     private bool propOn = true;
     private bool planeIsStalling = false;
@@ -33,6 +36,8 @@ public class Aircraft_motor : MonoBehaviour
 	{
 		aircraft = Object.Instantiate(GameManager.Instance.choosenAircraft);
         timeMachine = GetComponent<TimeBody>();
+        planeAudio = GetComponent<AudioSource>();
+        propelerCurrentSpeed = propelerNormalSpeed;
 	}
 
 	void Awake()
@@ -54,7 +59,7 @@ public class Aircraft_motor : MonoBehaviour
             AircraftMoveHorizontal();
             AircraftMoveVertical();
         }
-		PropelerRotation();
+		PropelerRotation(propelerCurrentSpeed);
         CheckAirplaneHeight();
 	}
 
@@ -88,11 +93,11 @@ public class Aircraft_motor : MonoBehaviour
 		}
 	}
 
-	private void PropelerRotation()
+	private void PropelerRotation(int propelerSpeed)
 	{
         if (propOn)
         {
-            propeler.transform.Rotate(0, 5000 * Time.deltaTime, 0);
+            propeler.transform.Rotate(0, propelerSpeed * Time.deltaTime, 0);
         }
       
 	}
@@ -152,10 +157,16 @@ public class Aircraft_motor : MonoBehaviour
 		{
 			countBuffTime += Time.deltaTime;
 			aircraft.speed = totalSpeed;
+            propelerCurrentSpeed = propelerFastSpeed;
+            PropelerRotation(propelerCurrentSpeed);
+            planeAudio.pitch = 1.25f;
 			yield return null;
 		}
 		countBuffTime = 0;
 		aircraft.speed = aircraft.manufactureSpeed;
-		speedBuffOn = false;
+        propelerCurrentSpeed = propelerNormalSpeed;
+        PropelerRotation(propelerCurrentSpeed);
+        planeAudio.pitch = 1.0f;
+        speedBuffOn = false;
 	}
 }
