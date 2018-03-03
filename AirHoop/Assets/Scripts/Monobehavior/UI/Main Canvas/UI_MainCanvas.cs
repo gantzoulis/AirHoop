@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor.SceneManagement;
 
 public class UI_MainCanvas : MonoBehaviour
 {
@@ -46,4 +47,10 @@ public class UI_MainCanvas : MonoBehaviour
         gameOverImage.SetActive(true);
         timeManager.pauseGame = true;
     }
+
+    public void RestartSurvivalGame()
+    {
+        GameManager.Instance.RestartGame();
+    }
+
 }
