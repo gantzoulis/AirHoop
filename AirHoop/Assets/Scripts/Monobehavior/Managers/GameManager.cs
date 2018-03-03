@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 	public float time;
     public GameObject playerObject;
     public bool gameOver = false;
+    public bool soundOn = true;
         
     public float distanceRatio;
 
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     public float maxTimeLapse = 5f;
     public string playerColliderName;
+
 
     
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
 
 public class UI_MainCanvas : MonoBehaviour
 {
@@ -17,6 +16,9 @@ public class UI_MainCanvas : MonoBehaviour
 
     [SerializeField]
     private GameObject gameOverImage;
+
+    [SerializeField]
+    private GameObject soundOffImage;
 
     // Use this for initialization
     void Start ()
@@ -51,6 +53,23 @@ public class UI_MainCanvas : MonoBehaviour
     public void RestartSurvivalGame()
     {
         GameManager.Instance.RestartGame();
+    }
+
+    public void DisableSound()
+    {
+        if (GameManager.Instance.soundOn)
+        {
+            Camera.main.GetComponent<AudioListener>().enabled = false;
+            GameManager.Instance.soundOn = false;
+            soundOffImage.SetActive(true);
+        }
+        else
+        {
+            Camera.main.GetComponent<AudioListener>().enabled = true;
+            GameManager.Instance.soundOn = true;
+            soundOffImage.SetActive(false);
+        }
+
     }
 
 }
