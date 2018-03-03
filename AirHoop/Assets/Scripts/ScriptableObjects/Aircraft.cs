@@ -8,6 +8,7 @@ public class Aircraft : ScriptableObject
 	public GameObject[] model;
 	public float totalFuel;
 	public float fuel;
+	public float manufactureSpeed;
 	public float speed;
 	public float maneuver;
 	public int hash;

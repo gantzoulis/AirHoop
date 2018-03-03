@@ -19,13 +19,15 @@ public class BuffEditor: Editor
 	private SerializedProperty modelProperty;
 	private SerializedProperty typeProperty;
 	private SerializedProperty amountProperty;
+	private SerializedProperty timeProperty;
 	private SerializedProperty hashProperty;
 
-	private const string  buffPropName = "buffName";
-	private const string  buffPropModel = "model";
-	private const string  buffPropType = "type";
-	private const string  buffPropAmount = "amount";
-	private const string  buffPropHash = "hash";
+	private const string buffPropName = "buffName";
+	private const string buffPropModel = "model";
+	private const string buffPropType = "type";
+	private const string buffPropAmount = "amount";
+	private const string buffPropTime = "time";
+	private const string buffPropHash = "hash";
 
 	private void OnEnable()
 	{
@@ -41,6 +43,7 @@ public class BuffEditor: Editor
 		modelProperty = serializedObject.FindProperty(buffPropModel);
 		typeProperty = serializedObject.FindProperty(buffPropType);
 		amountProperty = serializedObject.FindProperty(buffPropAmount);
+		timeProperty = serializedObject.FindProperty(buffPropTime);
 		hashProperty = serializedObject.FindProperty(buffPropHash);
 	}
 
@@ -109,8 +112,14 @@ public class BuffEditor: Editor
 		EditorGUILayout.PropertyField(modelProperty);
 		EditorGUILayout.PropertyField(typeProperty);
 		EditorGUILayout.PropertyField(amountProperty);
-		//EditorGUILayout.LabelField(aircraft.hash.ToString());
+
+		if ((BuffType)typeProperty.enumValueIndex  == BuffType.Speed)
+		{
+			EditorGUILayout.PropertyField(timeProperty);
+		}
+		//EditorGUILayout.LabelField(buff.hash.ToString());
 		EditorGUI.indentLevel--;
+
 	}
 
 	public static Buff CreateAircraft(string buffName)

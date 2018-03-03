@@ -12,6 +12,12 @@ public class Aircraft_motor : MonoBehaviour
 	public bool useFuel = true;
 	public float fuelUsePerMeter = 0.1f;
 
+	public bool speedBuffOn = false;
+	//[SerializeField]
+	private float speedBuffTime;
+	//[SerializeField]
+	private float countBuffTime;
+
     [SerializeField]
     private float airPlaneStallThreshold;
     
@@ -32,6 +38,7 @@ public class Aircraft_motor : MonoBehaviour
 	void Awake()
 	{
 		aircraft.fuel = aircraft.totalFuel;
+		aircraft.speed = aircraft.manufactureSpeed;
 		StartCoroutine(FuelUse());
 	}
 
@@ -120,5 +127,35 @@ public class Aircraft_motor : MonoBehaviour
 			float distancePerSecond = aircraft.speed;
 			aircraft.fuel -= distancePerSecond * fuelUsePerMeter;
 		}
+	}
+		
+	public void ActivateSpeedBuff(float speedBuff, float buffTime)
+	{
+		if(speedBuffOn == false )
+		{
+			StartCoroutine(SpeedBuffTime(speedBuff, buffTime));
+		}
+		if(speedBuffOn == true)
+		{
+			countBuffTime = 0;
+		}
+	}
+
+	private IEnumerator SpeedBuffTime(float speedBuff, float buffTime)
+	{
+		speedBuffOn = true;
+		speedBuffTime = buffTime;
+		countBuffTime = 0;
+		float totalSpeed = aircraft.speed += speedBuff;
+
+		while(countBuffTime < speedBuffTime)
+		{
+			countBuffTime += Time.deltaTime;
+			aircraft.speed = totalSpeed;
+			yield return null;
+		}
+		countBuffTime = 0;
+		aircraft.speed = aircraft.manufactureSpeed;
+		speedBuffOn = false;
 	}
 }

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PoolingManager : MonoBehaviour 
 {
-	private static GameObject pm = new GameObject("#PoolingManager", typeof(PoolingManager));
+	private static GameObject pmEnemies = new GameObject("#EnemiesPoolingManager", typeof(PoolingManager));
+	private static GameObject pmBuff = new GameObject("#BuffPoolingManager", typeof(PoolingManager));
+	private static GameObject pmGround = new GameObject("#GroundPoolingManager", typeof(PoolingManager));
+	private static GameObject pmBackground = new GameObject("#BackgroundPoolingManager", typeof(PoolingManager));
 
 	private const int defaultPoolSize = 5;
 
@@ -34,8 +37,22 @@ public class PoolingManager : MonoBehaviour
 		GameObject goInstance = Object.Instantiate(prefab) as GameObject;
 
 		goInstance.name = prefab.name;
-		goInstance.transform.parent = pm.transform;
-
+		if(prefabPath.Contains("Buffs"))
+		{
+			goInstance.transform.parent = pmBuff.transform;
+		}
+		else if(prefabPath.Contains("Enemies"))
+		{
+			goInstance.transform.parent = pmEnemies.transform;
+		}
+		else if (prefabPath.Contains("Grounds"))
+		{
+			goInstance.transform.parent = pmGround.transform;
+		}
+		else if (prefabPath.Contains("Backgrounds"))
+		{
+			goInstance.transform.parent = pmBackground.transform;
+		}
 		pool.Add(goInstance);
 		return goInstance;
 	}
@@ -55,7 +72,23 @@ public class PoolingManager : MonoBehaviour
 			GameObject goInstance = Object.Instantiate<GameObject>(prefab);
 
 			goInstance.name = prefab.name;
-			goInstance.transform.parent = pm.transform;
+
+			if(prefabPath.Contains("Buffs"))
+			{
+				goInstance.transform.parent = pmBuff.transform;
+			}
+			else if(prefabPath.Contains("Enemies"))
+			{
+				goInstance.transform.parent = pmEnemies.transform;
+			}
+			else if (prefabPath.Contains("Grounds"))
+			{
+				goInstance.transform.parent = pmGround.transform;
+			}
+			else if (prefabPath.Contains("Backgrounds"))
+			{
+				goInstance.transform.parent = pmBackground.transform;
+			}
 
 			objects.Add(goInstance);
 
