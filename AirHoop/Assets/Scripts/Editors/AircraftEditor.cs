@@ -19,6 +19,7 @@ public class AircraftEditor: Editor
 	private SerializedProperty modelProperty;
 	private SerializedProperty totalFuelProperty;
 	private SerializedProperty fuelProperty;
+	private SerializedProperty manufactureSpeedProperty;
 	private SerializedProperty speedProperty;
 	private SerializedProperty maneuverProperty;
 	private SerializedProperty hashProperty;
@@ -27,6 +28,7 @@ public class AircraftEditor: Editor
 	private const string aircraftPropModel = "model";
 	private const string aircraftPropTotalFuel = "totalFuel"; 
 	private const string aircraftPropFuel = "fuel";
+	private const string aircraftPropManufactureSpeed = "manufactureSpeed";
 	private const string aircraftPropSpeed = "speed";
 	private const string aircraftPropManeuver = "maneuver";
 	private const string aircraftPropHash = "hash";
@@ -45,6 +47,7 @@ public class AircraftEditor: Editor
 		modelProperty = serializedObject.FindProperty(aircraftPropModel);
 		totalFuelProperty = serializedObject.FindProperty(aircraftPropTotalFuel);
 		fuelProperty = serializedObject.FindProperty(aircraftPropFuel);
+		manufactureSpeedProperty = serializedObject.FindProperty(aircraftPropManufactureSpeed);
 		speedProperty = serializedObject.FindProperty(aircraftPropSpeed);
 		maneuverProperty = serializedObject.FindProperty(aircraftPropManeuver);
 		hashProperty = serializedObject.FindProperty(aircraftPropHash);
@@ -72,6 +75,7 @@ public class AircraftEditor: Editor
 		EditorGUILayout.LabelField(aircraft.aircraftName);
 		//Checking Variables i.e.
 		EditorGUILayout.PropertyField(fuelProperty);
+		EditorGUILayout.PropertyField(speedProperty);
 		serializedObject.Update();
 		EditorGUILayout.EndVertical();
 	}
@@ -117,7 +121,8 @@ public class AircraftEditor: Editor
 		EditorGUILayout.PropertyField(modelProperty, true);
 		EditorGUILayout.PropertyField(totalFuelProperty);
 		//EditorGUILayout.PropertyField(fuelProperty);
-		EditorGUILayout.PropertyField(speedProperty);
+		EditorGUILayout.PropertyField(manufactureSpeedProperty);
+		//EditorGUILayout.PropertyField(speedProperty);
 		EditorGUILayout.PropertyField(maneuverProperty);
 		//EditorGUILayout.LabelField(aircraft.hash.ToString());
 		EditorGUI.indentLevel--;

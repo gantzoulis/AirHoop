@@ -13,5 +13,6 @@ public class Buff : ScriptableObject
 	public GameObject model;
 	public BuffType type;
 	public float amount;
+	public float time;
 	public int hash;
 }
