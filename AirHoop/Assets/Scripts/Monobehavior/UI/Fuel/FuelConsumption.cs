@@ -8,15 +8,15 @@ public class FuelConsumption : MonoBehaviour
     private Image fuelImage;
     private float fullFuel;
     [SerializeField]
-    private GameObject[] playerPlane;
+    private GameObject playerPlane;
     [SerializeField]
     private Aircraft_motor playerMotor;
 
 	// Use this for initialization
 	void Start ()
     {
-        playerPlane = GameObject.FindGameObjectsWithTag("Player");
-        playerMotor = playerPlane[1].GetComponent<Aircraft_motor>();
+        playerPlane = GameObject.FindGameObjectWithTag("Player");
+        playerMotor = playerPlane.GetComponent<Aircraft_motor>();
         fuelImage = GetComponent<Image>();
         fullFuel = playerMotor.aircraft.fuel;
     }
@@ -29,9 +29,9 @@ public class FuelConsumption : MonoBehaviour
 
     private void CalculateFuelBar()
     {
-        float currentFuel = playerPlane[1].GetComponent<Aircraft_motor>().aircraft.fuel;
-        float fuelBarFill = 1 / currentFuel;
-        Debug.Log("fuel " + fuelBarFill);
+        float currentFuel = playerPlane.GetComponent<Aircraft_motor>().aircraft.fuel;
+        float fuelBarFill = currentFuel / fullFuel;
+        Debug.Log("fuel " + currentFuel  + " of "+ fullFuel + "(" + fuelBarFill +")");
         fuelImage.GetComponent<Image>().fillAmount = fuelBarFill;
     }
 }

@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe1fb5e45d11bc4a91881949615695e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPlane: []
+  playerPlane: {fileID: 0}
   playerMotor: {fileID: 0}
 --- !u!114 &566419138
 MonoBehaviour:
@@ -1458,6 +1458,7 @@ MonoBehaviour:
   planeExplosionObject: {fileID: 1889364105042210, guid: 2d7bec313cafcfa4e815300904828d8e,
     type: 2}
   maxTimeLapse: 5
+  playerColliderName: PlayerCollider
 --- !u!4 &1069515725
 Transform:
   m_ObjectHideFlags: 0
@@ -1852,7 +1853,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1638840847759488, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
       propertyPath: m_TagString
-      value: Player
+      value: PlayerCollider
       objectReference: {fileID: 0}
     - target: {fileID: 65309392100023318, guid: f923c73d124d03e498d310fb367fd4ec,
         type: 2}

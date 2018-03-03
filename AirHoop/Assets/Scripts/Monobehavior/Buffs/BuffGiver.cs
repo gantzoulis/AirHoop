@@ -15,7 +15,7 @@ public class BuffGiver : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Player")
+		if (other.tag == GameManager.Instance.playerColliderName)
 		{
 			AddBuffAmount(other.gameObject.transform.parent.gameObject);
 			DeactivateBuffItem();

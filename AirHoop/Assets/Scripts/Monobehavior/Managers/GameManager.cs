@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public GameObject planeExplosionObject;
 
     public float maxTimeLapse = 5f;
+    public string playerColliderName;
 
     
 

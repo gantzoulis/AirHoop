@@ -6,7 +6,7 @@ public class GroundCollider : MonoBehaviour
 {
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.tag == "Player")
+		if(other.tag == GameManager.Instance.playerColliderName)
 		{
 			Destroy(other.gameObject.transform.parent.gameObject);
 		}
