@@ -521,7 +521,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1258645559}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &213239213
 MonoBehaviour:
@@ -535,8 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 110344953}
-  groundTileGroup: {fileID: 1603458432265150, guid: 98e7d9c79399ae5429a2ad24e6dcd0fc,
-    type: 2}
+  groundList: []
 --- !u!1 &223213734
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,7 +726,7 @@ GameObject:
   - component: {fileID: 336116177}
   - component: {fileID: 336116178}
   m_Layer: 0
-  m_Name: EnemySpawnManager
+  m_Name: AirialSpawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -744,7 +743,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1258645559}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &336116178
 MonoBehaviour:
@@ -1253,7 +1252,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1258645559}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1017311442
 MonoBehaviour:
@@ -1549,10 +1548,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1069515725}
-  - {fileID: 213239212}
   - {fileID: 1017311441}
   - {fileID: 1992487749}
   - {fileID: 336116177}
+  - {fileID: 213239212}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2006,7 +2005,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1258645559}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1992487750
 MonoBehaviour:
