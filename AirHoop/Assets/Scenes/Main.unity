@@ -1644,7 +1644,7 @@ MonoBehaviour:
   playerObject: {fileID: 110344953}
   gameOver: 0
   soundOn: 1
-  distanceRatio: 5
+  distanceRatio: 4
   maxAirplaneHeight: 25
   minAirplaneHeight: -17
   planeExplosionObject: {fileID: 1889364105042210, guid: 2d7bec313cafcfa4e815300904828d8e,
