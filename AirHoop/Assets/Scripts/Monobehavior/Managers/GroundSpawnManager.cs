@@ -46,10 +46,12 @@ public class GroundSpawnManager : MonoBehaviour
 		{
 			targetPlayerX += groundLength;
 
-			var theSpwanedItem = PoolingManager.GetPooledObject(spawnString);
-			theSpwanedItem.transform.position = new Vector3(currentEnd, -12, 0);
-			theSpwanedItem.transform.rotation = Quaternion.identity;
-			theSpwanedItem.SetActive(true);
+			var theSpawnedItem = PoolManager.GetPooledObject(spawnString);
+			//var theSpwanedItem = PoolingManager.Instance.GetPooledObject(spawnString);
+
+			theSpawnedItem.transform.position = new Vector3(currentEnd, -12, 0);
+			theSpawnedItem.transform.rotation = Quaternion.identity;
+			theSpawnedItem.SetActive(true);
 
 			currentEnd += groundLength;
 		}

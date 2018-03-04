@@ -40,10 +40,11 @@ public class BackgroundSpawnManager : MonoBehaviour
 		{
 			targetPlayerX += Random.Range(10,cloudSpawnDist);
 
-			var theSpwanedItem = PoolingManager.GetPooledObject(spawnString);
-			theSpwanedItem.transform.position = new Vector3(screenCover + currentPlayerX, Random.Range(GameManager.Instance.minAirplaneHeight + 20, GameManager.Instance.maxAirplaneHeight), Random.Range(-5,2));
-			theSpwanedItem.transform.rotation = Quaternion.identity;
-			theSpwanedItem.SetActive(true);
+			var theSpawnedItem = PoolManager.GetPooledObject(spawnString);
+
+			theSpawnedItem.transform.position = new Vector3(screenCover + currentPlayerX, Random.Range(GameManager.Instance.minAirplaneHeight + 20, GameManager.Instance.maxAirplaneHeight), Random.Range(-5,2));
+			theSpawnedItem.transform.rotation = Quaternion.identity;
+			theSpawnedItem.SetActive(true);
 		}
 	}
 }
