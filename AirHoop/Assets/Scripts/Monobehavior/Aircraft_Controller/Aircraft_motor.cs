@@ -56,7 +56,7 @@ public class Aircraft_motor : MonoBehaviour
 
 	void Update()
 	{
-        Debug.Log(this.transform.rotation.eulerAngles.z);
+        //Debug.Log(this.transform.rotation.eulerAngles.z);
         if (!timeMachine.isRewinding)
         {
             AircraftMoveHorizontal();
@@ -118,12 +118,12 @@ public class Aircraft_motor : MonoBehaviour
     {
         if (this.gameObject.transform.position.y >= GameManager.Instance.maxAirplaneHeight - airPlaneStallThreshold)
         {
-            Debug.Log("WARNING");
+            //Debug.Log("WARNING");
         }
 
         if (this.gameObject.transform.position.y >= GameManager.Instance.maxAirplaneHeight)
         {
-            Debug.Log("STALLING");
+            //Debug.Log("STALLING");
             aircraftRotation *= Quaternion.AngleAxis(1, Vector3.back);
             //planeIsStalling = true;
         }
@@ -186,7 +186,7 @@ public class Aircraft_motor : MonoBehaviour
     {
         if (this.aircraft.fuel <= 0)
         {
-            Debug.Log("Out of Fuel");
+            //Debug.Log("Out of Fuel");
             outOfFuel = true;
         }
     }
