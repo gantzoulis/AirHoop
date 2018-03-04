@@ -93,14 +93,6 @@ public class Aircraft_motor : MonoBehaviour
 			{
 				aircraftRotation *= Quaternion.AngleAxis(1, Vector3.forward);
 			}
-
-            if (outOfFuel)
-            {
-                if (this.transform.rotation.eulerAngles.z >= 330 && this.transform.rotation.eulerAngles.z <= 360 )
-                {
-                    aircraftRotation *= Quaternion.AngleAxis(1, Vector3.back);
-                }
-            }
 			transform.rotation = Quaternion.Lerp(transform.rotation, aircraftRotation, aircraft.maneuver * Time.deltaTime);
 		}
 	}
@@ -188,6 +180,7 @@ public class Aircraft_motor : MonoBehaviour
         {
             //Debug.Log("Out of Fuel");
             outOfFuel = true;
+            this.gameObject.GetComponent<Animator>().enabled = true;
         }
     }
 }
