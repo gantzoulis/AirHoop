@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolingManager : MonoBehaviour 
+public class PoolManager : MonoBehaviour 
 {
-	private static GameObject pmEnemies = new GameObject("#EnemiesPoolingManager", typeof(PoolingManager));
-	private static GameObject pmBuff = new GameObject("#BuffPoolingManager", typeof(PoolingManager));
-	private static GameObject pmGround = new GameObject("#GroundPoolingManager", typeof(PoolingManager));
-	private static GameObject pmBackground = new GameObject("#BackgroundPoolingManager", typeof(PoolingManager));
+	
+	private static GameObject pmEnemies = new GameObject("#EnemiesPoolingManager", typeof(PoolManager));
+	private static GameObject pmBuff = new GameObject("#BuffPoolingManager", typeof(PoolManager));
+	private static GameObject pmGround = new GameObject("#GroundPoolingManager", typeof(PoolManager));
+	private static GameObject pmBackground = new GameObject("#BackgroundPoolingManager", typeof(PoolManager));
 
 	private const int defaultPoolSize = 5;
 
@@ -25,6 +26,32 @@ public class PoolingManager : MonoBehaviour
 		return !gameObject.activeSelf;	
 	}
 
+	public static void UpdateManager()
+	{
+		if(!pmEnemies)
+		{
+			pmEnemies = new GameObject("#EnemiesPoolingManager", typeof(PoolManager));
+			objectPools = new Dictionary<string, List<GameObject>>();
+		}
+
+		if(!pmBuff)
+		{
+			pmBuff = new GameObject("#BuffPoolingManager", typeof(PoolManager));
+			objectPools = new Dictionary<string, List<GameObject>>();
+		}
+
+		if(!pmGround)
+		{
+			pmGround = new GameObject("#GroundPoolingManager", typeof(PoolManager));
+			objectPools = new Dictionary<string, List<GameObject>>();
+		}
+
+		if(!pmBackground)
+		{
+			pmBackground = new GameObject("#BackgroundPoolingManager", typeof(PoolManager));
+			objectPools = new Dictionary<string, List<GameObject>>();
+		}
+	}
 
 	private static GameObject ExpandPoolAndGetObject(string prefabPath, List<GameObject> pool)
 	{
@@ -37,6 +64,7 @@ public class PoolingManager : MonoBehaviour
 		GameObject goInstance = Object.Instantiate(prefab) as GameObject;
 
 		goInstance.name = prefab.name;
+
 		if(prefabPath.Contains("Buffs"))
 		{
 			goInstance.transform.parent = pmBuff.transform;

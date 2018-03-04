@@ -13,8 +13,6 @@ public class GroundSpawnManager : MonoBehaviour
 	private float currentEnd = 30.0f;
 
 	[SerializeField]
-	private GameObject player;
-	[SerializeField]
 	private GameObject[] groundList;
 
 	private int randGround;
@@ -41,15 +39,21 @@ public class GroundSpawnManager : MonoBehaviour
 		spawnedGround = groundList[randGround];
 		spawnString = GROUND_PREFAB_PATH + "/" + spawnedGround.name.ToString();
 
-		currentPlayerX = player.transform.position.x;
+		if (GameManager.Instance.playerObject)
+		{
+			currentPlayerX = GameManager.Instance.playerObject.transform.position.x;
+		}
+
 		if (currentPlayerX >= targetPlayerX)
 		{
 			targetPlayerX += groundLength;
 
-			var theSpwanedItem = PoolingManager.GetPooledObject(spawnString);
-			theSpwanedItem.transform.position = new Vector3(currentEnd, -12, 0);
-			theSpwanedItem.transform.rotation = Quaternion.identity;
-			theSpwanedItem.SetActive(true);
+			var theSpawnedItem = PoolManager.GetPooledObject(spawnString);
+			//var theSpwanedItem = PoolingManager.Instance.GetPooledObject(spawnString);
+
+			theSpawnedItem.transform.position = new Vector3(currentEnd, -12, 0);
+			theSpawnedItem.transform.rotation = Quaternion.identity;
+			theSpawnedItem.SetActive(true);
 
 			currentEnd += groundLength;
 		}

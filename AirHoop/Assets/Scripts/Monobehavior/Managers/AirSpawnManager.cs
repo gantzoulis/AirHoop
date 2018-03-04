@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AirialSpawnManager : MonoBehaviour 
+public class AirSpawnManager : MonoBehaviour 
 {
 	private const string ENEMY_PREFAB_PATH = "Prefabs/Enemies";
 	private string enemyPrefabName;
@@ -53,8 +53,10 @@ public class AirialSpawnManager : MonoBehaviour
 
 	private void SpawnEngine()
 	{
-		curDist = GameManager.Instance.playerObject.transform.position.x;
-			
+		if(GameManager.Instance.playerObject)
+		{
+			curDist = GameManager.Instance.playerObject.transform.position.x;
+		}	
 		if(Time.time > nextSpawn && (curDist > maxDist + overlapSize))
 		{
 			randSpawnedObj = Random.Range(0, 100);
@@ -82,11 +84,11 @@ public class AirialSpawnManager : MonoBehaviour
 			randY = Random.Range(GameManager.Instance.minAirplaneHeight + distY, GameManager.Instance.maxAirplaneHeight - overlapSize);
 			whereToSpawn = new Vector3(randX, randY, 0);
 
-			var theSpwanedItem = PoolingManager.GetPooledObject(spawnString);
+			var theSpawnedItem = PoolManager.GetPooledObject(spawnString);
 
-			theSpwanedItem.transform.position = whereToSpawn;
-			theSpwanedItem.transform.rotation = Quaternion.identity;
-			theSpwanedItem.SetActive(true);
+			theSpawnedItem.transform.position = whereToSpawn;
+			theSpawnedItem.transform.rotation = Quaternion.identity;
+			theSpawnedItem.SetActive(true);
 
 			maxDist = curDist;
 		}

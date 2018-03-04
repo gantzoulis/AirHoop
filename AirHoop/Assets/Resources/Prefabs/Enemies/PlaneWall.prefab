@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 114850947359438072}
   m_Layer: 0
   m_Name: PlaneWall
-  m_TagString: Untagged
+  m_TagString: FlyEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,7 +294,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1322139870062798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.15, y: -7.2532415, z: 0}
+  m_LocalPosition: {x: 7.033025, y: 3.489808, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4892290447350458}
