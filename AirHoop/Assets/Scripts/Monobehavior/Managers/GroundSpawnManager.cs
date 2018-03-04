@@ -9,8 +9,8 @@ public class GroundSpawnManager : MonoBehaviour
 	private float screenWidth;
 	private float targetPlayerX;
 	private float currentPlayerX;
-	private float groundLength = 60.0f;
-	private float currentEnd = 30.0f;
+	private float groundLength = 70.0f;
+	private float currentEnd = 35.0f;
 
 	[SerializeField]
 	private GameObject[] groundList;
@@ -49,7 +49,6 @@ public class GroundSpawnManager : MonoBehaviour
 			targetPlayerX += groundLength;
 
 			var theSpawnedItem = PoolManager.GetPooledObject(spawnString);
-			//var theSpwanedItem = PoolingManager.Instance.GetPooledObject(spawnString);
 
 			theSpawnedItem.transform.position = new Vector3(currentEnd, -12, 0);
 			theSpawnedItem.transform.rotation = Quaternion.identity;
