@@ -31,6 +31,8 @@ public class Aircraft_motor : MonoBehaviour
     private AudioSource planeAudio;
     private TimeBody timeMachine;
 
+    private bool outOfFuel = false;
+
 
     void OnEnable()
 	{
@@ -169,4 +171,12 @@ public class Aircraft_motor : MonoBehaviour
         planeAudio.pitch = 1.0f;
         speedBuffOn = false;
 	}
+
+    private void CheckAirplaneFuel()
+    {
+        if (this.aircraft.fuel <= 0)
+        {
+
+        }
+    }
 }
