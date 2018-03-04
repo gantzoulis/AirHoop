@@ -13,8 +13,6 @@ public class GroundSpawnManager : MonoBehaviour
 	private float currentEnd = 30.0f;
 
 	[SerializeField]
-	private GameObject player;
-	[SerializeField]
 	private GameObject[] groundList;
 
 	private int randGround;
@@ -41,7 +39,11 @@ public class GroundSpawnManager : MonoBehaviour
 		spawnedGround = groundList[randGround];
 		spawnString = GROUND_PREFAB_PATH + "/" + spawnedGround.name.ToString();
 
-		currentPlayerX = player.transform.position.x;
+		if (GameManager.Instance.playerObject)
+		{
+			currentPlayerX = GameManager.Instance.playerObject.transform.position.x;
+		}
+
 		if (currentPlayerX >= targetPlayerX)
 		{
 			targetPlayerX += groundLength;

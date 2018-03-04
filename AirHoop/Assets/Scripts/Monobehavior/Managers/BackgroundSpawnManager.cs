@@ -34,8 +34,10 @@ public class BackgroundSpawnManager : MonoBehaviour
 		spawnedCloud = cloudList[randCloud];
 		spawnString = CLOUD_PREFAB_PATH + "/" + spawnedCloud.name.ToString();
 
-		currentPlayerX = GameManager.Instance.playerObject.transform.position.x;
-
+		if(GameManager.Instance.playerObject)
+		{
+			currentPlayerX = GameManager.Instance.playerObject.transform.position.x;
+		}
 		if(currentPlayerX >= targetPlayerX)
 		{
 			targetPlayerX += Random.Range(10,cloudSpawnDist);

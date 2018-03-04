@@ -53,8 +53,10 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SpawnEngine()
 	{
-		curDist = GameManager.Instance.playerObject.transform.position.x;
-			
+		if(GameManager.Instance.playerObject)
+		{
+			curDist = GameManager.Instance.playerObject.transform.position.x;
+		}	
 		if(Time.time > nextSpawn && (curDist > maxDist + overlapSize))
 		{
 			randSpawnedObj = Random.Range(0, 100);
