@@ -80,7 +80,10 @@ public class AirSpawnManager : MonoBehaviour
 
 			nextSpawn = Time.time + spawnRate;
 
-			randX = GameManager.Instance.playerObject.transform.position.x + distX + overlapSize;
+			if (GameManager.Instance.playerObject)
+			{
+				randX = GameManager.Instance.playerObject.transform.position.x + distX + overlapSize;
+			}
 			randY = Random.Range(GameManager.Instance.minAirplaneHeight + distY, GameManager.Instance.maxAirplaneHeight - overlapSize);
 			whereToSpawn = new Vector3(randX, randY, 0);
 
