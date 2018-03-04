@@ -15,14 +15,17 @@ public class Baloon : MonoBehaviour
 
 	[SerializeField]
 	private float distMoving;
-	[SerializeField]
-	private float speed;
+	public float speed;
+
+	[SerializeField] private float destroyTime = 20.0f;
 
 	void Start()
 	{
 		curPos = this.gameObject.transform.position;
 
 		randMove = Random.Range(0,2);
+		speed = Random.Range(0f,2f);
+		distMoving = Random.Range(5f, 10f);
 
 		switch(randMove)
 		{
@@ -36,6 +39,7 @@ public class Baloon : MonoBehaviour
 			break;
 		}
 
+		StartCoroutine(DestroyBaloon());
 	}
 
 	void Update()
@@ -46,5 +50,12 @@ public class Baloon : MonoBehaviour
 	private void MoveBaloon()
 	{
 		transform.position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(speed * Time.time) + 1.0f) / 2.0f);
+	}
+
+	IEnumerator DestroyBaloon()
+	{
+		yield return new WaitForSeconds(destroyTime);
+
+		gameObject.SetActive(false);
 	}
 }

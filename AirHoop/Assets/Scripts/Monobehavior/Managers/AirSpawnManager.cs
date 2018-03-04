@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AirSpawnManager : MonoBehaviour 
 {
-	private const string ENEMY_PREFAB_PATH = "Prefabs/Enemies";
+	private const string ENEMY_PREFAB_PATH = "Prefabs/Enemies/FlyEnemies";
 	private string enemyPrefabName;
 	private const string BUFF_PREFAB_PATH = "Prefabs/Buffs";
 	private string buffPrefabName;
@@ -32,7 +32,7 @@ public class AirSpawnManager : MonoBehaviour
 	private float randX;
 	private const float distX = 60.0f; 
 	private float randY;
-	private const float distY = 6.0f;
+	private const float distY = 15.0f;
 
 	private Vector3 whereToSpawn;
 
@@ -59,7 +59,7 @@ public class AirSpawnManager : MonoBehaviour
 		}	
 		if(Time.time > nextSpawn && (curDist > maxDist + overlapSize))
 		{
-			randSpawnedObj = Random.Range(0, 100);
+			randSpawnedObj = Random.Range(0f, 100f);
 
 			if(randSpawnedObj <= buffChance)
 			{
