@@ -27,8 +27,8 @@ MonoBehaviour:
   aircraftName: Spitfire
   model:
   - {fileID: 1385582216100906, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
-  totalFuel: 100
-  fuel: 10
+  totalFuel: 20
+  fuel: 20
   manufactureSpeed: 10
   speed: 10
   maneuver: 8

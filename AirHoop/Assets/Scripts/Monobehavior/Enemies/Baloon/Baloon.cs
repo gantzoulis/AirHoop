@@ -8,6 +8,11 @@ public class Baloon : MonoBehaviour
 	private Vector3 pos1;
 	private Vector3 pos2;
 
+	private int randMove;
+	private Vector3 upMove;
+	private Vector3 downMove;
+
+
 	[SerializeField]
 	private float distMoving;
 	[SerializeField]
@@ -16,8 +21,21 @@ public class Baloon : MonoBehaviour
 	void Start()
 	{
 		curPos = this.gameObject.transform.position;
-		pos1 = new Vector3(curPos.x, curPos.y + distMoving, curPos.z);
-		pos2 = new Vector3(curPos.x, curPos.y - distMoving, curPos.z);
+
+		randMove = Random.Range(0,2);
+
+		switch(randMove)
+		{
+		case 0:
+			pos1 = new Vector3(curPos.x, curPos.y + distMoving, curPos.z);
+			pos2 = new Vector3(curPos.x, curPos.y - distMoving, curPos.z);
+			break;
+		case 1:
+			pos1 = new Vector3(curPos.x, curPos.y - distMoving, curPos.z);
+			pos2 = new Vector3(curPos.x, curPos.y + distMoving, curPos.z);
+			break;
+		}
+
 	}
 
 	void Update()
