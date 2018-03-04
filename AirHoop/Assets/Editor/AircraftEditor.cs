@@ -76,6 +76,7 @@ public class AircraftEditor: Editor
 		//Checking Variables i.e.
 		EditorGUILayout.PropertyField(fuelProperty);
 		EditorGUILayout.PropertyField(speedProperty);
+		serializedObject.ApplyModifiedProperties();
 		serializedObject.Update();
 		EditorGUILayout.EndVertical();
 	}
