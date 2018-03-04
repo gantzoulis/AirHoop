@@ -56,6 +56,7 @@ public class Aircraft_motor : MonoBehaviour
 
 	void Update()
 	{
+        Debug.Log(this.transform.rotation.eulerAngles.z);
         if (!timeMachine.isRewinding)
         {
             AircraftMoveHorizontal();
@@ -63,7 +64,9 @@ public class Aircraft_motor : MonoBehaviour
         }
 		PropelerRotation(propelerCurrentSpeed);
         CheckAirplaneHeight();
-	}
+        CheckAirplaneFuel();
+
+    }
 
 	private void AircraftMoveHorizontal()
 	{
@@ -81,16 +84,23 @@ public class Aircraft_motor : MonoBehaviour
 	{
 		if (gameObject)
 		{
-			if (Input.GetKey(KeyCode.DownArrow))
+			if (Input.GetKey(KeyCode.DownArrow) && !outOfFuel)
 			{
 				aircraftRotation *= Quaternion.AngleAxis(1, Vector3.back);
 			}
 
-			if (Input.GetKey(KeyCode.UpArrow))
+			if (Input.GetKey(KeyCode.UpArrow) && !outOfFuel)
 			{
 				aircraftRotation *= Quaternion.AngleAxis(1, Vector3.forward);
 			}
 
+            if (outOfFuel)
+            {
+                if (this.transform.rotation.eulerAngles.z >= 330 && this.transform.rotation.eulerAngles.z <= 360 )
+                {
+                    aircraftRotation *= Quaternion.AngleAxis(1, Vector3.back);
+                }
+            }
 			transform.rotation = Quaternion.Lerp(transform.rotation, aircraftRotation, aircraft.maneuver * Time.deltaTime);
 		}
 	}
@@ -176,7 +186,8 @@ public class Aircraft_motor : MonoBehaviour
     {
         if (this.aircraft.fuel <= 0)
         {
-
+            Debug.Log("Out of Fuel");
+            outOfFuel = true;
         }
     }
 }
