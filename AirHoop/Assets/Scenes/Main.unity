@@ -815,7 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777d4ad9ac95db94bb40aecb99274b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffChance: 100
+  buffChance: 30
   enemyList: []
   buffList: []
   spawnRate: 2.5
