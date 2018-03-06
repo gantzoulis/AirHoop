@@ -29,7 +29,7 @@ MonoBehaviour:
   model: {fileID: 1169670338141594, guid: 73a2c4cd49570bb4c8dea1229bb410c3, type: 2}
   type: 1
   amount: 10
-  time: 2
+  time: 3
   hash: -823668238
 --- !u!114 &114906569557831432
 MonoBehaviour:

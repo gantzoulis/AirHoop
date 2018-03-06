@@ -62,8 +62,8 @@ public class BackgroundSpawnManager : MonoBehaviour
 		if(currentPlayerX >= targetPlayerX)
 		{
 			targetPlayerX += Random.Range(10,cloudSpawnDist);
-			randSizeX = Random.Range(0.5f, 2);
-			randSizeY = Random.Range(0.5f, 1.5f);
+			randSizeX = Random.Range(0.5f, 1.5f);
+			randSizeY = Random.Range(0.5f, 1.3f);
 
 			var theSpawnedItem = PoolManager.GetPooledObject(spawnString);
 
