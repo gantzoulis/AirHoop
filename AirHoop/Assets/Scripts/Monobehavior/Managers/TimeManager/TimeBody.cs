@@ -1,19 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimeBody : MonoBehaviour
 {
 
 
     public bool isRewinding = false;
+    [SerializeField]
+    private GameObject timelapseCounter;
+    [SerializeField]
+    private float timeLapsePower;
 
     List<PointInTime> pointsInTime;
+    private Image timeImage;
     
     // Use this for initialization
 	void Start ()
     {
         pointsInTime = new List<PointInTime>();
+        if (this.gameObject.tag == "Player")
+        {
+            timeImage = timelapseCounter.GetComponent<Image>();
+        }
 	}
 	
 	// Update is called once per frame
