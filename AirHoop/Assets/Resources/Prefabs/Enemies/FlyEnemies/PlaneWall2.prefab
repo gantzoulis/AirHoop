@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 4959863945585476}
   - component: {fileID: 114899610732849592}
   - component: {fileID: 114732957299771774}
+  - component: {fileID: 114771544509916528}
   m_Layer: 0
   m_Name: PlaneWall2
   m_TagString: FlyEnemy
@@ -1336,6 +1337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36643a7986fd0841895cc915e87c030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointScore: 0
 --- !u!114 &114083983713932038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1347,6 +1349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36643a7986fd0841895cc915e87c030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointScore: 0
 --- !u!114 &114223163769851066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1402,6 +1405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36643a7986fd0841895cc915e87c030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointScore: 0
 --- !u!114 &114672679316298524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1438,6 +1442,24 @@ MonoBehaviour:
   isRewinding: 0
   timelapseCounter: {fileID: 0}
   timeLapsePower: 0
+--- !u!114 &114771544509916528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1326283043761592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07efecea0dc61341b84bad73f081ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyScorePoints:
+  - pointTrigger: {fileID: 1268663298216418}
+    pointScore: 1
+  - pointTrigger: {fileID: 1442047187646930}
+    pointScore: 2
+  - pointTrigger: {fileID: 1746543701740928}
+    pointScore: 1
 --- !u!114 &114899610732849592
 MonoBehaviour:
   m_ObjectHideFlags: 1
