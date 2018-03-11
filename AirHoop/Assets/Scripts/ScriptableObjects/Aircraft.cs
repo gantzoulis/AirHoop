@@ -11,5 +11,6 @@ public class Aircraft : ScriptableObject
 	public float manufactureSpeed;
 	public float speed;
 	public float maneuver;
+	public float manufactureManeuver;
 	public int hash;
 }

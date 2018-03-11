@@ -117,6 +117,11 @@ public class BuffEditor: Editor
 		{
 			EditorGUILayout.PropertyField(timeProperty);
 		}
+
+		if ((BuffType)typeProperty.enumValueIndex  == BuffType.Maneuverability)
+		{
+			EditorGUILayout.PropertyField(timeProperty);
+		}
 		//EditorGUILayout.LabelField(buff.hash.ToString());
 		EditorGUI.indentLevel--;
 

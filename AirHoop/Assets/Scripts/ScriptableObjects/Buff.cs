@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum BuffType
 {
-	Fuel, Speed
+	Fuel, Speed, Maneuverability
 }
 
 public class Buff : ScriptableObject

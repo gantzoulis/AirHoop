@@ -14,6 +14,7 @@ MonoBehaviour:
   buffs:
   - {fileID: 114906569557831432}
   - {fileID: 114313120475350748}
+  - {fileID: 114612091296578618}
 --- !u!114 &114313120475350748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31,6 +32,23 @@ MonoBehaviour:
   amount: 10
   time: 3
   hash: -823668238
+--- !u!114 &114612091296578618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2f23e1636d01747ba0238995d958f0, type: 3}
+  m_Name: Maneuverability
+  m_EditorClassIdentifier: 
+  buffName: Maneuverability
+  model: {fileID: 1336573013015864, guid: ecc268ad88d8a5d46ad099f21712ffa2, type: 2}
+  type: 2
+  amount: 0.8
+  time: 8
+  hash: -1877950187
 --- !u!114 &114906569557831432
 MonoBehaviour:
   m_ObjectHideFlags: 0

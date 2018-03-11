@@ -10,13 +10,17 @@ public class Aircraft_motor : MonoBehaviour
 	private GameObject propeler;
 
 	public bool useFuel = true;
-	public float fuelUsePerMeter = 0.1f;
+	public float fuelUsePerMeter = 0.02f;
 
 	public bool speedBuffOn = false;
 	//[SerializeField]
 	private float speedBuffTime;
 	//[SerializeField]
-	private float countBuffTime;
+	private float speedCountBuffTime;
+
+	public bool maneuverBuffOn = false;
+	private float maneuverBuffTime;
+	private float maneuverCountBuffTime;
 
     [SerializeField]
     private float airPlaneStallThreshold;
@@ -46,6 +50,7 @@ public class Aircraft_motor : MonoBehaviour
 	{
 		aircraft.fuel = aircraft.totalFuel;
 		aircraft.speed = aircraft.manufactureSpeed;
+		aircraft.maneuver = aircraft.manufactureManeuver;
 		StartCoroutine(FuelUse());
 	}
 
@@ -86,14 +91,14 @@ public class Aircraft_motor : MonoBehaviour
 		{
 			if (Input.GetKey(KeyCode.DownArrow) && !outOfFuel)
 			{
-				aircraftRotation *= Quaternion.AngleAxis(1, Vector3.back);
+				aircraftRotation *= Quaternion.AngleAxis(aircraft.maneuver, Vector3.back);
 			}
 
 			if (Input.GetKey(KeyCode.UpArrow) && !outOfFuel)
 			{
-				aircraftRotation *= Quaternion.AngleAxis(1, Vector3.forward);
+				aircraftRotation *= Quaternion.AngleAxis(aircraft.maneuver, Vector3.forward);
 			}
-			transform.rotation = Quaternion.Lerp(transform.rotation, aircraftRotation, aircraft.maneuver * Time.deltaTime);
+			transform.rotation = Quaternion.Lerp(transform.rotation, aircraftRotation, 8 * Time.deltaTime);
 		}
 	}
 
@@ -146,7 +151,7 @@ public class Aircraft_motor : MonoBehaviour
 		}
 		if(speedBuffOn == true)
 		{
-			countBuffTime = 0;
+			speedCountBuffTime = 0;
 		}
 	}
 
@@ -154,24 +159,60 @@ public class Aircraft_motor : MonoBehaviour
 	{
 		speedBuffOn = true;
 		speedBuffTime = buffTime;
-		countBuffTime = 0;
+		speedCountBuffTime = 0;
 		float totalSpeed = aircraft.speed += speedBuff;
 
-		while(countBuffTime < speedBuffTime)
+		while(speedCountBuffTime < speedBuffTime)
 		{
-			countBuffTime += Time.deltaTime;
+			speedCountBuffTime += Time.deltaTime;
 			aircraft.speed = totalSpeed;
             propelerCurrentSpeed = propelerFastSpeed;
             PropelerRotation(propelerCurrentSpeed);
             planeAudio.pitch = 1.25f;
 			yield return null;
 		}
-		countBuffTime = 0;
+		speedCountBuffTime = 0;
 		aircraft.speed = aircraft.manufactureSpeed;
         propelerCurrentSpeed = propelerNormalSpeed;
         PropelerRotation(propelerCurrentSpeed);
         planeAudio.pitch = 1.0f;
         speedBuffOn = false;
+	}
+
+	public void ActivateManeuverBuff(float maneuverBuff, float buffTime)
+	{
+		if(maneuverBuffOn == false )
+		{
+			StartCoroutine(ManeuverBuffTime(maneuverBuff, buffTime));
+		}
+		if(maneuverBuffOn == true)
+		{
+			maneuverCountBuffTime = 0;
+		}
+	}
+
+	private IEnumerator ManeuverBuffTime(float maneuverBuff, float buffTime)
+	{
+		maneuverBuffOn = true;
+		maneuverBuffTime = buffTime;
+		maneuverCountBuffTime = 0;
+		float totalManeuver = aircraft.maneuver += maneuverBuff;
+
+		while(maneuverCountBuffTime < maneuverBuffTime)
+		{
+			maneuverCountBuffTime += Time.deltaTime;
+			aircraft.maneuver = totalManeuver;
+			propelerCurrentSpeed = propelerFastSpeed;
+			PropelerRotation(propelerCurrentSpeed);
+			planeAudio.pitch = 1.25f;
+			yield return null;
+		}
+		maneuverCountBuffTime = 0;
+		aircraft.maneuver = aircraft.manufactureManeuver;
+		propelerCurrentSpeed = propelerNormalSpeed;
+		PropelerRotation(propelerCurrentSpeed);
+		planeAudio.pitch = 1.0f;
+		maneuverBuffOn = false;
 	}
 
     private void CheckAirplaneFuel()
