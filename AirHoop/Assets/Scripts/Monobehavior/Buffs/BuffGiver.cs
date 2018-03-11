@@ -42,6 +42,10 @@ public class BuffGiver : MonoBehaviour
 		case BuffType.Speed:
 			go.GetComponent<Aircraft_motor>().ActivateSpeedBuff(buff.amount, buff.time);
 			break;
+
+		case BuffType.Maneuverability:
+			go.GetComponent<Aircraft_motor>().ActivateManeuverBuff(buff.amount, buff.time);
+			break;
 		}
 	}
 

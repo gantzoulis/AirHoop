@@ -9,7 +9,7 @@ public class GroundSpawnManager : MonoBehaviour
 	private float screenWidth;
 	private float targetPlayerX;
 	private float currentPlayerX;
-	private float groundLength = 70.0f;
+	private float groundLength = 60.0f;
 	private float currentEnd = 35.0f;
 
 	[SerializeField]
