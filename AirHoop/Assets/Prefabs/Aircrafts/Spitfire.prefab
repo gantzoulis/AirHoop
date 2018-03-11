@@ -56,6 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4697981495716390}
   - component: {fileID: 198357021149350112}
+  - component: {fileID: 114472589243547704}
   - component: {fileID: 199821880274856180}
   m_Layer: 0
   m_Name: SmokeTrail
@@ -73,7 +74,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4257866869374834}
   - component: {fileID: 114421746776173058}
-  - component: {fileID: 54446163215906138}
+  - component: {fileID: 54870853793595360}
+  - component: {fileID: 82449193399769072}
+  - component: {fileID: 95228256769602750}
+  - component: {fileID: 114761501836988236}
   m_Layer: 0
   m_Name: Spitfire
   m_TagString: Player
@@ -130,7 +134,7 @@ GameObject:
   - component: {fileID: 23511323653284220}
   m_Layer: 0
   m_Name: PlaneCollider
-  m_TagString: Player
+  m_TagString: PlayerCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,7 +211,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816519110983950}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -1.68, y: 0, z: 0}
+  m_LocalPosition: {x: -1.68, y: -0.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4431281399747000}
@@ -238,7 +242,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385582216100906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.31, y: 0, z: 0}
+  m_LocalPosition: {x: -3.31, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4171345757740018}
@@ -307,7 +311,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1638840847759488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1, y: 0, z: 0.1}
+  m_LocalPosition: {x: -3.1, y: -0.53, z: 0.1}
   m_LocalScale: {x: 6.8873134, y: 3.370458, z: 3.9090064}
   m_Children: []
   m_Father: {fileID: 4257866869374834}
@@ -320,7 +324,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321128759830290}
   m_LocalRotation: {x: -0.50292337, y: -0.49705943, z: 0.49705943, w: 0.50292337}
-  m_LocalPosition: {x: -1.82, y: 0.42, z: 0}
+  m_LocalPosition: {x: -1.82, y: -0.110000014, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4257866869374834}
@@ -613,7 +617,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1024733233061128}
   m_Mesh: {fileID: 4300000, guid: 6accbbf77f77f784ea030ecdb4d50fc1, type: 3}
---- !u!54 &54446163215906138
+--- !u!54 &54870853793595360
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -640,6 +644,103 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.7, z: 1}
   m_Center: {x: 0, y: 0.18, z: 0}
+--- !u!82 &82449193399769072
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385582216100906}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: dc8747f9f41147144aec544dcfa83cd2, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!95 &95228256769602750
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385582216100906}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3ac4ce82b2b892d4386981b2b6a5407f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95334725260330614
 Animator:
   serializedVersion: 3
@@ -770,8 +871,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb87f460a632064db82ccab2f173868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aircraft: {fileID: 0}
+  aircraft: {fileID: 114843877549600012, guid: ad3f129293bbf3644914b7c44d8208b1, type: 2}
   propeler: {fileID: 1808021871364596}
+  useFuel: 1
+  fuelUsePerMeter: 0.1
+  speedBuffOn: 0
+  airPlaneStallThreshold: 3
+--- !u!114 &114472589243547704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321128759830290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c34bb8c5b222949a32253a4d0f6daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114761501836988236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385582216100906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446b4d03db3c3994ea89dffb6ae40080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRewinding: 0
+  timelapseCounter: {fileID: 0}
+  timeLapsePower: 0
 --- !u!198 &198357021149350112
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -832,7 +962,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -880114055
+  randomSeed: 1711043767
   InitialModule:
     serializedVersion: 3
     enabled: 1

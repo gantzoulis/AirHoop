@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     public float maxTimeLapse = 5f;
     public string playerColliderName;
 
+    
+    public int playerScore = 0;
+
 
     
 

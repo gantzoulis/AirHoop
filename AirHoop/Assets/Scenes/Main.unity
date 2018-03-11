@@ -260,133 +260,7 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 1385582216100906, guid: f923c73d124d03e498d310fb367fd4ec,
     type: 2}
-  m_PrefabInternal: {fileID: 1455995313}
---- !u!54 &110344955
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 110344953}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!82 &110344956
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 110344953}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dc8747f9f41147144aec544dcfa83cd2, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!114 &110344957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 110344953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 446b4d03db3c3994ea89dffb6ae40080, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isRewinding: 0
-  timelapseCounter: {fileID: 553455171}
-  timeLapsePower: 0
---- !u!95 &110344958
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 110344953}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3ac4ce82b2b892d4386981b2b6a5407f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_PrefabInternal: {fileID: 1472597129}
 --- !u!1 &169017310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1846,6 +1720,7 @@ MonoBehaviour:
     type: 2}
   maxTimeLapse: 5
   playerColliderName: PlayerCollider
+  playerScore: 0
 --- !u!4 &1069515725
 Transform:
   m_ObjectHideFlags: 0
@@ -2063,6 +1938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceText: {fileID: 2096836258}
   timeText: {fileID: 1688322971}
+  scoreUIElement: {fileID: 1069674292}
   gameOverImage: {fileID: 169017310}
   soundOffImage: {fileID: 910620093}
 --- !u!1001 &1179521654
@@ -2445,7 +2321,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1439241558}
---- !u!1001 &1455995313
+--- !u!1001 &1472597129
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2484,68 +2360,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1638840847759488, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
-      propertyPath: m_TagString
-      value: PlayerCollider
-      objectReference: {fileID: 0}
-    - target: {fileID: 65309392100023318, guid: f923c73d124d03e498d310fb367fd4ec,
+    - target: {fileID: 114761501836988236, guid: f923c73d124d03e498d310fb367fd4ec,
         type: 2}
-      propertyPath: m_Center.y
-      value: 0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 65309392100023318, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: airPlaneStallThreshold
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: aircraft
+      propertyPath: timelapseCounter
       value: 
-      objectReference: {fileID: 114843877549600012, guid: ad3f129293bbf3644914b7c44d8208b1,
+      objectReference: {fileID: 553455171}
+    - target: {fileID: 114472589243547704, guid: f923c73d124d03e498d310fb367fd4ec,
         type: 2}
-    - target: {fileID: 1385582216100906, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: normalSmokeColor.rgba
+      value: 4279525590
       objectReference: {fileID: 0}
-    - target: {fileID: 4171345757740018, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 4697981495716390, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.110000014
-      objectReference: {fileID: 0}
-    - target: {fileID: 4648998069411868, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
+    - target: {fileID: 114472589243547704, guid: f923c73d124d03e498d310fb367fd4ec,
         type: 2}
-      propertyPath: useFuel
-      value: 1
+      propertyPath: speedSmokeColor.rgba
+      value: 14630180
       objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
+    - target: {fileID: 114472589243547704, guid: f923c73d124d03e498d310fb367fd4ec,
         type: 2}
-      propertyPath: fuelUsePerMeter
-      value: 0.1
+      propertyPath: maneuverSmokeColor.rgba
+      value: 3529490
       objectReference: {fileID: 0}
-    - target: {fileID: 4257866869374834, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4257866869374834, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4257866869374834, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+    - target: {fileID: 114472589243547704, guid: f923c73d124d03e498d310fb367fd4ec,
+        type: 2}
+      propertyPath: outofFuelSmokeColor.rgba
+      value: 3815996
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
@@ -2912,7 +2750,7 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 4257866869374834, guid: f923c73d124d03e498d310fb367fd4ec,
     type: 2}
-  m_PrefabInternal: {fileID: 1455995313}
+  m_PrefabInternal: {fileID: 1472597129}
 --- !u!1 &1961524883
 GameObject:
   m_ObjectHideFlags: 0

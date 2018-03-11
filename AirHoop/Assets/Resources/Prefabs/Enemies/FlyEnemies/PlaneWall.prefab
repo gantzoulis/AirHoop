@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 4307126557676144}
   - component: {fileID: 114057265121081244}
   - component: {fileID: 114850947359438072}
+  - component: {fileID: 114000654059567708}
   m_Layer: 0
   m_Name: PlaneWall
   m_TagString: FlyEnemy
@@ -364,7 +365,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1322139870062798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.033025, y: 3.489808, z: 0}
+  m_LocalPosition: {x: 21.92664, y: 0.88487744, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4884322545690140}
@@ -1325,6 +1326,24 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000654059567708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1322139870062798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07efecea0dc61341b84bad73f081ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyScorePoints:
+  - pointTrigger: {fileID: 1918043036708202}
+    pointScore: 1
+  - pointTrigger: {fileID: 1001488503479514}
+    pointScore: 2
+  - pointTrigger: {fileID: 1410251895209022}
+    pointScore: 1
 --- !u!114 &114057265121081244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1348,6 +1367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36643a7986fd0841895cc915e87c030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointScore: 0
 --- !u!114 &114213489017808338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1370,6 +1390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36643a7986fd0841895cc915e87c030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointScore: 0
 --- !u!114 &114306343166415220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1450,3 +1471,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36643a7986fd0841895cc915e87c030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointScore: 0

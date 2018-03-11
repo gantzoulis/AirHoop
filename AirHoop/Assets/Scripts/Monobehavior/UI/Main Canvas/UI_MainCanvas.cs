@@ -13,6 +13,8 @@ public class UI_MainCanvas : MonoBehaviour
     private Text distanceText;
     [SerializeField]
     private Text timeText;
+    [SerializeField]
+    private GameObject scoreUIElement;
 
     [SerializeField]
     private GameObject gameOverImage;
@@ -30,8 +32,10 @@ public class UI_MainCanvas : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        timeText.text = Mathf.RoundToInt(timeManager.flightDuration).ToString();
+        //timeText.text = Mathf.RoundToInt(timeManager.flightDuration).ToString();
+        timeText.text = timeManager.flightDuration.ToString("F2");
         distanceText.text = Mathf.RoundToInt(distanceManager.maxDistance).ToString() + "  meters";
+        scoreUIElement.GetComponent<Text>().text = GameManager.Instance.playerScore.ToString();
         CheckGameOver();
 	}
 
