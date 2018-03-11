@@ -83,7 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0
   maxSpeed: 2
-  destroyTime: 10
+  destroyTime: 20
 --- !u!212 &212927858115610364
 SpriteRenderer:
   m_ObjectHideFlags: 1

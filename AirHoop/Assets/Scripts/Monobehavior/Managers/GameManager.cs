@@ -27,8 +27,9 @@ public class GameManager : MonoBehaviour
     public bool soundOn = true;
         
     public float distanceRatio;
+	public float maxDistance;
 
-    //Remember that the default Height is 0
+	 //Remember that the default Height is 0
     public float maxAirplaneHeight;
     public float minAirplaneHeight;
 
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
     
     public int playerScore = 0;
 
-
+	public List<float> lvUpDistanceList = new List<float>();
     
 
     private void OnEnable()
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start () 
 	{
-		
+			
 	}
 	
 	// Update is called once per frame

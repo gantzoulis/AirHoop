@@ -708,8 +708,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777d4ad9ac95db94bb40aecb99274b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelList:
+  - levelName: Level 1
+    enemies: []
+    spawnRateTime: 5
+  - levelName: Level 2
+    enemies: []
+    spawnRateTime: 4
+  - levelName: Level 3
+    enemies: []
+    spawnRateTime: 3
+  - levelName: Level 4
+    enemies: []
+    spawnRateTime: 4
+  - levelName: Level 5
+    enemies: []
+    spawnRateTime: 5
+  currentLevel:
+    levelName: 
+    enemies: []
+    spawnRateTime: 0
   buffChance: 30
-  enemyList: []
   buffList: []
   spawnRate: 2.5
 --- !u!1 &382784204
@@ -1714,6 +1733,7 @@ MonoBehaviour:
   gameOver: 0
   soundOn: 1
   distanceRatio: 4
+  maxDistance: 0
   maxAirplaneHeight: 25
   minAirplaneHeight: -17
   planeExplosionObject: {fileID: 1889364105042210, guid: 2d7bec313cafcfa4e815300904828d8e,
@@ -1721,6 +1741,12 @@ MonoBehaviour:
   maxTimeLapse: 5
   playerColliderName: PlayerCollider
   playerScore: 0
+  lvUpDistanceList:
+  - 200
+  - 500
+  - 1200
+  - 3000
+  - 7000
 --- !u!4 &1069515725
 Transform:
   m_ObjectHideFlags: 0

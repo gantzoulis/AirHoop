@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 114629243902011604}
   - component: {fileID: 114882036350924606}
   m_Layer: 0
-  m_Name: PlaneWall3
+  m_Name: Lv1-PlaneWall3
   m_TagString: FlyEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1384,6 +1384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   airplaneSpeed: 5
+  destroyTime: 20
 --- !u!114 &114629243902011604
 MonoBehaviour:
   m_ObjectHideFlags: 1

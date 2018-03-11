@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4469223550045654}
   - component: {fileID: 114557777206902676}
   m_Layer: 0
-  m_Name: Baloon
+  m_Name: Lv1-Baloon
   m_TagString: FlyEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

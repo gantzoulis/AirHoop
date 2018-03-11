@@ -23,5 +23,7 @@ public class DistanceManager : MonoBehaviour
         {
             maxDistance = playerDistanceCovered;
         }
+
+		GameManager.Instance.maxDistance = maxDistance;
 	}
 }
