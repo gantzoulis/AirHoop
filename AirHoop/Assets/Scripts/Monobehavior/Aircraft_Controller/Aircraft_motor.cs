@@ -8,8 +8,19 @@ public class Aircraft_motor : MonoBehaviour
 	private Quaternion aircraftRotation;
 	[SerializeField]
 	private GameObject propeler;
+    [SerializeField]
+    private GameObject smokeTrail;
+    [SerializeField]
+    private Color normalSmokeColor;
+    [SerializeField]
+    private Color speedSmokeColor;
+    [SerializeField]
+    private Color maneuverSmokeColor;
+    [SerializeField]
+    private Color outofFuelSmokeColor;
 
-	public bool useFuel = true;
+
+    public bool useFuel = true;
 	public float fuelUsePerMeter = 0.02f;
 
 	public bool speedBuffOn = false;
@@ -161,10 +172,13 @@ public class Aircraft_motor : MonoBehaviour
 		speedBuffTime = buffTime;
 		speedCountBuffTime = 0;
 		float totalSpeed = aircraft.speed += speedBuff;
+        ParticleSystem smokeTrailSystem = smokeTrail.GetComponent<ParticleSystem>();
+        var main = smokeTrailSystem.main;
 
-		while(speedCountBuffTime < speedBuffTime)
+        while (speedCountBuffTime < speedBuffTime)
 		{
-			speedCountBuffTime += Time.deltaTime;
+            main.startColor = speedSmokeColor;
+            speedCountBuffTime += Time.deltaTime;
 			aircraft.speed = totalSpeed;
             propelerCurrentSpeed = propelerFastSpeed;
             PropelerRotation(propelerCurrentSpeed);
@@ -175,6 +189,7 @@ public class Aircraft_motor : MonoBehaviour
 		aircraft.speed = aircraft.manufactureSpeed;
         propelerCurrentSpeed = propelerNormalSpeed;
         PropelerRotation(propelerCurrentSpeed);
+        main.startColor = normalSmokeColor;
         planeAudio.pitch = 1.0f;
         speedBuffOn = false;
 	}
@@ -197,10 +212,13 @@ public class Aircraft_motor : MonoBehaviour
 		maneuverBuffTime = buffTime;
 		maneuverCountBuffTime = 0;
 		float totalManeuver = aircraft.maneuver += maneuverBuff;
+        ParticleSystem smokeTrailSystem = smokeTrail.GetComponent<ParticleSystem>();
+        var main = smokeTrailSystem.main;
 
-		while(maneuverCountBuffTime < maneuverBuffTime)
+        while (maneuverCountBuffTime < maneuverBuffTime)
 		{
-			maneuverCountBuffTime += Time.deltaTime;
+            main.startColor = maneuverSmokeColor;
+            maneuverCountBuffTime += Time.deltaTime;
 			aircraft.maneuver = totalManeuver;
 			propelerCurrentSpeed = propelerFastSpeed;
 			PropelerRotation(propelerCurrentSpeed);
@@ -211,7 +229,8 @@ public class Aircraft_motor : MonoBehaviour
 		aircraft.maneuver = aircraft.manufactureManeuver;
 		propelerCurrentSpeed = propelerNormalSpeed;
 		PropelerRotation(propelerCurrentSpeed);
-		planeAudio.pitch = 1.0f;
+        main.startColor = normalSmokeColor;
+        planeAudio.pitch = 1.0f;
 		maneuverBuffOn = false;
 	}
 
@@ -220,8 +239,11 @@ public class Aircraft_motor : MonoBehaviour
         if (this.aircraft.fuel <= 0)
         {
             //Debug.Log("Out of Fuel");
+            ParticleSystem smokeTrailSystem = smokeTrail.GetComponent<ParticleSystem>();
+            var main = smokeTrailSystem.main;
             outOfFuel = true;
             this.gameObject.GetComponent<Animator>().enabled = true;
+            main.startColor = outofFuelSmokeColor;
         }
     }
 }
