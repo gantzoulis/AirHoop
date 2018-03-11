@@ -10,10 +10,13 @@ public class PointTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "PlayerCollider")
+        if (other.tag == GameManager.Instance.playerColliderName)
         {
-            Debug.Log("Points awarded");
+            //Debug.Log("Points awarded");
             GameManager.Instance.playerScore += pointScore;
+            //deactivate this!! - Check if Stavros will find it. Har har har
+            //this.gameObject.SetActive(false);
+            //Must check object Pool to initiate this collider also.
         }
     }
 

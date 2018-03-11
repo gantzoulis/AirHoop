@@ -25,7 +25,10 @@ public class TimeManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        GameTimer();
+        if (!GameManager.Instance.gameOver)
+        {
+            GameTimer();
+        }
         CheckGameStatePaused();
         timeLapseUImage.GetComponent<Image>().fillAmount += timeLapseRatio * Time.deltaTime;
 	}

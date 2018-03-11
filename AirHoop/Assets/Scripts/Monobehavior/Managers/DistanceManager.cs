@@ -18,12 +18,18 @@ public class DistanceManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if (!GameManager.Instance.gameOver)
+        {
+            CheckPlayerDistance();
+        }
+	}
+
+    private void CheckPlayerDistance()
+    {
         playerDistanceCovered = GameManager.Instance.playerObject.transform.position.x / GameManager.Instance.distanceRatio;
         if (playerDistanceCovered >= maxDistance)
         {
             maxDistance = playerDistanceCovered;
         }
-
-		GameManager.Instance.maxDistance = maxDistance;
-	}
+    }
 }
