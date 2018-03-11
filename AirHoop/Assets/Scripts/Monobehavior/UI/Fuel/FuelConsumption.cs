@@ -24,7 +24,10 @@ public class FuelConsumption : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        CalculateFuelBar();
+        if (!GameManager.Instance.gameOver)
+        {
+            CalculateFuelBar();
+        }
 	}
 
     private void CalculateFuelBar()

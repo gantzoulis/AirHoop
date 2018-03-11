@@ -51,7 +51,7 @@ public class UI_MainCanvas : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         gameOverImage.SetActive(true);
-        timeManager.pauseGame = true;
+        //timeManager.pauseGame = true;
     }
 
     public void RestartSurvivalGame()

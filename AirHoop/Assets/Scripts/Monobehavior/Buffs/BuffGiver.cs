@@ -6,7 +6,7 @@ public class BuffGiver : MonoBehaviour
 {
 	public Buff buff;
 
-	private float addedBuffAmount;
+    private float addedBuffAmount;
 
 	void Start()
 	{
@@ -18,7 +18,7 @@ public class BuffGiver : MonoBehaviour
 		if (other.tag == GameManager.Instance.playerColliderName)
 		{
 			AddBuffAmount(other.gameObject.transform.parent.gameObject);
-			DeactivateBuffItem();
+            DeactivateBuffItem();
 		}
 	}
 
