@@ -10,7 +10,7 @@ public class Aircraft_motor : MonoBehaviour
 	private GameObject propeler;
 
 	public bool useFuel = true;
-	public float fuelUsePerMeter = 0.1f;
+	public float fuelUsePerMeter = 0.02f;
 
 	public bool speedBuffOn = false;
 	//[SerializeField]
