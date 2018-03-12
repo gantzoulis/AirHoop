@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     public int playerScore = 0;
 
 	public List<float> lvUpDistanceList = new List<float>();
-    
+	public string reachedLv;
 
     private void OnEnable()
     {

@@ -10,24 +10,30 @@ public class AirSpawnManager : MonoBehaviour
 		public string levelName;
 		[HideInInspector]
 		public List<GameObject> enemies;
-		public float spawnRateTime;
+		public float enemySpawnRateTime;
+		[HideInInspector]
+		public List<GameObject> buffs;
+		public float buffSpawnRateTime;
+		[Range(0,100)]
+		public float fuelChance;
+		[HideInInspector]
+		public List<GameObject> fuels;
 	}
 		
 	[SerializeField]
 	private List<Level> levelList = new List<Level>();
 	private Level levelClass = new Level();
+	[SerializeField]
 	private Level currentLevel = new Level();
 
 	private const string ENEMY_PREFAB_PATH = "Prefabs/Enemies/FlyEnemies";
 	private string enemyPrefabName;
-	private const string BUFF_PREFAB_PATH = "Prefabs/Buffs";
-	private string buffPrefabName;
-	private string spawnString;
+	private string enemySpawnString;
 
-	private int randSpawnedObj;
-	[Range(0, 100)]
-	public float buffChance;
-	private float enemyChance;
+	private const string BUFF_PREFAB_PATH = "Prefabs/Buffs/Abilities";
+	private const string FUEL_PREFAB_PATH = "Prefabs/Buffs/Fuel";
+	private string buffPrefabName;
+	private string buffSpawnString;
 
 	//[SerializeField]
 	private GameObject[] enemyList;
@@ -43,43 +49,70 @@ public class AirSpawnManager : MonoBehaviour
 	private List<GameObject> enemyList5;
 	private int randEnemy;
 	private GameObject spawnEnemy;
+	private float nextEnemySpawn = 0.0f;
+	private float enemyRandX;
+	private const float enemyDistX = 60.0f; 
+	private float enemyRandY;
+	private const float enemyDistY = 15.0f;
+	private float maxEnemyDist = 0f;
+	private float curEnemyDist;
+	private float overlapEnemySize = 10.0f;
+	private Vector3 whereToSpawnEnemy;
 
-
-
-	[SerializeField]
+	//[SerializeField]
 	private GameObject[] buffList;
+	//[SerializeField]
+	private List<GameObject> buffList1;
+	//[SerializeField]
+	private List<GameObject> buffList2;
+	//[SerializeField]
+	private List<GameObject> buffList3;
+	//[SerializeField]
+	private List<GameObject> buffList4;
+	//[SerializeField]
+	private List<GameObject> buffList5;
 	private int randBuff;
 	private GameObject spawnBuff;
+	private float nextBuffSpawn = 0.0f;
+	private float buffRandX;
+	private const float buffDistX = 70.0f; 
+	private float buffRandY;
+	private const float buffDistY = 15.0f;
+	private float maxBuffDist = 0f;
+	private float curBuffDist;
+	private float overlapBuffSize = 3.0f;
+	private Vector3 whereToSpawnBuff;
 
-	private float maxDist = 0f;
-	private float curDist;
-	private float overlapSize = 10.0f;
-
-	private float randX;
-	private const float distX = 60.0f; 
-	private float randY;
-	private const float distY = 15.0f;
-
-	private Vector3 whereToSpawn;
-
-	public float spawnRate = 2.5f;
-	private float nextSpawn = 0.0f;
+	//[SerializeField]
+	private GameObject[] fuelList;
+	//[SerializeField]
+	private List<GameObject> fuelList1;
+	//[SerializeField]
+	private List<GameObject> fuelList2;
+	//[SerializeField]
+	private List<GameObject> fuelList3;
+	//[SerializeField]
+	private List<GameObject> fuelList4;
+	//[SerializeField]
+	private List<GameObject> fuelList5;
+	private int randFuel;
 
 	void Start()
 	{
 		SetEnemyLists();
+		SetBuffsList();
 	}
 
 	void FixedUpdate()
 	{
-		//SpawnEngine();
 		CheckAndSetLv();
 		SpawnEnemyEngine();
+		SpawnBuffEngine();
 	}
 
 	private void SetEnemyLists()
 	{
-		maxDist = GameManager.Instance.playerObject.transform.position.x;
+		maxEnemyDist = GameManager.Instance.playerObject.transform.position.x;
 		enemyList = Resources.LoadAll<GameObject>(ENEMY_PREFAB_PATH);
 		enemyList1 = new List<GameObject>();
 		enemyList2 = new List<GameObject>();
@@ -134,6 +167,99 @@ public class AirSpawnManager : MonoBehaviour
 		}
 	}
 
+	private void SetBuffsList()
+	{
+		maxEnemyDist = GameManager.Instance.playerObject.transform.position.x;
+		buffList = Resources.LoadAll<GameObject>(BUFF_PREFAB_PATH);
+		buffList1 = new List<GameObject>();
+		buffList2 = new List<GameObject>();
+		buffList3 = new List<GameObject>();
+		buffList4 = new List<GameObject>();
+		buffList5 = new List<GameObject>();
+
+		for (int i = 0; i < buffList.Length; i++)
+		{
+			if(buffList[i].name.ToString().Contains("Lv1"))
+			{
+				buffList1.Add(buffList[i]);
+			}
+			if(buffList[i].name.ToString().Contains("Lv2"))
+			{
+				buffList2.Add(buffList[i]);
+			}
+			if(buffList[i].name.ToString().Contains("Lv3"))
+			{
+				buffList3.Add(buffList[i]);
+			}
+			if(buffList[i].name.ToString().Contains("Lv4"))
+			{
+				buffList4.Add(buffList[i]);
+			}
+			if(buffList[i].name.ToString().Contains("Lv5"))
+			{
+				buffList5.Add(buffList[i]);
+			}
+		}
+
+		fuelList = Resources.LoadAll<GameObject>(FUEL_PREFAB_PATH);
+		fuelList1 = new List<GameObject>();
+		fuelList2 = new List<GameObject>();
+		fuelList3 = new List<GameObject>();
+		fuelList4 = new List<GameObject>();
+		fuelList5 = new List<GameObject>();
+
+		for (int i = 0; i < fuelList.Length; i++)
+		{
+			if(fuelList[i].name.ToString().Contains("Lv1"))
+			{
+				fuelList1.Add(fuelList[i]);
+			}
+			if(fuelList[i].name.ToString().Contains("Lv2"))
+			{
+				fuelList2.Add(fuelList[i]);
+			}
+			if(fuelList[i].name.ToString().Contains("Lv3"))
+			{
+				fuelList3.Add(fuelList[i]);
+			}
+			if(fuelList[i].name.ToString().Contains("Lv4"))
+			{
+				fuelList4.Add(fuelList[i]);
+			}
+			if(fuelList[i].name.ToString().Contains("Lv5"))
+			{
+				fuelList5.Add(fuelList[i]);
+			}
+		}
+
+		for (int i = 0; i < levelList.Count; i++)
+		{
+			switch (i)
+			{
+			case 0:
+				levelList[0].buffs = buffList1;
+				levelList[0].fuels = fuelList1;
+				break;
+			case 1:
+				levelList[1].buffs = buffList2;
+				levelList[1].fuels = fuelList2;
+				break;
+			case 2:
+				levelList[2].buffs = buffList3;
+				levelList[2].fuels = fuelList3;
+				break;
+			case 3:
+				levelList[3].buffs = buffList4;
+				levelList[3].fuels = fuelList4;
+				break;
+			case 4:
+				levelList[4].buffs = buffList5;
+				levelList[4].fuels = fuelList5;
+				break;
+			}
+		}
+	}
+
 	private void CheckAndSetLv()
 	{
 		float distance =  GameManager.Instance.maxDistance;
@@ -142,7 +268,7 @@ public class AirSpawnManager : MonoBehaviour
 		{
 			currentLevel = levelList[0];
 		}
-		if (distance >= GameManager.Instance.lvUpDistanceList[0] && distance <= GameManager.Instance.lvUpDistanceList[1])
+		if (distance > GameManager.Instance.lvUpDistanceList[0] && distance <= GameManager.Instance.lvUpDistanceList[1])
 		{
 			currentLevel = levelList[1];
 		}
@@ -158,39 +284,88 @@ public class AirSpawnManager : MonoBehaviour
 		{
 			currentLevel = levelList[4];
 		}
+
+		GameManager.Instance.reachedLv = currentLevel.levelName;
 	}
 
 	private void SpawnEnemyEngine()
 	{
 		if (GameManager.Instance.playerObject)
 		{
-			curDist = GameManager.Instance.playerObject.transform.position.x;
+			curEnemyDist = GameManager.Instance.playerObject.transform.position.x;
 		}
 
-		if(Time.time > nextSpawn && (curDist > maxDist + overlapSize))
+		if(Time.time > nextEnemySpawn && (curEnemyDist > maxEnemyDist + overlapEnemySize))
 		{
 			randEnemy = Random.Range(0, currentLevel.enemies.Count);
 			spawnEnemy = currentLevel.enemies[randEnemy];
 
 			enemyPrefabName = spawnEnemy.name.ToString();
-			spawnString = ENEMY_PREFAB_PATH + "/" + enemyPrefabName;
+			enemySpawnString = ENEMY_PREFAB_PATH + "/" + enemyPrefabName;
 
-			nextSpawn = Time.time + spawnRate;
+			nextEnemySpawn = Time.time + currentLevel.enemySpawnRateTime;
 
 			if (GameManager.Instance.playerObject)
 			{
-				randX = GameManager.Instance.playerObject.transform.position.x + distX + overlapSize;
+				enemyRandX = GameManager.Instance.playerObject.transform.position.x + enemyDistX;
 			}
-			randY = Random.Range(GameManager.Instance.minAirplaneHeight + distY, GameManager.Instance.maxAirplaneHeight - overlapSize);
-			whereToSpawn = new Vector3(randX, randY, 0);
+			enemyRandY = Random.Range(GameManager.Instance.minAirplaneHeight + enemyDistY, GameManager.Instance.maxAirplaneHeight - overlapEnemySize);
+			whereToSpawnEnemy = new Vector3(enemyRandX, enemyRandY, 0);
 
-			var theSpawnedItem = PoolManager.GetPooledObject(spawnString);
+			var theSpawnedItem = PoolManager.GetPooledObject(enemySpawnString);
 
-			theSpawnedItem.transform.position = whereToSpawn;
+			theSpawnedItem.transform.position = whereToSpawnEnemy;
 			theSpawnedItem.transform.rotation = Quaternion.identity;
 			theSpawnedItem.SetActive(true);
 
-			maxDist = curDist;
+			maxEnemyDist = curEnemyDist;
+		}
+	}
+
+	private void SpawnBuffEngine()
+	{
+		if (GameManager.Instance.playerObject)
+		{
+			curBuffDist = GameManager.Instance.playerObject.transform.position.x;
+		}
+
+		if(Time.time > nextBuffSpawn && (curBuffDist > maxBuffDist + overlapBuffSize))
+		{
+			float fuelOrBuff = Random.Range(0, 100);
+
+			if(fuelOrBuff <= currentLevel.fuelChance)
+			{
+				randFuel = Random.Range(0, currentLevel.fuels.Count);
+				spawnBuff = currentLevel.fuels[randFuel];
+
+				buffPrefabName = spawnBuff.name.ToString();
+				buffSpawnString = FUEL_PREFAB_PATH + "/" + buffPrefabName;
+			}
+			else
+			{
+				randBuff = Random.Range(0, currentLevel.buffs.Count);
+				spawnBuff = currentLevel.buffs[randBuff];
+
+				buffPrefabName = spawnBuff.name.ToString();
+				buffSpawnString = BUFF_PREFAB_PATH + "/" + buffPrefabName;
+			}
+
+			nextBuffSpawn = Time.time + currentLevel.buffSpawnRateTime;
+				
+			if (GameManager.Instance.playerObject)
+			{
+				buffRandX = GameManager.Instance.playerObject.transform.position.x + buffDistX;
+			}
+			buffRandY = Random.Range(GameManager.Instance.minAirplaneHeight + buffDistY, GameManager.Instance.maxAirplaneHeight - overlapBuffSize);
+			whereToSpawnBuff = new Vector3(buffRandX, buffRandY, 0);
+
+			var theSpawnedItem = PoolManager.GetPooledObject(buffSpawnString);
+
+			theSpawnedItem.transform.position = whereToSpawnBuff;
+			theSpawnedItem.transform.rotation = Quaternion.identity;
+			theSpawnedItem.SetActive(true);
+
+			maxBuffDist = curBuffDist;
 		}
 	}
 }

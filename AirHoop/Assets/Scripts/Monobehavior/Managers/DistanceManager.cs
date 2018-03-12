@@ -30,6 +30,7 @@ public class DistanceManager : MonoBehaviour
         if (playerDistanceCovered >= maxDistance)
         {
             maxDistance = playerDistanceCovered;
+			GameManager.Instance.maxDistance = maxDistance;
         }
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class PointSystem : MonoBehaviour
 {
 
-
     [SerializeField]
     private List<PointSystemClass> enemyScorePoints = new List<PointSystemClass>();
     

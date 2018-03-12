@@ -12,10 +12,16 @@ public class Baloon : MonoBehaviour
 	private Vector3 upMove;
 	private Vector3 downMove;
 
-
-	[SerializeField]
 	private float distMoving;
-	public float speed;
+	[SerializeField]
+	private float minDistMoving;
+	[SerializeField]
+	private float maxDistMoving;
+	private float speed;
+	[SerializeField]
+	private float maxSpeed;
+	[SerializeField]
+	private float minSpeed;
 
 	[SerializeField] private float destroyTime = 20.0f;
 
@@ -24,8 +30,8 @@ public class Baloon : MonoBehaviour
 		curPos = this.gameObject.transform.position;
 
 		randMove = Random.Range(0,2);
-		speed = Random.Range(0f,2f);
-		distMoving = Random.Range(5f, 10f);
+		speed = Random.Range(minDistMoving,maxDistMoving);
+		distMoving = Random.Range(minDistMoving, maxDistMoving);
 
 		switch(randMove)
 		{
