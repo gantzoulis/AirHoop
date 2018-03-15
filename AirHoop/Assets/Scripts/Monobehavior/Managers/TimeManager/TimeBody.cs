@@ -64,12 +64,13 @@ public class TimeBody : MonoBehaviour
 
     void Rewind()
     {
-        if (pointsInTime.Count > 0)
+        if (pointsInTime.Count > 0 && GameManager.Instance.playerTimeLapseFuel >= 20)
         {
             PointInTime pointInTime = pointsInTime[0];
             transform.position = pointInTime.position;
             transform.rotation = pointInTime.rotation;
             pointsInTime.RemoveAt(0);
+            //GameManager.Instance.playerTimeLapseFuel -= 20 * Time.deltaTime;
         }
         else
         {

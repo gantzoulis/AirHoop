@@ -1739,6 +1739,7 @@ MonoBehaviour:
   flightDuration: 0
   pauseGame: 0
   timeLapseRatio: 3
+  timeConsumption: 0
   timeLapseUImage: {fileID: 553455171}
 --- !u!1 &1069515723
 GameObject:
@@ -1780,6 +1781,8 @@ MonoBehaviour:
   planeExplosionObject: {fileID: 1889364105042210, guid: 2d7bec313cafcfa4e815300904828d8e,
     type: 2}
   maxTimeLapse: 5
+  playerTimeLapseFuel: 0
+  timeLapseRatio: 0.03
   playerColliderName: PlayerCollider
   playerScore: 0
   lvUpDistanceList:
@@ -1788,6 +1791,7 @@ MonoBehaviour:
   - 1200
   - 3000
   - 7000
+  reachedLv: 
 --- !u!4 &1069515725
 Transform:
   m_ObjectHideFlags: 0

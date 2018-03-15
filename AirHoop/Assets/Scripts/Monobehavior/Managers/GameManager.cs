@@ -35,7 +35,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject planeExplosionObject;
 
-    public float maxTimeLapse = 5f;
+    public float maxTimeLapse = 5f; //Number of seconds the player can travel back in time.
+    public float playerTimeLapseFuel;
+    public float timeLapseRatio; //Number of TimeFuel per Second up to 100.
     public string playerColliderName;
 
     
@@ -58,14 +60,15 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-        
-	}
+        playerTimeLapseFuel += timeLapseRatio * Time.deltaTime;
+    }
 
     public void RestartGame()
     {
         gameOver = false;
         SceneManager.LoadScene("Main");
     }
+
 
    
 }

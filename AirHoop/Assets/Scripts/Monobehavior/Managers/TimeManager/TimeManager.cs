@@ -10,7 +10,8 @@ public class TimeManager : MonoBehaviour
     public float flightDuration;
 
     public bool pauseGame;
-    public float timeLapseRatio;
+    public float timeLapseRatio; 
+    public float timeConsumption;
 
     [SerializeField]
     private GameObject timeLapseUImage;
@@ -19,7 +20,8 @@ public class TimeManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        timeLapseRatio = timeLapseRatio / 100;
+        timeLapseRatio = GameManager.Instance.playerTimeLapseFuel;
+       //timeLapseRatio = timeLapseRatio / 100; //We devide with 100 to get the decimal for the fillamount of the respective Image.
 	}
 	
 	// Update is called once per frame
@@ -30,7 +32,9 @@ public class TimeManager : MonoBehaviour
             GameTimer();
         }
         CheckGameStatePaused();
-        timeLapseUImage.GetComponent<Image>().fillAmount += timeLapseRatio * Time.deltaTime;
+        timeLapseRatio = GameManager.Instance.playerTimeLapseFuel;
+        timeLapseUImage.GetComponent<Image>().fillAmount = timeLapseRatio;
+        timeConsumption = CalcTimeConsumption();
 	}
 
     public void PauseGame()
@@ -63,5 +67,11 @@ public class TimeManager : MonoBehaviour
     public void SetPauseGame()
     {
         pauseGame = !pauseGame;
+    }
+
+    private float CalcTimeConsumption()
+    {
+        timeConsumption = 1 / GameManager.Instance.maxTimeLapse;
+        return timeConsumption;
     }
 }
