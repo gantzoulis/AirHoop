@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 22605533}
   - component: {fileID: 22605532}
   m_Layer: 5
-  m_Name: Left
+  m_Name: PreviousPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +187,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 22605533}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 640167563}
+        m_MethodName: ShowPrevPlane
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &22605533
@@ -533,6 +544,7 @@ GameObject:
   - component: {fileID: 640167561}
   - component: {fileID: 640167560}
   - component: {fileID: 640167559}
+  - component: {fileID: 640167563}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -622,6 +634,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &640167563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 640167558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d80e6e474df3c48b30d54c452f8e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  airplanePrefabs:
+  - {fileID: 721425674}
+  - {fileID: 1585179221}
+  - {fileID: 1881729310}
+  movePlaneLeft: {fileID: 7400000, guid: c171b6319dce1774f8f48dd7cf010312, type: 2}
+  movePlaneRight: {fileID: 7400000, guid: 5aacc645ad1f4ca4cbd14dbbdda71739, type: 2}
 --- !u!1 &659023719
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +741,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 13, y: 0, z: 0}
+--- !u!1 &721425674 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100018, guid: 276f911373b386d4391cf8986846fb1e, type: 2}
+  m_PrefabInternal: {fileID: 206453543}
+--- !u!95 &721425675
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 721425674}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba2a4dddc177723419841d3a3b3a8fdb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &870095514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,7 +1091,7 @@ GameObject:
   - component: {fileID: 1489859635}
   - component: {fileID: 1489859634}
   m_Layer: 5
-  m_Name: Right
+  m_Name: NextPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1103,7 +1153,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1489859635}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 640167563}
+        m_MethodName: ShowNextPlane
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1489859635
@@ -1139,6 +1200,27 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1489859632}
+--- !u!1 &1585179221 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: bd16a121ccdf0674daacc3277d88c3c0, type: 2}
+  m_PrefabInternal: {fileID: 1392457670}
+--- !u!95 &1585179222
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1585179221}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6dd235f141cf0054e809922d5abbfea9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1747327015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,6 +1420,10 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1799006881}
+--- !u!1 &1881729310 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100006, guid: 505052ae27338004b9ede8783186d34b, type: 2}
+  m_PrefabInternal: {fileID: 1107225654}
 --- !u!1 &2020482450
 GameObject:
   m_ObjectHideFlags: 0
