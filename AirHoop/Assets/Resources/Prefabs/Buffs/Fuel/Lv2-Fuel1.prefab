@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114694372263145518}
   - component: {fileID: 114376954198785620}
   m_Layer: 0
-  m_Name: Lv1-Fuel
+  m_Name: Lv2-Fuel1
   m_TagString: Buff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

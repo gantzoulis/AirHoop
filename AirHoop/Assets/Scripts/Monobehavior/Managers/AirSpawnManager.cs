@@ -18,6 +18,9 @@ public class AirSpawnManager : MonoBehaviour
 		public float fuelChance;
 		[HideInInspector]
 		public List<GameObject> fuels;
+		[HideInInspector]
+		public List<GameObject> groundEnemies;
+		public float groundEnemySpawnRateTime;
 	}
 		
 	[SerializeField]
@@ -34,6 +37,10 @@ public class AirSpawnManager : MonoBehaviour
 	private const string FUEL_PREFAB_PATH = "Prefabs/Buffs/Fuel";
 	private string buffPrefabName;
 	private string buffSpawnString;
+
+	private const string GROUND_ENEMY_PREFAB_PATH = "Prefabs/Enemies/GroundEnemies";
+	private string groundEnemyPrefabName;
+	private string groundEnemySpawnString;
 
 	//[SerializeField]
 	private GameObject[] enemyList;
@@ -58,6 +65,28 @@ public class AirSpawnManager : MonoBehaviour
 	private float curEnemyDist;
 	private float overlapEnemySize = 10.0f;
 	private Vector3 whereToSpawnEnemy;
+
+	//[SerializeField]
+	private GameObject[] groundEnemyList;
+	//[SerializeField]
+	private List<GameObject> groundEnemyList1;
+	//[SerializeField]
+	private List<GameObject> groundEnemyList2;
+	//[SerializeField]
+	private List<GameObject> groundEnemyList3;
+	//[SerializeField]
+	private List<GameObject> groundEnemyList4;
+	//[SerializeField]
+	private List<GameObject> groundEnemyList5;
+	private int randGroundEnemy;
+	private GameObject spawnGroundEnemy;
+	private float nextGroundEnemySpawn = 0.0f;
+	private float groundEnemyRandX;
+	private const float groundEnemyDistX = 60.0f; 
+	private float maxGroundEnemyDist = 0f;
+	private float curGroundEnemyDist;
+	private float overlapGroundEnemySize = 5.0f;
+	private Vector3 whereToSpawnGroundEnemy;
 
 	//[SerializeField]
 	private GameObject[] buffList;
@@ -101,6 +130,7 @@ public class AirSpawnManager : MonoBehaviour
 	{
 		SetEnemyLists();
 		SetBuffsList();
+		SetGroundEnemyList();
 	}
 
 	void FixedUpdate()
@@ -108,6 +138,7 @@ public class AirSpawnManager : MonoBehaviour
 		CheckAndSetLv();
 		SpawnEnemyEngine();
 		SpawnBuffEngine();
+		SpawnGroundEnemyEngine();
 	}
 
 	private void SetEnemyLists()
@@ -162,6 +193,63 @@ public class AirSpawnManager : MonoBehaviour
 				break;
 			case 4:
 				levelList[4].enemies = enemyList5;
+				break;
+			}
+		}
+	}
+
+	private void SetGroundEnemyList()
+	{
+		maxGroundEnemyDist = GameManager.Instance.playerObject.transform.position.x;
+		groundEnemyList = Resources.LoadAll<GameObject>(GROUND_ENEMY_PREFAB_PATH);
+		groundEnemyList1 = new List<GameObject>();
+		groundEnemyList2 = new List<GameObject>();
+		groundEnemyList3 = new List<GameObject>();
+		groundEnemyList4 = new List<GameObject>();
+		groundEnemyList5 = new List<GameObject>();
+
+		for (int i = 0; i < groundEnemyList.Length; i++)
+		{
+			if(groundEnemyList[i].name.ToString().Contains("Lv1"))
+			{
+				groundEnemyList1.Add(groundEnemyList[i]);
+			}
+			if(groundEnemyList[i].name.ToString().Contains("Lv2"))
+			{
+				groundEnemyList2.Add(groundEnemyList[i]);
+			}
+			if(groundEnemyList[i].name.ToString().Contains("Lv3"))
+			{
+				groundEnemyList3.Add(groundEnemyList[i]);
+			}
+			if(groundEnemyList[i].name.ToString().Contains("Lv4"))
+			{
+				groundEnemyList4.Add(groundEnemyList[i]);
+			}
+			if(groundEnemyList[i].name.ToString().Contains("Lv5"))
+			{
+				groundEnemyList5.Add(groundEnemyList[i]);
+			}
+		}	
+
+		for (int i = 0; i < levelList.Count; i++)
+		{
+			switch (i)
+			{
+			case 0:
+				levelList[0].groundEnemies = groundEnemyList1;
+				break;
+			case 1:
+				levelList[1].groundEnemies = groundEnemyList2;
+				break;
+			case 2:
+				levelList[2].groundEnemies = groundEnemyList3;
+				break;
+			case 3:
+				levelList[3].groundEnemies = groundEnemyList4;
+				break;
+			case 4:
+				levelList[4].groundEnemies = groundEnemyList5;
 				break;
 			}
 		}
@@ -286,6 +374,42 @@ public class AirSpawnManager : MonoBehaviour
 		}
 
 		GameManager.Instance.reachedLv = currentLevel.levelName;
+	}
+
+	private void SpawnGroundEnemyEngine()
+	{
+		if (GameManager.Instance.playerObject)
+		{
+			curGroundEnemyDist = GameManager.Instance.playerObject.transform.position.x;
+		}
+
+		if(Time.time > nextGroundEnemySpawn && (curGroundEnemyDist > maxGroundEnemyDist + overlapGroundEnemySize))
+		{
+			randGroundEnemy = Random.Range(0, currentLevel.groundEnemies.Count);
+			spawnGroundEnemy = currentLevel.groundEnemies[randGroundEnemy];
+
+			groundEnemyPrefabName = spawnGroundEnemy.name.ToString();
+			groundEnemySpawnString = GROUND_ENEMY_PREFAB_PATH + "/" + groundEnemyPrefabName;
+
+			nextGroundEnemySpawn = Time.time + currentLevel.groundEnemySpawnRateTime;
+
+			if (GameManager.Instance.playerObject)
+			{
+				groundEnemyRandX = GameManager.Instance.playerObject.transform.position.x + groundEnemyDistX;
+			}
+
+			float randGroundEnemyX = Random.Range(groundEnemyRandX - 10, groundEnemyRandX + 10);
+
+			whereToSpawnEnemy = new Vector3(randGroundEnemyX, -12.3f, 0);
+
+			var theSpawnedItem = PoolManager.GetPooledObject(groundEnemySpawnString);
+
+			theSpawnedItem.transform.position = whereToSpawnEnemy;
+			theSpawnedItem.transform.rotation = Quaternion.identity;
+			theSpawnedItem.SetActive(true);
+
+			maxGroundEnemyDist = curGroundEnemyDist;
+		}
 	}
 
 	private void SpawnEnemyEngine()

@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 336116177}
   - component: {fileID: 336116178}
   m_Layer: 0
-  m_Name: AirSpawnManager
+  m_Name: SpawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -736,6 +736,8 @@ MonoBehaviour:
     buffSpawnRateTime: 8
     fuelChance: 30
     fuels: []
+    groundEnemies: []
+    groundEnemySpawnRateTime: 7
   - levelName: Level 2
     enemies: []
     enemySpawnRateTime: 4
@@ -743,6 +745,8 @@ MonoBehaviour:
     buffSpawnRateTime: 8
     fuelChance: 30
     fuels: []
+    groundEnemies: []
+    groundEnemySpawnRateTime: 6
   - levelName: Level 3
     enemies: []
     enemySpawnRateTime: 3
@@ -750,6 +754,8 @@ MonoBehaviour:
     buffSpawnRateTime: 12
     fuelChance: 30
     fuels: []
+    groundEnemies: []
+    groundEnemySpawnRateTime: 5
   - levelName: Level 4
     enemies: []
     enemySpawnRateTime: 2
@@ -757,6 +763,8 @@ MonoBehaviour:
     buffSpawnRateTime: 12
     fuelChance: 30
     fuels: []
+    groundEnemies: []
+    groundEnemySpawnRateTime: 4
   - levelName: Level 5
     enemies: []
     enemySpawnRateTime: 1
@@ -764,6 +772,8 @@ MonoBehaviour:
     buffSpawnRateTime: 15
     fuelChance: 30
     fuels: []
+    groundEnemies: []
+    groundEnemySpawnRateTime: 3
   currentLevel:
     levelName: 
     enemies: []
@@ -772,6 +782,8 @@ MonoBehaviour:
     buffSpawnRateTime: 0
     fuelChance: 0
     fuels: []
+    groundEnemies: []
+    groundEnemySpawnRateTime: 0
 --- !u!1 &382784204
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,7 +2145,6 @@ Transform:
   - {fileID: 1295009106}
   - {fileID: 2036284317}
   - {fileID: 533108066}
-  - {fileID: 1473971539}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2590,48 +2601,6 @@ Prefab:
     - {fileID: 114472589243547704, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1473971538
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1473971539}
-  - component: {fileID: 1473971540}
-  m_Layer: 0
-  m_Name: GroundEnemySpawnManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1473971539
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1473971538}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1258645559}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1473971540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1473971538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a34b015fc97d11348b8f585607c5deb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyList: []
-  spawnRate: 2.5
 --- !u!1 &1535142446
 GameObject:
   m_ObjectHideFlags: 0
