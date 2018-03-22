@@ -50,8 +50,21 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
 
     public void ShowPrevPlane()
     {
-        currentAPselection--;
-        airplanePrefabs[currentAPselection + 1].GetComponent<Animator>().SetTrigger("PlayAnimationReverse");
-        airplanePrefabs[currentAPselection].GetComponent<Animator>().SetTrigger("PlayAnimation");
+        if (currentAPselection == airplanePrefabs.Length)
+        {
+            airplanePrefabs[currentAPselection].GetComponent<Animator>().SetTrigger("PlayAnimationReverse");
+            airplanePrefabs[currentAPselection - 1].GetComponent<Animator>().SetTrigger("PlayAnimation");
+            currentAPselection--;
+        }
+        else
+        {
+            airplanePrefabs[currentAPselection ].GetComponent<Animator>().SetTrigger("PlayAnimationReverse");
+            airplanePrefabs[currentAPselection - 1].GetComponent<Animator>().SetTrigger("PlayAnimation");
+            if (currentAPselection > 0)
+            {
+                currentAPselection--;
+            }
+        }
+        
     }
 }
