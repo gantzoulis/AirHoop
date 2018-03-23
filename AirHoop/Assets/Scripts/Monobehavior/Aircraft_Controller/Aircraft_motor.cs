@@ -19,6 +19,18 @@ public class Aircraft_motor : MonoBehaviour
     [SerializeField]
     private Color outofFuelSmokeColor;
 
+    public int playerLives = 1;
+    [SerializeField]
+    private GameObject planeModel;
+
+    [SerializeField]
+    private Color normalColor;
+    [SerializeField]
+    private Color flashToColor;
+
+    private Vector3 defaultSpawnPosition;
+    private Quaternion defaultQuaternion;
+
 
     public bool useFuel = true;
 	public float fuelUsePerMeter = 0.02f;
@@ -55,6 +67,8 @@ public class Aircraft_motor : MonoBehaviour
         timeMachine = GetComponent<TimeBody>();
         planeAudio = GetComponent<AudioSource>();
         propelerCurrentSpeed = propelerNormalSpeed;
+        defaultSpawnPosition = this.gameObject.transform.position;
+        defaultQuaternion = this.gameObject.transform.rotation;
 	}
 
 	void Awake()
@@ -139,9 +153,38 @@ public class Aircraft_motor : MonoBehaviour
 
     private void OnDestroy()
     {
-        
-        Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
-        GameManager.Instance.gameOver = true;
+
+        /*
+        if (playerLives > 1)
+        {
+            Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
+            GameObject planeSelect = GameManager.Instance.choosenAircraft.model[0];
+            Instantiate(planeSelect, this.transform.position, Quaternion.identity);
+
+        }
+        else
+        {
+            Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
+            GameManager.Instance.gameOver = true;
+        }
+        */
+    }
+
+    public void DeathEvent()
+    {
+        if (playerLives > 1)
+        {
+            Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
+            StartCoroutine(RespawnPlayer());
+            playerLives--;
+        }
+        else
+        {
+            Debug.Log("GameObject " + this.gameObject.name + " Does not have any lives left. Game Over.");
+            Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+            GameManager.Instance.gameOver = true;
+        }
     }
 
 	private IEnumerator FuelUse()
@@ -245,5 +288,30 @@ public class Aircraft_motor : MonoBehaviour
             this.gameObject.GetComponent<Animator>().enabled = true;
             main.startColor = outofFuelSmokeColor;
         }
+    }
+
+    IEnumerator ExtraLifeFlasher()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            planeModel.GetComponent<Renderer>().material.color = flashToColor;
+            yield return new WaitForSeconds(.2f);
+            planeModel.GetComponent<Renderer>().material.color = normalColor;
+            yield return new WaitForSeconds(.2f);
+        }
+    }
+
+    IEnumerator RespawnPlayer()
+    {
+        Debug.Log("RESPAWNING PLAYER");
+        this.gameObject.SetActive(false);
+       
+        yield return new WaitForSeconds(0.2f);
+        this.gameObject.transform.position = defaultSpawnPosition;
+        this.gameObject.transform.rotation = defaultQuaternion;
+        this.gameObject.SetActive(true);
+        Debug.Log("PLAYER IS RESPAWNED");
+        //GameObject planeSelect = GameManager.Instance.choosenAircraft.model[0];
+        //Instantiate(planeSelect, defaultSpawnPosition, defaultQuaternion);
     }
 }

@@ -56,7 +56,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4697981495716390}
   - component: {fileID: 198357021149350112}
-  - component: {fileID: 114472589243547704}
   - component: {fileID: 199821880274856180}
   m_Layer: 0
   m_Name: SmokeTrail
@@ -873,21 +872,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aircraft: {fileID: 114843877549600012, guid: ad3f129293bbf3644914b7c44d8208b1, type: 2}
   propeler: {fileID: 1808021871364596}
+  smokeTrail: {fileID: 1321128759830290}
+  normalSmokeColor: {r: 0.8392157, g: 0.3764706, b: 0.078431375, a: 1}
+  speedSmokeColor: {r: 0.035683393, g: 0.035683393, b: 0.4852941, a: 1}
+  maneuverSmokeColor: {r: 0.06779843, g: 0.41911763, b: 0.11383332, a: 1}
+  outofFuelSmokeColor: {r: 0.21323532, g: 0.20539579, b: 0.20539579, a: 1}
+  playerLives: 1
+  planeModel: {fileID: 0}
+  normalColor: {r: 1, g: 1, b: 1, a: 0}
+  flashToColor: {r: 1, g: 0.19615054, b: 0.07352942, a: 0}
   useFuel: 1
   fuelUsePerMeter: 0.1
   speedBuffOn: 0
+  maneuverBuffOn: 0
   airPlaneStallThreshold: 3
---- !u!114 &114472589243547704
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1321128759830290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4c34bb8c5b222949a32253a4d0f6daa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114761501836988236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -962,7 +960,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 1711043767
+  randomSeed: 1199595860
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1052,7 +1050,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.83823526, g: 0.378141, b: 0.08012541, a: 1}
+      maxColor: {r: 0.8392157, g: 0.3764706, b: 0.078431375, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 0.14509805}
