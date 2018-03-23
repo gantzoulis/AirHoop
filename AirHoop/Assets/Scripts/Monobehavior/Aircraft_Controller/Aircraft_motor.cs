@@ -304,7 +304,7 @@ public class Aircraft_motor : MonoBehaviour
     IEnumerator RespawnPlayer()
     {
         Debug.Log("RESPAWNING PLAYER");
-        this.gameObject.SetActive(false);
+        //this.gameObject.GetComponent<Renderer>()
        
         yield return new WaitForSeconds(0.2f);
         this.gameObject.transform.position = defaultSpawnPosition;
