@@ -21,6 +21,7 @@ public class AirSpawnManager : MonoBehaviour
 		[HideInInspector]
 		public List<GameObject> groundEnemies;
 		public float groundEnemySpawnRateTime;
+		public float bonusLvTime;
 	}
 		
 	[SerializeField]
@@ -42,6 +43,19 @@ public class AirSpawnManager : MonoBehaviour
 	private string groundEnemyPrefabName;
 	private string groundEnemySpawnString;
 
+	private const string SPECIAL_LV_PREFAB_PATH = "Prefabs/SpecialLvs";
+	private float specialLvDistX = 30.0f;
+	private bool stopSpawning = false;
+	private bool spawnSpecialLv = true;
+	private float specialTime = 10.0f;
+	public float coundDownSpecialTime;
+	private float currentTargetSpecialTime;
+	private bool startCountingSpecialTime = true;
+
+	[SerializeField]
+	private Level checkedLv = new Level();
+	private bool lvChanged = false;
+
 	//[SerializeField]
 	private GameObject[] enemyList;
 	//[SerializeField]
@@ -60,7 +74,7 @@ public class AirSpawnManager : MonoBehaviour
 	private float enemyRandX;
 	private const float enemyDistX = 60.0f; 
 	private float enemyRandY;
-	private const float enemyDistY = 15.0f;
+	private const float enemyDistY = 5.0f;
 	private float maxEnemyDist = 0f;
 	private float curEnemyDist;
 	private float overlapEnemySize = 10.0f;
@@ -87,6 +101,15 @@ public class AirSpawnManager : MonoBehaviour
 	private float curGroundEnemyDist;
 	private float overlapGroundEnemySize = 5.0f;
 	private Vector3 whereToSpawnGroundEnemy;
+
+	private GameObject[] specialLvList;
+	private List<GameObject> specialLvList1;
+	private List<GameObject> specialLvList2;
+	private List<GameObject> specialLvList3;
+	private List<GameObject> specialLvList4;
+	private List<GameObject> specialLvList5;
+	private int randSpecialLv;
+	private GameObject spawnSpecialLvGO;
 
 	//[SerializeField]
 	private GameObject[] buffList;
@@ -126,19 +149,60 @@ public class AirSpawnManager : MonoBehaviour
 	private List<GameObject> fuelList5;
 	private int randFuel;
 
+	[SerializeField]
+	private GameObject specialLvText;
+
 	void Start()
 	{
 		SetEnemyLists();
 		SetBuffsList();
 		SetGroundEnemyList();
+		SetBonusStages();
 	}
 
 	void FixedUpdate()
 	{
 		CheckAndSetLv();
-		SpawnEnemyEngine();
-		SpawnBuffEngine();
-		SpawnGroundEnemyEngine();
+		if(stopSpawning == false)
+		{
+			SpawnEnemyEngine();
+			SpawnBuffEngine();
+			SpawnGroundEnemyEngine();
+		}
+	}
+
+	private void SetBonusStages()
+	{
+		specialLvList = Resources.LoadAll<GameObject>(SPECIAL_LV_PREFAB_PATH);
+		specialLvList1 = new List<GameObject>();
+		specialLvList2 = new List<GameObject>();
+		specialLvList3 = new List<GameObject>();
+		specialLvList4 = new List<GameObject>();
+		specialLvList5 = new List<GameObject>();
+
+		for (int i = 0; i < specialLvList.Length; i++)
+		{
+			if(specialLvList[i].name.ToString().Contains("Lv1"))
+			{
+				specialLvList2.Add(specialLvList[i]);
+			}
+			if(specialLvList[i].name.ToString().Contains("Lv2"))
+			{
+				specialLvList2.Add(specialLvList[i]);
+			}
+			if(specialLvList[i].name.ToString().Contains("Lv3"))
+			{
+				specialLvList3.Add(specialLvList[i]);
+			}
+			if(specialLvList[i].name.ToString().Contains("Lv4"))
+			{
+				specialLvList4.Add(specialLvList[i]);
+			}
+			if(specialLvList[i].name.ToString().Contains("Lv5"))
+			{
+				specialLvList5.Add(specialLvList[i]);
+			}
+		}	
 	}
 
 	private void SetEnemyLists()
@@ -355,25 +419,214 @@ public class AirSpawnManager : MonoBehaviour
 		if (distance >= 0 && distance <= GameManager.Instance.lvUpDistanceList[0])
 		{
 			currentLevel = levelList[0];
+			IntermidiateLv();
 		}
 		if (distance > GameManager.Instance.lvUpDistanceList[0] && distance <= GameManager.Instance.lvUpDistanceList[1])
 		{
 			currentLevel = levelList[1];
+			IntermidiateLv();
 		}
 		if (distance > GameManager.Instance.lvUpDistanceList[1] && distance <= GameManager.Instance.lvUpDistanceList[2])
 		{
 			currentLevel = levelList[2];
+			IntermidiateLv();
 		}
 		if (distance > GameManager.Instance.lvUpDistanceList[2] && distance <= GameManager.Instance.lvUpDistanceList[3])
 		{
 			currentLevel = levelList[3];
+			IntermidiateLv();
 		}
 		if (distance > GameManager.Instance.lvUpDistanceList[3] && distance <= GameManager.Instance.lvUpDistanceList[4])
 		{
 			currentLevel = levelList[4];
+			IntermidiateLv();
 		}
 
 		GameManager.Instance.reachedLv = currentLevel.levelName;
+	}
+
+	private bool CheckIfLvChanged()
+	{
+		if (checkedLv.levelName != currentLevel.levelName)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+
+
+	//Checking
+	private void IntermidiateLv()
+	{
+		if (currentLevel.levelName == "Level 2")
+		{
+			randSpecialLv = Random.Range(0, specialLvList2.Count);
+			spawnSpecialLvGO = specialLvList2[randSpecialLv];
+
+			if (CheckIfLvChanged())
+			{
+				specialLvText.SetActive(true);
+				specialTime = currentLevel.bonusLvTime;
+
+				if(startCountingSpecialTime)
+				{
+					currentTargetSpecialTime = Time.time + specialTime;
+					startCountingSpecialTime = false;
+				}
+
+				coundDownSpecialTime = currentTargetSpecialTime - Time.time;
+
+				if (coundDownSpecialTime < 0)
+				{
+					coundDownSpecialTime = 0;
+				}
+
+				if (coundDownSpecialTime > 0)
+				{
+					if (spawnSpecialLv)
+					{
+						stopSpawning = true;
+						Instantiate(spawnSpecialLvGO, new Vector3(GameManager.Instance.playerObject.transform.position.x + specialLvDistX, spawnSpecialLvGO.transform.position.y, 0), Quaternion.identity);
+						spawnSpecialLv = false;
+					}
+				}
+				else
+				{
+					stopSpawning = false;
+					startCountingSpecialTime = true;
+					spawnSpecialLv = true;
+					checkedLv = currentLevel;
+					specialLvText.SetActive(false);
+				}
+			}
+		}
+
+		if (currentLevel.levelName == "Level 3")
+		{
+			randSpecialLv = Random.Range(0, specialLvList3.Count);
+			spawnSpecialLvGO = specialLvList3[randSpecialLv];
+
+			if (CheckIfLvChanged())
+			{
+				specialLvText.SetActive(true);
+				specialTime = currentLevel.bonusLvTime;
+
+				if(startCountingSpecialTime)
+				{
+					currentTargetSpecialTime = Time.time + specialTime;
+					startCountingSpecialTime = false;
+				}
+
+				coundDownSpecialTime = currentTargetSpecialTime - Time.time;
+
+				if (coundDownSpecialTime < 0)
+				{
+					coundDownSpecialTime = 0;
+				}
+
+				if (coundDownSpecialTime > 0)
+				{
+					if (spawnSpecialLv)
+					{
+						stopSpawning = true;
+						Instantiate(spawnSpecialLvGO, new Vector3(GameManager.Instance.playerObject.transform.position.x + specialLvDistX, spawnSpecialLvGO.transform.position.y, 0), Quaternion.identity);
+						spawnSpecialLv = false;
+					}
+				}
+				else
+				{
+					stopSpawning = false;
+					checkedLv = currentLevel;
+					specialLvText.SetActive(false);
+				}
+			}
+		}
+
+		if (currentLevel.levelName == "Level 4")
+		{
+			randSpecialLv = Random.Range(0, specialLvList4.Count);
+			spawnSpecialLvGO = specialLvList4[randSpecialLv];
+
+			if (CheckIfLvChanged())
+			{
+				specialLvText.SetActive(true);
+				specialTime = currentLevel.bonusLvTime;
+
+				if(startCountingSpecialTime)
+				{
+					currentTargetSpecialTime = Time.time + specialTime;
+					startCountingSpecialTime = false;
+				}
+
+				coundDownSpecialTime = currentTargetSpecialTime - Time.time;
+
+				if (coundDownSpecialTime < 0)
+				{
+					coundDownSpecialTime = 0;
+				}
+
+				if (coundDownSpecialTime > 0)
+				{
+					if (spawnSpecialLv)
+					{
+						stopSpawning = true;
+						Instantiate(spawnSpecialLvGO, new Vector3(GameManager.Instance.playerObject.transform.position.x + specialLvDistX, spawnSpecialLvGO.transform.position.y, 0), Quaternion.identity);
+						spawnSpecialLv = false;
+					}
+				}
+				else
+				{
+					stopSpawning = false;
+					checkedLv = currentLevel;
+					specialLvText.SetActive(false);
+				}
+			}
+		}
+
+		if (currentLevel.levelName == "Level 5")
+		{
+			randSpecialLv = Random.Range(0, specialLvList5.Count);
+			spawnSpecialLvGO = specialLvList5[randSpecialLv];
+
+			if (CheckIfLvChanged())
+			{
+				specialLvText.SetActive(true);
+				specialTime = currentLevel.bonusLvTime;
+
+				if(startCountingSpecialTime)
+				{
+					currentTargetSpecialTime = Time.time + specialTime;
+					startCountingSpecialTime = false;
+				}
+
+				coundDownSpecialTime = currentTargetSpecialTime - Time.time;
+
+				if (coundDownSpecialTime < 0)
+				{
+					coundDownSpecialTime = 0;
+				}
+
+				if (coundDownSpecialTime > 0)
+				{
+					if (spawnSpecialLv)
+					{
+						stopSpawning = true;
+						Instantiate(spawnSpecialLvGO, new Vector3(GameManager.Instance.playerObject.transform.position.x + specialLvDistX, spawnSpecialLvGO.transform.position.y, 0), Quaternion.identity);
+						spawnSpecialLv = false;
+					}
+				}
+				else
+				{
+					stopSpawning = false;
+					checkedLv = currentLevel;
+					specialLvText.SetActive(false);
+				}
+			}
+		}
 	}
 
 	private void SpawnGroundEnemyEngine()
