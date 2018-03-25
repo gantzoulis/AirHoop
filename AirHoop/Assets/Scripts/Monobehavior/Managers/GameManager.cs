@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     public float timeLapseRatio; //Number of TimeFuel per Second up to 100.
     public string playerColliderName;
 
-    
+    public int playerLives = 1;
     public int playerScore = 0;
 
 	public List<float> lvUpDistanceList = new List<float>();
@@ -69,6 +69,18 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
+    public IEnumerator RespawnPlayer(Vector3 spawnPosition, Quaternion spawnRotation, GameObject player)
+    {
+        Debug.Log("RESPAWNING PLAYER");
+        player.gameObject.SetActive(false);
 
-   
+        yield return new WaitForSeconds(0.5f);
+        player.transform.position = spawnPosition;
+        player.gameObject.transform.rotation = spawnRotation;
+        player.gameObject.SetActive(true);
+        Debug.Log("PLAYER IS RESPAWNED");
+    }
+
+
+
 }

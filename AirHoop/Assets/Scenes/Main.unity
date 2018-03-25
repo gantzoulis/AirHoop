@@ -1796,6 +1796,7 @@ MonoBehaviour:
   playerTimeLapseFuel: 0
   timeLapseRatio: 0.03
   playerColliderName: PlayerCollider
+  playerLives: 2
   playerScore: 0
   lvUpDistanceList:
   - 200

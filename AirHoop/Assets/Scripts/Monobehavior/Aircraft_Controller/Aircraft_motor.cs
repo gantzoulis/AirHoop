@@ -19,7 +19,7 @@ public class Aircraft_motor : MonoBehaviour
     [SerializeField]
     private Color outofFuelSmokeColor;
 
-    public int playerLives = 1;
+    
     [SerializeField]
     private GameObject planeModel;
 
@@ -172,11 +172,11 @@ public class Aircraft_motor : MonoBehaviour
 
     public void DeathEvent()
     {
-        if (playerLives > 1)
+        if (GameManager.Instance.playerLives > 1)
         {
             Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
-            StartCoroutine(RespawnPlayer());
-            playerLives--;
+            StartCoroutine(GameManager.Instance.RespawnPlayer(this.transform.position, defaultQuaternion, this.gameObject));
+            GameManager.Instance.playerLives--;
         }
         else
         {
@@ -306,7 +306,7 @@ public class Aircraft_motor : MonoBehaviour
         Debug.Log("RESPAWNING PLAYER");
         //this.gameObject.GetComponent<Renderer>()
        
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1.5f);
         this.gameObject.transform.position = defaultSpawnPosition;
         this.gameObject.transform.rotation = defaultQuaternion;
         this.gameObject.SetActive(true);
