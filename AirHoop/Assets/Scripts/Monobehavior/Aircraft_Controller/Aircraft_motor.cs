@@ -175,14 +175,16 @@ public class Aircraft_motor : MonoBehaviour
         if (GameManager.Instance.playerLives > 1)
         {
             Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
-            StartCoroutine(GameManager.Instance.RespawnPlayer(this.transform.position, defaultQuaternion, this.gameObject));
-            GameManager.Instance.playerLives--;
+            GameManager.Instance.playerIsActive = false;
+            GameManager.Instance.playerDeathPosition = this.gameObject.transform.position;
+            GameManager.Instance.playerDeathRotation = defaultQuaternion;
         }
         else
         {
             Debug.Log("GameObject " + this.gameObject.name + " Does not have any lives left. Game Over.");
             Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
+            GameManager.Instance.playerLives--;
             GameManager.Instance.gameOver = true;
         }
     }
@@ -290,8 +292,9 @@ public class Aircraft_motor : MonoBehaviour
         }
     }
 
-    IEnumerator ExtraLifeFlasher()
+    public IEnumerator ExtraLifeFlasher()
     {
+        Debug.Log("Flash baby");
         for (int i = 0; i < 5; i++)
         {
             planeModel.GetComponent<Renderer>().material.color = flashToColor;
@@ -300,18 +303,5 @@ public class Aircraft_motor : MonoBehaviour
             yield return new WaitForSeconds(.2f);
         }
     }
-
-    IEnumerator RespawnPlayer()
-    {
-        Debug.Log("RESPAWNING PLAYER");
-        //this.gameObject.GetComponent<Renderer>()
-       
-        yield return new WaitForSeconds(1.5f);
-        this.gameObject.transform.position = defaultSpawnPosition;
-        this.gameObject.transform.rotation = defaultQuaternion;
-        this.gameObject.SetActive(true);
-        Debug.Log("PLAYER IS RESPAWNED");
-        //GameObject planeSelect = GameManager.Instance.choosenAircraft.model[0];
-        //Instantiate(planeSelect, defaultSpawnPosition, defaultQuaternion);
-    }
+    
 }
