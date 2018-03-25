@@ -493,7 +493,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 379777188}
   m_OnClick:
     m_PersistentCalls:
@@ -625,7 +625,6 @@ RectTransform:
   - {fileID: 1747327016}
   - {fileID: 379777186}
   - {fileID: 2020482451}
-  - {fileID: 870095515}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -646,13 +645,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   airplanePrefabs:
-  - {fileID: 721425674}
-  - {fileID: 1585179221}
-  - {fileID: 1881729310}
+  - AirPlanePrefab: {fileID: 721425674}
+    playerOwned: 1
+    airPlaneCost: 0
+  - AirPlanePrefab: {fileID: 1585179221}
+    playerOwned: 0
+    airPlaneCost: 50000
+  - AirPlanePrefab: {fileID: 1881729310}
+    playerOwned: 0
+    airPlaneCost: 150000
+  currentAPselection: 0
+  nextAPselection: 0
+  prevAPselection: 0
   movePlaneLeft: {fileID: 7400000, guid: c171b6319dce1774f8f48dd7cf010312, type: 2}
   movePlaneRight: {fileID: 7400000, guid: 5aacc645ad1f4ca4cbd14dbbdda71739, type: 2}
   leftButton: {fileID: 22605532}
   rightButton: {fileID: 1489859634}
+  planeSelect: {fileID: 1747327015}
+  planeSelectLocked: {fileID: 379777185}
+  costPaneText: {fileID: 1799006881}
+  costPane: {fileID: 2020482450}
 --- !u!1 &659023719
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,16 +800,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 870095514}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 640167562}
-  m_RootOrder: 6
+  m_Father: {fileID: 2020482451}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 80.94, y: 136.1}
+  m_AnchoredPosition: {x: 80.941345, y: 26.574997}
   m_SizeDelta: {x: 161.87, y: 59.380005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &870095516
@@ -1248,7 +1260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1747327016
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1353,7 +1365,7 @@ GameObject:
   - component: {fileID: 1799006884}
   - component: {fileID: 1799006883}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PlaneCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1462,6 +1474,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1799006882}
+  - {fileID: 870095515}
   m_Father: {fileID: 640167562}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
