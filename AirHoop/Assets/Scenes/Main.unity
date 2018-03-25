@@ -1699,6 +1699,9 @@ MonoBehaviour:
   playerColliderName: PlayerCollider
   playerLives: 2
   playerScore: 0
+  playerIsActive: 1
+  playerDeathPosition: {x: 0, y: 0, z: 0}
+  playerDeathRotation: {x: 0, y: 0, z: 0, w: 0}
   lvUpDistanceList:
   - 50
   - 700
@@ -2450,6 +2453,23 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1551509973573588, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310679822048990, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808021871364596, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
+        type: 2}
+      propertyPath: planeModel
+      value: 
+      objectReference: {fileID: 1682955004}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
   m_IsPrefabParent: 0
@@ -2753,6 +2773,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1594805553}
+--- !u!1 &1682955004 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1551509973573588, guid: f923c73d124d03e498d310fb367fd4ec,
+    type: 2}
+  m_PrefabInternal: {fileID: 1472597129}
 --- !u!1 &1688322970
 GameObject:
   m_ObjectHideFlags: 0

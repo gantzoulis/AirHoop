@@ -43,8 +43,14 @@ public class GameManager : MonoBehaviour
     public int playerLives = 1;
     public int playerScore = 0;
 
+    public bool playerIsActive = true;
+    public Vector3 playerDeathPosition;
+    public Quaternion playerDeathRotation;
+
 	public List<float> lvUpDistanceList = new List<float>();
 	public string reachedLv;
+
+    
 
     private void OnEnable()
     {
@@ -61,6 +67,11 @@ public class GameManager : MonoBehaviour
 	void Update () 
 	{
         playerTimeLapseFuel += timeLapseRatio * Time.deltaTime;
+        if (!playerIsActive && playerLives >1)
+        {
+            Debug.Log("Player Is Dead");
+            StartCoroutine(RespawnPlayer(playerDeathPosition, playerDeathRotation));
+        }
     }
 
     public void RestartGame()
@@ -69,18 +80,22 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
-    public IEnumerator RespawnPlayer(Vector3 spawnPosition, Quaternion spawnRotation, GameObject player)
-    {
-        Debug.Log("RESPAWNING PLAYER");
-        player.gameObject.SetActive(false);
+    
 
-        yield return new WaitForSeconds(0.5f);
-        player.transform.position = spawnPosition;
-        player.gameObject.transform.rotation = spawnRotation;
-        player.gameObject.SetActive(true);
-        Debug.Log("PLAYER IS RESPAWNED");
+    public IEnumerator RespawnPlayer(Vector3 spawnPosition, Quaternion spawnRotation)
+    {
+        //Debug.Log("RESPAWNING PLAYER "+ playerObject.name);
+        playerObject.SetActive(false);
+        playerIsActive = true;
+        //Debug.Log("DEACTIVATING PLAYER OBJECT " + playerObject.name);
+        playerLives--;
+        yield return new WaitForSeconds(2.5f);
+        //Debug.Log("END OF WAITFORSECONDS " + playerObject.name);
+        playerObject.SetActive(true);
+        StartCoroutine(playerObject.GetComponent<Aircraft_motor>().ExtraLifeFlasher());
+       // Debug.Log("PLAYER IS RESPAWNED");
     }
 
-
+   
 
 }
