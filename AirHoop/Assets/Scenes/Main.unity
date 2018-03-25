@@ -2240,158 +2240,17 @@ Prefab:
       propertyPath: timelapseCounter
       value: 
       objectReference: {fileID: 553455171}
-    - target: {fileID: 114472589243547704, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: normalSmokeColor.rgba
-      value: 4279525590
-      objectReference: {fileID: 0}
-    - target: {fileID: 114472589243547704, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: speedSmokeColor.rgba
-      value: 14630180
-      objectReference: {fileID: 0}
-    - target: {fileID: 114472589243547704, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: maneuverSmokeColor.rgba
-      value: 3529490
-      objectReference: {fileID: 0}
-    - target: {fileID: 114472589243547704, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: outofFuelSmokeColor.rgba
-      value: 3815996
-      objectReference: {fileID: 0}
     - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
         type: 2}
-      propertyPath: normalSmokeColor.rgba
-      value: 4279525590
+      propertyPath: playerLives
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
+    - target: {fileID: 23143007509957340, guid: f923c73d124d03e498d310fb367fd4ec,
         type: 2}
-      propertyPath: speedSmokeColor.rgba
-      value: 14630180
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: outofFuelSmokeColor.rgba
-      value: 5789784
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: maneuverSmokeColor.rgba
-      value: 5046016
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: smokeTrail
-      value: 
-      objectReference: {fileID: 2026173919}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: speedSmokeColor.r
-      value: 0.035683393
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: speedSmokeColor.g
-      value: 0.035683393
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: speedSmokeColor.b
-      value: 0.4852941
-      objectReference: {fileID: 0}
-    - target: {fileID: 198357021149350112, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: randomSeed
-      value: 1199595860
-      objectReference: {fileID: 0}
-    - target: {fileID: 198357021149350112, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.8392157
-      objectReference: {fileID: 0}
-    - target: {fileID: 198357021149350112, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.3764706
-      objectReference: {fileID: 0}
-    - target: {fileID: 198357021149350112, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.078431375
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: normalSmokeColor.r
-      value: 0.8392157
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: normalSmokeColor.g
-      value: 0.3764706
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: normalSmokeColor.b
-      value: 0.078431375
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: normalSmokeColor.a
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: maneuverSmokeColor.r
-      value: 0.06779843
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: maneuverSmokeColor.g
-      value: 0.41911763
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: maneuverSmokeColor.b
-      value: 0.11383332
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: outofFuelSmokeColor.r
-      value: 0.21323532
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: outofFuelSmokeColor.g
-      value: 0.20539579
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: outofFuelSmokeColor.b
-      value: 0.20539579
-      objectReference: {fileID: 0}
-    - target: {fileID: 198357021149350112, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: InitialModule.startColor.maxColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: speedSmokeColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: maneuverSmokeColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421746776173058, guid: f923c73d124d03e498d310fb367fd4ec,
-        type: 2}
-      propertyPath: outofFuelSmokeColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114472589243547704, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1535142446
@@ -2809,7 +2668,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1818654425}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &1818654427
 Behaviour:
   m_ObjectHideFlags: 0
@@ -3129,11 +2988,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4104080190708026, guid: 98e7d9c79399ae5429a2ad24e6dcd0fc,
     type: 2}
   m_PrefabInternal: {fileID: 448396844}
---- !u!1 &2026173919 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1321128759830290, guid: f923c73d124d03e498d310fb367fd4ec,
-    type: 2}
-  m_PrefabInternal: {fileID: 1472597129}
 --- !u!1 &2036284316
 GameObject:
   m_ObjectHideFlags: 0

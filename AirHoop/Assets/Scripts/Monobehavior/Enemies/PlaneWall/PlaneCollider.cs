@@ -8,7 +8,8 @@ public class PlaneCollider : MonoBehaviour
     {
         if (other.tag == GameManager.Instance.playerColliderName)
         {
-            Destroy(other.gameObject.transform.parent.gameObject);
+            //Destroy(other.gameObject.transform.parent.gameObject);
+            other.gameObject.transform.parent.gameObject.GetComponent<Aircraft_motor>().DeathEvent();
         }
     }
 }
