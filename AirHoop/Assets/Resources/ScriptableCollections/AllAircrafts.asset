@@ -13,6 +13,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aircrafts:
   - {fileID: 114843877549600012}
+  - {fileID: 114244265446975688}
+--- !u!114 &114244265446975688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e426cf5a6de9649bfe5309b6a35da0, type: 3}
+  m_Name: Spitfire 2
+  m_EditorClassIdentifier: 
+  aircraftName: Spitfire 2
+  model:
+  - {fileID: 1715266022095654, guid: 32af5317fa630254e9ba45e9c58f4dc4, type: 2}
+  totalFuel: 120
+  fuel: 0
+  manufactureSpeed: 12
+  speed: 0
+  maneuver: 0
+  manufactureManeuver: 0.9
+  hash: 243217605
 --- !u!114 &114843877549600012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,7 +50,7 @@ MonoBehaviour:
   model:
   - {fileID: 1385582216100906, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
   totalFuel: 100
-  fuel: 100
+  fuel: 98
   manufactureSpeed: 10
   speed: 10
   maneuver: 0.8

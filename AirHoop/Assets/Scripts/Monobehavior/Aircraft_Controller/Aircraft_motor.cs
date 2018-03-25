@@ -29,6 +29,7 @@ public class Aircraft_motor : MonoBehaviour
     private Color flashToColor;
 
     private Vector3 defaultSpawnPosition;
+    [SerializeField]
     private Quaternion defaultQuaternion;
 
 
@@ -68,6 +69,7 @@ public class Aircraft_motor : MonoBehaviour
         planeAudio = GetComponent<AudioSource>();
         propelerCurrentSpeed = propelerNormalSpeed;
         defaultSpawnPosition = this.gameObject.transform.position;
+ 
         defaultQuaternion = this.gameObject.transform.rotation;
 	}
 

@@ -8,7 +8,7 @@ public class GroundCollider : MonoBehaviour
 	{
 		if(other.tag == GameManager.Instance.playerColliderName)
 		{
-			Destroy(other.gameObject.transform.parent.gameObject);
-		}
+            other.gameObject.transform.parent.gameObject.GetComponent<Aircraft_motor>().DeathEvent();
+        }
 	}
 }

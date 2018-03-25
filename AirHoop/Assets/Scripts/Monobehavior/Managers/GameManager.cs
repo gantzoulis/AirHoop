@@ -47,20 +47,26 @@ public class GameManager : MonoBehaviour
     public Vector3 playerDeathPosition;
     public Quaternion playerDeathRotation;
 
+    public float playerRespawnXoffset;
+    public float playerRespawnYoffset;
+
 	public List<float> lvUpDistanceList = new List<float>();
 	public string reachedLv;
+
+    public Vector3 defaultPlayerSpawnPos = new Vector3(-3.3f, 0, 0);
 
     
 
     private void OnEnable()
     {
-        playerObject = GameObject.FindGameObjectWithTag("Player");
+        //playerObject = GameObject.FindGameObjectWithTag("Player");
+        SpawnPlayer();
     }
 
     // Use this for initialization
     void Start () 
 	{
-			
+        	
 	}
 	
 	// Update is called once per frame
@@ -70,7 +76,9 @@ public class GameManager : MonoBehaviour
         if (!playerIsActive && playerLives >1)
         {
             Debug.Log("Player Is Dead");
-            StartCoroutine(RespawnPlayer(playerDeathPosition, playerDeathRotation));
+            Vector3 newPosAfterDeath = 
+                new Vector3(playerDeathPosition.x - playerRespawnXoffset, playerDeathPosition.y + playerRespawnYoffset, 0);
+            StartCoroutine(RespawnPlayer(newPosAfterDeath, playerDeathRotation));
         }
     }
 
@@ -84,18 +92,23 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator RespawnPlayer(Vector3 spawnPosition, Quaternion spawnRotation)
     {
-        //Debug.Log("RESPAWNING PLAYER "+ playerObject.name);
         playerObject.SetActive(false);
         playerIsActive = true;
-        //Debug.Log("DEACTIVATING PLAYER OBJECT " + playerObject.name);
         playerLives--;
+        playerObject.transform.position = spawnPosition;
+        playerObject.transform.rotation = playerDeathRotation;
+
         yield return new WaitForSeconds(2.5f);
-        //Debug.Log("END OF WAITFORSECONDS " + playerObject.name);
         playerObject.SetActive(true);
         StartCoroutine(playerObject.GetComponent<Aircraft_motor>().ExtraLifeFlasher());
-       // Debug.Log("PLAYER IS RESPAWNED");
     }
 
+    public void SpawnPlayer()
+    {
+        GameObject playerAirplane =  Instantiate(choosenAircraft.model[0], defaultPlayerSpawnPos, Quaternion.identity);
+        Camera.main.GetComponent<MultipleTargetCamera>().targets.Add(playerAirplane.transform);
+        playerObject = playerAirplane;
+    }
    
 
 }
