@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33944168053629992}
   - component: {fileID: 65423456265305270}
   - component: {fileID: 23851266825367152}
+  - component: {fileID: 114680176411385388}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -37,6 +38,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4688868370289784}
+  - component: {fileID: 114390163648957370}
   m_Layer: 0
   m_Name: Lv3-Special1
   m_TagString: Untagged
@@ -55,6 +57,7 @@ GameObject:
   - component: {fileID: 33352120473381132}
   - component: {fileID: 65797660941551798}
   - component: {fileID: 23455137695193312}
+  - component: {fileID: 114942846856857656}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -73,6 +76,7 @@ GameObject:
   - component: {fileID: 33927435867475976}
   - component: {fileID: 65808476480682828}
   - component: {fileID: 23406845114750270}
+  - component: {fileID: 114593735149172278}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -91,6 +95,7 @@ GameObject:
   - component: {fileID: 33787458043752904}
   - component: {fileID: 65274391545648714}
   - component: {fileID: 23040829242623456}
+  - component: {fileID: 114924502392329462}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -338,7 +343,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827968226543712}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -350,7 +355,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067091947153220}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -362,7 +367,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1509647947965720}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -374,8 +379,67 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1669050870822346}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114390163648957370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431513383801072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e6891292176a249bf2547cfee59daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114593735149172278
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1669050870822346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12a781ad8c7e59643a2de66cb8fe3dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointScore: 5
+--- !u!114 &114680176411385388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067091947153220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12a781ad8c7e59643a2de66cb8fe3dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointScore: 5
+--- !u!114 &114924502392329462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1827968226543712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12a781ad8c7e59643a2de66cb8fe3dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointScore: 5
+--- !u!114 &114942846856857656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1509647947965720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12a781ad8c7e59643a2de66cb8fe3dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointScore: 5
