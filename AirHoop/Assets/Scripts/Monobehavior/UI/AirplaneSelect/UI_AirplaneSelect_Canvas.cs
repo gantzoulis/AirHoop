@@ -22,7 +22,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-		
+        leftButton.GetComponent<Button>().interactable = false;
 	}
 	
 	// Update is called once per frame
@@ -35,8 +35,11 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
     {
         if (currentAPselection == 0)
         {
+            
             airplanePrefabs[currentAPselection].GetComponent<Animator>().SetTrigger("PlayAnimation");
             currentAPselection++;
+            leftButton.GetComponent<Button>().interactable = false;
+
         }
         else
         {
@@ -45,6 +48,10 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
             if (currentAPselection < airplanePrefabs.Length - 1)
             {
                 currentAPselection++;
+            }
+            else
+            {
+                rightButton.GetComponent<Button>().interactable = false;
             }
             
         }
@@ -57,12 +64,15 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
     {
         if (currentAPselection == airplanePrefabs.Length)
         {
+            rightButton.GetComponent<Button>().interactable = false;
+            leftButton.GetComponent<Button>().interactable = true;
             airplanePrefabs[currentAPselection].GetComponent<Animator>().SetTrigger("PlayAnimationReverse");
             airplanePrefabs[currentAPselection - 1].GetComponent<Animator>().SetTrigger("PlayAnimation");
             currentAPselection--;
         }
         else
         {
+            leftButton.GetComponent<Button>().interactable = true;
             airplanePrefabs[currentAPselection ].GetComponent<Animator>().SetTrigger("PlayAnimationReverse");
             airplanePrefabs[currentAPselection - 1].GetComponent<Animator>().SetTrigger("PlayAnimation");
             if (currentAPselection > 0)
