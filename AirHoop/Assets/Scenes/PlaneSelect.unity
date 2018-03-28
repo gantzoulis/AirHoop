@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964127, b: 0.57481724, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -423,6 +423,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &297121566
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4139838276658774, guid: b1838ca224d91de4a8f35ecee88058d4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 6.278108
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139838276658774, guid: b1838ca224d91de4a8f35ecee88058d4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -194.68745
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139838276658774, guid: b1838ca224d91de4a8f35ecee88058d4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3.9269695
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139838276658774, guid: b1838ca224d91de4a8f35ecee88058d4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139838276658774, guid: b1838ca224d91de4a8f35ecee88058d4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139838276658774, guid: b1838ca224d91de4a8f35ecee88058d4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139838276658774, guid: b1838ca224d91de4a8f35ecee88058d4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139838276658774, guid: b1838ca224d91de4a8f35ecee88058d4, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b1838ca224d91de4a8f35ecee88058d4, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &379777185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,7 +1363,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1747327018}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 640167563}
+        m_MethodName: StartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1747327018

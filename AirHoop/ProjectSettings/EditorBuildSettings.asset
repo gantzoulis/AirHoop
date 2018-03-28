@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: a7d48d84e611e4849835ba9490aaf5be
+    path: Assets/Scenes/PlaneSelect.unity
+    guid: 7896418d0a8e5c74da03d76bb5bdb2cc
+  - enabled: 1
+    path: Assets/Scenes/MainTest.unity
+    guid: d211e1647ee2ae84989eefacf039ed97

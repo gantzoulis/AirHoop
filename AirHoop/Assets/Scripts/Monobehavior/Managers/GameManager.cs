@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 	public Aircraft choosenAircraft;
 	public float time;
     public GameObject playerObject;
+    public bool gameStart;
+    private bool gameStartedOnce;
     public bool gameOver = false;
     public bool soundOn = true;
         
@@ -60,12 +62,16 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         //playerObject = GameObject.FindGameObjectWithTag("Player");
-        SpawnPlayer();
+        //Added a gameStart bool to check if GameManager will spawn the player Correctrly.
+        if (gameStart)
+        {
+            SpawnPlayer();
+        }
     }
 
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)  //testing.
         {
             DontDestroyOnLoad(gameObject);
         }
@@ -87,6 +93,16 @@ public class GameManager : MonoBehaviour
             Vector3 newPosAfterDeath = 
                 new Vector3(playerDeathPosition.x - playerRespawnXoffset, playerDeathPosition.y + playerRespawnYoffset, 0);
             StartCoroutine(RespawnPlayer(newPosAfterDeath, playerDeathRotation));
+        }
+
+        if (!gameStartedOnce)
+        {
+            if (gameStart)
+            {
+                Debug.Log("Game Start- Spawning player");
+                SpawnPlayer();
+                gameStartedOnce = true;
+            }
         }
     }
 

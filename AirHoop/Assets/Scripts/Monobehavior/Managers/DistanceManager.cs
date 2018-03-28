@@ -13,6 +13,7 @@ public class DistanceManager : MonoBehaviour
 	void Start ()
     {
         playerDistanceCovered = maxDistance;
+        GameManager.Instance.gameStart = true;
 	}
 	
 	// Update is called once per frame
