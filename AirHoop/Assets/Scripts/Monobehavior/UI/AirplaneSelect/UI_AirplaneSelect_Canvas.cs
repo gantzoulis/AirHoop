@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UI_AirplaneSelect_Canvas : MonoBehaviour
 {
@@ -123,5 +124,10 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
             leftButton.GetComponent<Button>().interactable = true;
             rightButton.GetComponent<Button>().interactable = true;
         }
+    }
+
+    public void StartLevel()
+    {
+        SceneManager.LoadScene(1);
     }
 }

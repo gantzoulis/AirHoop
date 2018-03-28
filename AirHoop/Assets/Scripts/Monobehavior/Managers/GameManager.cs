@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 		{
 			if (instance == null)
 			{
-				instance = GameObject.FindObjectOfType<GameManager>();
+                instance = GameObject.FindObjectOfType<GameManager>();
 			}
 			return instance;
 		}
@@ -61,6 +61,14 @@ public class GameManager : MonoBehaviour
     {
         //playerObject = GameObject.FindGameObjectWithTag("Player");
         SpawnPlayer();
+    }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     // Use this for initialization
