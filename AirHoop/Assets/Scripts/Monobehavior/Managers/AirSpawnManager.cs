@@ -8,7 +8,7 @@ public class AirSpawnManager : MonoBehaviour
 	public class Level
 	{
 		public string levelName;
-		[HideInInspector]
+		//[HideInInspector]
 		public List<GameObject> enemies;
 		public float enemySpawnRateTime;
 		[HideInInspector]
