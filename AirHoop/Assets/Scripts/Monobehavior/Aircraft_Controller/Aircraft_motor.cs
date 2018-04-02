@@ -18,6 +18,8 @@ public class Aircraft_motor : MonoBehaviour
     private Color maneuverSmokeColor;
     [SerializeField]
     private Color outofFuelSmokeColor;
+    [SerializeField]
+    private bool playerImmune = false;
 
     
     [SerializeField]
@@ -174,20 +176,23 @@ public class Aircraft_motor : MonoBehaviour
 
     public void DeathEvent()
     {
-        if (GameManager.Instance.playerLives > 1)
+        if (!playerImmune)
         {
-            Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
-            GameManager.Instance.playerIsActive = false;
-            GameManager.Instance.playerDeathPosition = this.gameObject.transform.position;
-            GameManager.Instance.playerDeathRotation = defaultQuaternion;
-        }
-        else
-        {
-            Debug.Log("GameObject " + this.gameObject.name + " Does not have any lives left. Game Over.");
-            Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
-            GameManager.Instance.playerLives--;
-            GameManager.Instance.gameOver = true;
+            if (GameManager.Instance.playerLives > 1)
+            {
+                Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
+                GameManager.Instance.playerIsActive = false;
+                GameManager.Instance.playerDeathPosition = this.gameObject.transform.position;
+                GameManager.Instance.playerDeathRotation = defaultQuaternion;
+            }
+            else
+            {
+                Debug.Log("GameObject " + this.gameObject.name + " Does not have any lives left. Game Over.");
+                Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
+                Destroy(this.gameObject);
+                GameManager.Instance.playerLives--;
+                GameManager.Instance.gameOver = true;
+            }
         }
     }
 
@@ -296,7 +301,8 @@ public class Aircraft_motor : MonoBehaviour
 
     public IEnumerator ExtraLifeFlasher()
     {
-        Debug.Log("Flash baby");
+        //Debug.Log("Flash baby");
+        playerImmune = true;
         for (int i = 0; i < 5; i++)
         {
             planeModel.GetComponent<Renderer>().material.color = flashToColor;
@@ -304,6 +310,7 @@ public class Aircraft_motor : MonoBehaviour
             planeModel.GetComponent<Renderer>().material.color = normalColor;
             yield return new WaitForSeconds(.2f);
         }
+        playerImmune = false;
     }
     
 }
