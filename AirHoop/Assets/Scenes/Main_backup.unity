@@ -405,7 +405,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1258645559}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &213239213
 MonoBehaviour:
@@ -629,7 +629,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1258645559}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &336116178
 MonoBehaviour:
@@ -1074,7 +1074,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1258645559}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &533108067
 MonoBehaviour:
@@ -1643,7 +1643,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1258645559}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1017311442
 MonoBehaviour:
@@ -1661,6 +1661,78 @@ MonoBehaviour:
   timeLapseRatio: 3
   timeConsumption: 0
   timeLapseUImage: {fileID: 553455171}
+--- !u!1 &1069515723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1069515725}
+  - component: {fileID: 1069515724}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1069515724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069515723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309aecdb9728ea84f868e71380f492a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choosenAircraft: {fileID: 114843877549600012, guid: ad3f129293bbf3644914b7c44d8208b1,
+    type: 2}
+  time: 0
+  playerObject: {fileID: 0}
+  gameStart: 0
+  gameOver: 0
+  soundOn: 1
+  distanceRatio: 4
+  maxDistance: 0
+  maxAirplaneHeight: 25
+  minAirplaneHeight: -17
+  planeExplosionObject: {fileID: 1889364105042210, guid: 2d7bec313cafcfa4e815300904828d8e,
+    type: 2}
+  maxTimeLapse: 5
+  playerTimeLapseFuel: 0
+  timeLapseRatio: 0.03
+  playerColliderName: PlayerCollider
+  playerLives: 2
+  playerScore: 0
+  playerIsActive: 1
+  playerDeathPosition: {x: 0, y: 0, z: 0}
+  playerDeathRotation: {x: 0, y: 0, z: 0, w: 0}
+  playerRespawnXoffset: 3
+  playerRespawnYoffset: 10
+  lvUpDistanceList:
+  - 50
+  - 700
+  - 1200
+  - 3000
+  - 7000
+  reachedLv: 
+  defaultPlayerSpawnPos: {x: -3.3, y: 0, z: 0}
+--- !u!4 &1069515725
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069515723}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.278108, y: -194.68745, z: -3.9269695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1258645559}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1069674292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1983,6 +2055,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 200, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1069515725}
   - {fileID: 1017311441}
   - {fileID: 1992487749}
   - {fileID: 336116177}
@@ -2082,7 +2155,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1258645559}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1295009107
 MonoBehaviour:
@@ -2957,7 +3030,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1258645559}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1992487750
 MonoBehaviour:
@@ -3093,7 +3166,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1258645559}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2036284318
 AudioSource:

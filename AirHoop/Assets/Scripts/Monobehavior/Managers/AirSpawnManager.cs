@@ -134,6 +134,7 @@ public class AirSpawnManager : MonoBehaviour
 	private float curBuffDist;
 	private float overlapBuffSize = 3.0f;
 	private Vector3 whereToSpawnBuff;
+    private bool initGame = false;
 
 	//[SerializeField]
 	private GameObject[] fuelList;
@@ -154,14 +155,20 @@ public class AirSpawnManager : MonoBehaviour
 
 	void Start()
 	{
-		SetEnemyLists();
+        /*
+        SetEnemyLists();
 		SetBuffsList();
 		SetGroundEnemyList();
 		SetBonusStages();
+        */
 	}
 
 	void FixedUpdate()
 	{
+        if (initGame == false)
+        {
+            Init();
+        }
 		CheckAndSetLv();
 		if(stopSpawning == false)
 		{
@@ -171,7 +178,20 @@ public class AirSpawnManager : MonoBehaviour
 		}
 	}
 
-	private void SetBonusStages()
+    private void Init()
+    {
+        if (GameManager.Instance.playerObject)
+        {
+            maxEnemyDist = GameManager.Instance.playerObject.transform.position.x;
+            SetEnemyLists();
+            SetBuffsList();
+            SetGroundEnemyList();
+            SetBonusStages();
+            initGame = true;
+        }
+    }
+
+    private void SetBonusStages()
 	{
 		specialLvList = Resources.LoadAll<GameObject>(SPECIAL_LV_PREFAB_PATH);
 		specialLvList1 = new List<GameObject>();
@@ -204,6 +224,8 @@ public class AirSpawnManager : MonoBehaviour
 			}
 		}	
 	}
+
+    
 
 	private void SetEnemyLists()
 	{
