@@ -169,7 +169,10 @@ public class AirSpawnManager : MonoBehaviour
         {
             Init();
         }
-		CheckAndSetLv();
+        else
+        {
+            CheckAndSetLv();
+        }
 		if(stopSpawning == false)
 		{
 			SpawnEnemyEngine();
@@ -187,6 +190,7 @@ public class AirSpawnManager : MonoBehaviour
             SetBuffsList();
             SetGroundEnemyList();
             SetBonusStages();
+            CheckAndSetLv();
             initGame = true;
         }
     }
