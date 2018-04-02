@@ -56,9 +56,9 @@ public class AirSpawnManager : MonoBehaviour
 	private Level checkedLv = new Level();
 	private bool lvChanged = false;
 
-	//[SerializeField]
+	[SerializeField]
 	private GameObject[] enemyList;
-	//[SerializeField]
+	[SerializeField]
 	private List<GameObject> enemyList1;
 	//[SerializeField]
 	private List<GameObject> enemyList2;
@@ -207,7 +207,10 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetEnemyLists()
 	{
-		maxEnemyDist = GameManager.Instance.playerObject.transform.position.x;
+		if(GameManager.Instance.playerObject)
+		{
+			maxEnemyDist = GameManager.Instance.playerObject.transform.position.x;
+		}
 		enemyList = Resources.LoadAll<GameObject>(ENEMY_PREFAB_PATH);
 		enemyList1 = new List<GameObject>();
 		enemyList2 = new List<GameObject>();
@@ -264,7 +267,10 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetGroundEnemyList()
 	{
-		maxGroundEnemyDist = GameManager.Instance.playerObject.transform.position.x;
+		if(GameManager.Instance.playerObject)
+		{
+			maxGroundEnemyDist = GameManager.Instance.playerObject.transform.position.x;
+		}
 		groundEnemyList = Resources.LoadAll<GameObject>(GROUND_ENEMY_PREFAB_PATH);
 		groundEnemyList1 = new List<GameObject>();
 		groundEnemyList2 = new List<GameObject>();
@@ -321,7 +327,10 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetBuffsList()
 	{
-		maxEnemyDist = GameManager.Instance.playerObject.transform.position.x;
+		if(GameManager.Instance.playerObject)
+		{
+			maxEnemyDist = GameManager.Instance.playerObject.transform.position.x;
+		}
 		buffList = Resources.LoadAll<GameObject>(BUFF_PREFAB_PATH);
 		buffList1 = new List<GameObject>();
 		buffList2 = new List<GameObject>();
