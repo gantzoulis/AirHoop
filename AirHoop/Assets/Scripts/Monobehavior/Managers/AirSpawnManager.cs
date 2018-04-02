@@ -155,27 +155,14 @@ public class AirSpawnManager : MonoBehaviour
 
 	void Start()
 	{
-        Debug.Log("Player Lives: " + GameManager.Instance.playerLives);
-        Debug.Log("Player Object: " + GameManager.Instance.playerObject.name);
         SetEnemyLists();
 		SetBuffsList();
 		SetGroundEnemyList();
 		SetBonusStages();
-        
 	}
 
 	void FixedUpdate()
 	{
-        /*
-        if (initGame == false)
-        {
-            Init();
-        }
-        else
-        {
-           
-        }
-        */
         CheckAndSetLv();
         if (stopSpawning == false)
 		{
@@ -224,11 +211,13 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetEnemyLists()
 	{
+        /*
         if (GameManager.Instance.playerObject)
 		{
 			maxEnemyDist = GameManager.Instance.playerObject.transform.position.x;
-		}
-		enemyList = Resources.LoadAll<GameObject>(ENEMY_PREFAB_PATH);
+		}*/
+        maxEnemyDist = GameManager.Instance.defaultPlayerSpawnPos.x;
+        enemyList = Resources.LoadAll<GameObject>(ENEMY_PREFAB_PATH);
 		enemyList1 = new List<GameObject>();
 		enemyList2 = new List<GameObject>();
 		enemyList3 = new List<GameObject>();
@@ -284,11 +273,8 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetGroundEnemyList()
 	{
-		if(GameManager.Instance.playerObject)
-		{
-			maxGroundEnemyDist = GameManager.Instance.playerObject.transform.position.x;
-		}
-		groundEnemyList = Resources.LoadAll<GameObject>(GROUND_ENEMY_PREFAB_PATH);
+        maxEnemyDist = GameManager.Instance.defaultPlayerSpawnPos.x;
+        groundEnemyList = Resources.LoadAll<GameObject>(GROUND_ENEMY_PREFAB_PATH);
 		groundEnemyList1 = new List<GameObject>();
 		groundEnemyList2 = new List<GameObject>();
 		groundEnemyList3 = new List<GameObject>();
@@ -344,11 +330,8 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetBuffsList()
 	{
-		if(GameManager.Instance.playerObject)
-		{
-			maxEnemyDist = GameManager.Instance.playerObject.transform.position.x;
-		}
-		buffList = Resources.LoadAll<GameObject>(BUFF_PREFAB_PATH);
+        maxEnemyDist = GameManager.Instance.defaultPlayerSpawnPos.x;
+        buffList = Resources.LoadAll<GameObject>(BUFF_PREFAB_PATH);
 		buffList1 = new List<GameObject>();
 		buffList2 = new List<GameObject>();
 		buffList3 = new List<GameObject>();
