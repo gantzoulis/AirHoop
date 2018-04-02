@@ -155,25 +155,29 @@ public class AirSpawnManager : MonoBehaviour
 
 	void Start()
 	{
-        /*
+        Debug.Log("Player Lives: " + GameManager.Instance.playerLives);
+        Debug.Log("Player Object: " + GameManager.Instance.playerObject.name);
         SetEnemyLists();
 		SetBuffsList();
 		SetGroundEnemyList();
 		SetBonusStages();
-        */
+        
 	}
 
 	void FixedUpdate()
 	{
+        /*
         if (initGame == false)
         {
             Init();
         }
         else
         {
-            CheckAndSetLv();
+           
         }
-		if(stopSpawning == false)
+        */
+        CheckAndSetLv();
+        if (stopSpawning == false)
 		{
 			SpawnEnemyEngine();
 			SpawnBuffEngine();
@@ -181,19 +185,6 @@ public class AirSpawnManager : MonoBehaviour
 		}
 	}
 
-    private void Init()
-    {
-        if (GameManager.Instance.playerObject)
-        {
-            maxEnemyDist = GameManager.Instance.playerObject.transform.position.x;
-            SetEnemyLists();
-            SetBuffsList();
-            SetGroundEnemyList();
-            SetBonusStages();
-            CheckAndSetLv();
-            initGame = true;
-        }
-    }
 
     private void SetBonusStages()
 	{
@@ -233,7 +224,7 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetEnemyLists()
 	{
-		if(GameManager.Instance.playerObject)
+        if (GameManager.Instance.playerObject)
 		{
 			maxEnemyDist = GameManager.Instance.playerObject.transform.position.x;
 		}
