@@ -10,17 +10,17 @@ public class AirSpawnManager : MonoBehaviour
 		public string levelName;
 		//[HideInInspector]
 		public List<GameObject> enemies;
-		public float enemySpawnRateTime;
+		public float enemySpawnRateDist;
 		[HideInInspector]
 		public List<GameObject> buffs;
-		public float buffSpawnRateTime;
+		public float buffSpawnRateDist;
 		[Range(0,100)]
 		public float fuelChance;
 		[HideInInspector]
 		public List<GameObject> fuels;
 		[HideInInspector]
 		public List<GameObject> groundEnemies;
-		public float groundEnemySpawnRateTime;
+		public float groundEnemySpawnRateDist;
 		public float bonusLvTime;
 	}
 		
@@ -70,7 +70,7 @@ public class AirSpawnManager : MonoBehaviour
 	private List<GameObject> enemyList5;
 	private int randEnemy;
 	private GameObject spawnEnemy;
-	private float nextEnemySpawn = 0.0f;
+	private float nextEnemySpawn = 0f;
 	private float enemyRandX;
 	private const float enemyDistX = 60.0f; 
 	private float enemyRandY;
@@ -211,11 +211,6 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetEnemyLists()
 	{
-        /*
-        if (GameManager.Instance.playerObject)
-		{
-			maxEnemyDist = GameManager.Instance.playerObject.transform.position.x;
-		}*/
         maxEnemyDist = GameManager.Instance.defaultPlayerSpawnPos.x;
         enemyList = Resources.LoadAll<GameObject>(ENEMY_PREFAB_PATH);
 		enemyList1 = new List<GameObject>();
@@ -273,7 +268,7 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetGroundEnemyList()
 	{
-        maxEnemyDist = GameManager.Instance.defaultPlayerSpawnPos.x;
+		maxEnemyDist = GameManager.Instance.defaultPlayerSpawnPos.x;
         groundEnemyList = Resources.LoadAll<GameObject>(GROUND_ENEMY_PREFAB_PATH);
 		groundEnemyList1 = new List<GameObject>();
 		groundEnemyList2 = new List<GameObject>();
@@ -645,7 +640,7 @@ public class AirSpawnManager : MonoBehaviour
 			curGroundEnemyDist = GameManager.Instance.playerObject.transform.position.x;
 		}
 
-		if(Time.time > nextGroundEnemySpawn && (curGroundEnemyDist > maxGroundEnemyDist + overlapGroundEnemySize))
+		if(curEnemyDist >= maxGroundEnemyDist)
 		{
 			randGroundEnemy = Random.Range(0, currentLevel.groundEnemies.Count);
 			spawnGroundEnemy = currentLevel.groundEnemies[randGroundEnemy];
@@ -653,11 +648,9 @@ public class AirSpawnManager : MonoBehaviour
 			groundEnemyPrefabName = spawnGroundEnemy.name.ToString();
 			groundEnemySpawnString = GROUND_ENEMY_PREFAB_PATH + "/" + groundEnemyPrefabName;
 
-			nextGroundEnemySpawn = Time.time + currentLevel.groundEnemySpawnRateTime;
-
 			if (GameManager.Instance.playerObject)
 			{
-				groundEnemyRandX = GameManager.Instance.playerObject.transform.position.x + groundEnemyDistX;
+				groundEnemyRandX = curEnemyDist + groundEnemyDistX + currentLevel.groundEnemySpawnRateDist + overlapGroundEnemySize;
 			}
 
 			float randGroundEnemyX = Random.Range(groundEnemyRandX - 10, groundEnemyRandX + 10);
@@ -670,7 +663,7 @@ public class AirSpawnManager : MonoBehaviour
 			theSpawnedItem.transform.rotation = Quaternion.identity;
 			theSpawnedItem.SetActive(true);
 
-			maxGroundEnemyDist = curGroundEnemyDist;
+			maxGroundEnemyDist = curGroundEnemyDist + currentLevel.groundEnemySpawnRateDist;
 		}
 	}
 
@@ -680,8 +673,8 @@ public class AirSpawnManager : MonoBehaviour
 		{
 			curEnemyDist = GameManager.Instance.playerObject.transform.position.x;
 		}
-
-		if(Time.time > nextEnemySpawn && (curEnemyDist > maxEnemyDist + overlapEnemySize))
+	
+		if(curEnemyDist >= maxEnemyDist)
 		{
 			randEnemy = Random.Range(0, currentLevel.enemies.Count);
 			spawnEnemy = currentLevel.enemies[randEnemy];
@@ -689,11 +682,11 @@ public class AirSpawnManager : MonoBehaviour
 			enemyPrefabName = spawnEnemy.name.ToString();
 			enemySpawnString = ENEMY_PREFAB_PATH + "/" + enemyPrefabName;
 
-			nextEnemySpawn = Time.time + currentLevel.enemySpawnRateTime;
+
 
 			if (GameManager.Instance.playerObject)
 			{
-				enemyRandX = GameManager.Instance.playerObject.transform.position.x + enemyDistX;
+				enemyRandX = curEnemyDist + enemyDistX + currentLevel.enemySpawnRateDist + overlapEnemySize;
 			}
 			enemyRandY = Random.Range(GameManager.Instance.minAirplaneHeight + enemyDistY, GameManager.Instance.maxAirplaneHeight - overlapEnemySize);
 			whereToSpawnEnemy = new Vector3(enemyRandX, enemyRandY, 0);
@@ -704,7 +697,7 @@ public class AirSpawnManager : MonoBehaviour
 			theSpawnedItem.transform.rotation = Quaternion.identity;
 			theSpawnedItem.SetActive(true);
 
-			maxEnemyDist = curEnemyDist;
+			maxEnemyDist = curEnemyDist + currentLevel.enemySpawnRateDist;
 		}
 	}
 
@@ -715,7 +708,7 @@ public class AirSpawnManager : MonoBehaviour
 			curBuffDist = GameManager.Instance.playerObject.transform.position.x;
 		}
 
-		if(Time.time > nextBuffSpawn && (curBuffDist > maxBuffDist + overlapBuffSize))
+		if(curEnemyDist >= maxBuffDist)
 		{
 			float fuelOrBuff = Random.Range(0, 100);
 
@@ -735,12 +728,10 @@ public class AirSpawnManager : MonoBehaviour
 				buffPrefabName = spawnBuff.name.ToString();
 				buffSpawnString = BUFF_PREFAB_PATH + "/" + buffPrefabName;
 			}
-
-			nextBuffSpawn = Time.time + currentLevel.buffSpawnRateTime;
-				
+								
 			if (GameManager.Instance.playerObject)
 			{
-				buffRandX = GameManager.Instance.playerObject.transform.position.x + buffDistX;
+				buffRandX = curEnemyDist + buffDistX + currentLevel.buffSpawnRateDist + overlapBuffSize;
 			}
 			buffRandY = Random.Range(GameManager.Instance.minAirplaneHeight + buffDistY, GameManager.Instance.maxAirplaneHeight - overlapBuffSize);
 			whereToSpawnBuff = new Vector3(buffRandX, buffRandY, 0);
@@ -751,7 +742,7 @@ public class AirSpawnManager : MonoBehaviour
 			theSpawnedItem.transform.rotation = Quaternion.identity;
 			theSpawnedItem.SetActive(true);
 
-			maxBuffDist = curBuffDist;
+			maxBuffDist = curBuffDist + currentLevel.buffSpawnRateDist;
 		}
 	}
 }

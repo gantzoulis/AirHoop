@@ -649,81 +649,83 @@ MonoBehaviour:
     - {fileID: 1322139870062798, guid: dc3e5ad531239664ca5a594a1f7e3b85, type: 2}
     - {fileID: 1326283043761592, guid: 6c461cd3d9164af4aa097305652a6441, type: 2}
     - {fileID: 1231844535307106, guid: 5733cee7f12694547a034cdf101d0258, type: 2}
-    enemySpawnRateTime: 5
+    enemySpawnRateDist: 50
     buffs: []
-    buffSpawnRateTime: 8
+    buffSpawnRateDist: 30
     fuelChance: 30
     fuels: []
     groundEnemies: []
-    groundEnemySpawnRateTime: 7
-    bonusLvTime: 0
+    groundEnemySpawnRateDist: 40
+    bonusLvTime: 8
   - levelName: Level 2
     enemies:
     - {fileID: 1103414053835306, guid: 02db2144ff99bb84db7f31be83eb05f2, type: 2}
     - {fileID: 1322139870062798, guid: b058e42833d7297409e866270d393229, type: 2}
     - {fileID: 1326283043761592, guid: 8c1fa997551da0347ac432551865f82f, type: 2}
     - {fileID: 1231844535307106, guid: a82f834e73532c74796590768f1da235, type: 2}
-    enemySpawnRateTime: 4
+    enemySpawnRateDist: 40
     buffs: []
-    buffSpawnRateTime: 8
+    buffSpawnRateDist: 35
     fuelChance: 30
     fuels: []
     groundEnemies: []
-    groundEnemySpawnRateTime: 6
+    groundEnemySpawnRateDist: 35
     bonusLvTime: 10
   - levelName: Level 3
     enemies: []
-    enemySpawnRateTime: 3
+    enemySpawnRateDist: 30
     buffs: []
-    buffSpawnRateTime: 12
+    buffSpawnRateDist: 40
     fuelChance: 30
     fuels: []
     groundEnemies: []
-    groundEnemySpawnRateTime: 5
+    groundEnemySpawnRateDist: 35
     bonusLvTime: 10
   - levelName: Level 4
     enemies: []
-    enemySpawnRateTime: 2
+    enemySpawnRateDist: 20
     buffs: []
-    buffSpawnRateTime: 12
+    buffSpawnRateDist: 50
     fuelChance: 30
     fuels: []
     groundEnemies: []
-    groundEnemySpawnRateTime: 4
+    groundEnemySpawnRateDist: 30
     bonusLvTime: 10
   - levelName: Level 5
     enemies: []
-    enemySpawnRateTime: 1
+    enemySpawnRateDist: 10
     buffs: []
-    buffSpawnRateTime: 15
+    buffSpawnRateDist: 50
     fuelChance: 30
     fuels: []
     groundEnemies: []
-    groundEnemySpawnRateTime: 3
+    groundEnemySpawnRateDist: 25
     bonusLvTime: 10
   currentLevel:
     levelName: 
     enemies: []
-    enemySpawnRateTime: 0
+    enemySpawnRateDist: 0
     buffs: []
-    buffSpawnRateTime: 0
+    buffSpawnRateDist: 0
     fuelChance: 0
     fuels: []
     groundEnemies: []
-    groundEnemySpawnRateTime: 0
+    groundEnemySpawnRateDist: 0
     bonusLvTime: 0
   coundDownSpecialTime: 0
   checkedLv:
     levelName: 
     enemies: []
-    enemySpawnRateTime: 0
+    enemySpawnRateDist: 0
     buffs: []
-    buffSpawnRateTime: 0
+    buffSpawnRateDist: 0
     fuelChance: 0
     fuels: []
     groundEnemies: []
-    groundEnemySpawnRateTime: 0
+    groundEnemySpawnRateDist: 0
     bonusLvTime: 0
+  enemyList: []
+  enemyList1: []
   specialLvText: {fileID: 417012076}
 --- !u!1 &417012076
 GameObject:
