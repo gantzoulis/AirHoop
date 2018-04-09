@@ -7,7 +7,7 @@ public class Cloud : MonoBehaviour
 	
 	[SerializeField] private float minSpeed = 0.0f;
 	[SerializeField] private float maxSpeed = 2.0f;
-	[SerializeField] private float destroyTime = 10.0f;
+	[SerializeField] private float destroyTime = 20.0f;
 	private float randSpeed;
 
 	void Start()

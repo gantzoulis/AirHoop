@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     public bool playerIsActive = true;
     public Vector3 playerDeathPosition;
-    public Quaternion playerDeathRotation;
+	public Quaternion playerDeathRotation;
 
     public float playerRespawnXoffset;
     public float playerRespawnYoffset;

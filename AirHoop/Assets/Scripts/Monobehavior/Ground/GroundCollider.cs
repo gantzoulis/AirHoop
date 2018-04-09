@@ -9,6 +9,8 @@ public class GroundCollider : MonoBehaviour
 		if(other.tag == GameManager.Instance.playerColliderName)
 		{
             other.gameObject.transform.parent.gameObject.GetComponent<Aircraft_motor>().DeathEvent();
+			other.gameObject.transform.parent.gameObject.GetComponent<Aircraft_motor>().aircraftRotation 
+			= other.gameObject.transform.parent.gameObject.GetComponent<Aircraft_motor>().defaultQuaternion;
         }
 	}
 }

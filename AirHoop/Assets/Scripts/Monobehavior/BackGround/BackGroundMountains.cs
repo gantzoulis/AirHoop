@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BackGroundMountains : MonoBehaviour 
 {
-	[SerializeField] float destroyTime = 10.0f;
+	[SerializeField] float destroyTime = 20.0f;
 
 	void Start()
 	{

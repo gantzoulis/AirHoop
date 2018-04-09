@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ground : MonoBehaviour 
 {
 
-	[SerializeField] float destroyTime = 20.0f;
+	[SerializeField] float destroyTime = 40.0f;
 
 	void Start()
 	{

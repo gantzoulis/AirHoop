@@ -5,7 +5,7 @@ using UnityEngine;
 public class Aircraft_motor : MonoBehaviour 
 {
 	public Aircraft aircraft;
-	private Quaternion aircraftRotation;
+	public Quaternion aircraftRotation;
 	[SerializeField]
 	private GameObject propeler;
     [SerializeField]
@@ -31,8 +31,7 @@ public class Aircraft_motor : MonoBehaviour
     private Color flashToColor;
 
     private Vector3 defaultSpawnPosition;
-    [SerializeField]
-    private Quaternion defaultQuaternion;
+    public Quaternion defaultQuaternion;
 
 
     public bool useFuel = true;
@@ -184,6 +183,7 @@ public class Aircraft_motor : MonoBehaviour
                 GameManager.Instance.playerIsActive = false;
                 GameManager.Instance.playerDeathPosition = this.gameObject.transform.position;
                 GameManager.Instance.playerDeathRotation = defaultQuaternion;
+				aircraftRotation = defaultQuaternion;
             }
             else
             {
