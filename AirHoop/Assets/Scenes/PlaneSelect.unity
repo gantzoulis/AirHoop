@@ -243,31 +243,31 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4177771367199042, guid: 582b94965265914468db993df89f42f9, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 11.58
+      value: 11.67485
       objectReference: {fileID: 0}
     - target: {fileID: 4177771367199042, guid: 582b94965265914468db993df89f42f9, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.94
+      value: -0.89005977
       objectReference: {fileID: 0}
     - target: {fileID: 4177771367199042, guid: 582b94965265914468db993df89f42f9, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.0519374
+      value: 0.01238513
       objectReference: {fileID: 0}
     - target: {fileID: 4177771367199042, guid: 582b94965265914468db993df89f42f9, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.06649661
+      value: -0.0549751
       objectReference: {fileID: 0}
     - target: {fileID: 4177771367199042, guid: 582b94965265914468db993df89f42f9, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.9761192
+      value: 0.9849731
       objectReference: {fileID: 0}
     - target: {fileID: 4177771367199042, guid: 582b94965265914468db993df89f42f9, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.102352746
+      value: 0.13124454
       objectReference: {fileID: 0}
     - target: {fileID: 4177771367199042, guid: 582b94965265914468db993df89f42f9, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.1797036
+      value: -0.09788092
       objectReference: {fileID: 0}
     - target: {fileID: 4177771367199042, guid: 582b94965265914468db993df89f42f9, type: 2}
       propertyPath: m_RootOrder
@@ -698,12 +698,12 @@ MonoBehaviour:
   - AirPlanePrefab: {fileID: 80888892}
     aircraft: {fileID: 114516235470724678, guid: ad3f129293bbf3644914b7c44d8208b1,
       type: 2}
-    playerOwned: 0
+    playerOwned: 1
     airPlaneCost: 50000
   - AirPlanePrefab: {fileID: 42966979}
     aircraft: {fileID: 114843877549600012, guid: ad3f129293bbf3644914b7c44d8208b1,
       type: 2}
-    playerOwned: 0
+    playerOwned: 1
     airPlaneCost: 150000
   currentAPselection: 0
   nextAPselection: 0
@@ -844,6 +844,10 @@ Prefab:
     - target: {fileID: 4876923284907202, guid: afdd23339200fbd46a0ed330579c6db7, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355734417412918, guid: afdd23339200fbd46a0ed330579c6db7, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afdd23339200fbd46a0ed330579c6db7, type: 2}
@@ -996,6 +1000,10 @@ Prefab:
     - target: {fileID: 4293041677507244, guid: fba1605daa1e46640bfdadd6db145687, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597354493550278, guid: fba1605daa1e46640bfdadd6db145687, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fba1605daa1e46640bfdadd6db145687, type: 2}

@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnPlayer()
     {
-        GameObject playerAirplane =  Instantiate(choosenAircraft.model[0], defaultPlayerSpawnPos, Quaternion.identity);
+        GameObject playerAirplane =  Instantiate(choosenAircraft.model[0], defaultPlayerSpawnPos, Quaternion.Euler(0,0,0));
         Camera.main.GetComponent<MultipleTargetCamera>().targets.Add(playerAirplane.transform);
         playerObject = playerAirplane;
     }

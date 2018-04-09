@@ -39,6 +39,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
     {
         currentAPselection = 0;
         airplanePrefabs[currentAPselection].AirPlanePrefab.GetComponent<Animator>().SetTrigger("PlayAnimation");
+        GameManager.Instance.choosenAircraft = airplanePrefabs[currentAPselection].aircraft;
         if (airplanePrefabs[currentAPselection].playerOwned)
         {
             planeSelect.SetActive(true);
@@ -82,6 +83,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
             costPaneText.GetComponent<Text>().text = airplanePrefabs[nextAPselection].airPlaneCost.ToString();
         }
         airplanePrefabs[currentAPselection].AirPlanePrefab.GetComponent<Animator>().SetTrigger("PlayAnimationReverse");
+        GameManager.Instance.choosenAircraft = airplanePrefabs[nextAPselection].aircraft;
         currentAPselection = nextAPselection;
     }
 
@@ -103,6 +105,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
             costPane.SetActive(true);
             costPaneText.GetComponent<Text>().text = airplanePrefabs[prevAPselection].airPlaneCost.ToString();
         }
+        GameManager.Instance.choosenAircraft = airplanePrefabs[prevAPselection].aircraft;
         currentAPselection = prevAPselection;
     }
 

@@ -18,13 +18,13 @@ public class FuelConsumption : MonoBehaviour
 	void Start ()
     {
         //GetPlayerObject();
-        Debug.Log(playerFound);
+        //Debug.Log(playerFound);
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        Debug.Log(playerFound);
+        //Debug.Log(playerFound);
         if (!playerFound)
         {
             GetPlayerPlaneObject();
