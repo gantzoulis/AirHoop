@@ -13,8 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aircrafts:
   - {fileID: 114843877549600012}
-  - {fileID: 114244265446975688}
---- !u!114 &114244265446975688
+  - {fileID: 114516235470724678}
+  - {fileID: 114768446314750000}
+--- !u!114 &114516235470724678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -23,18 +24,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8e426cf5a6de9649bfe5309b6a35da0, type: 3}
-  m_Name: Spitfire 2
+  m_Name: Toy Plane
   m_EditorClassIdentifier: 
-  aircraftName: Spitfire 2
+  aircraftName: Toy Plane
   model:
-  - {fileID: 1715266022095654, guid: 32af5317fa630254e9ba45e9c58f4dc4, type: 2}
-  totalFuel: 120
+  - {fileID: 1597354493550278, guid: fba1605daa1e46640bfdadd6db145687, type: 2}
+  totalFuel: 80
   fuel: 0
-  manufactureSpeed: 12
+  manufactureSpeed: 8
   speed: 0
   maneuver: 0
-  manufactureManeuver: 0.9
-  hash: 243217605
+  manufactureManeuver: 0.6
+  hash: 2020660116
+--- !u!114 &114768446314750000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e426cf5a6de9649bfe5309b6a35da0, type: 3}
+  m_Name: Edge 540 S9
+  m_EditorClassIdentifier: 
+  aircraftName: Edge 540 S9
+  model:
+  - {fileID: 1875529169763390, guid: 582b94965265914468db993df89f42f9, type: 2}
+  totalFuel: 90
+  fuel: 0
+  manufactureSpeed: 9
+  speed: 0
+  maneuver: 0
+  manufactureManeuver: 0.7
+  hash: 2109959139
 --- !u!114 &114843877549600012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,7 +72,7 @@ MonoBehaviour:
   model:
   - {fileID: 1385582216100906, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
   totalFuel: 100
-  fuel: 98
+  fuel: 100
   manufactureSpeed: 10
   speed: 10
   maneuver: 0.8

@@ -673,6 +673,7 @@ public class AirSpawnManager : MonoBehaviour
 		{
 			curEnemyDist = GameManager.Instance.playerObject.transform.position.x;
 		}
+      
 	
 		if(curEnemyDist >= maxEnemyDist)
 		{
