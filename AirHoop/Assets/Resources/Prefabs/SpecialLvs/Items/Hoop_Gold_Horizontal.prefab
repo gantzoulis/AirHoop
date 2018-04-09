@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4521012902229438}
   - component: {fileID: 65032243977380878}
+  - component: {fileID: 114526478933534876}
   m_Layer: 0
   m_Name: PointCollider
   m_TagString: Untagged
@@ -85,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549060023439988}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 27.24, y: 0, z: 0}
+  m_LocalPosition: {x: 45.711067, y: 25.62278, z: 40.17217}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4377993416874804}
@@ -227,6 +228,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114526478933534876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1063910541955540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36643a7986fd0841895cc915e87c030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointScore: 0
 --- !u!114 &114577947739595010
 MonoBehaviour:
   m_ObjectHideFlags: 1

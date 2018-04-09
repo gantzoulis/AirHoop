@@ -44,7 +44,7 @@ public class AirSpawnManager : MonoBehaviour
 	private string groundEnemySpawnString;
 
 	private const string SPECIAL_LV_PREFAB_PATH = "Prefabs/SpecialLvs";
-	private float specialLvDistX = 30.0f;
+	private float specialLvDistX = 40.0f;
 	private bool stopSpawning = false;
 	private bool spawnSpecialLv = true;
 	private float specialTime = 10.0f;
@@ -72,7 +72,7 @@ public class AirSpawnManager : MonoBehaviour
 	private GameObject spawnEnemy;
 	private float nextEnemySpawn = 0f;
 	private float enemyRandX;
-	private const float enemyDistX = 60.0f; 
+	private const float enemyDistX = 40.0f; 
 	private float enemyRandY;
 	private const float enemyDistY = 5.0f;
 	private float maxEnemyDist = 0f;
@@ -96,7 +96,7 @@ public class AirSpawnManager : MonoBehaviour
 	private GameObject spawnGroundEnemy;
 	private float nextGroundEnemySpawn = 0.0f;
 	private float groundEnemyRandX;
-	private const float groundEnemyDistX = 60.0f; 
+	private const float groundEnemyDistX = 30.0f; 
 	private float maxGroundEnemyDist = 0f;
 	private float curGroundEnemyDist;
 	private float overlapGroundEnemySize = 5.0f;
@@ -465,9 +465,9 @@ public class AirSpawnManager : MonoBehaviour
 
 	//Checking
 	private void IntermidiateLv()
-	{
+	{		
 		if (currentLevel.levelName == "Level 2")
-		{
+		{				
 			randSpecialLv = Random.Range(0, specialLvList2.Count);
 			spawnSpecialLvGO = specialLvList2[randSpecialLv];
 
@@ -475,6 +475,16 @@ public class AirSpawnManager : MonoBehaviour
 			{
 				specialLvText.SetActive(true);
 				specialTime = currentLevel.bonusLvTime;
+
+				GameObject[] deactivateFlyEnemies = GameObject.FindGameObjectsWithTag("FlyEnemy");
+
+				for (int i = 0; i < deactivateFlyEnemies.Length; i++)
+				{
+					if (deactivateFlyEnemies[i].transform.position.x - GameManager.Instance.playerObject.transform.position.x > 30.0f)
+					{
+						deactivateFlyEnemies[i].SetActive(false);
+					}
+				}
 
 				if(startCountingSpecialTime)
 				{
@@ -519,6 +529,16 @@ public class AirSpawnManager : MonoBehaviour
 				specialLvText.SetActive(true);
 				specialTime = currentLevel.bonusLvTime;
 
+				GameObject[] deactivateFlyEnemies = GameObject.FindGameObjectsWithTag("FlyEnemy");
+
+				for (int i = 0; i < deactivateFlyEnemies.Length; i++)
+				{
+					if (deactivateFlyEnemies[i].transform.position.x - GameManager.Instance.playerObject.transform.position.x > 30.0f)
+					{
+						deactivateFlyEnemies[i].SetActive(false);
+					}
+				}
+
 				if(startCountingSpecialTime)
 				{
 					currentTargetSpecialTime = Time.time + specialTime;
@@ -559,6 +579,16 @@ public class AirSpawnManager : MonoBehaviour
 			{
 				specialLvText.SetActive(true);
 				specialTime = currentLevel.bonusLvTime;
+
+				GameObject[] deactivateFlyEnemies = GameObject.FindGameObjectsWithTag("FlyEnemy");
+
+				for (int i = 0; i < deactivateFlyEnemies.Length; i++)
+				{
+					if (deactivateFlyEnemies[i].transform.position.x - GameManager.Instance.playerObject.transform.position.x > 30.0f)
+					{
+						deactivateFlyEnemies[i].SetActive(false);
+					}
+				}
 
 				if(startCountingSpecialTime)
 				{
@@ -601,6 +631,16 @@ public class AirSpawnManager : MonoBehaviour
 				specialLvText.SetActive(true);
 				specialTime = currentLevel.bonusLvTime;
 
+				GameObject[] deactivateFlyEnemies = GameObject.FindGameObjectsWithTag("FlyEnemy");
+
+				for (int i = 0; i < deactivateFlyEnemies.Length; i++)
+				{
+					if (deactivateFlyEnemies[i].transform.position.x - GameManager.Instance.playerObject.transform.position.x > 30.0f)
+					{
+						deactivateFlyEnemies[i].SetActive(false);
+					}
+				}
+
 				if(startCountingSpecialTime)
 				{
 					currentTargetSpecialTime = Time.time + specialTime;
@@ -639,6 +679,10 @@ public class AirSpawnManager : MonoBehaviour
 		{
 			curGroundEnemyDist = GameManager.Instance.playerObject.transform.position.x;
 		}
+		else
+		{
+			return;
+		}
 
 		if(curEnemyDist >= maxGroundEnemyDist)
 		{
@@ -673,6 +717,10 @@ public class AirSpawnManager : MonoBehaviour
 		{
 			curEnemyDist = GameManager.Instance.playerObject.transform.position.x;
 		}
+		else
+		{
+			return;
+		}
 	
 		if(curEnemyDist >= maxEnemyDist)
 		{
@@ -706,6 +754,10 @@ public class AirSpawnManager : MonoBehaviour
 		if (GameManager.Instance.playerObject)
 		{
 			curBuffDist = GameManager.Instance.playerObject.transform.position.x;
+		}
+		else
+		{
+			return;
 		}
 
 		if(curEnemyDist >= maxBuffDist)

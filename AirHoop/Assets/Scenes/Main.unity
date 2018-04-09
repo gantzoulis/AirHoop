@@ -170,7 +170,7 @@ Transform:
   - {fileID: 895363975}
   - {fileID: 832222489}
   m_Father: {fileID: 1974443879}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &169017310
 GameObject:
@@ -670,7 +670,7 @@ MonoBehaviour:
     fuels: []
     groundEnemies: []
     groundEnemySpawnRateDist: 35
-    bonusLvTime: 10
+    bonusLvTime: 15
   - levelName: Level 3
     enemies: []
     enemySpawnRateDist: 30
@@ -680,7 +680,7 @@ MonoBehaviour:
     fuels: []
     groundEnemies: []
     groundEnemySpawnRateDist: 35
-    bonusLvTime: 10
+    bonusLvTime: 15
   - levelName: Level 4
     enemies: []
     enemySpawnRateDist: 20
@@ -690,7 +690,7 @@ MonoBehaviour:
     fuels: []
     groundEnemies: []
     groundEnemySpawnRateDist: 30
-    bonusLvTime: 10
+    bonusLvTime: 15
   - levelName: Level 5
     enemies: []
     enemySpawnRateDist: 10
@@ -700,7 +700,7 @@ MonoBehaviour:
     fuels: []
     groundEnemies: []
     groundEnemySpawnRateDist: 25
-    bonusLvTime: 10
+    bonusLvTime: 15
   currentLevel:
     levelName: 
     enemies: []
@@ -1534,7 +1534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &978923438
 Transform:
   m_ObjectHideFlags: 0
@@ -2100,34 +2100,6 @@ MonoBehaviour:
   cloudList: []
   backMountainList: []
   frontMountainList: []
---- !u!1 &1360453514
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1360453515}
-  m_Layer: 0
-  m_Name: Trees
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1360453515
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1360453514}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1974443879}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1430569421
 GameObject:
   m_ObjectHideFlags: 0
@@ -2927,7 +2899,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2021190842}
-  - {fileID: 1360453515}
   - {fileID: 77015778}
   m_Father: {fileID: 0}
   m_RootOrder: 7
