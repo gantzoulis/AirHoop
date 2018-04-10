@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
         {
             if (gameStart)
             {
-                Debug.Log("Game Start- Spawning player");
+                //Debug.Log("Game Start- Spawning player");
                 SpawnPlayer();
                 gameStartedOnce = true;
             }

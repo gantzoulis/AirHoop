@@ -50,10 +50,10 @@ public class FuelConsumption : MonoBehaviour
     {
         if (playerPlane = GameObject.FindGameObjectWithTag("Player"))
         {
-            Debug.Log("Player found " + playerPlane.name);
+            //Debug.Log("Player found " + playerPlane.name);
             if (playerMotor = playerPlane.GetComponent<Aircraft_motor>())
             {
-                Debug.Log("Player Motor found " + playerMotor.name);
+                //Debug.Log("Player Motor found " + playerMotor.name);
                 fuelImage = GetComponent<Image>();
                 fullFuel = playerMotor.aircraft.fuel;
                 playerFound = true;

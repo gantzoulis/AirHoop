@@ -107,7 +107,7 @@ public class Aircraft_motor : MonoBehaviour
 		{
             if (!planeIsStalling)
             {
-                Debug.Log("Move Hor " + "Aircraft Spead: " + aircraft.speed);
+                //Debug.Log("Move Hor " + "Aircraft Spead: " + aircraft.speed);
                 gameObject.transform.Translate(Vector3.right * Time.deltaTime * aircraft.speed);
             }
             
@@ -135,7 +135,8 @@ public class Aircraft_motor : MonoBehaviour
 	{
         if (propOn)
         {
-            propeler.transform.Rotate(0, propelerSpeed * Time.deltaTime, 0);
+            //propeler.transform.Rotate(0, propelerSpeed * Time.deltaTime, 0);
+            propeler.transform.Rotate(propelerSpeed * Time.deltaTime, 0, 0, Space.World);
         }
       
 	}

@@ -56,7 +56,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
         nextAPselection = currentAPselection + 1;
         prevAPselection = currentAPselection;
         leftButton.GetComponent<Button>().interactable = false;
-        Debug.Log("Plane Array length " + airplanePrefabs.Length);
+        //Debug.Log("Plane Array length " + airplanePrefabs.Length);
 	}
 	
 	// Update is called once per frame

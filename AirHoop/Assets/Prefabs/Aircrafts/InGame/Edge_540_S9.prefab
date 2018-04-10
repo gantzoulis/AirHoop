@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 114701692919287370}
   - component: {fileID: 114523474475305944}
   - component: {fileID: 54969982731519082}
+  - component: {fileID: 82798588500103166}
   m_Layer: 0
   m_Name: Edge_540_S9
   m_TagString: Player
@@ -1066,6 +1067,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.7, z: 1}
   m_Center: {x: -0.02, y: 0.18, z: -0.08}
+--- !u!82 &82798588500103166
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1875529169763390}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: dc8747f9f41147144aec544dcfa83cd2, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95020982396970682
 Animator:
   serializedVersion: 3
@@ -1270,7 +1351,7 @@ MonoBehaviour:
   maneuverSmokeColor: {r: 0.06779843, g: 0.41911763, b: 0.11383332, a: 1}
   outofFuelSmokeColor: {r: 0.21323532, g: 0.20539579, b: 0.20539579, a: 1}
   playerImmune: 0
-  planeModel: {fileID: 1551509973573588, guid: f923c73d124d03e498d310fb367fd4ec, type: 2}
+  planeModel: {fileID: 1559028046036614}
   normalColor: {r: 1, g: 1, b: 1, a: 0}
   flashToColor: {r: 1, g: 0.19615054, b: 0.07352942, a: 0}
   defaultQuaternion: {x: 0, y: 0, z: 0, w: 0}
