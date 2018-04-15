@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour 
 {
 
-	private static GameManager instance;
-
+    #region Singleton Definition
+    private static GameManager instance;
 	public static GameManager Instance
 	{
 		get 
@@ -19,8 +19,9 @@ public class GameManager : MonoBehaviour
 			return instance;
 		}
 	}
-		
-	public Aircraft choosenAircraft;
+    #endregion
+
+    public Aircraft choosenAircraft;
 	public float time;
     public GameObject playerObject;
     public bool gameStart;
