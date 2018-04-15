@@ -6,7 +6,8 @@ public class Aircraft : ScriptableObject
 {
 	public string aircraftName;
 	public GameObject[] model;
-	public float totalFuel;
+    public GameObject[] planeSelectModel;
+    public float totalFuel;
 	public float fuel;
 	public float manufactureSpeed;
 	public float speed;

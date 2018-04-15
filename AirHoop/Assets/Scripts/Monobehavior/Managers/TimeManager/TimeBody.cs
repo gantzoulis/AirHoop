@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class TimeBody : MonoBehaviour
 {
-
-
     public bool isRewinding = false;
     [SerializeField]
     private GameObject timelapseCounter;

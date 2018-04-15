@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9edf0789e0deef94f90c841f7e38e306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  airplaneList: {fileID: 11400000, guid: ad3f129293bbf3644914b7c44d8208b1, type: 2}
   _playerName: 
   _playerCash: 0
   _playerScore: 0
@@ -169,3 +170,5 @@ MonoBehaviour:
   playerName: 
   playerCash: 0
   playerScore: 0
+  choosenAircraft: {fileID: 0}
+  airplaneList: []

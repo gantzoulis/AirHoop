@@ -5,6 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class SceneMainManager : MonoBehaviour
 {
+    #region Singleton Definition
+    private static SceneMainManager instance;
+    public static SceneMainManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<SceneMainManager>();
+            }
+            return instance;
+        }
+    }
+    #endregion
     public void LoadGameScene(string gameScene)
     {
         SceneManager.LoadScene(gameScene);

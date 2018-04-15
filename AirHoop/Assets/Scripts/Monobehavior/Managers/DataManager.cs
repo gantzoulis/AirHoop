@@ -28,4 +28,15 @@ public class DataManager : MonoBehaviour
     public int playerCash;
     public int playerScore;
     #endregion
+
+    #region PlaneSelection
+    public Aircraft choosenAircraft;
+    [SerializeField]
+    //private PlayerAirplaneSelection[] airplanePrefabs;
+    public List<PlayerAirplaneSelection> airplaneList = new List<PlayerAirplaneSelection>();
+    #endregion
+
+    #region Game Management
+    public GameObject playerObject;
+    #endregion
 }

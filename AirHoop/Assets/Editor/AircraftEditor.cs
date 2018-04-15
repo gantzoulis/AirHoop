@@ -17,7 +17,8 @@ public class AircraftEditor: Editor
 
 	private SerializedProperty nameProperty;
 	private SerializedProperty modelProperty;
-	private SerializedProperty totalFuelProperty;
+    private SerializedProperty planeSelectModelProperty;
+    private SerializedProperty totalFuelProperty;
 	private SerializedProperty fuelProperty;
 	private SerializedProperty manufactureSpeedProperty;
 	private SerializedProperty speedProperty;
@@ -27,7 +28,8 @@ public class AircraftEditor: Editor
 
 	private const string aircraftPropName = "aircraftName";
 	private const string aircraftPropModel = "model";
-	private const string aircraftPropTotalFuel = "totalFuel"; 
+    private const string aircraftPropPlaneSelectModel = "planeSelectModel";
+    private const string aircraftPropTotalFuel = "totalFuel"; 
 	private const string aircraftPropFuel = "fuel";
 	private const string aircraftPropManufactureSpeed = "manufactureSpeed";
 	private const string aircraftPropSpeed = "speed";
@@ -47,7 +49,8 @@ public class AircraftEditor: Editor
 
 		nameProperty = serializedObject.FindProperty(aircraftPropName);
 		modelProperty = serializedObject.FindProperty(aircraftPropModel);
-		totalFuelProperty = serializedObject.FindProperty(aircraftPropTotalFuel);
+        planeSelectModelProperty = serializedObject.FindProperty(aircraftPropPlaneSelectModel);
+        totalFuelProperty = serializedObject.FindProperty(aircraftPropTotalFuel);
 		fuelProperty = serializedObject.FindProperty(aircraftPropFuel);
 		manufactureSpeedProperty = serializedObject.FindProperty(aircraftPropManufactureSpeed);
 		speedProperty = serializedObject.FindProperty(aircraftPropSpeed);
@@ -124,7 +127,8 @@ public class AircraftEditor: Editor
 		EditorGUI.indentLevel++;
 		EditorGUILayout.Space();
 		EditorGUILayout.PropertyField(modelProperty, true);
-		EditorGUILayout.PropertyField(totalFuelProperty);
+        EditorGUILayout.PropertyField(planeSelectModelProperty, true);
+        EditorGUILayout.PropertyField(totalFuelProperty);
 		//EditorGUILayout.PropertyField(fuelProperty);
 		EditorGUILayout.PropertyField(manufactureSpeedProperty);
 		//EditorGUILayout.PropertyField(speedProperty);

@@ -271,26 +271,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4177771367199042, guid: 582b94965265914468db993df89f42f9, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 26708537109792166, guid: 582b94965265914468db993df89f42f9,
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 74f4a47fc3b034e2d963491f4e514174, type: 2}
+    - target: {fileID: 1875529169763390, guid: 582b94965265914468db993df89f42f9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 582b94965265914468db993df89f42f9, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &42966979 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1355734417412918, guid: afdd23339200fbd46a0ed330579c6db7,
-    type: 2}
-  m_PrefabInternal: {fileID: 785329733}
---- !u!1 &80888892 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1597354493550278, guid: fba1605daa1e46640bfdadd6db145687,
-    type: 2}
-  m_PrefabInternal: {fileID: 903452911}
 --- !u!1 &230845570
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +413,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &297121566
 Prefab:
@@ -458,7 +452,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4139838276658774, guid: b1838ca224d91de4a8f35ecee88058d4, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114251071186711826, guid: b1838ca224d91de4a8f35ecee88058d4,
         type: 2}
@@ -591,7 +585,7 @@ GameObject:
   - component: {fileID: 640167559}
   - component: {fileID: 640167563}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI_AirplaneSelect_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -671,7 +665,7 @@ RectTransform:
   - {fileID: 379777186}
   - {fileID: 2020482451}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -689,27 +683,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d80e6e474df3c48b30d54c452f8e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  airplaneSpawnPos: {fileID: 1807797254}
   airplanePrefabs:
-  - AirPlanePrefab: {fileID: 1242889270}
-    aircraft: {fileID: 114768446314750000, guid: ad3f129293bbf3644914b7c44d8208b1,
+  - aircraft: {fileID: 114768446314750000, guid: ad3f129293bbf3644914b7c44d8208b1,
       type: 2}
     playerOwned: 1
     airPlaneCost: 0
-  - AirPlanePrefab: {fileID: 80888892}
-    aircraft: {fileID: 114516235470724678, guid: ad3f129293bbf3644914b7c44d8208b1,
+  - aircraft: {fileID: 114516235470724678, guid: ad3f129293bbf3644914b7c44d8208b1,
       type: 2}
     playerOwned: 1
     airPlaneCost: 50000
-  - AirPlanePrefab: {fileID: 42966979}
-    aircraft: {fileID: 114843877549600012, guid: ad3f129293bbf3644914b7c44d8208b1,
+  - aircraft: {fileID: 114843877549600012, guid: ad3f129293bbf3644914b7c44d8208b1,
       type: 2}
     playerOwned: 1
     airPlaneCost: 150000
   currentAPselection: 0
   nextAPselection: 0
   prevAPselection: 0
-  movePlaneLeft: {fileID: 7400000, guid: c171b6319dce1774f8f48dd7cf010312, type: 2}
-  movePlaneRight: {fileID: 7400000, guid: 5aacc645ad1f4ca4cbd14dbbdda71739, type: 2}
   leftButton: {fileID: 22605532}
   rightButton: {fileID: 1489859634}
   planeSelect: {fileID: 1747327015}
@@ -843,11 +833,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4876923284907202, guid: afdd23339200fbd46a0ed330579c6db7, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1355734417412918, guid: afdd23339200fbd46a0ed330579c6db7, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afdd23339200fbd46a0ed330579c6db7, type: 2}
@@ -999,20 +989,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4293041677507244, guid: fba1605daa1e46640bfdadd6db145687, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1597354493550278, guid: fba1605daa1e46640bfdadd6db145687, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fba1605daa1e46640bfdadd6db145687, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1242889270 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1875529169763390, guid: 582b94965265914468db993df89f42f9,
-    type: 2}
-  m_PrefabInternal: {fileID: 33318435}
 --- !u!1 &1454711163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,6 +1394,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1799006881}
+--- !u!1 &1807797253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1807797254}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1807797254
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1807797253}
+  m_LocalRotation: {x: -0.0549751, y: 0.9849731, z: 0.13124454, w: -0.09788092}
+  m_LocalPosition: {x: 11.67485, y: -0.89005977, z: 0.01238513}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2020482450
 GameObject:
   m_ObjectHideFlags: 0

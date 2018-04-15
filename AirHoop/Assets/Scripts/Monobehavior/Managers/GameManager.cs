@@ -21,9 +21,9 @@ public class GameManager : MonoBehaviour
 	}
     #endregion
 
-    public Aircraft choosenAircraft;
+    public Aircraft choosenAircraft;  //Moved
 	public float time;
-    public GameObject playerObject;
+    public GameObject playerObject;  //
     public bool gameStart;
     private bool gameStartedOnce;
     public bool gameOver = false;
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         //Added a gameStart bool to check if GameManager will spawn the player Correctrly.
         if (gameStart)
         {
-            SpawnPlayer();
+            //SpawnPlayer();
         }
     }
 
@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
             if (gameStart)
             {
                 //Debug.Log("Game Start- Spawning player");
-                SpawnPlayer();
+                //SpawnPlayer();
                 gameStartedOnce = true;
             }
         }
