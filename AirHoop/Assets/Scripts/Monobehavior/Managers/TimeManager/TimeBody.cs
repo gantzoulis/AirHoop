@@ -13,15 +13,22 @@ public class TimeBody : MonoBehaviour
 
     List<PointInTime> pointsInTime;
     private Image timeImage;
-    
-    // Use this for initialization
-	void Start ()
+
+    private void Awake()
     {
         pointsInTime = new List<PointInTime>();
+        /*
         if (this.gameObject.tag == "Player")
         {
             timeImage = timelapseCounter.GetComponent<Image>();
         }
+        */
+    }
+
+    // Use this for initialization
+    void Start ()
+    {
+        
 	}
 	
 	// Update is called once per frame
@@ -52,7 +59,7 @@ public class TimeBody : MonoBehaviour
 
     void Record()
     {
-        if (pointsInTime.Count > Mathf.Round(GameManager.Instance.maxTimeLapse / Time.fixedDeltaTime))
+        if (pointsInTime.Count > Mathf.Round(DataManager.Instance.maxTimeLapseDuration / Time.fixedDeltaTime))
         {
             pointsInTime.RemoveAt(pointsInTime.Count - 1);
         }
@@ -62,13 +69,13 @@ public class TimeBody : MonoBehaviour
 
     void Rewind()
     {
-        if (pointsInTime.Count > 0 && GameManager.Instance.playerTimeLapseFuel >= 0.03)
+        if (pointsInTime.Count > 0 && DataManager.Instance.playerTimeLapseFuel >= 0.03)
         {
             PointInTime pointInTime = pointsInTime[0];
             transform.position = pointInTime.position;
             transform.rotation = pointInTime.rotation;
             pointsInTime.RemoveAt(0);
-            GameManager.Instance.playerTimeLapseFuel -= 0.2f * Time.deltaTime;
+            DataManager.Instance.playerTimeLapseFuel -= 0.2f * Time.deltaTime;
         }
         else
         {

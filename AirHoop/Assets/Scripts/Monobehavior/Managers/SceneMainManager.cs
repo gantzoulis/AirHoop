@@ -23,4 +23,10 @@ public class SceneMainManager : MonoBehaviour
     {
         SceneManager.LoadScene(gameScene);
     }
+
+    public void RestartGame(string gameScene)
+    {
+        DataManager.Instance.gameOver = false;
+        SceneManager.LoadScene(gameScene);
+    }
 }

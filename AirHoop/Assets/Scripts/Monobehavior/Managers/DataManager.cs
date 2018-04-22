@@ -38,5 +38,35 @@ public class DataManager : MonoBehaviour
 
     #region Game Management
     public GameObject playerObject;
+    public float distanceRatio = 4.0f;
+    public float maxDistance;
+    public bool gameStart;
+    public bool gameOver;
+    public bool playerIsActive;
+    public int playerLives = 1;
+    [HideInInspector]
+    public string playerColliderName;
+    public GameObject planeExplosionObject;
+    #endregion
+
+    #region TimeLapse Management
+    public float maxTimeLapseDuration = 5f; //in seconds
+    public float playerTimeLapseFuel;
+    public float timeLapseRatio; //Number of TimeFuel per Second up to 100.
+    #endregion
+
+    #region Player Coordinates
+    [HideInInspector]
+    public Vector3 defaultPlayerSpawnPos;
+    public float maxAirplaneHeight = 25.0f;
+    public float minAirplaneHeight = -17.0f;
+    public Vector3 playerDeathPosition;
+    public Quaternion playerDeathRotation;
+    #endregion
+
+    #region Leveling System
+    public List<float> lvUpDistanceList = new List<float>();
+    [HideInInspector]
+    public string reachedLv;
     #endregion
 }

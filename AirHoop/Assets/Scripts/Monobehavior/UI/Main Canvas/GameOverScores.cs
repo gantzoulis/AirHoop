@@ -20,7 +20,7 @@ public class GameOverScores : MonoBehaviour
     {
         float distanceScore = distanceManager.GetComponent<DistanceManager>().maxDistance;
         totalScoreText.GetComponent<Text>().text = totalScoreText.GetComponent<Text>().text + 
-            " " + GameManager.Instance.playerScore.ToString();
+            " " + DataManager.Instance.playerScore.ToString();
         distanceBonusText.GetComponent<Text>().text = distanceBonusText.GetComponent<Text>().text + 
             " " + Mathf.RoundToInt(distanceScore).ToString();
         StartCoroutine(AddScores());
@@ -43,7 +43,7 @@ public class GameOverScores : MonoBehaviour
         yield return new WaitForSeconds(3);
         Debug.Log("Adding your scores");
         int distanceIntScore = Mathf.RoundToInt(distanceManager.GetComponent<DistanceManager>().maxDistance);
-        int newScore = GameManager.Instance.playerScore;
+        int newScore = DataManager.Instance.playerScore;
         int scoreThreshold = newScore + 15;
         while (distanceIntScore >= 0)
         {

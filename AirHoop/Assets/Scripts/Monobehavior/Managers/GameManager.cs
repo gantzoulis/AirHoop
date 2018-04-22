@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player Is Dead");
             Vector3 newPosAfterDeath = 
                 new Vector3(playerDeathPosition.x - playerRespawnXoffset, playerDeathPosition.y + playerRespawnYoffset, 0);
-            StartCoroutine(RespawnPlayer(newPosAfterDeath, playerDeathRotation));
+            //StartCoroutine(RespawnPlayer(newPosAfterDeath, playerDeathRotation));
         }
 
         if (!gameStartedOnce)
@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
     }
 
     
-
+    /*
     public IEnumerator RespawnPlayer(Vector3 spawnPosition, Quaternion spawnRotation)
     {
         playerObject.SetActive(false);
@@ -127,7 +127,10 @@ public class GameManager : MonoBehaviour
         playerObject.SetActive(true);
         StartCoroutine(playerObject.GetComponent<Aircraft_motor>().ExtraLifeFlasher());
     }
+    */
 
+    /*
+     * TOBEDELETED
     public void SpawnPlayer()
     {
         GameObject playerAirplane =  Instantiate(choosenAircraft.model[0], defaultPlayerSpawnPos, Quaternion.Euler(0,0,0));
@@ -135,5 +138,6 @@ public class GameManager : MonoBehaviour
         playerObject = playerAirplane;
     }
    
+    */
 
 }

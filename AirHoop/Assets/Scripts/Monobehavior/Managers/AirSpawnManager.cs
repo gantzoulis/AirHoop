@@ -211,7 +211,7 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetEnemyLists()
 	{
-        maxEnemyDist = GameManager.Instance.defaultPlayerSpawnPos.x;
+        maxEnemyDist = DataManager.Instance.defaultPlayerSpawnPos.x;
         enemyList = Resources.LoadAll<GameObject>(ENEMY_PREFAB_PATH);
 		enemyList1 = new List<GameObject>();
 		enemyList2 = new List<GameObject>();
@@ -268,7 +268,7 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetGroundEnemyList()
 	{
-		maxEnemyDist = GameManager.Instance.defaultPlayerSpawnPos.x;
+		maxEnemyDist = DataManager.Instance.defaultPlayerSpawnPos.x;
         groundEnemyList = Resources.LoadAll<GameObject>(GROUND_ENEMY_PREFAB_PATH);
 		groundEnemyList1 = new List<GameObject>();
 		groundEnemyList2 = new List<GameObject>();
@@ -325,7 +325,7 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetBuffsList()
 	{
-        maxEnemyDist = GameManager.Instance.defaultPlayerSpawnPos.x;
+        maxEnemyDist = DataManager.Instance.defaultPlayerSpawnPos.x;
         buffList = Resources.LoadAll<GameObject>(BUFF_PREFAB_PATH);
 		buffList1 = new List<GameObject>();
 		buffList2 = new List<GameObject>();
@@ -418,35 +418,35 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void CheckAndSetLv()
 	{
-		float distance =  GameManager.Instance.maxDistance;
+		float distance =  DataManager.Instance.maxDistance;
 
-		if (distance >= 0 && distance <= GameManager.Instance.lvUpDistanceList[0])
+		if (distance >= 0 && distance <= DataManager.Instance.lvUpDistanceList[0])
 		{
 			currentLevel = levelList[0];
 			IntermidiateLv();
 		}
-		if (distance > GameManager.Instance.lvUpDistanceList[0] && distance <= GameManager.Instance.lvUpDistanceList[1])
+		if (distance > DataManager.Instance.lvUpDistanceList[0] && distance <= DataManager.Instance.lvUpDistanceList[1])
 		{
 			currentLevel = levelList[1];
 			IntermidiateLv();
 		}
-		if (distance > GameManager.Instance.lvUpDistanceList[1] && distance <= GameManager.Instance.lvUpDistanceList[2])
+		if (distance > DataManager.Instance.lvUpDistanceList[1] && distance <= DataManager.Instance.lvUpDistanceList[2])
 		{
 			currentLevel = levelList[2];
 			IntermidiateLv();
 		}
-		if (distance > GameManager.Instance.lvUpDistanceList[2] && distance <= GameManager.Instance.lvUpDistanceList[3])
+		if (distance > DataManager.Instance.lvUpDistanceList[2] && distance <= DataManager.Instance.lvUpDistanceList[3])
 		{
 			currentLevel = levelList[3];
 			IntermidiateLv();
 		}
-		if (distance > GameManager.Instance.lvUpDistanceList[3] && distance <= GameManager.Instance.lvUpDistanceList[4])
+		if (distance > DataManager.Instance.lvUpDistanceList[3] && distance <= DataManager.Instance.lvUpDistanceList[4])
 		{
 			currentLevel = levelList[4];
 			IntermidiateLv();
 		}
 
-		GameManager.Instance.reachedLv = currentLevel.levelName;
+        DataManager.Instance.reachedLv = currentLevel.levelName;
 	}
 
 	private bool CheckIfLvChanged()
@@ -480,7 +480,7 @@ public class AirSpawnManager : MonoBehaviour
 
 				for (int i = 0; i < deactivateFlyEnemies.Length; i++)
 				{
-					if (deactivateFlyEnemies[i].transform.position.x - GameManager.Instance.playerObject.transform.position.x > 30.0f)
+					if (deactivateFlyEnemies[i].transform.position.x - DataManager.Instance.playerObject.transform.position.x > 30.0f)
 					{
 						deactivateFlyEnemies[i].SetActive(false);
 					}
@@ -504,7 +504,13 @@ public class AirSpawnManager : MonoBehaviour
 					if (spawnSpecialLv)
 					{
 						stopSpawning = true;
-						Instantiate(spawnSpecialLvGO, new Vector3(GameManager.Instance.playerObject.transform.position.x + specialLvDistX, spawnSpecialLvGO.transform.position.y, 0), Quaternion.identity);
+						Instantiate(
+                            spawnSpecialLvGO, 
+                            new Vector3(
+                                DataManager.Instance.playerObject.transform.position.x + specialLvDistX,
+                                spawnSpecialLvGO.transform.position.y, 0)
+                                , Quaternion.identity
+                                );
 						spawnSpecialLv = false;
 					}
 				}
@@ -675,9 +681,9 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SpawnGroundEnemyEngine()
 	{
-		if (GameManager.Instance.playerObject)
+		if (DataManager.Instance.playerObject)
 		{
-			curGroundEnemyDist = GameManager.Instance.playerObject.transform.position.x;
+			curGroundEnemyDist = DataManager.Instance.playerObject.transform.position.x;
 		}
 		else
 		{
@@ -692,7 +698,7 @@ public class AirSpawnManager : MonoBehaviour
 			groundEnemyPrefabName = spawnGroundEnemy.name.ToString();
 			groundEnemySpawnString = GROUND_ENEMY_PREFAB_PATH + "/" + groundEnemyPrefabName;
 
-			if (GameManager.Instance.playerObject)
+			if (DataManager.Instance.playerObject)
 			{
 				groundEnemyRandX = curEnemyDist + groundEnemyDistX + currentLevel.groundEnemySpawnRateDist + overlapGroundEnemySize;
 			}
@@ -713,9 +719,9 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SpawnEnemyEngine()
 	{
-		if (GameManager.Instance.playerObject)
+		if (DataManager.Instance.playerObject)
 		{
-			curEnemyDist = GameManager.Instance.playerObject.transform.position.x;
+			curEnemyDist = DataManager.Instance.playerObject.transform.position.x;
 		}
 		else
 		{
@@ -732,11 +738,14 @@ public class AirSpawnManager : MonoBehaviour
 
 
 
-			if (GameManager.Instance.playerObject)
+			if (DataManager.Instance.playerObject)
 			{
 				enemyRandX = curEnemyDist + enemyDistX + currentLevel.enemySpawnRateDist + overlapEnemySize;
 			}
-			enemyRandY = Random.Range(GameManager.Instance.minAirplaneHeight + enemyDistY, GameManager.Instance.maxAirplaneHeight - overlapEnemySize);
+			enemyRandY = Random.Range(
+                DataManager.Instance.minAirplaneHeight + enemyDistY, 
+                DataManager.Instance.maxAirplaneHeight - overlapEnemySize
+                );
 			whereToSpawnEnemy = new Vector3(enemyRandX, enemyRandY, 0);
 
 			var theSpawnedItem = PoolManager.GetPooledObject(enemySpawnString);
@@ -751,9 +760,9 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SpawnBuffEngine()
 	{
-		if (GameManager.Instance.playerObject)
+		if (DataManager.Instance.playerObject)
 		{
-			curBuffDist = GameManager.Instance.playerObject.transform.position.x;
+			curBuffDist = DataManager.Instance.playerObject.transform.position.x;
 		}
 		else
 		{
@@ -781,11 +790,11 @@ public class AirSpawnManager : MonoBehaviour
 				buffSpawnString = BUFF_PREFAB_PATH + "/" + buffPrefabName;
 			}
 								
-			if (GameManager.Instance.playerObject)
+			if (DataManager.Instance.playerObject)
 			{
 				buffRandX = curEnemyDist + buffDistX + currentLevel.buffSpawnRateDist + overlapBuffSize;
 			}
-			buffRandY = Random.Range(GameManager.Instance.minAirplaneHeight + buffDistY, GameManager.Instance.maxAirplaneHeight - overlapBuffSize);
+			buffRandY = Random.Range(DataManager.Instance.minAirplaneHeight + buffDistY, DataManager.Instance.maxAirplaneHeight - overlapBuffSize);
 			whereToSpawnBuff = new Vector3(buffRandX, buffRandY, 0);
 
 			var theSpawnedItem = PoolManager.GetPooledObject(buffSpawnString);

@@ -65,12 +65,11 @@ public class Aircraft_motor : MonoBehaviour
 
     void OnEnable()
 	{
-		aircraft = Object.Instantiate(GameManager.Instance.choosenAircraft);
+		aircraft = Object.Instantiate(DataManager.Instance.choosenAircraft);
         timeMachine = GetComponent<TimeBody>();
         planeAudio = GetComponent<AudioSource>();
         propelerCurrentSpeed = propelerNormalSpeed;
         defaultSpawnPosition = this.gameObject.transform.position;
- 
         defaultQuaternion = this.gameObject.transform.rotation;
 	}
 
@@ -136,19 +135,19 @@ public class Aircraft_motor : MonoBehaviour
         if (propOn)
         {
             //propeler.transform.Rotate(0, propelerSpeed * Time.deltaTime, 0);
-            propeler.transform.Rotate(propelerSpeed * Time.deltaTime, 0, 0, Space.World);
+            propeler.transform.Rotate(propelerSpeed * Time.deltaTime, 0, 0, Space.Self);
         }
       
 	}
 
     private void CheckAirplaneHeight()
     {
-        if (this.gameObject.transform.position.y >= GameManager.Instance.maxAirplaneHeight - airPlaneStallThreshold)
+        if (this.gameObject.transform.position.y >= DataManager.Instance.maxAirplaneHeight - airPlaneStallThreshold)
         {
             //Debug.Log("WARNING");
         }
 
-        if (this.gameObject.transform.position.y >= GameManager.Instance.maxAirplaneHeight)
+        if (this.gameObject.transform.position.y >= DataManager.Instance.maxAirplaneHeight)
         {
             //Debug.Log("STALLING");
             aircraftRotation *= Quaternion.AngleAxis(1, Vector3.back);
@@ -156,44 +155,26 @@ public class Aircraft_motor : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-
-        /*
-        if (playerLives > 1)
-        {
-            Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
-            GameObject planeSelect = GameManager.Instance.choosenAircraft.model[0];
-            Instantiate(planeSelect, this.transform.position, Quaternion.identity);
-
-        }
-        else
-        {
-            Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
-            GameManager.Instance.gameOver = true;
-        }
-        */
-    }
 
     public void DeathEvent()
     {
         if (!playerImmune)
         {
-            if (GameManager.Instance.playerLives > 1)
+            if (DataManager.Instance.playerLives > 1)
             {
-                Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
-                GameManager.Instance.playerIsActive = false;
-                GameManager.Instance.playerDeathPosition = this.gameObject.transform.position;
-                GameManager.Instance.playerDeathRotation = defaultQuaternion;
+                Instantiate(DataManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
+                DataManager.Instance.playerIsActive = false;
+                DataManager.Instance.playerDeathPosition = this.gameObject.transform.position;
+                DataManager.Instance.playerDeathRotation = defaultQuaternion;
 				aircraftRotation = defaultQuaternion;
             }
             else
             {
                 Debug.Log("GameObject " + this.gameObject.name + " Does not have any lives left. Game Over.");
-                Instantiate(GameManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
+                Instantiate(DataManager.Instance.planeExplosionObject, this.transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
-                GameManager.Instance.playerLives--;
-                GameManager.Instance.gameOver = true;
+                DataManager.Instance.playerLives--;
+                DataManager.Instance.gameOver = true;
             }
         }
     }

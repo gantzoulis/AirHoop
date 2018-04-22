@@ -55,9 +55,9 @@ public class BackgroundSpawnManager : MonoBehaviour
 		spawnedCloud = cloudList[randCloud];
 		string spawnString = CLOUD_PREFAB_PATH + "/" + spawnedCloud.name.ToString();
 
-		if(GameManager.Instance.playerObject)
+		if(DataManager.Instance.playerObject)
 		{
-			currentPlayerX = GameManager.Instance.playerObject.transform.position.x;
+			currentPlayerX = DataManager.Instance.playerObject.transform.position.x;
 		}
 		if(currentPlayerX >= targetPlayerX)
 		{
@@ -67,7 +67,12 @@ public class BackgroundSpawnManager : MonoBehaviour
 
 			var theSpawnedItem = PoolManager.GetPooledObject(spawnString);
 
-			theSpawnedItem.transform.position = new Vector3(screenCover + currentPlayerX, Random.Range(GameManager.Instance.minAirplaneHeight + 20, GameManager.Instance.maxAirplaneHeight), Random.Range(-5,2));
+			theSpawnedItem.transform.position = new Vector3(
+                screenCover + currentPlayerX, 
+                Random.Range(DataManager.Instance.minAirplaneHeight + 20,
+                DataManager.Instance.maxAirplaneHeight), 
+                Random.Range(-5,2)
+                );
 			theSpawnedItem.transform.rotation = Quaternion.identity;
 			theSpawnedItem.transform.localScale = new Vector3(randSizeX, randSizeY, 0);
 			theSpawnedItem.SetActive(true);
@@ -80,9 +85,9 @@ public class BackgroundSpawnManager : MonoBehaviour
 		spawnedBackMountain = backMountainList[randBackMountain];
 		string spawnString = BACKMOUNTAIN_PREFAB_PATH + "/" + spawnedBackMountain.name.ToString();
 
-		if(GameManager.Instance.playerObject)
+		if(DataManager.Instance.playerObject)
 		{
-			currentPlayerX = GameManager.Instance.playerObject.transform.position.x;
+			currentPlayerX = DataManager.Instance.playerObject.transform.position.x;
 		}
 	
 		if (currentPlayerX >= targetBackmountainX)
@@ -104,9 +109,9 @@ public class BackgroundSpawnManager : MonoBehaviour
 		spawnedFrontMountain = frontMountainList[randFrontMountain];
 		string spawnString = FRONTMOUNTAIN_PREFAB_PATH + "/" + spawnedFrontMountain.name.ToString();
 
-		if(GameManager.Instance.playerObject)
+		if(DataManager.Instance.playerObject)
 		{
-			currentPlayerX = GameManager.Instance.playerObject.transform.position.x;
+			currentPlayerX = DataManager.Instance.playerObject.transform.position.x;
 		}
 		if(currentPlayerX >= targetFrontMountainX)
 		{

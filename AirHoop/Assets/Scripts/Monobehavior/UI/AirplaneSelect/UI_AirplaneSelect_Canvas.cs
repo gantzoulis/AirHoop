@@ -53,7 +53,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
             GetComponent<Animator>().SetTrigger("PlayAnimation");
         */
         //TBD
-            GameManager.Instance.choosenAircraft = DataManager.Instance.airplaneList[currentAPselection].aircraft;
+            //GameManager.Instance.choosenAircraft = DataManager.Instance.airplaneList[currentAPselection].aircraft;
 
         DataManager.Instance.choosenAircraft = DataManager.Instance.airplaneList[currentAPselection].aircraft;
 
@@ -99,7 +99,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
         }
         airplanePoolSelection[currentAPselection].GetComponent<Animator>().SetTrigger("PlayAnimationReverse");
         //TBD
-            GameManager.Instance.choosenAircraft = DataManager.Instance.airplaneList[nextAPselection].aircraft;
+            //GameManager.Instance.choosenAircraft = DataManager.Instance.airplaneList[nextAPselection].aircraft;
         DataManager.Instance.choosenAircraft = DataManager.Instance.airplaneList[nextAPselection].aircraft;
         currentAPselection = nextAPselection;
     }
@@ -124,7 +124,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
         }
         
         //TBD
-            GameManager.Instance.choosenAircraft = DataManager.Instance.airplaneList[prevAPselection].aircraft;
+            //GameManager.Instance.choosenAircraft = DataManager.Instance.airplaneList[prevAPselection].aircraft;
 
         DataManager.Instance.choosenAircraft = DataManager.Instance.airplaneList[prevAPselection].aircraft;
         currentAPselection = prevAPselection;

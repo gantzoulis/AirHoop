@@ -6,7 +6,7 @@ public class PlaneCollider : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == GameManager.Instance.playerColliderName)
+        if (other.tag == DataManager.Instance.playerColliderName)
         {
             //Destroy(other.gameObject.transform.parent.gameObject);
             other.gameObject.transform.parent.gameObject.GetComponent<Aircraft_motor>().DeathEvent();

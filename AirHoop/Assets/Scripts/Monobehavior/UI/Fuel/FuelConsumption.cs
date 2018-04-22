@@ -30,7 +30,7 @@ public class FuelConsumption : MonoBehaviour
             GetPlayerPlaneObject();
         }
 
-        if (!GameManager.Instance.gameOver)
+        if (!DataManager.Instance.gameOver)
         {
             CalculateFuelBar();
         }

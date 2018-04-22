@@ -9,7 +9,7 @@ public class MultipleTargetCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!GameManager.Instance.gameOver)
+        if (!DataManager.Instance.gameOver)
         {
             Vector3 centerPoint = GetCenterPoint();
 

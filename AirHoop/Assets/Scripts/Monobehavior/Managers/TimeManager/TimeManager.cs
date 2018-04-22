@@ -20,19 +20,19 @@ public class TimeManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        timeLapseRatio = GameManager.Instance.playerTimeLapseFuel;
+        timeLapseRatio = DataManager.Instance.playerTimeLapseFuel;
        //timeLapseRatio = timeLapseRatio / 100; //We devide with 100 to get the decimal for the fillamount of the respective Image.
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (!GameManager.Instance.gameOver)
+        if (!DataManager.Instance.gameOver)
         {
             GameTimer();
         }
         CheckGameStatePaused();
-        timeLapseRatio = GameManager.Instance.playerTimeLapseFuel;
+        timeLapseRatio = DataManager.Instance.playerTimeLapseFuel;
         timeLapseUImage.GetComponent<Image>().fillAmount = timeLapseRatio;
         timeConsumption = CalcTimeConsumption();
 	}
@@ -71,7 +71,7 @@ public class TimeManager : MonoBehaviour
 
     private float CalcTimeConsumption()
     {
-        timeConsumption = 1 / GameManager.Instance.maxTimeLapse;
+        timeConsumption = 1 / DataManager.Instance.maxTimeLapseDuration;
         return timeConsumption;
     }
 }

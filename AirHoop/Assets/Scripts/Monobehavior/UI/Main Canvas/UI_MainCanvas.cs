@@ -40,13 +40,13 @@ public class UI_MainCanvas : MonoBehaviour
         timeText.text = timeManager.flightDuration.ToString("F2");
 		bonusLvTimeText.text = spawnManager.coundDownSpecialTime.ToString("F2");
         distanceText.text = Mathf.RoundToInt(distanceManager.maxDistance).ToString() + "  meters";
-        scoreUIElement.GetComponent<Text>().text = GameManager.Instance.playerScore.ToString();
+        scoreUIElement.GetComponent<Text>().text = DataManager.Instance.playerScore.ToString();
         CheckGameOver();
 	}
 
     void CheckGameOver()
     {
-        if (GameManager.Instance.gameOver)
+        if (DataManager.Instance.gameOver)
         {
             StartCoroutine(ShowGameOverText());
         }
@@ -61,7 +61,7 @@ public class UI_MainCanvas : MonoBehaviour
 
     public void RestartSurvivalGame()
     {
-        GameManager.Instance.RestartGame();
+        SceneMainManager.Instance.RestartGame("Main");
     }
 
     public void DisableSound()

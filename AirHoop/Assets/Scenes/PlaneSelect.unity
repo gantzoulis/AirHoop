@@ -459,6 +459,10 @@ Prefab:
       propertyPath: lvUpDistanceList.Array.data[0]
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 1167367140030482, guid: b1838ca224d91de4a8f35ecee88058d4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1838ca224d91de4a8f35ecee88058d4, type: 2}
   m_IsPrefabParent: 0

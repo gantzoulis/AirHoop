@@ -39,9 +39,9 @@ public class GroundSpawnManager : MonoBehaviour
 		spawnedGround = groundList[randGround];
 		spawnString = GROUND_PREFAB_PATH + "/" + spawnedGround.name.ToString();
 
-		if (GameManager.Instance.playerObject)
+		if (DataManager.Instance.playerObject)
 		{
-			currentPlayerX = GameManager.Instance.playerObject.transform.position.x;
+			currentPlayerX = DataManager.Instance.playerObject.transform.position.x;
 		}
 
 		if (currentPlayerX >= targetPlayerX)
