@@ -21,8 +21,11 @@ public class ServerManager : MonoBehaviour
 
     [SerializeField]
     private AllAircrafts airplaneList;
+    
+    private ServerTalk serverTalkScript;
 
     #region TEMP
+    public string _userID;
     public string _playerName;
     public int _playerCash;
     public int _playerScore;
@@ -30,11 +33,14 @@ public class ServerManager : MonoBehaviour
 
     private void Start()
     {
+        serverTalkScript = gameObject.GetComponent<ServerTalk>();
+
         _playerName = "TestUser";
         _playerCash = 1500;
         _playerScore = 0;
         _Get_PlayerData(_playerName);
         BuildPlaneSelection();
+        
     }
 
     public void _Get_PlayerData(string _playerName)
@@ -56,4 +62,5 @@ public class ServerManager : MonoBehaviour
             DataManager.Instance.airplaneList.Add(currentPlane);
         }
     }
+    
 }

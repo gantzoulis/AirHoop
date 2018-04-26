@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_MainMenuCanvas : MonoBehaviour
 {
 
     
     public GameObject playButton;
+    public GameObject playerUserIDtext;
     
     public GameObject difficultyMenu;
     private bool difficultyMenuOn;
@@ -72,5 +74,12 @@ public class UI_MainMenuCanvas : MonoBehaviour
     {
         useridPanel.GetComponent<Animator>().SetTrigger("PlayAnimReverse");
     }
+
+    public void UpdateUserID()
+    {
+        string userText = playerUserIDtext.GetComponent<Text>().text;
+        ServerManager.Instance._userID = userText;
+        Debug.Log(userText);
+    } 
 
 }
