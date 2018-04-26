@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 223267788}
   - component: {fileID: 223267787}
   m_Layer: 5
-  m_Name: Button
+  m_Name: _btn_SubmitUserID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -523,7 +523,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 223267788}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 346189066}
+        m_MethodName: UpdateUserID
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &223267788
@@ -739,6 +750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playButton: {fileID: 1275513049}
+  playerUserIDtext: {fileID: 623723596}
   difficultyMenu: {fileID: 868154260}
   UI_AirplaneEffect: {fileID: 8300000, guid: 6c8d66307f68faa42a94a48d4847f5b7, type: 3}
   useridPanel: {fileID: 1284969151}
@@ -1578,6 +1590,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1284969151}
+--- !u!1 &1408043981 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1885801502679542, guid: 4c16c93eec30d7142aafe7fec90e67a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1726117907}
+--- !u!114 &1408043982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1408043981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c66e00e71f34347a5f5a2d09539738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverURL: https://dev.triodin-games.com/gappis/airhoop/get/
+  playerData:
+    userID: 
+    playerName: 
+    playerCash: 0
+    playerTriodinum: 0
+    playerHighScore: 0
+    playerDistanceTraveled: 0
+    playerTimeFlown: 0
+    playerDeaths: 0
+    playerGamesPlayed: 0
+    playerCountry: 
 --- !u!1 &1454583929
 GameObject:
   m_ObjectHideFlags: 0
