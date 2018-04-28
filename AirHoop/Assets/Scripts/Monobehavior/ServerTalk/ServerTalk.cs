@@ -73,9 +73,6 @@ public class ServerTalk : MonoBehaviour
         }
     }
 
-    public void GetPlayerData(string userid)
-    {
-        StartCoroutine(_GetPlayerData(userid));
-    }
+    
 
 }
