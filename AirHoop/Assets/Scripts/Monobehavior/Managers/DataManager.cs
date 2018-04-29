@@ -67,7 +67,7 @@ public class DataManager : MonoBehaviour
 
     #region Leveling System
     public List<float> lvUpDistanceList = new List<float>();
-    [HideInInspector]
+    //[HideInInspector]
     public string reachedLv;
     #endregion
 }

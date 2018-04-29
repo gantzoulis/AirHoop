@@ -161,15 +161,16 @@ public class AirSpawnManager : MonoBehaviour
 		SetBonusStages();
 	}
 
-	void FixedUpdate()
+	void Update()
 	{
-        CheckAndSetLv();
+		CheckAndSetLv();
         if (stopSpawning == false)
 		{
 			SpawnEnemyEngine();
 			SpawnBuffEngine();
 			SpawnGroundEnemyEngine();
 		}
+
 	}
 
 
@@ -211,7 +212,7 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetEnemyLists()
 	{
-        maxEnemyDist = DataManager.Instance.defaultPlayerSpawnPos.x;
+        //maxEnemyDist = DataManager.Instance.defaultPlayerSpawnPos.x;
         enemyList = Resources.LoadAll<GameObject>(ENEMY_PREFAB_PATH);
 		enemyList1 = new List<GameObject>();
 		enemyList2 = new List<GameObject>();
@@ -268,7 +269,7 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetGroundEnemyList()
 	{
-		maxEnemyDist = DataManager.Instance.defaultPlayerSpawnPos.x;
+		//maxGroundEnemyDist = DataManager.Instance.defaultPlayerSpawnPos.x;
         groundEnemyList = Resources.LoadAll<GameObject>(GROUND_ENEMY_PREFAB_PATH);
 		groundEnemyList1 = new List<GameObject>();
 		groundEnemyList2 = new List<GameObject>();
@@ -325,7 +326,7 @@ public class AirSpawnManager : MonoBehaviour
 
 	private void SetBuffsList()
 	{
-        maxEnemyDist = DataManager.Instance.defaultPlayerSpawnPos.x;
+		//maxBuffDist = DataManager.Instance.defaultPlayerSpawnPos.x;
         buffList = Resources.LoadAll<GameObject>(BUFF_PREFAB_PATH);
 		buffList1 = new List<GameObject>();
 		buffList2 = new List<GameObject>();
@@ -447,11 +448,13 @@ public class AirSpawnManager : MonoBehaviour
 		}
 
         DataManager.Instance.reachedLv = currentLevel.levelName;
+		//DataManager.Instance.checkedLv = checkedLv.levelName;
 	}
 
 	private bool CheckIfLvChanged()
 	{
 		if (checkedLv.levelName != currentLevel.levelName)
+		//if (DataManager.Instance.checkedLv != DataManager.Instance.reachedLv)	
 		{
 			return true;
 		}
@@ -539,7 +542,7 @@ public class AirSpawnManager : MonoBehaviour
 
 				for (int i = 0; i < deactivateFlyEnemies.Length; i++)
 				{
-					if (deactivateFlyEnemies[i].transform.position.x - GameManager.Instance.playerObject.transform.position.x > 30.0f)
+					if (deactivateFlyEnemies[i].transform.position.x - DataManager.Instance.playerObject.transform.position.x > 30.0f)
 					{
 						deactivateFlyEnemies[i].SetActive(false);
 					}
@@ -563,7 +566,7 @@ public class AirSpawnManager : MonoBehaviour
 					if (spawnSpecialLv)
 					{
 						stopSpawning = true;
-						Instantiate(spawnSpecialLvGO, new Vector3(GameManager.Instance.playerObject.transform.position.x + specialLvDistX, spawnSpecialLvGO.transform.position.y, 0), Quaternion.identity);
+						Instantiate(spawnSpecialLvGO, new Vector3(DataManager.Instance.playerObject.transform.position.x + specialLvDistX, spawnSpecialLvGO.transform.position.y, 0), Quaternion.identity);
 						spawnSpecialLv = false;
 					}
 				}
@@ -590,7 +593,7 @@ public class AirSpawnManager : MonoBehaviour
 
 				for (int i = 0; i < deactivateFlyEnemies.Length; i++)
 				{
-					if (deactivateFlyEnemies[i].transform.position.x - GameManager.Instance.playerObject.transform.position.x > 30.0f)
+					if (deactivateFlyEnemies[i].transform.position.x - DataManager.Instance.playerObject.transform.position.x > 30.0f)
 					{
 						deactivateFlyEnemies[i].SetActive(false);
 					}
@@ -614,7 +617,7 @@ public class AirSpawnManager : MonoBehaviour
 					if (spawnSpecialLv)
 					{
 						stopSpawning = true;
-						Instantiate(spawnSpecialLvGO, new Vector3(GameManager.Instance.playerObject.transform.position.x + specialLvDistX, spawnSpecialLvGO.transform.position.y, 0), Quaternion.identity);
+						Instantiate(spawnSpecialLvGO, new Vector3(DataManager.Instance.playerObject.transform.position.x + specialLvDistX, spawnSpecialLvGO.transform.position.y, 0), Quaternion.identity);
 						spawnSpecialLv = false;
 					}
 				}
@@ -641,7 +644,7 @@ public class AirSpawnManager : MonoBehaviour
 
 				for (int i = 0; i < deactivateFlyEnemies.Length; i++)
 				{
-					if (deactivateFlyEnemies[i].transform.position.x - GameManager.Instance.playerObject.transform.position.x > 30.0f)
+					if (deactivateFlyEnemies[i].transform.position.x - DataManager.Instance.playerObject.transform.position.x > 30.0f)
 					{
 						deactivateFlyEnemies[i].SetActive(false);
 					}
@@ -665,7 +668,7 @@ public class AirSpawnManager : MonoBehaviour
 					if (spawnSpecialLv)
 					{
 						stopSpawning = true;
-						Instantiate(spawnSpecialLvGO, new Vector3(GameManager.Instance.playerObject.transform.position.x + specialLvDistX, spawnSpecialLvGO.transform.position.y, 0), Quaternion.identity);
+						Instantiate(spawnSpecialLvGO, new Vector3(DataManager.Instance.playerObject.transform.position.x + specialLvDistX, spawnSpecialLvGO.transform.position.y, 0), Quaternion.identity);
 						spawnSpecialLv = false;
 					}
 				}
@@ -690,7 +693,7 @@ public class AirSpawnManager : MonoBehaviour
 			return;
 		}
 
-		if(curEnemyDist >= maxGroundEnemyDist)
+		if(curGroundEnemyDist >= maxGroundEnemyDist)
 		{
 			randGroundEnemy = Random.Range(0, currentLevel.groundEnemies.Count);
 			spawnGroundEnemy = currentLevel.groundEnemies[randGroundEnemy];
@@ -736,8 +739,6 @@ public class AirSpawnManager : MonoBehaviour
 			enemyPrefabName = spawnEnemy.name.ToString();
 			enemySpawnString = ENEMY_PREFAB_PATH + "/" + enemyPrefabName;
 
-
-
 			if (DataManager.Instance.playerObject)
 			{
 				enemyRandX = curEnemyDist + enemyDistX + currentLevel.enemySpawnRateDist + overlapEnemySize;
@@ -769,7 +770,7 @@ public class AirSpawnManager : MonoBehaviour
 			return;
 		}
 
-		if(curEnemyDist >= maxBuffDist)
+		if(curBuffDist >= maxBuffDist)
 		{
 			float fuelOrBuff = Random.Range(0, 100);
 

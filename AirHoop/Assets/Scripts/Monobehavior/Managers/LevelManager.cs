@@ -13,7 +13,6 @@ public class LevelManager : MonoBehaviour
         [SerializeField]
         private Transform playerSpawnPos;
     #endregion
-    
 
     private void Awake()
     {

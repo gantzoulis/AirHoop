@@ -27,11 +27,18 @@ public class DistanceManager : MonoBehaviour
 
     private void CheckPlayerDistance()
     {
-        playerDistanceCovered = DataManager.Instance.playerObject.transform.position.x / DataManager.Instance.distanceRatio;
-        if (playerDistanceCovered >= maxDistance)
-        {
-            maxDistance = playerDistanceCovered;
-			DataManager.Instance.maxDistance = maxDistance;
-        }
+		if(DataManager.Instance.playerObject)
+		{
+	        playerDistanceCovered = DataManager.Instance.playerObject.transform.position.x / DataManager.Instance.distanceRatio;
+	        if (playerDistanceCovered >= maxDistance)
+	        {
+	            maxDistance = playerDistanceCovered;
+				DataManager.Instance.maxDistance = maxDistance;
+	        }
+		}
+		else
+		{
+			DataManager.Instance.maxDistance = 0f;
+		}
     }
 }
