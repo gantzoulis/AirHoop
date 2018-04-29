@@ -22,24 +22,20 @@ public class ServerTalk : MonoBehaviour
 
     [SerializeField]
     private string serverURL;
-
-    public PlayerDataClass playerData = new PlayerDataClass();
-
-
-
+    
 
     /*****************************************
      * IEnumerators
      *****************************************/
     IEnumerator _GetPlayerData(string _userID)
     {
-        Debug.Log("Coroutine started " + _userID);
+        //Debug.Log("Coroutine started " + _userID);
         string getUrl = serverURL;
-        Debug.Log("GetURL is " + getUrl);
+        //Debug.Log("GetURL is " + getUrl);
 
         WWWForm authForm = new WWWForm();
-        authForm.AddField("username", _userID);
-        authForm.AddField("action", "authorize");
+        authForm.AddField("php_userID", _userID);
+        authForm.AddField("php_action", "authorize");
 
         UnityWebRequest www = UnityWebRequest.Post(getUrl, authForm);
 
@@ -73,6 +69,13 @@ public class ServerTalk : MonoBehaviour
         }
     }
 
-    
+    /*****************************************
+     * Server Functions
+     *****************************************/
 
+    public void GetPlayerData(string _userID)
+    {
+        Debug.Log("Connecting to server for " + _userID);
+        StartCoroutine(_GetPlayerData(_userID));
+    }
 }

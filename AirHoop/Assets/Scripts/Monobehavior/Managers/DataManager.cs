@@ -24,6 +24,7 @@ public class DataManager : MonoBehaviour
     #endregion
 
     #region ServerManager
+    public string userID;
     public string playerName;
     public int playerCash;
     public int playerScore;

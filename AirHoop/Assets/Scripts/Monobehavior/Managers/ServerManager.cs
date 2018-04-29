@@ -23,7 +23,10 @@ public class ServerManager : MonoBehaviour
     private AllAircrafts airplaneList;
     
     private ServerTalk serverTalkScript;
+    [Header("Player Information - From server")]
+    public PlayerDataClass playerData = new PlayerDataClass();
 
+    [Header("TEMP Info to be replaced from Player Data")]
     #region TEMP
     public string _userID;
     public string _playerName;
