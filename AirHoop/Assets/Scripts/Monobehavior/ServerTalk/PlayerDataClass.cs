@@ -5,15 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerDataClass
 {
-    public string userID;
-    public string playerName;
-    public int playerCash;
-    public int playerTriodinum;
-    public int playerHighScore;
-    public float playerDistanceTraveled;
-    public float playerTimeFlown;
-    public int playerDeaths;
-    public int playerGamesPlayed;
-    public string playerCountry;
+    public string userid;
+    public int player_coins;
+    public int player_triodinium;
+    public int player_lives;
+    public int player_high_score;
+    public int player_total_distance;
+    public int player_dist_high_score;
+    public int player_games_played;
+    public float player_total_time;
 
 }
