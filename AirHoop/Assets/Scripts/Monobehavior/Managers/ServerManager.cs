@@ -66,4 +66,8 @@ public class ServerManager : MonoBehaviour
         }
     }
     
+    public void BuildPlayerData(string jsonString)
+    {
+        playerData = JsonUtility.FromJson<PlayerDataClass>(jsonString);
+    }
 }

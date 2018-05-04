@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerDataClass
 {
+ 
+    public int entryid;
     public string userid;
     public int player_coins;
     public int player_triodinium;
@@ -14,5 +16,7 @@ public class PlayerDataClass
     public int player_dist_high_score;
     public int player_games_played;
     public float player_total_time;
-
+    public string player_nation;
+    public string player_region;
+ 
 }

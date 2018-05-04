@@ -22,8 +22,13 @@ public class ServerTalk : MonoBehaviour
 
     [SerializeField]
     private string serverURL;
-    
 
+    [SerializeField]
+    private string serverScoresURL;
+    /*
+    [Header("Player Information - From server")]
+    public PlayerDataClass playerData = new PlayerDataClass();
+    */
     /*****************************************
      * IEnumerators
      *****************************************/
@@ -53,19 +58,44 @@ public class ServerTalk : MonoBehaviour
         {
             string jsnData = www.downloadHandler.text;
             Debug.Log(jsnData);
-            /*
-            if (jsnData == "0x000")
-            {
-                string errorReportingMessage = "Player authentication Error - 0x000";
-                Debug.Log(errorReportingMessage);
-                //ShowErrorMessage(errorReportingMessage);
-            }
-            else
-            {
-                playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
-                StartCoroutine(_GetPlayerStats(playerData.playerHash));
-            }
-            */
+            //ServerManager.Instance.BuildPlayerData(jsnData);
+            ServerManager.Instance.playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
+            //playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
+            Debug.Log(ServerManager.Instance.playerData.player_nation);
+        }
+    }
+
+
+    IEnumerator _UpdatePlayerScores(string _userID)
+    {
+        //Debug.Log("Coroutine started " + _userID);
+        string getUrl = serverScoresURL;
+        //Debug.Log("GetURL is " + getUrl);
+
+        WWWForm authForm = new WWWForm();
+        authForm.AddField("php_userID", _userID);
+        authForm.AddField("php_action", "authorize");
+
+        UnityWebRequest www = UnityWebRequest.Post(getUrl, authForm);
+
+        //yield return www.Send()
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError)
+        {
+            Debug.Log(www.error);
+            string errorReportingMessage = "Oops. Something went wrong. (error 0x000-Connection Error)";
+            Debug.Log(errorReportingMessage);
+            //ShowErrorMessage(errorReportingMessage);
+        }
+        else
+        {
+            string jsnData = www.downloadHandler.text;
+            Debug.Log(jsnData);
+            //ServerManager.Instance.BuildPlayerData(jsnData);
+            ServerManager.Instance.playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
+            //playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
+            Debug.Log(ServerManager.Instance.playerData.player_nation);
         }
     }
 
@@ -78,4 +108,9 @@ public class ServerTalk : MonoBehaviour
         Debug.Log("Connecting to server for " + _userID);
         StartCoroutine(_GetPlayerData(_userID));
     }
+
+    public void UpdatePlayerScores()
+    {
+        Debug.Log("Updating Players Scores");
+    } 
 }
