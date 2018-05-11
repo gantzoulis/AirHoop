@@ -62,6 +62,10 @@ public class Aircraft_motor : MonoBehaviour
 
     private bool outOfFuel = false;
 
+	private float angleSoFar;
+	private float angleLastFrame;
+	[SerializeField]
+	private int loopScore;
 
     void OnEnable()
 	{
@@ -127,6 +131,36 @@ public class Aircraft_motor : MonoBehaviour
 				aircraftRotation *= Quaternion.AngleAxis(aircraft.maneuver, Vector3.forward);
 			}
 			transform.rotation = Quaternion.Lerp(transform.rotation, aircraftRotation, 8 * Time.deltaTime);
+
+			if (Input.GetKeyDown(KeyCode.DownArrow) || (Input.GetKeyDown(KeyCode.UpArrow)))
+			{
+				StartCountTurn();
+			}
+
+			if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow))
+			{
+				CountTurn();
+			}
+		}
+	}
+
+	private void StartCountTurn()
+	{
+		angleSoFar = 0f;
+		angleLastFrame = this.transform.eulerAngles.z;
+	}
+
+	private void CountTurn()
+	{
+		float angle = this.transform.eulerAngles.z;
+		angleSoFar += Mathf.Abs(angle - angleLastFrame);
+		angleLastFrame = angle;
+
+		if(angleSoFar > 360)
+		{
+			Debug.Log("GRATZ For The Loop");
+			DataManager.Instance.playerScore += loopScore;
+			angleSoFar = 0f;
 		}
 	}
 
