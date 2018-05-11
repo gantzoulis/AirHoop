@@ -229,6 +229,11 @@ public class Aircraft_motor : MonoBehaviour
             //Debug.Log("STALLING");
 			planeIsStalling = true;
         }
+
+		if (this.gameObject.transform.position.y <= DataManager.Instance.minAirplaneHeight - 0.5)
+		{
+			this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+		}
     }
 
 
