@@ -191,8 +191,8 @@ public class Aircraft_motor : MonoBehaviour
 	{
         if (propOn)
         {
-            //propeler.transform.Rotate(0, propelerSpeed * Time.deltaTime, 0);
-            propeler.transform.Rotate(propelerSpeed * Time.deltaTime, 0, 0, Space.Self);
+            propeler.transform.Rotate(0, propelerSpeed * Time.deltaTime, 0);
+            //propeler.transform.Rotate(propelerSpeed * Time.deltaTime, 0, 0, Space.Self);
         }
       
 	}

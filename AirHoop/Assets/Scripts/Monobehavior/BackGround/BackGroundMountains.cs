@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class BackGroundMountains : MonoBehaviour 
 {
-	[SerializeField] float destroyTime = 20.0f;
+	[SerializeField]
+	private float destroyTime = 20.0f;
+	private bool doItOnce = true;
 
-	void Start()
+	void Update()
 	{
-		StartCoroutine(DestroyMountain());
+		if ((DataManager.Instance.playerObject.transform.position.x - this.gameObject.transform.position.x > 100) && doItOnce)
+		{
+			StartCoroutine(DestroyMountain());
+			doItOnce = false;
+		}
 	}
 
 	IEnumerator DestroyMountain()
