@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Aircraft_motor : MonoBehaviour 
 {
@@ -69,6 +70,8 @@ public class Aircraft_motor : MonoBehaviour
 	[SerializeField]
 	private int loopScore;
 
+	private GameObject bloodPressure;
+
     void OnEnable()
 	{
 		aircraft = Object.Instantiate(DataManager.Instance.choosenAircraft);
@@ -90,6 +93,7 @@ public class Aircraft_motor : MonoBehaviour
 	void Start()
 	{
 		aircraftRotation = transform.rotation;
+		bloodPressure = GameObject.Find("Stall Active");
 	}
 
 	void Update()
@@ -199,13 +203,21 @@ public class Aircraft_motor : MonoBehaviour
         {
 			if(!planeIsStalling)
 			{
-            	Debug.Log("WARNING");
+            	//Debug.Log("WARNING");
 			}
 			else
 			{
 				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0, DataManager.Instance.airPlaneStallAngle), DataManager.Instance.airPlaneStallManeuver * Time.deltaTime);
 				gameObject.transform.Translate(Vector3.right * DataManager.Instance.airPlaneStallSpeed * Time.deltaTime);
 			}
+
+			float stallingPerCent = (gameObject.transform.position.y - DataManager.Instance.airPlaneStallThreshold) 
+				/ (DataManager.Instance.maxAirplaneHeight - DataManager.Instance.airPlaneStallThreshold);
+
+			Image fadeOut = bloodPressure.GetComponent<Image>();
+			var tempColor = fadeOut.color;
+			tempColor.a = stallingPerCent;
+			fadeOut.color = tempColor;
         }
 		else
 		{
@@ -214,7 +226,7 @@ public class Aircraft_motor : MonoBehaviour
 
         if (this.gameObject.transform.position.y >= DataManager.Instance.maxAirplaneHeight)
         {
-            Debug.Log("STALLING");
+            //Debug.Log("STALLING");
 			planeIsStalling = true;
         }
     }
