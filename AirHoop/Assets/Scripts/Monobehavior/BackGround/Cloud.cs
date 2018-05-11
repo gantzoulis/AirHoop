@@ -9,16 +9,22 @@ public class Cloud : MonoBehaviour
 	[SerializeField] private float maxSpeed = 2.0f;
 	[SerializeField] private float destroyTime = 20.0f;
 	private float randSpeed;
+	private bool doItOnce = true;
 
 	void Start()
 	{
 		randSpeed = Random.Range(minSpeed, maxSpeed);
-		StartCoroutine(DestroyCloud());
 	}
 
 	void Update()
 	{
 		CloudSpeed();
+
+		if ((DataManager.Instance.playerObject.transform.position.x - this.gameObject.transform.position.x > 100) && doItOnce)
+		{
+			StartCoroutine(DestroyCloud());
+			doItOnce = false;
+		}
 	}
 
 	private void CloudSpeed()

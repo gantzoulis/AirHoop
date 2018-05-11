@@ -62,6 +62,12 @@ public class DataManager : MonoBehaviour
     [HideInInspector]
     public Vector3 defaultPlayerSpawnPos;
     public float maxAirplaneHeight = 25.0f;
+
+	public float airPlaneStallThreshold = 15.0f;
+	public float airPlaneStallManeuver = 2f;
+	public float airPlaneStallSpeed = 12f;
+	public float airPlaneStallAngle = -80f;
+
     public float minAirplaneHeight = -17.0f;
     public Vector3 playerDeathPosition;
     public Quaternion playerDeathRotation;

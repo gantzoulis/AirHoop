@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Aircraft_motor : MonoBehaviour 
 {
@@ -55,6 +56,7 @@ public class Aircraft_motor : MonoBehaviour
     private int propelerSlowSpeed = 1000;
 
     private bool propOn = true;
+
     private bool planeIsStalling = false;
 
     private AudioSource planeAudio;
@@ -62,6 +64,13 @@ public class Aircraft_motor : MonoBehaviour
 
     private bool outOfFuel = false;
 
+	[SerializeField]
+	private float angleSoFar;
+	private float angleLastFrame;
+	[SerializeField]
+	private int loopScore;
+
+	private GameObject bloodPressure;
 
     void OnEnable()
 	{
@@ -84,6 +93,7 @@ public class Aircraft_motor : MonoBehaviour
 	void Start()
 	{
 		aircraftRotation = transform.rotation;
+		bloodPressure = GameObject.Find("Stall Active");
 	}
 
 	void Update()
@@ -109,7 +119,6 @@ public class Aircraft_motor : MonoBehaviour
                 //Debug.Log("Move Hor " + "Aircraft Spead: " + aircraft.speed);
                 gameObject.transform.Translate(Vector3.right * Time.deltaTime * aircraft.speed);
             }
-            
 		}
 	}
 
@@ -117,42 +126,114 @@ public class Aircraft_motor : MonoBehaviour
 	{
 		if (gameObject)
 		{
-			if (Input.GetKey(KeyCode.DownArrow) && !outOfFuel)
+			if (!planeIsStalling)
 			{
-				aircraftRotation *= Quaternion.AngleAxis(aircraft.maneuver, Vector3.back);
-			}
+				
+				if (Input.GetKey(KeyCode.DownArrow) && !outOfFuel)
+				{
+					aircraftRotation *= Quaternion.AngleAxis(aircraft.maneuver, Vector3.back);
+				}
 
-			if (Input.GetKey(KeyCode.UpArrow) && !outOfFuel)
-			{
-				aircraftRotation *= Quaternion.AngleAxis(aircraft.maneuver, Vector3.forward);
+				if (Input.GetKey(KeyCode.UpArrow) && !outOfFuel)
+				{
+					aircraftRotation *= Quaternion.AngleAxis(aircraft.maneuver, Vector3.forward);
+				}
+				transform.rotation = Quaternion.Lerp(transform.rotation, aircraftRotation, 8 * Time.deltaTime);
+
+				/*
+				if (Input.GetKeyDown(KeyCode.DownArrow) || (Input.GetKeyDown(KeyCode.UpArrow)))
+				{
+					StartCountTurn();
+				}*/
+
+				if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow))
+				{
+					CountTurn();
+				}
+				else
+				{
+					StartCountTurn();
+				}
 			}
-			transform.rotation = Quaternion.Lerp(transform.rotation, aircraftRotation, 8 * Time.deltaTime);
+			else
+			{
+				aircraftRotation = Quaternion.Euler(0, 0, DataManager.Instance.airPlaneStallAngle);
+				//angleSoFar = 0f;
+			}
 		}
+	}
+
+	private void StartCountTurn()
+	{
+		angleSoFar = 0f;
+		angleLastFrame = this.transform.eulerAngles.z;
+		angleLastFrame = (angleLastFrame > 180) ? 360 - angleLastFrame : angleLastFrame;
+	}
+
+	private void CountTurn()
+	{
+		float angle = this.transform.eulerAngles.z;
+		angle = (angle > 180) ? 360 - angle : angle;
+
+		angleSoFar += Mathf.Abs(angle - angleLastFrame);
+		angleLastFrame = angle;
+
+		if(angleSoFar > 360)
+		{
+			Debug.Log("GRATZ For The Loop");
+			DataManager.Instance.playerScore += loopScore;
+			angleSoFar = 0f;
+		}
+
 	}
 
 	private void PropelerRotation(int propelerSpeed)
 	{
         if (propOn)
         {
-            //propeler.transform.Rotate(0, propelerSpeed * Time.deltaTime, 0);
-            propeler.transform.Rotate(propelerSpeed * Time.deltaTime, 0, 0, Space.Self);
+            propeler.transform.Rotate(0, propelerSpeed * Time.deltaTime, 0);
+            //propeler.transform.Rotate(propelerSpeed * Time.deltaTime, 0, 0, Space.Self);
         }
       
 	}
 
     private void CheckAirplaneHeight()
     {
-        if (this.gameObject.transform.position.y >= DataManager.Instance.maxAirplaneHeight - airPlaneStallThreshold)
+		if (this.gameObject.transform.position.y >= DataManager.Instance.airPlaneStallThreshold)
         {
-            //Debug.Log("WARNING");
+			if(!planeIsStalling)
+			{
+            	//Debug.Log("WARNING");
+			}
+			else
+			{
+				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0, DataManager.Instance.airPlaneStallAngle), DataManager.Instance.airPlaneStallManeuver * Time.deltaTime);
+				gameObject.transform.Translate(Vector3.right * DataManager.Instance.airPlaneStallSpeed * Time.deltaTime);
+			}
+
+			float stallingPerCent = (gameObject.transform.position.y - DataManager.Instance.airPlaneStallThreshold) 
+				/ (DataManager.Instance.maxAirplaneHeight - DataManager.Instance.airPlaneStallThreshold);
+
+			Image fadeOut = bloodPressure.GetComponent<Image>();
+			var tempColor = fadeOut.color;
+			tempColor.a = stallingPerCent;
+			fadeOut.color = tempColor;
         }
+		else
+		{
+			planeIsStalling = false;
+		}
 
         if (this.gameObject.transform.position.y >= DataManager.Instance.maxAirplaneHeight)
         {
             //Debug.Log("STALLING");
-            aircraftRotation *= Quaternion.AngleAxis(1, Vector3.back);
-            //planeIsStalling = true;
+			planeIsStalling = true;
         }
+
+		if (this.gameObject.transform.position.y <= DataManager.Instance.minAirplaneHeight - 0.5)
+		{
+			this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+		}
     }
 
 

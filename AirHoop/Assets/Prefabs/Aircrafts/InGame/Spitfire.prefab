@@ -888,6 +888,7 @@ MonoBehaviour:
   speedBuffOn: 0
   maneuverBuffOn: 0
   airPlaneStallThreshold: 3
+  loopScore: 20
 --- !u!114 &114761501836988236
 MonoBehaviour:
   m_ObjectHideFlags: 1

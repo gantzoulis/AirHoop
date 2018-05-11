@@ -1360,6 +1360,7 @@ MonoBehaviour:
   speedBuffOn: 0
   maneuverBuffOn: 0
   airPlaneStallThreshold: 3
+  loopScore: 20
 --- !u!198 &198470468079150988
 ParticleSystem:
   m_ObjectHideFlags: 1

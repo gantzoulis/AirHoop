@@ -155,7 +155,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1597354493550278}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.92, y: -0.68, z: 1.84}
+  m_LocalPosition: {x: 152.35025, y: 145.83195, z: -1.7768421}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4165375195220606}
@@ -170,13 +170,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1342431849442302}
-  m_LocalRotation: {x: -0.012866316, y: 0.7105837, z: 0.703404, w: 0.011320905}
-  m_LocalPosition: {x: -0.117, y: -0.111, z: 0.021}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.117, y: 0, z: 0.021}
   m_LocalScale: {x: 0.50000066, y: 0.50000024, z: 0.5000002}
   m_Children: []
   m_Father: {fileID: 4759602254677578}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4441095169117956
 Transform:
   m_ObjectHideFlags: 1
@@ -209,14 +209,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1511100314066458}
-  m_LocalRotation: {x: 0.5575522, y: -0.546372, z: -0.4295018, w: 0.4540281}
-  m_LocalPosition: {x: -0.014804136, y: -1.3101612, z: 0.6003203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.23, y: -1.219, z: 0.34}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4397829204437962}
   m_Father: {fileID: 4165375195220606}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 2.118, y: -102.646, z: -89.465004}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4995530870882410
 Transform:
   m_ObjectHideFlags: 1
@@ -578,6 +578,8 @@ MonoBehaviour:
   speedBuffOn: 0
   maneuverBuffOn: 0
   airPlaneStallThreshold: 3
+  angleSoFar: 0
+  loopScore: 20
 --- !u!198 &198939747304232632
 ParticleSystem:
   m_ObjectHideFlags: 1

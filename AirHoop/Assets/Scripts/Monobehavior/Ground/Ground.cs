@@ -5,11 +5,17 @@ using UnityEngine;
 public class Ground : MonoBehaviour 
 {
 
-	[SerializeField] float destroyTime = 40.0f;
+	[SerializeField] 
+	private float destroyTime = 20.0f;
+	private bool doItOnce = true;
 
-	void Start()
+	void Update()
 	{
-		StartCoroutine(DestroyGround());
+		if ((DataManager.Instance.playerObject.transform.position.x - this.gameObject.transform.position.x > 100) && doItOnce)
+		{
+			StartCoroutine(DestroyGround());
+			doItOnce = false;
+		}
 	}
 
 	IEnumerator DestroyGround()
