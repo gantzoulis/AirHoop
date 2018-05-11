@@ -59,6 +59,7 @@ public class GameOverScores : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
             }
         }
+        DataManager.Instance.playerFinalScore = newScore - 1;
         timeManager.GetComponent<TimeManager>().pauseGame = true;
     }
 }

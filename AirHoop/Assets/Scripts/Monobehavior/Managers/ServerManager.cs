@@ -26,34 +26,39 @@ public class ServerManager : MonoBehaviour
     [Header("Player Information - From server")]
     public PlayerDataClass playerData = new PlayerDataClass();
 
-    [Header("TEMP Info to be replaced from Player Data")]
+
     #region TEMP
+    /*
+    [Header("TEMP Info to be replaced from Player Data")]
     public string _userID;
     public string _playerName;
     public int _playerCash;
     public int _playerScore;
+    */
     #endregion
 
     private void Start()
     {
         serverTalkScript = gameObject.GetComponent<ServerTalk>();
 
+        /*
         _playerName = "TestUser";
         _playerCash = 1500;
         _playerScore = 0;
         _Get_PlayerData(_playerName);
+        */
         BuildPlaneSelection();
         
     }
 
-    public void _Get_PlayerData(string _playerName)
+    
+    public void _Get_PlayerData()
     {
-        Debug.Log("Getting Player Data "+ _playerName);
-        DataManager.Instance.playerName = _playerName;
-        DataManager.Instance.playerCash = _playerCash;
-        DataManager.Instance.playerScore = _playerScore;
+        DataManager.Instance.playerName = playerData.userid;
+        DataManager.Instance.playerCoins = playerData.player_coins;
+        DataManager.Instance.playerTriodinium = playerData.player_triodinium;
     }
-
+    
     private void BuildPlaneSelection()
     {
         foreach (Aircraft aircraft in airplaneList.aircrafts)
@@ -65,9 +70,5 @@ public class ServerManager : MonoBehaviour
             DataManager.Instance.airplaneList.Add(currentPlane);
         }
     }
-    
-    public void BuildPlayerData(string jsonString)
-    {
-        playerData = JsonUtility.FromJson<PlayerDataClass>(jsonString);
-    }
+   
 }

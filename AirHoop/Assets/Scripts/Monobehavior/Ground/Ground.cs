@@ -15,7 +15,9 @@ public class Ground : MonoBehaviour
 	IEnumerator DestroyGround()
 	{
 		yield return new WaitForSeconds(destroyTime);
-
-		gameObject.SetActive(false);
+        if (!DataManager.Instance.gameOver)
+        {
+            gameObject.SetActive(false);
+        }
 	}
 }

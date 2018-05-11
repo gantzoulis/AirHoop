@@ -26,8 +26,10 @@ public class DataManager : MonoBehaviour
     #region ServerManager
     public string userID;
     public string playerName;
-    public int playerCash;
+    public int playerCoins;
+    public int playerTriodinium;
     public int playerScore;
+    public int playerFinalScore;
     #endregion
 
     #region PlaneSelection

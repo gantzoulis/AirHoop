@@ -34,9 +34,7 @@ public class ServerTalk : MonoBehaviour
      *****************************************/
     IEnumerator _GetPlayerData(string _userID)
     {
-        //Debug.Log("Coroutine started " + _userID);
         string getUrl = serverURL;
-        //Debug.Log("GetURL is " + getUrl);
 
         WWWForm authForm = new WWWForm();
         authForm.AddField("php_userID", _userID);
@@ -57,11 +55,9 @@ public class ServerTalk : MonoBehaviour
         else
         {
             string jsnData = www.downloadHandler.text;
-            Debug.Log(jsnData);
-            //ServerManager.Instance.BuildPlayerData(jsnData);
+            //Debug.Log(jsnData);
             ServerManager.Instance.playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
-            //playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
-            Debug.Log(ServerManager.Instance.playerData.player_nation);
+            ServerManager.Instance._Get_PlayerData();
         }
     }
 
@@ -72,11 +68,13 @@ public class ServerTalk : MonoBehaviour
         string getUrl = serverScoresURL;
         //Debug.Log("GetURL is " + getUrl);
 
-        WWWForm authForm = new WWWForm();
-        authForm.AddField("php_userID", _userID);
-        authForm.AddField("php_action", "authorize");
+        WWWForm updUserForm = new WWWForm();
+        updUserForm.AddField("php_userID", _userID);
+        updUserForm.AddField("php_action", "update");
+        updUserForm.AddField("php_distance", DataManager.Instance.maxDistance.ToString());
+        updUserForm.AddField("php_score", DataManager.Instance.playerFinalScore);
 
-        UnityWebRequest www = UnityWebRequest.Post(getUrl, authForm);
+        UnityWebRequest www = UnityWebRequest.Post(getUrl, updUserForm);
 
         //yield return www.Send()
         yield return www.SendWebRequest();
@@ -109,8 +107,9 @@ public class ServerTalk : MonoBehaviour
         StartCoroutine(_GetPlayerData(_userID));
     }
 
-    public void UpdatePlayerScores()
+    public void UpdatePlayerScores(string userID)
     {
+        StartCoroutine(_UpdatePlayerScores(userID));
         Debug.Log("Updating Players Scores");
     } 
 }
