@@ -62,6 +62,7 @@ public class TimeManager : MonoBehaviour
     private void GameTimer()
     {
         flightDuration += Time.deltaTime;
+        DataManager.Instance.playerFlightTime = flightDuration;
     }
 
     public void SetPauseGame()

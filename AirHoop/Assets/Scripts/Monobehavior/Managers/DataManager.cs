@@ -30,6 +30,7 @@ public class DataManager : MonoBehaviour
     public int playerTriodinium;
     public int playerScore;
     public int playerFinalScore;
+    public float playerFlightTime;
     #endregion
 
     #region PlaneSelection
@@ -62,20 +63,24 @@ public class DataManager : MonoBehaviour
     [HideInInspector]
     public Vector3 defaultPlayerSpawnPos;
     public float maxAirplaneHeight = 25.0f;
-
-	public float airPlaneStallThreshold = 15.0f;
-	public float airPlaneStallManeuver = 2f;
-	public float airPlaneStallSpeed = 12f;
-	public float airPlaneStallAngle = -80f;
-
     public float minAirplaneHeight = -17.0f;
     public Vector3 playerDeathPosition;
     public Quaternion playerDeathRotation;
     #endregion
 
     #region Leveling System
+    [Header("Difficutly Level Configurator")]
     public List<float> lvUpDistanceList = new List<float>();
     //[HideInInspector]
     public string reachedLv;
     #endregion
+
+    #region AirplaneMotor Stall
+    [Header("Airplane Motor Configuration")]
+    public float airPlaneStallThreshold; //15
+    public float airPlaneStallManeuver; //2
+    public float airPlaneStallSpeed; //12
+    public float airPlaneStallAngle; //-80
+    #endregion
+
 }

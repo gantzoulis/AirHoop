@@ -73,6 +73,9 @@ public class ServerTalk : MonoBehaviour
         updUserForm.AddField("php_action", "update");
         updUserForm.AddField("php_distance", DataManager.Instance.maxDistance.ToString());
         updUserForm.AddField("php_score", DataManager.Instance.playerFinalScore);
+        updUserForm.AddField("php_player_triodinium", DataManager.Instance.playerTriodinium);
+        updUserForm.AddField("php_playerCoins", DataManager.Instance.playerCoins);
+        updUserForm.AddField("php_playerTime", DataManager.Instance.playerFlightTime.ToString());
 
         UnityWebRequest www = UnityWebRequest.Post(getUrl, updUserForm);
 
@@ -88,12 +91,13 @@ public class ServerTalk : MonoBehaviour
         }
         else
         {
-            string jsnData = www.downloadHandler.text;
-            Debug.Log(jsnData);
+            //string jsnData = www.downloadHandler.text;
+            string serverData = www.downloadHandler.text;
+            Debug.Log("Player Was updated"+ serverData);
             //ServerManager.Instance.BuildPlayerData(jsnData);
-            ServerManager.Instance.playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
+            //ServerManager.Instance.playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
             //playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
-            Debug.Log(ServerManager.Instance.playerData.player_nation);
+            //Debug.Log(ServerManager.Instance.playerData.player_nation);
         }
     }
 
@@ -107,8 +111,9 @@ public class ServerTalk : MonoBehaviour
         StartCoroutine(_GetPlayerData(_userID));
     }
 
-    public void UpdatePlayerScores(string userID)
+    public void UpdatePlayerScores()
     {
+        string userID = DataManager.Instance.userID;
         StartCoroutine(_UpdatePlayerScores(userID));
         Debug.Log("Updating Players Scores");
     } 

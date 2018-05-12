@@ -144,20 +144,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   airplaneList: {fileID: 11400000, guid: ad3f129293bbf3644914b7c44d8208b1, type: 2}
   playerData:
-    userID: 
-    playerName: 
-    playerCash: 0
-    playerTriodinum: 0
-    playerHighScore: 0
-    playerDistanceTraveled: 0
-    playerTimeFlown: 0
-    playerDeaths: 0
-    playerGamesPlayed: 0
-    playerCountry: 
-  _userID: 
-  _playerName: 
-  _playerCash: 0
-  _playerScore: 0
+    entryid: 0
+    userid: 
+    player_coins: 0
+    player_triodinium: 0
+    player_lives: 0
+    player_bonus_lives: 0
+    player_high_score: 0
+    player_total_distance: 0
+    player_dist_high_score: 0
+    player_games_played: 0
+    player_total_time: 0
+    player_nation: 
+    player_region: 
 --- !u!114 &114241736839080162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,8 +193,11 @@ MonoBehaviour:
   gameDifficultyLevel: 0
   userID: 
   playerName: 
-  playerCash: 0
+  playerCoins: 0
+  playerTriodinium: 0
   playerScore: 0
+  playerFinalScore: 0
+  playerFlightTime: 0
   choosenAircraft: {fileID: 0}
   airplaneList: []
   playerObject: {fileID: 0}
@@ -223,6 +225,10 @@ MonoBehaviour:
   - 400
   - 500
   reachedLv: 
+  airPlaneStallThreshold: 0
+  airPlaneStallManeuver: 0
+  airPlaneStallSpeed: 0
+  airPlaneStallAngle: 0
 --- !u!114 &114464870959767766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,3 +241,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serverURL: https://dev.triodin-games.com/gappis/airhoop/get/_set_player_info.php
+  serverScoresURL: https://dev.triodin-games.com/gappis/airhoop/get/_update_player_scores.php
