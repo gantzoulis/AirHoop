@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 4815575518041878}
   m_Layer: 0
   m_Name: Hoop_Gold_Vert
-  m_TagString: Untagged
+  m_TagString: Hoop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4210025574884444}
   - component: {fileID: 65860346026224438}
   - component: {fileID: 114718274654409824}
+  - component: {fileID: 114597938415834548}
   m_Layer: 0
   m_Name: PointCollider
   m_TagString: Untagged
@@ -99,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1815476211060640}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 6.0599985, y: 6.2328115, z: 0}
+  m_LocalPosition: {x: 14.541108, y: 3.056426, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4916305916570096}
@@ -239,6 +240,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9bf19dfcb094bc49964307f3245d614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114597938415834548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1956392432214162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4662c93ba7b63f346ad142de422f6831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialHoop: 0
+  passedHoop: 0
 --- !u!114 &114718274654409824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,4 +264,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36643a7986fd0841895cc915e87c030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointScore: 0
+  pointScore: 5
