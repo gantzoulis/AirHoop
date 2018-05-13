@@ -73,7 +73,7 @@ public class ServerTalk : MonoBehaviour
         updUserForm.AddField("php_action", "update");
         updUserForm.AddField("php_distance", DataManager.Instance.maxDistance.ToString());
         updUserForm.AddField("php_score", DataManager.Instance.playerFinalScore);
-        updUserForm.AddField("php_player_triodinium", DataManager.Instance.playerTriodinium);
+        updUserForm.AddField("php_player_triodinium", DataManager.Instance.playerEarnedTriodinium);
         updUserForm.AddField("php_playerCoins", DataManager.Instance.playerCoins);
         updUserForm.AddField("php_playerTime", DataManager.Instance.playerFlightTime.ToString());
 
@@ -95,7 +95,7 @@ public class ServerTalk : MonoBehaviour
             string serverData = www.downloadHandler.text;
             Debug.Log("Player Was updated"+ serverData);
             //ServerManager.Instance.BuildPlayerData(jsnData);
-            //ServerManager.Instance.playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
+            ServerManager.Instance.playerData = JsonUtility.FromJson<PlayerDataClass>(serverData);
             //playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
             //Debug.Log(ServerManager.Instance.playerData.player_nation);
         }
