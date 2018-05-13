@@ -180,7 +180,10 @@ public class Aircraft_motor : MonoBehaviour
 
 		if(angleSoFar > 360)
 		{
-			Debug.Log("GRATZ For The Loop");
+			//Debug.Log("GRATZ For The Loop");
+            AudioSource loopSound = GameObject.Find("LoopSound").GetComponent<AudioSource>();
+            loopSound.Play();
+
 			DataManager.Instance.playerScore += loopScore;
 			angleSoFar = 0f;
 		}
