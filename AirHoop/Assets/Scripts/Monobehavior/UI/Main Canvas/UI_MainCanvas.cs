@@ -61,6 +61,7 @@ public class UI_MainCanvas : MonoBehaviour
 
     public void RestartSurvivalGame()
     {
+        DataManager.Instance.playerScore = 0;
         SceneMainManager.Instance.RestartGame("Main");
     }
 
