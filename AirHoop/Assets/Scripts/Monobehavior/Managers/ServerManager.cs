@@ -63,10 +63,11 @@ public class ServerManager : MonoBehaviour
     {
         foreach (Aircraft aircraft in airplaneList.aircrafts)
         {
+            Debug.Log("Building LIST for " + aircraft.aircraftName);
             PlayerAirplaneSelection currentPlane = new PlayerAirplaneSelection();
             currentPlane.aircraft = aircraft;
-            currentPlane.airPlaneCost = 0;
-            currentPlane.playerOwned = true;
+            currentPlane.airPlaneCost = ServerTalk.Instance.GetPlaneCost(aircraft.aircraftName);
+            currentPlane.playerOwned = false;
             DataManager.Instance.airplaneList.Add(currentPlane);
         }
     }

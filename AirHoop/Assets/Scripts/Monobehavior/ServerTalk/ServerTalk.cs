@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
+using System;
 
 public class ServerTalk : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class ServerTalk : MonoBehaviour
 
     [SerializeField]
     private string serverScoresURL;
+
+    [SerializeField]
+    private string planeCostsURL;
+
+    public int currentPlaneCost;
     /*
     [Header("Player Information - From server")]
     public PlayerDataClass playerData = new PlayerDataClass();
@@ -101,6 +107,39 @@ public class ServerTalk : MonoBehaviour
         }
     }
 
+    IEnumerator _GetAirplaneCost(string _planeID, Action<int> onGetCostComplete)
+    {
+        //Debug.Log("Coroutine started " + _userID);
+        string getUrl = planeCostsURL;
+        //Debug.Log("GetURL is " + getUrl);
+
+        WWWForm updPlaneForm = new WWWForm();
+        updPlaneForm.AddField("php_planeID", _planeID);
+        
+        UnityWebRequest www = UnityWebRequest.Post(getUrl, updPlaneForm);
+
+        //yield return www.Send()
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError)
+        {
+            Debug.Log(www.error);
+            string errorReportingMessage = "Oops. Something went wrong. (error 0x000-Connection Error)";
+            Debug.Log(errorReportingMessage);
+            //ShowErrorMessage(errorReportingMessage);
+        }
+        else
+        {
+            string serverData = www.downloadHandler.text;
+            Debug.Log("PHP Says: "+ serverData);
+            currentPlaneCost = Convert.ToInt32(serverData);
+            onGetCostComplete(currentPlaneCost);
+            Debug.Log("Converted Value: " + currentPlaneCost);
+        }
+    }
+
+
+
     /*****************************************
      * Server Functions
      *****************************************/
@@ -117,5 +156,18 @@ public class ServerTalk : MonoBehaviour
         Debug.Log("Updating Players Scores for "+ userID);
         StartCoroutine(_UpdatePlayerScores(userID));
         Debug.Log("Updating Players Scores");
-    } 
+    }
+
+    public int GetPlaneCost(string planeID)
+    {
+        
+        StartCoroutine(_GetAirplaneCost(planeID, AssignCost));
+        Debug.Log("Getting cost for: " + planeID + " Cost: "+ currentPlaneCost);
+        return currentPlaneCost;
+    }
+
+    public void AssignCost(int cost)
+    {
+
+    }
 }

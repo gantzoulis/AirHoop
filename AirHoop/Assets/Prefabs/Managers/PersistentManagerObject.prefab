@@ -195,6 +195,7 @@ MonoBehaviour:
   playerName: 
   playerCoins: 0
   playerTriodinium: 0
+  playerEarnedTriodinium: 0
   playerScore: 0
   playerFinalScore: 0
   playerFlightTime: 0
@@ -202,6 +203,7 @@ MonoBehaviour:
   airplaneList: []
   playerObject: {fileID: 0}
   distanceRatio: 4
+  distanceConvertRatio: 0.5
   maxDistance: 0
   gameStart: 0
   gameOver: 0
@@ -219,7 +221,7 @@ MonoBehaviour:
   playerDeathPosition: {x: 0, y: 0, z: 0}
   playerDeathRotation: {x: 0, y: 0, z: 0, w: 0}
   lvUpDistanceList:
-  - 100
+  - 50
   - 200
   - 300
   - 400
@@ -242,3 +244,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverURL: https://dev.triodin-games.com/gappis/airhoop/get/_set_player_info.php
   serverScoresURL: https://dev.triodin-games.com/gappis/airhoop/get/_update_player_scores.php
+  planeCostsURL: https://dev.triodin-games.com/gappis/airhoop/get/_get_plane_cost.php
+  currentPlaneCost: 0
