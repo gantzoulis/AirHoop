@@ -225,10 +225,10 @@ MonoBehaviour:
   - 400
   - 500
   reachedLv: 
-  airPlaneStallThreshold: 0
-  airPlaneStallManeuver: 0
-  airPlaneStallSpeed: 0
-  airPlaneStallAngle: 0
+  airPlaneStallThreshold: 15
+  airPlaneStallManeuver: 2
+  airPlaneStallSpeed: 12
+  airPlaneStallAngle: -80
 --- !u!114 &114464870959767766
 MonoBehaviour:
   m_ObjectHideFlags: 1

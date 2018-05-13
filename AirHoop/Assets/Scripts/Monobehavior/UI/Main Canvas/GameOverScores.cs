@@ -45,7 +45,7 @@ public class GameOverScores : MonoBehaviour
         int distanceIntScore = Mathf.RoundToInt(distanceManager.GetComponent<DistanceManager>().maxDistance);
         int newScore = DataManager.Instance.playerScore;
         int scoreThreshold = newScore + 15;
-        ServerTalk.Instance.UpdatePlayerScores();
+        
         while (distanceIntScore >= 0)
         {
             totalScoreText.GetComponent<Text>().text = "Total Score: " + newScore.ToString();
@@ -61,7 +61,7 @@ public class GameOverScores : MonoBehaviour
             }
         }
         DataManager.Instance.playerFinalScore = newScore - 1;
-
+        ServerTalk.Instance.UpdatePlayerScores();
         timeManager.GetComponent<TimeManager>().pauseGame = true;
     }
 }

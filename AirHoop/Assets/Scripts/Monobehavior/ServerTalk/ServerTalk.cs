@@ -113,7 +113,8 @@ public class ServerTalk : MonoBehaviour
 
     public void UpdatePlayerScores()
     {
-        string userID = DataManager.Instance.userID;
+        string userID = DataManager.Instance.playerName;
+        Debug.Log("Updating Players Scores for "+ userID);
         StartCoroutine(_UpdatePlayerScores(userID));
         Debug.Log("Updating Players Scores");
     } 
