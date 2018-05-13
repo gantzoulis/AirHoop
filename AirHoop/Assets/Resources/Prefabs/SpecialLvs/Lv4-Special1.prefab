@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 4688868370289784}
   - component: {fileID: 114232751182484902}
   m_Layer: 0
-  m_Name: Lv2-Special1
+  m_Name: Lv4-Special1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -941,6 +941,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   specialHoop: 0
   passedHoop: 0
+  angleSoFar: 0
+  loopPassedHoop: 0
 --- !u!114 &114097779453511240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -964,8 +966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325629379265f0448b242c42f34ceed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoopsList: []
-  bonusAwardScore: 0
+  bonusAwardScore: 100
 --- !u!114 &114423219687362762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -979,6 +980,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   specialHoop: 0
   passedHoop: 0
+  angleSoFar: 0
+  loopPassedHoop: 0
 --- !u!114 &114431115862016502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1026,6 +1029,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   specialHoop: 0
   passedHoop: 0
+  angleSoFar: 0
+  loopPassedHoop: 0
 --- !u!114 &114513689040457172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1073,3 +1078,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   specialHoop: 0
   passedHoop: 0
+  angleSoFar: 0
+  loopPassedHoop: 0

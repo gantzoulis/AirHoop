@@ -18,6 +18,7 @@ public class SpecialLv : MonoBehaviour
 
     void Update()
     {
+        DeactivateSpecialLv();
         CheckIfFullBonusAchieved();
         AssignBonus();
     }
@@ -70,5 +71,4 @@ public class SpecialLv : MonoBehaviour
             bonusAwarded = true;
         }
     }
-
 }
