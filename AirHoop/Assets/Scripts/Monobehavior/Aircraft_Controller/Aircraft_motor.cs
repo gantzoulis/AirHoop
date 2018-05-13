@@ -187,7 +187,6 @@ public class Aircraft_motor : MonoBehaviour
 			DataManager.Instance.playerScore += loopScore;
 			angleSoFar = 0f;
 		}
-
 	}
 
 	private void PropelerRotation(int propelerSpeed)
