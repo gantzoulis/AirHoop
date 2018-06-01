@@ -29,8 +29,10 @@ public class ServerTalk : MonoBehaviour
 
     [SerializeField]
     private string planeCostsURL;
+    [SerializeField]
+    private string planeOwnURL;
 
-    public int currentPlaneCost;
+    //public int currentPlaneCost;
     /*
     [Header("Player Information - From server")]
     public PlayerDataClass playerData = new PlayerDataClass();
@@ -107,7 +109,7 @@ public class ServerTalk : MonoBehaviour
         }
     }
 
-    IEnumerator _GetAirplaneCost(string _planeID, Action<int> onGetCostComplete)
+    IEnumerator _GetAirplaneCost(string _planeID, int _elementID)
     {
         //Debug.Log("Coroutine started " + _userID);
         string getUrl = planeCostsURL;
@@ -131,14 +133,47 @@ public class ServerTalk : MonoBehaviour
         else
         {
             string serverData = www.downloadHandler.text;
-            Debug.Log("PHP Says: "+ serverData);
-            currentPlaneCost = Convert.ToInt32(serverData);
-            onGetCostComplete(currentPlaneCost);
-            Debug.Log("Converted Value: " + currentPlaneCost);
+            int currentPlaneCost = Convert.ToInt32(serverData);
+            DataManager.Instance.airplaneList[_elementID].airPlaneCost = currentPlaneCost;
         }
     }
 
+    IEnumerator _GetAirplaneOwn(string _userID, string _planeID, int _elementID)
+    {
+        //Debug.Log("Coroutine started " + _userID);
+        string getUrl = planeOwnURL;
+        Debug.Log("GetURL is " + getUrl + "user: " + _userID + "plane: " + _planeID);
 
+        WWWForm updPlaneForm = new WWWForm();
+        updPlaneForm.AddField("php_userID", _userID);
+        updPlaneForm.AddField("php_planeID", _planeID);
+
+        UnityWebRequest www = UnityWebRequest.Post(getUrl, updPlaneForm);
+
+        //yield return www.Send()
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError)
+        {
+            Debug.Log(www.error);
+            string errorReportingMessage = "Oops. Something went wrong. (error 0x000-Connection Error)";
+            Debug.Log(errorReportingMessage);
+            //ShowErrorMessage(errorReportingMessage);
+        }
+        else
+        {
+            bool isOwned = false;
+            string serverData = www.downloadHandler.text;
+            Debug.Log("PHP Says: " + serverData);
+            int currentPlaneOwn = Convert.ToInt32(serverData);
+            if (currentPlaneOwn == 1)
+            {
+                isOwned = true;
+            }
+            DataManager.Instance.airplaneList[_elementID].playerOwned = isOwned;
+            //Debug.Log("Converted Value: " + currentPlaneCost);
+        }
+    }
 
     /*****************************************
      * Server Functions
@@ -148,6 +183,7 @@ public class ServerTalk : MonoBehaviour
     {
         Debug.Log("Connecting to server for " + _userID);
         StartCoroutine(_GetPlayerData(_userID));
+        ServerManager.Instance.BuildPlaneSelection();
     }
 
     public void UpdatePlayerScores()
@@ -158,16 +194,20 @@ public class ServerTalk : MonoBehaviour
         Debug.Log("Updating Players Scores");
     }
 
-    public int GetPlaneCost(string planeID)
+    public void GetPlaneCost(string planeID,int elementID)
     {
-        
-        StartCoroutine(_GetAirplaneCost(planeID, AssignCost));
-        Debug.Log("Getting cost for: " + planeID + " Cost: "+ currentPlaneCost);
-        return currentPlaneCost;
+        StartCoroutine(_GetAirplaneCost(planeID, elementID));
     }
 
-    public void AssignCost(int cost)
+    public void GetPlaneOwn(string userID, string planeID, int elementID)
     {
-
+        Debug.Log("Getting ownership for " + userID);
+        StartCoroutine(_GetAirplaneOwn(userID, planeID, elementID));
     }
+    /*
+    public void returnPlaneCost(int cost)
+    {
+        Debug.Log("Getting cost for:  Cost: " + currentPlaneCost);
+    }
+    */
 }

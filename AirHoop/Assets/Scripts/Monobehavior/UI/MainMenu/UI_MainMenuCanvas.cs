@@ -82,6 +82,7 @@ public class UI_MainMenuCanvas : MonoBehaviour
         ServerManager.Instance.playerData.userid = userText;
         Debug.Log(userText);
         ServerTalk.Instance.GetPlayerData(userText);
+        
     } 
 
 }

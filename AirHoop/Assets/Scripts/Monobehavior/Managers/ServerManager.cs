@@ -47,7 +47,11 @@ public class ServerManager : MonoBehaviour
         _playerScore = 0;
         _Get_PlayerData(_playerName);
         */
-        BuildPlaneSelection();
+        if (DataManager.Instance.playerName.Length > 0)
+        {
+            Debug.Log("Building the Deck");
+            BuildPlaneSelection();
+        }
         
     }
 
@@ -59,17 +63,18 @@ public class ServerManager : MonoBehaviour
         DataManager.Instance.playerTriodinium = playerData.player_triodinium;
     }
     
-    private void BuildPlaneSelection()
+    public void BuildPlaneSelection()
     {
+        int elementID = 0;
         foreach (Aircraft aircraft in airplaneList.aircrafts)
         {
-            Debug.Log("Building LIST for " + aircraft.aircraftName);
             PlayerAirplaneSelection currentPlane = new PlayerAirplaneSelection();
             currentPlane.aircraft = aircraft;
-            currentPlane.airPlaneCost = ServerTalk.Instance.GetPlaneCost(aircraft.aircraftName);
-            currentPlane.playerOwned = false;
+            ServerTalk.Instance.GetPlaneCost(aircraft.aircraftName, elementID);
+            ServerTalk.Instance.GetPlaneOwn(DataManager.Instance.playerName, aircraft.aircraftName, elementID);
             DataManager.Instance.airplaneList.Add(currentPlane);
+            elementID++;
         }
+        elementID = 0;
     }
-   
 }

@@ -200,7 +200,19 @@ MonoBehaviour:
   playerFinalScore: 0
   playerFlightTime: 0
   choosenAircraft: {fileID: 0}
-  airplaneList: []
+  airplaneList:
+  - aircraft: {fileID: 114843877549600012, guid: ad3f129293bbf3644914b7c44d8208b1,
+      type: 2}
+    playerOwned: 0
+    airPlaneCost: 150000
+  - aircraft: {fileID: 114516235470724678, guid: ad3f129293bbf3644914b7c44d8208b1,
+      type: 2}
+    playerOwned: 0
+    airPlaneCost: 0
+  - aircraft: {fileID: 114768446314750000, guid: ad3f129293bbf3644914b7c44d8208b1,
+      type: 2}
+    playerOwned: 0
+    airPlaneCost: 2000
   playerObject: {fileID: 0}
   distanceRatio: 4
   distanceConvertRatio: 0.5
@@ -245,4 +257,4 @@ MonoBehaviour:
   serverURL: https://dev.triodin-games.com/gappis/airhoop/get/_set_player_info.php
   serverScoresURL: https://dev.triodin-games.com/gappis/airhoop/get/_update_player_scores.php
   planeCostsURL: https://dev.triodin-games.com/gappis/airhoop/get/_get_plane_cost.php
-  currentPlaneCost: 0
+  planeOwnURL: https://dev.triodin-games.com/gappis/airhoop/get/_get_plane_own.php
