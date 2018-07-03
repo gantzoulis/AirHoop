@@ -16,16 +16,22 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
     private int nextAPselection;
     [SerializeField]
     private int prevAPselection;
-
     
     [SerializeField]
     private Button leftButton;
     [SerializeField]
     private Button rightButton;
+
     [SerializeField]
     private GameObject planeSelect;
     [SerializeField]
     private GameObject planeSelectLocked;
+    [SerializeField]
+    private GameObject airplaneNameText;
+    [SerializeField]
+    private GameObject playerCoinsText;
+    [SerializeField]
+    private GameObject playerPremiumText;
     [SerializeField]
     private GameObject costPaneText;
     [SerializeField]
@@ -48,12 +54,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
 
         airplanePoolSelection[currentAPselection].GetComponent<Animator>().SetTrigger("PlayAnimation");
 
-        /*
-        DataManager.Instance.airplaneList[currentAPselection].aircraft.planeSelectModel[0].
-            GetComponent<Animator>().SetTrigger("PlayAnimation");
-        */
-        //TBD
-            //GameManager.Instance.choosenAircraft = DataManager.Instance.airplaneList[currentAPselection].aircraft;
+        
 
         DataManager.Instance.choosenAircraft = DataManager.Instance.airplaneList[currentAPselection].aircraft;
 
@@ -62,6 +63,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
             planeSelect.SetActive(true);
             planeSelectLocked.SetActive(false);
             costPane.SetActive(false);
+            airplaneNameText.GetComponent<Text>().text = DataManager.Instance.airplaneList[currentAPselection].aircraft.aircraftName;
         }
         else
         {
@@ -69,6 +71,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
             planeSelectLocked.SetActive(true);
             costPane.SetActive(true);
             costPaneText.GetComponent<Text>().text = DataManager.Instance.airplaneList[currentAPselection].airPlaneCost.ToString();
+            airplaneNameText.GetComponent<Text>().text = DataManager.Instance.airplaneList[currentAPselection].aircraft.aircraftName;
         }
         nextAPselection = currentAPselection + 1;
         prevAPselection = currentAPselection;
@@ -78,6 +81,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
 	void Update ()
     {
         CheckArrowButtons();
+        CheckAndUpdateCurrencies();
     }
 
     public void ShowNextPlane()
@@ -89,6 +93,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
             planeSelect.SetActive(true);
             planeSelectLocked.SetActive(false);
             costPane.SetActive(false);
+            airplaneNameText.GetComponent<Text>().text = DataManager.Instance.airplaneList[nextAPselection].aircraft.aircraftName;
         }
         else
         {
@@ -96,6 +101,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
             planeSelectLocked.SetActive(true);
             costPane.SetActive(true);
             costPaneText.GetComponent<Text>().text = DataManager.Instance.airplaneList[nextAPselection].airPlaneCost.ToString();
+            airplaneNameText.GetComponent<Text>().text = DataManager.Instance.airplaneList[nextAPselection].aircraft.aircraftName;
         }
         airplanePoolSelection[currentAPselection].GetComponent<Animator>().SetTrigger("PlayAnimationReverse");
         //TBD
@@ -114,6 +120,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
             planeSelect.SetActive(true);
             planeSelectLocked.SetActive(false);
             costPane.SetActive(false);
+            airplaneNameText.GetComponent<Text>().text = DataManager.Instance.airplaneList[prevAPselection].aircraft.aircraftName;
         }
         else
         {
@@ -121,6 +128,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
             planeSelectLocked.SetActive(true);
             costPane.SetActive(true);
             costPaneText.GetComponent<Text>().text = DataManager.Instance.airplaneList[prevAPselection].airPlaneCost.ToString();
+            airplaneNameText.GetComponent<Text>().text = DataManager.Instance.airplaneList[prevAPselection].aircraft.aircraftName;
         }
         
         //TBD
@@ -164,5 +172,11 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
         }
         
         
+    }
+
+    public void CheckAndUpdateCurrencies()
+    {
+        playerCoinsText.GetComponent<Text>().text = DataManager.Instance.playerCoins.ToString();
+        playerPremiumText.GetComponent<Text>().text = DataManager.Instance.playerTriodinium.ToString();
     }
 }

@@ -42,6 +42,7 @@ public class ServerTalk : MonoBehaviour
      *****************************************/
     IEnumerator _GetPlayerData(string _userID)
     {
+        Debug.Log("_GetPlayerData for user: " + _userID);
         string getUrl = serverURL;
 
         WWWForm authForm = new WWWForm();
@@ -183,7 +184,7 @@ public class ServerTalk : MonoBehaviour
     {
         Debug.Log("Connecting to server for " + _userID);
         StartCoroutine(_GetPlayerData(_userID));
-        ServerManager.Instance.BuildPlaneSelection();
+        ServerManager.Instance.BuildPlaneSelection(_userID);
     }
 
     public void UpdatePlayerScores()

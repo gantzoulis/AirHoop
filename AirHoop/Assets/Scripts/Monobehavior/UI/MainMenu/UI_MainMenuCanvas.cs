@@ -80,7 +80,8 @@ public class UI_MainMenuCanvas : MonoBehaviour
         string userText = playerUserIDtext.GetComponent<Text>().text;
         //ServerManager.Instance._userID = userText;
         ServerManager.Instance.playerData.userid = userText;
-        Debug.Log(userText);
+        DataManager.Instance.userID = userText;
+        Debug.Log("Update UserID : "+ userText);
         ServerTalk.Instance.GetPlayerData(userText);
         
     } 

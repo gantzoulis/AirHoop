@@ -50,7 +50,7 @@ public class ServerManager : MonoBehaviour
         if (DataManager.Instance.playerName.Length > 0)
         {
             Debug.Log("Building the Deck");
-            BuildPlaneSelection();
+            //BuildPlaneSelection();
         }
         
     }
@@ -63,7 +63,7 @@ public class ServerManager : MonoBehaviour
         DataManager.Instance.playerTriodinium = playerData.player_triodinium;
     }
     
-    public void BuildPlaneSelection()
+    public void BuildPlaneSelection(string _userID)
     {
         int elementID = 0;
         foreach (Aircraft aircraft in airplaneList.aircrafts)
@@ -71,7 +71,7 @@ public class ServerManager : MonoBehaviour
             PlayerAirplaneSelection currentPlane = new PlayerAirplaneSelection();
             currentPlane.aircraft = aircraft;
             ServerTalk.Instance.GetPlaneCost(aircraft.aircraftName, elementID);
-            ServerTalk.Instance.GetPlaneOwn(DataManager.Instance.playerName, aircraft.aircraftName, elementID);
+            ServerTalk.Instance.GetPlaneOwn(_userID, aircraft.aircraftName, elementID);
             DataManager.Instance.airplaneList.Add(currentPlane);
             elementID++;
         }
