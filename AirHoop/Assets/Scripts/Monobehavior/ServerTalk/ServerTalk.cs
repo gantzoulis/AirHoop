@@ -31,6 +31,8 @@ public class ServerTalk : MonoBehaviour
     private string planeCostsURL;
     [SerializeField]
     private string planeOwnURL;
+    [SerializeField]
+    private string purchagePlaneURL;
 
     //public int currentPlaneCost;
     /*

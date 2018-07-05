@@ -258,3 +258,4 @@ MonoBehaviour:
   serverScoresURL: https://dev.triodin-games.com/gappis/airhoop/get/_update_player_scores.php
   planeCostsURL: https://dev.triodin-games.com/gappis/airhoop/get/_get_plane_cost.php
   planeOwnURL: https://dev.triodin-games.com/gappis/airhoop/get/_get_plane_own.php
+  purchagePlaneURL: https://dev.triodin-games.com/gappis/airhoop/get/test/_purchace_plane.php
