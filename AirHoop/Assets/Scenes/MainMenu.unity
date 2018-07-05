@@ -1985,6 +1985,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114393021047031908, guid: 4c16c93eec30d7142aafe7fec90e67a2,
+        type: 2}
+      propertyPath: airplaneList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4140866916190700, guid: 4c16c93eec30d7142aafe7fec90e67a2, type: 2}
       propertyPath: m_LocalPosition.x
       value: 694.2398
@@ -2016,6 +2021,34 @@ Prefab:
     - target: {fileID: 4140866916190700, guid: 4c16c93eec30d7142aafe7fec90e67a2, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114393021047031908, guid: 4c16c93eec30d7142aafe7fec90e67a2,
+        type: 2}
+      propertyPath: airplaneList.Array.data[0].aircraft
+      value: 
+      objectReference: {fileID: 114843877549600012, guid: ad3f129293bbf3644914b7c44d8208b1,
+        type: 2}
+    - target: {fileID: 114393021047031908, guid: 4c16c93eec30d7142aafe7fec90e67a2,
+        type: 2}
+      propertyPath: airplaneList.Array.data[0].airPlaneCost
+      value: 150000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114393021047031908, guid: 4c16c93eec30d7142aafe7fec90e67a2,
+        type: 2}
+      propertyPath: airplaneList.Array.data[1].aircraft
+      value: 
+      objectReference: {fileID: 114516235470724678, guid: ad3f129293bbf3644914b7c44d8208b1,
+        type: 2}
+    - target: {fileID: 114393021047031908, guid: 4c16c93eec30d7142aafe7fec90e67a2,
+        type: 2}
+      propertyPath: airplaneList.Array.data[2].aircraft
+      value: 
+      objectReference: {fileID: 114768446314750000, guid: ad3f129293bbf3644914b7c44d8208b1,
+        type: 2}
+    - target: {fileID: 114393021047031908, guid: 4c16c93eec30d7142aafe7fec90e67a2,
+        type: 2}
+      propertyPath: airplaneList.Array.data[2].airPlaneCost
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c16c93eec30d7142aafe7fec90e67a2, type: 2}

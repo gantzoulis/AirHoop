@@ -15,6 +15,30 @@ MonoBehaviour:
   - {fileID: 114843877549600012}
   - {fileID: 114516235470724678}
   - {fileID: 114768446314750000}
+  - {fileID: 114454392602817948}
+--- !u!114 &114454392602817948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e426cf5a6de9649bfe5309b6a35da0, type: 3}
+  m_Name: Spitfire Lee
+  m_EditorClassIdentifier: 
+  aircraftName: Spitfire Lee
+  model:
+  - {fileID: 1385582216100906, guid: 8b0e39285a5f75942a06c16df6a2837d, type: 2}
+  planeSelectModel:
+  - {fileID: 1355734417412918, guid: 1cbca709ea9ade447887b74ad4a989bb, type: 2}
+  totalFuel: 200
+  fuel: 0
+  manufactureSpeed: 11
+  speed: 0
+  maneuver: 0
+  manufactureManeuver: 0.95
+  hash: -1377991599
 --- !u!114 &114516235470724678
 MonoBehaviour:
   m_ObjectHideFlags: 0
