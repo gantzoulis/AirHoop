@@ -178,9 +178,44 @@ public class ServerTalk : MonoBehaviour
         }
     }
 
+    IEnumerator _PurchagePlane(string _userID, string _planeID)
+    {
+        string getUrl = purchagePlaneURL;
+        Debug.Log("GetURL is " + getUrl + "user: " + _userID + "plane: " + _planeID);
+
+        WWWForm updPlaneForm = new WWWForm();
+        updPlaneForm.AddField("php_userID", _userID);
+        updPlaneForm.AddField("php_planeID", _planeID);
+
+        UnityWebRequest www = UnityWebRequest.Post(getUrl, updPlaneForm);
+
+        //yield return www.Send()
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError)
+        {
+            Debug.Log(www.error);
+            string errorReportingMessage = "Oops. Something went wrong. (error 0x000-Connection Error)";
+            Debug.Log(errorReportingMessage);
+            //ShowErrorMessage(errorReportingMessage);
+        }
+        else
+        {
+            string serverData = www.downloadHandler.text;
+            Debug.Log("PHP Says: " + serverData);
+            
+        }
+    }
     /*****************************************
      * Server Functions
      *****************************************/
+
+
+    public void PurchagePlane(string _userID, string _planeID)
+    {
+        Debug.Log("Starting Purchage Plane function for " + _userID + " buying " + _planeID);
+        StartCoroutine(_PurchagePlane(_userID, _planeID));
+    }
 
     public void GetPlayerData(string _userID)
     {
