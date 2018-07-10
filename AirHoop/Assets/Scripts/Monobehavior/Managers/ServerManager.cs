@@ -65,6 +65,7 @@ public class ServerManager : MonoBehaviour
     
     public void BuildPlaneSelection(string _userID)
     {
+        Debug.Log("Building Aircraft Catalogue");
         int elementID = 0;
         foreach (Aircraft aircraft in airplaneList.aircrafts)
         {
@@ -76,5 +77,14 @@ public class ServerManager : MonoBehaviour
             elementID++;
         }
         elementID = 0;
+    }
+
+    public void RebuildPlaneSelection (string _userID)
+    {
+        Debug.Log("Rebuilding Indexes");
+        DataManager.Instance.airplaneList.Clear();
+        Debug.Log("Cleared airplane list");
+        BuildPlaneSelection(_userID);
+        _Get_PlayerData();
     }
 }

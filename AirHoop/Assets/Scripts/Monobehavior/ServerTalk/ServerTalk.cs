@@ -202,6 +202,11 @@ public class ServerTalk : MonoBehaviour
         else
         {
             string serverData = www.downloadHandler.text;
+            if (serverData == "ACK_1")
+            {
+                Debug.Log("Transaction is completed");
+                ServerManager.Instance.RebuildPlaneSelection(_userID);
+            }
             Debug.Log("PHP Says: " + serverData);
             
         }

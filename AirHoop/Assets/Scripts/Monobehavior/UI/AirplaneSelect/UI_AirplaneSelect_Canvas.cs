@@ -84,6 +84,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
     {
         CheckArrowButtons();
         CheckAndUpdateCurrencies();
+        CheckPurchageOptions(currentPlaneIndex);
     }
 
     public void ShowNextPlane()
@@ -191,5 +192,21 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
         ServerTalk.Instance.PurchagePlane(
             DataManager.Instance.userID, 
             DataManager.Instance.airplaneList[currentPlaneIndex].aircraft.aircraftName);
+    }
+
+    public void CheckPurchageOptions(int _currentPlaneIndex)
+    {
+        if (DataManager.Instance.airplaneList[_currentPlaneIndex].playerOwned)
+        {
+            planeSelect.SetActive(true);
+            planeSelectLocked.SetActive(false);
+            costPane.SetActive(false);
+        }
+        else
+        {
+            planeSelect.SetActive(false);
+            planeSelectLocked.SetActive(true);
+            costPane.SetActive(true);
+        }
     }
 }
