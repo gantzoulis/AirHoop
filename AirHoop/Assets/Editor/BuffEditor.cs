@@ -68,6 +68,12 @@ public class BuffEditor: Editor
 
 		EditorGUILayout.LabelField(buff.buffName);
 
+		EditorGUI.BeginDisabledGroup(true);
+		EditorGUILayout.PropertyField(typeProperty);
+		EditorGUILayout.PropertyField(amountProperty);
+		EditorGUILayout.PropertyField(timeProperty);
+		EditorGUI.EndDisabledGroup();
+
 		EditorGUILayout.EndVertical();
 	}
 

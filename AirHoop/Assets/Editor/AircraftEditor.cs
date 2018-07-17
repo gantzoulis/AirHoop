@@ -80,9 +80,15 @@ public class AircraftEditor: Editor
 
 		EditorGUILayout.LabelField(aircraft.aircraftName);
 		//Checking Variables i.e.
-		EditorGUILayout.LabelField(fuelProperty.floatValue.ToString());
-		EditorGUILayout.LabelField(speedProperty.floatValue.ToString());
-		EditorGUILayout.LabelField(maneuverProperty.floatValue.ToString());
+		//EditorGUILayout.LabelField(fuelProperty.floatValue.ToString());
+		//EditorGUILayout.LabelField(speedProperty.floatValue.ToString());
+		//EditorGUILayout.LabelField(maneuverProperty.floatValue.ToString());
+		EditorGUI.BeginDisabledGroup(true);
+		EditorGUILayout.PropertyField(totalFuelProperty);
+		EditorGUILayout.PropertyField(manufactureSpeedProperty);
+		EditorGUILayout.PropertyField(manufactureManeuverProperty);
+		EditorGUI.EndDisabledGroup();
+
 		serializedObject.ApplyModifiedProperties();
 		serializedObject.Update();
 		EditorGUILayout.EndVertical();

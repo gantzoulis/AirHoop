@@ -26,7 +26,7 @@ public class AllAircraftsEditor : Editor
 	private AllAircrafts allAircrafts;
 	private string newAircraftName = "New Aircraft";
 
-	private const string creationPath = "Assets/Resources/Aircrafts/AllAircrafts.asset";
+	private const string creationPath = "Assets/Resources/ScriptableCollections/AllAircrafts.asset";
 	private const float buttonWidth = 30f;
 	private const float refreshButtonWidth = 90f;
 
