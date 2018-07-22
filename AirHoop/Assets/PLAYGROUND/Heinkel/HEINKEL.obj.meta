@@ -1,9 +1,7 @@
 fileFormatVersion: 2
 guid: 44e95fd431ac6ff47b4c9d03319a5daa
-timeCreated: 1531294061
-licenseType: Free
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: Bombs_Bomb_Left
     100002: Bombs_Bomb_Right
@@ -247,6 +245,7 @@ ModelImporter:
     4300074: Propellers_prop_4
     4300076: Propellers_prop_5
     4300078: Propellers_prop_6
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -266,6 +265,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -297,6 +297,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
