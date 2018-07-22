@@ -40,9 +40,10 @@ public class FuelConsumption : MonoBehaviour
 
     private void CalculateFuelBar()
     {
-		if(playerPlane)
+        if (playerPlane)
 		{
-	        float currentFuel = playerPlane.GetComponent<Aircraft_motor>().aircraft.fuel;
+            float currentFuel = playerPlane.GetComponent<Aircraft_motor>().aircraft.fuel;
+            //float currentFuleB = playerPlane.GetComponent<Aircraft_motor>().aircraft.
 	        float fuelBarFill = currentFuel / fullFuel;
 	        //Debug.Log("fuel " + currentFuel  + " of "+ fullFuel + "(" + fuelBarFill +")");
 	        fuelImage.GetComponent<Image>().fillAmount = fuelBarFill;
@@ -58,7 +59,8 @@ public class FuelConsumption : MonoBehaviour
             {
                 //Debug.Log("Player Motor found " + playerMotor.name);
                 fuelImage = GetComponent<Image>();
-                fullFuel = playerMotor.aircraft.fuel;
+                //fullFuel = playerMotor.aircraft.fuel;
+                fullFuel = playerMotor.aircraft.totalFuel;
                 playerFound = true;
             }
         }

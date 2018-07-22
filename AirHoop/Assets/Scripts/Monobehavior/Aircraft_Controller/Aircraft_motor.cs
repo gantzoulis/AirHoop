@@ -75,6 +75,9 @@ public class Aircraft_motor : MonoBehaviour
     void OnEnable()
 	{
 		aircraft = Object.Instantiate(DataManager.Instance.choosenAircraft);
+        aircraft.fuel = aircraft.totalFuel;
+        aircraft.speed = aircraft.manufactureSpeed;
+        aircraft.maneuver = aircraft.manufactureManeuver;
         timeMachine = GetComponent<TimeBody>();
         planeAudio = GetComponent<AudioSource>();
         propelerCurrentSpeed = propelerNormalSpeed;
@@ -84,9 +87,9 @@ public class Aircraft_motor : MonoBehaviour
 
 	void Awake()
 	{
-		aircraft.fuel = aircraft.totalFuel;
-		aircraft.speed = aircraft.manufactureSpeed;
-		aircraft.maneuver = aircraft.manufactureManeuver;
+		//aircraft.fuel = aircraft.totalFuel;
+		//aircraft.speed = aircraft.manufactureSpeed;
+		//aircraft.maneuver = aircraft.manufactureManeuver;
 		StartCoroutine(FuelUse());
 	}
 
