@@ -79,10 +79,10 @@ MonoBehaviour:
   planeSelectModel:
   - {fileID: 1875529169763390, guid: 582b94965265914468db993df89f42f9, type: 2}
   totalFuel: 100
-  fuel: 90
+  fuel: 0
   manufactureSpeed: 9
-  speed: 9
-  maneuver: 0.7
+  speed: 0
+  maneuver: 0
   manufactureManeuver: 0.7
   hash: 2109959139
 --- !u!114 &114843877549600012
@@ -102,9 +102,9 @@ MonoBehaviour:
   planeSelectModel:
   - {fileID: 1355734417412918, guid: afdd23339200fbd46a0ed330579c6db7, type: 2}
   totalFuel: 100
-  fuel: 100
+  fuel: 0
   manufactureSpeed: 10
-  speed: 10
-  maneuver: 0.8
+  speed: 0
+  maneuver: 0
   manufactureManeuver: 0.8
   hash: 147862825

@@ -84,6 +84,7 @@ public class AircraftEditor: Editor
 		//EditorGUILayout.LabelField(speedProperty.floatValue.ToString());
 		//EditorGUILayout.LabelField(maneuverProperty.floatValue.ToString());
 		EditorGUI.BeginDisabledGroup(true);
+		//EditorGUILayout.PropertyField(fuelProperty);
 		EditorGUILayout.PropertyField(totalFuelProperty);
 		EditorGUILayout.PropertyField(manufactureSpeedProperty);
 		EditorGUILayout.PropertyField(manufactureManeuverProperty);
