@@ -7,7 +7,7 @@ public class HighScoresUI : MonoBehaviour
 
 	void OnEnable()
     {
-        debug.log("UI Enabled");
+        //debug.log("UI Enabled");
     }
     // Use this for initialization
 	void Start ()
