@@ -15,9 +15,13 @@ public class MoreOptionsButton : MonoBehaviour
 
     [SerializeField]
     private GameObject leaderBoardPanel;
+    [SerializeField]
+    private GameObject scoresGrid;
 
     [SerializeField]
     private bool leaderPnlActive = false;
+
+    private bool scoresCleared = false;
     
 
 	// Use this for initialization
@@ -42,10 +46,25 @@ public class MoreOptionsButton : MonoBehaviour
         if (leaderPnlActive)
         {
             leaderBoardPanel.SetActive(true);
+            if (!scoresCleared)
+            {
+                ClearLeaderBoard();
+            }
+            
         }
         else
         {
             leaderBoardPanel.SetActive(false);
+            scoresCleared = false;
         }
+    }
+
+    private void ClearLeaderBoard()
+    {
+        foreach (Transform t in scoresGrid.transform)
+        {
+            Destroy(t.gameObject);
+        }
+        scoresCleared = true;
     }
 }
