@@ -2455,6 +2455,7 @@ GameObject:
   - component: {fileID: 2138421640}
   - component: {fileID: 2138421639}
   - component: {fileID: 2138421638}
+  - component: {fileID: 2138421641}
   m_Layer: 5
   m_Name: Achievements_Button
   m_TagString: Untagged
@@ -2555,3 +2556,21 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2138421636}
   m_CullTransparentMesh: 0
+--- !u!95 &2138421641
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2138421636}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: efb522df01f4e194ab1e4b93bc89cd6b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
