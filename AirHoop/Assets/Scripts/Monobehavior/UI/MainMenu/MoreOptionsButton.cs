@@ -18,10 +18,11 @@ public class MoreOptionsButton : MonoBehaviour
     [SerializeField]
     private GameObject scoresGrid;
 
-    [SerializeField]
+//    [SerializeField]
     private bool leaderPnlActive = false;
 
     private bool scoresCleared = false;
+    private bool moreSettingsPanel = false;
     
 
 	// Use this for initialization
@@ -66,5 +67,23 @@ public class MoreOptionsButton : MonoBehaviour
             Destroy(t.gameObject);
         }
         scoresCleared = true;
+    }
+
+    public void ToggleMoreSettingsButton()
+    {
+        if (!moreSettingsPanel)
+        {
+            leaderBoardBtn.GetComponent<Animator>().SetTrigger("PlayNormal");
+            settingsBtn.GetComponent<Animator>().SetTrigger("PlayNormal");
+            achievementsBtn.GetComponent<Animator>().SetTrigger("PlayNormal");
+            moreSettingsPanel = true;
+        }
+        else
+        {
+            leaderBoardBtn.GetComponent<Animator>().SetTrigger("PlayReverse");
+            settingsBtn.GetComponent<Animator>().SetTrigger("PlayReverse");
+            achievementsBtn.GetComponent<Animator>().SetTrigger("PlayReverse");
+            moreSettingsPanel = false;
+        }
     }
 }
