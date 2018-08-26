@@ -23,10 +23,15 @@ public class Baloon : MonoBehaviour
 	[SerializeField]
 	private float minSpeed;
 
-	[SerializeField] private float destroyTime = 20.0f;
+    private GameObject player;
+
+	private float destroyTime = 120.0f;
+    [SerializeField] private float deactivateDistance = 100f;
 
 	void Start()
 	{
+        player = GameObject.FindGameObjectWithTag("Player");
+
 		curPos = this.gameObject.transform.position;
 
 		randMove = Random.Range(0,2);
@@ -45,12 +50,13 @@ public class Baloon : MonoBehaviour
 			break;
 		}
 
-		StartCoroutine(DestroyBaloon());
+		//StartCoroutine(DestroyBaloon());
 	}
 
 	void Update()
 	{
 		MoveBaloon();
+        DeactivateThroughDistance();
 	}
 
 	private void MoveBaloon()
@@ -62,6 +68,16 @@ public class Baloon : MonoBehaviour
 	{
 		yield return new WaitForSeconds(destroyTime);
 
-		gameObject.SetActive(false);
+        Destroy(gameObject);
 	}
+
+    private void DeactivateThroughDistance()
+    {
+        float distance = Vector3.Distance(player.transform.position, this.transform.position);
+
+        if (distance > deactivateDistance)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
 }

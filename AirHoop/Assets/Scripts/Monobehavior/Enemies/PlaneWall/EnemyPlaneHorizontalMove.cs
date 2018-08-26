@@ -7,24 +7,38 @@ public class EnemyPlaneHorizontalMove : MonoBehaviour
     [SerializeField]
     private float airplaneSpeed = 5.0f;
 
-	[SerializeField] private float destroyTime = 20.0f;
+	private float destroyTime = 120.0f;
+    [SerializeField] private float deactivateDistance = 100f;
 
-	// Use this for initialization
+    private GameObject player;
+
+
 	void Start () 
 	{
-		StartCoroutine(DestroyPlanes());
+        //StartCoroutine(DestroyPlanes());
+        player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
         gameObject.transform.Translate(Vector3.left * Time.deltaTime * airplaneSpeed);
+        DeactivateThroughDistance();
     }
 
 	IEnumerator DestroyPlanes()
 	{
 		yield return new WaitForSeconds(destroyTime);
 
-		gameObject.SetActive(false);
+        Destroy(gameObject);
 	}
+
+    private void DeactivateThroughDistance()
+    {
+        float distance = Vector3.Distance(player.transform.position, this.transform.position);
+
+        if (distance > deactivateDistance)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
 }
