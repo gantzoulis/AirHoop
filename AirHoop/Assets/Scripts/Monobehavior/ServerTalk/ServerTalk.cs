@@ -78,7 +78,7 @@ public class ServerTalk : MonoBehaviour
         //Debug.Log("Coroutine started " + _userID);
         string getUrl = serverScoresURL;
         //Debug.Log("GetURL is " + getUrl);
-
+        
         WWWForm updUserForm = new WWWForm();
         updUserForm.AddField("php_userID", _userID);
         updUserForm.AddField("php_action", "update");
