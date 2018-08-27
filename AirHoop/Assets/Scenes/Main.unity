@@ -673,7 +673,6 @@ GameObject:
   m_Component:
   - component: {fileID: 336116177}
   - component: {fileID: 336116179}
-  - component: {fileID: 336116178}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -694,44 +693,6 @@ Transform:
   m_Father: {fileID: 1258645559}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &336116178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 336116176}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 777d4ad9ac95db94bb40aecb99274b6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelList: []
-  currentLevel:
-    levelName: 
-    enemies: []
-    enemySpawnRateDist: 0
-    buffs: []
-    buffSpawnRateDist: 0
-    fuelChance: 0
-    fuels: []
-    groundEnemies: []
-    groundEnemySpawnRateDist: 0
-    bonusLvTime: 0
-  coundDownSpecialTime: 0
-  checkedLv:
-    levelName: 
-    enemies: []
-    enemySpawnRateDist: 0
-    buffs: []
-    buffSpawnRateDist: 0
-    fuelChance: 0
-    fuels: []
-    groundEnemies: []
-    groundEnemySpawnRateDist: 0
-    bonusLvTime: 0
-  enemyList: []
-  enemyList1: []
-  specialLvText: {fileID: 0}
 --- !u!114 &336116179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,7 +717,7 @@ MonoBehaviour:
       - {fileID: 1326283043761592, guid: 6c461cd3d9164af4aa097305652a6441, type: 2}
       - {fileID: 1231844535307106, guid: 5733cee7f12694547a034cdf101d0258, type: 2}
       distanceToSpawn: 40
-      timeLimitPerSpawn: 8
+      timeLimitPerSpawn: 10
       levelLength: 50
     airLevelBonus:
       LevelName: 
@@ -786,13 +747,14 @@ MonoBehaviour:
       - {fileID: 1326283043761592, guid: 8c1fa997551da0347ac432551865f82f, type: 2}
       - {fileID: 1231844535307106, guid: a82f834e73532c74796590768f1da235, type: 2}
       distanceToSpawn: 30
-      timeLimitPerSpawn: 5
+      timeLimitPerSpawn: 10
       levelLength: 0
     airLevelBonus:
       LevelName: 
       bonusLevelPrefabs: []
       bonusLevelTime: 0
       offSet: 0
+  showTimeinUI: 0
   specialLVTimeLabel: {fileID: 417012076}
   specialLVTimeText: {fileID: 1430569421}
 --- !u!1 &417012076
@@ -1988,11 +1950,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01109e7aa3cb9a49bff4704c19cf35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPoolListPrefabs: []
   enemyGameObjectMultiplier: 5
-  groundPoolListPrefabs:
-  - {fileID: 1603458432265150, guid: 98e7d9c79399ae5429a2ad24e6dcd0fc, type: 2}
+  groundPoolListPrefabs: []
   groundGameObjectMultiplier: 5
+  backgroundPoolListPrefabs: []
+  backgroundGameObjectMultiplier: 5
 --- !u!4 &1200807588
 Transform:
   m_ObjectHideFlags: 0
@@ -2160,6 +2122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1295009106}
   - component: {fileID: 1295009107}
+  - component: {fileID: 1295009108}
   m_Layer: 0
   m_Name: BackgroundSpawnManager
   m_TagString: Untagged
@@ -2194,6 +2157,22 @@ MonoBehaviour:
   cloudList: []
   backMountainList: []
   frontMountainList: []
+--- !u!114 &1295009108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1295009105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a648934fb79077246a2e7f1af3fb9091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offSetSpawn: 60
+  backgroundPrefab:
+  - {fileID: 1363414791428716, guid: 7f1573d7499a42e46a43738de503cb4f, type: 2}
+  - {fileID: 1066169662172094, guid: eab27d4ea45c6a04cbc23a62bea578dd, type: 2}
+  firstSpawnPointX: 40
 --- !u!1 &1430569421
 GameObject:
   m_ObjectHideFlags: 0

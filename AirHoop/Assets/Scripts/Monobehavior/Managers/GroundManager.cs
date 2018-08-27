@@ -16,9 +16,14 @@ public class GroundManager : MonoBehaviour
     [SerializeField] private float firstSpawnPointX = 40f;
     private float nextSpawnPointX;
 
+    public delegate void OnLevelCreation(List<GameObject> newGroundList);
+    public static event OnLevelCreation onLevelCreation;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+
+        onLevelCreation(groundPrefab);
 
         groundSpawnPoint = new GameObject("Ground Spawn Point");
         groundSpawnPoint.transform.SetParent(player.transform);
