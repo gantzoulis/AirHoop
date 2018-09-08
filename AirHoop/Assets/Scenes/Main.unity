@@ -430,7 +430,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 213239212}
-  - component: {fileID: 213239213}
   - component: {fileID: 213239214}
   m_Layer: 0
   m_Name: GroundSpawnManager
@@ -452,21 +451,6 @@ Transform:
   m_Father: {fileID: 1258645559}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &213239213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 213239211}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dec265b4a250bdb4189bc70a3b7c595d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundList:
-  - {fileID: 1705176454464788, guid: 9b6307b9756ba544ba1de4cbfc30bbe9, type: 2}
-  - {fileID: 1705176454464788, guid: cf8ac6dc8370c1b4d979dde9b4ad68ed, type: 2}
-  - {fileID: 1705176454464788, guid: d284180fbfc297943a288ff4c10d76dc, type: 2}
 --- !u!114 &213239214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1955,6 +1939,7 @@ MonoBehaviour:
   groundGameObjectMultiplier: 5
   backgroundPoolListPrefabs: []
   backgroundGameObjectMultiplier: 5
+  frontgroundGameObjectMultiplier: 5
 --- !u!4 &1200807588
 Transform:
   m_ObjectHideFlags: 0
@@ -2121,7 +2106,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1295009106}
-  - component: {fileID: 1295009107}
   - component: {fileID: 1295009108}
   m_Layer: 0
   m_Name: BackgroundSpawnManager
@@ -2143,20 +2127,6 @@ Transform:
   m_Father: {fileID: 1258645559}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1295009107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1295009105}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d50cf1f2a5654ae468018fe30b4a8b01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cloudList: []
-  backMountainList: []
-  frontMountainList: []
 --- !u!114 &1295009108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2173,6 +2143,23 @@ MonoBehaviour:
   - {fileID: 1363414791428716, guid: 7f1573d7499a42e46a43738de503cb4f, type: 2}
   - {fileID: 1066169662172094, guid: eab27d4ea45c6a04cbc23a62bea578dd, type: 2}
   firstSpawnPointX: 40
+  frontgroundItems:
+  - itemsPrefab:
+    - {fileID: 1728418359536958, guid: 6686c7cd679acbf4abecc284ec309f66, type: 2}
+    spawnDistance: 250
+    varDistance: 50
+    spawnOnBase: 1
+  - itemsPrefab:
+    - {fileID: 1255853357257516, guid: 4856bc0bc62f2174680d80bc0e22ac86, type: 2}
+    - {fileID: 1000866973700326, guid: 201ba79624ca47849bedfee9764a71cc, type: 2}
+    - {fileID: 1489145763670404, guid: d1e34b79df29f3048ab8a8d8ad73735a, type: 2}
+    - {fileID: 1975949854162068, guid: 6e4a45d487b92c74e97edc920cb15d76, type: 2}
+    - {fileID: 1133972126178470, guid: 8cdb8c692ec9c8a439c9c37ad80ac6ee, type: 2}
+    spawnDistance: 30
+    varDistance: 5
+    spawnOnBase: 0
+  frontgroundSpawnPoint_Y_MIN: 0
+  frontgroundSpawnPoint_Y_MAX: 15
 --- !u!1 &1430569421
 GameObject:
   m_ObjectHideFlags: 0

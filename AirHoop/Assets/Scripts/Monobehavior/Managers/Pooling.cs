@@ -23,6 +23,10 @@ public class Pooling : MonoBehaviour
     [SerializeField] private List<GameObject> backgroundPoolListPrefabs = new List<GameObject>();
     [SerializeField] private int backgroundGameObjectMultiplier = 5;
 
+    private GameObject frontgroundPool;
+    private List<GameObject> frontgroundPoolListPrefabs = new List<GameObject>();
+    [SerializeField] private int frontgroundGameObjectMultiplier = 5;
+
     void Awake()
     {
         Singleton();
@@ -35,20 +39,25 @@ public class Pooling : MonoBehaviour
 
         backgroundPool = new GameObject("Background Pool");
         backgroundPool.transform.parent = this.gameObject.transform;
+
+        frontgroundPool = new GameObject("Frontground Pool");
+        frontgroundPool.transform.parent = this.gameObject.transform;
     }
 
     void OnEnable()
     {
         AirEnemyManager.onAirEnemyLevelCreation += GetAirEnemyList;
         GroundManager.onLevelCreation += GetGroundList;
-        BackGroundManager.onLevelCreation += GetBackgroundList;
+        BackGroundManager.onLevelCreationBackground += GetBackgroundList;
+        BackGroundManager.onLevelCreationFrontground += GetFrontgroundList;
     }
 
     void OnDisable()
     {
         AirEnemyManager.onAirEnemyLevelCreation -= GetAirEnemyList;
         GroundManager.onLevelCreation -= GetGroundList;
-        BackGroundManager.onLevelCreation -= GetBackgroundList;
+        BackGroundManager.onLevelCreationBackground -= GetBackgroundList;
+        BackGroundManager.onLevelCreationFrontground -= GetFrontgroundList;
     }
 
     void Start()
@@ -198,5 +207,49 @@ public class Pooling : MonoBehaviour
 
         GameObject newGO = Instantiate(go, spawnPoint, Quaternion.identity);
         newGO.transform.parent = backgroundPool.transform;
+    }
+
+    private void GetFrontgroundList(List<GameObject> newFrontgroundList)
+    {
+        frontgroundPoolListPrefabs.Clear();
+
+        foreach (Transform child in frontgroundPool.transform)
+        {
+            if (!child.gameObject.activeSelf)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        foreach (GameObject go in newFrontgroundList)
+        {
+            frontgroundPoolListPrefabs.Add(go);
+        }
+
+        foreach (GameObject go in frontgroundPoolListPrefabs)
+        {
+            for (int i = 0; i < frontgroundGameObjectMultiplier; i++)
+            {
+                GameObject frontground = Instantiate(go, Vector3.zero, Quaternion.identity, frontgroundPool.transform);
+                frontground.SetActive(false);
+            }
+        }
+    }
+
+    public void InstantiateFrontground(GameObject go, Vector3 spawnPoint)
+    {
+        foreach (Transform child in frontgroundPool.transform)
+        {
+            GameObject childGO = child.gameObject;
+            if (childGO.name.Contains(go.name) && !childGO.activeSelf)
+            {
+                childGO.SetActive(true);
+                childGO.transform.position = spawnPoint;
+                return;
+            }
+        }
+
+        GameObject newGO = Instantiate(go, spawnPoint, Quaternion.identity);
+        newGO.transform.parent = frontgroundPool.transform;
     }
 }
