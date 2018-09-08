@@ -703,6 +703,11 @@ MonoBehaviour:
       distanceToSpawn: 40
       timeLimitPerSpawn: 10
       levelLength: 50
+      buffs:
+      - {fileID: 1723156176145020, guid: e43cf46c6ec82024cb3fc9cda7810dc2, type: 2}
+      - {fileID: 1336573013015864, guid: ecc268ad88d8a5d46ad099f21712ffa2, type: 2}
+      - {fileID: 1169670338141594, guid: 73a2c4cd49570bb4c8dea1229bb410c3, type: 2}
+      buffDistanceToSpawn: 50
     airLevelBonus:
       LevelName: 
       bonusLevelPrefabs:
@@ -716,6 +721,8 @@ MonoBehaviour:
       distanceToSpawn: 0
       timeLimitPerSpawn: 0
       levelLength: 0
+      buffs: []
+      buffDistanceToSpawn: 0
     airLevelBonus:
       LevelName: Level 1 - Bonus
       bonusLevelPrefabs:
@@ -733,6 +740,11 @@ MonoBehaviour:
       distanceToSpawn: 30
       timeLimitPerSpawn: 10
       levelLength: 0
+      buffs:
+      - {fileID: 1723156176145020, guid: 7e7d95a399c382a4a9c9e597cb595025, type: 2}
+      - {fileID: 1336573013015864, guid: f8a5b9018e0734c4eb4a453775f8d679, type: 2}
+      - {fileID: 1169670338141594, guid: c527e851c71d36843864eff8c71d5e12, type: 2}
+      buffDistanceToSpawn: 50
     airLevelBonus:
       LevelName: 
       bonusLevelPrefabs: []
@@ -1935,6 +1947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyGameObjectMultiplier: 5
+  buffGameObjectMultiplier: 5
   groundPoolListPrefabs: []
   groundGameObjectMultiplier: 5
   backgroundPoolListPrefabs: []

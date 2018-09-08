@@ -13,6 +13,8 @@ public class AirEnemyManager : MonoBehaviour
         public float distanceToSpawn;
         public float timeLimitPerSpawn;
         public float levelLength;
+        public List<GameObject> buffs;
+        public float buffDistanceToSpawn;
     }
 
     [System.Serializable]
@@ -39,6 +41,9 @@ public class AirEnemyManager : MonoBehaviour
     [SerializeField] float airEnemySpawnPointY_min;
     [SerializeField] float airEnemySpawnPointY_max;
 
+    private GameObject buffSpawnPoint;
+    private GameObject buffSpawnPointToReach;
+
     [SerializeField] private List<AirSpawnLevel> airSpawnLevelList;
     private int airSpawnLevelListIndex = 0;
 
@@ -54,6 +59,7 @@ public class AirEnemyManager : MonoBehaviour
 
     public delegate void OnAirEnemyLevelCreation(List<GameObject> newAirEnemyList);
     public static event OnAirEnemyLevelCreation onAirEnemyLevelCreation;
+    public static event OnAirEnemyLevelCreation buffLevelCreation;
     private int currentLevelIntex = -1;
 
     public GameObject specialLVTimeLabel;
@@ -69,6 +75,13 @@ public class AirEnemyManager : MonoBehaviour
 
         airSpawnPointToReach = new GameObject("Air Enemy Spawn Point To Reach");
         airSpawnPointToReach.transform.Translate(airSpawnPoint.transform.position.x, 0, 0);
+
+        buffSpawnPoint = new GameObject("Buff Spawn Point");
+        buffSpawnPoint.transform.SetParent(player.transform);
+        buffSpawnPoint.transform.Translate(offSetSpawn, 0, 0);
+
+        buffSpawnPointToReach = new GameObject("Buff Spawn Point To Reach");
+        buffSpawnPointToReach.transform.Translate(buffSpawnPoint.transform.position.x, 0, 0);
     }
 
     void Update()
@@ -76,11 +89,13 @@ public class AirEnemyManager : MonoBehaviour
         SpawnAirEnemy();
     }
 
+
     private void SpawnAirEnemy()
     {
         if (currentLevelIntex != airSpawnLevelListIndex)
         {
             onAirEnemyLevelCreation(airSpawnLevelList[airSpawnLevelListIndex].airLevel.airEnemies);
+            buffLevelCreation(airSpawnLevelList[airSpawnLevelListIndex].airLevel.buffs);
             currentLevelIntex = airSpawnLevelListIndex;
         }
 
@@ -89,7 +104,7 @@ public class AirEnemyManager : MonoBehaviour
             case false:
                 AirLevel tempAirEnemyLevel = airSpawnLevelList[airSpawnLevelListIndex].airLevel;
                 GameObject tempAirEnemy = tempAirEnemyLevel.airEnemies[Random.Range(0, tempAirEnemyLevel.airEnemies.Count)];
-
+              
                 if (timeReset)
                 {
                     timeToSpawn = tempAirEnemyLevel.timeLimitPerSpawn;
@@ -114,6 +129,16 @@ public class AirEnemyManager : MonoBehaviour
                         airSpawnLevelListIndex++;
                         timeReset = true;
                     }
+                }
+
+                GameObject tempBuff = tempAirEnemyLevel.buffs[Random.Range(0, tempAirEnemyLevel.buffs.Count)];
+
+                if (buffSpawnPoint.transform.position.x >= buffSpawnPointToReach.transform.position.x)
+                {
+                    Vector3 tempBuffSpawnPoint = new Vector3(buffSpawnPoint.transform.position.x, Random.Range(airEnemySpawnPointY_min, airEnemySpawnPointY_max), 0f);
+
+                    Pooling.Instance.InstantiateBuff(tempBuff, tempBuffSpawnPoint);
+                    buffSpawnPointToReach.transform.Translate(tempAirEnemyLevel.buffDistanceToSpawn, 0, 0);
                 }
                 break;
             case true:

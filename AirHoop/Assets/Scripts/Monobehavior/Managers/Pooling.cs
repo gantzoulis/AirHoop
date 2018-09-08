@@ -14,6 +14,9 @@ public class Pooling : MonoBehaviour
     private List<GameObject> enemyPoolListPrefabs = new List<GameObject>();
     [SerializeField] private int enemyGameObjectMultiplier = 5;
 
+    private GameObject buffPool;
+    private List<GameObject> buffPoolListPrefabs = new List<GameObject>();
+    [SerializeField] private int buffGameObjectMultiplier = 5;
     
     private GameObject groundPool;
     [SerializeField] private List<GameObject> groundPoolListPrefabs = new List<GameObject>();
@@ -34,6 +37,9 @@ public class Pooling : MonoBehaviour
         enemyAirPool = new GameObject("Air Enemy Pool");
         enemyAirPool.transform.parent = this.gameObject.transform;
 
+        buffPool = new GameObject("Buff Pool");
+        buffPool.transform.parent = this.gameObject.transform;
+
         groundPool = new GameObject("Ground Pool");
         groundPool.transform.parent = this.gameObject.transform;
 
@@ -47,6 +53,7 @@ public class Pooling : MonoBehaviour
     void OnEnable()
     {
         AirEnemyManager.onAirEnemyLevelCreation += GetAirEnemyList;
+        AirEnemyManager.buffLevelCreation += GetBuffList;
         GroundManager.onLevelCreation += GetGroundList;
         BackGroundManager.onLevelCreationBackground += GetBackgroundList;
         BackGroundManager.onLevelCreationFrontground += GetFrontgroundList;
@@ -55,6 +62,7 @@ public class Pooling : MonoBehaviour
     void OnDisable()
     {
         AirEnemyManager.onAirEnemyLevelCreation -= GetAirEnemyList;
+        AirEnemyManager.buffLevelCreation -= GetBuffList;
         GroundManager.onLevelCreation -= GetGroundList;
         BackGroundManager.onLevelCreationBackground -= GetBackgroundList;
         BackGroundManager.onLevelCreationFrontground -= GetFrontgroundList;
@@ -119,6 +127,50 @@ public class Pooling : MonoBehaviour
 
         GameObject newGO = Instantiate(go, spawnPoint, Quaternion.identity);
         newGO.transform.parent = enemyAirPool.transform;
+    }
+
+    private void GetBuffList(List<GameObject> newBuffList)
+    {
+        buffPoolListPrefabs.Clear();
+
+        foreach (Transform child in buffPool.transform)
+        {
+            if (!child.gameObject.activeSelf)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        foreach (GameObject go in newBuffList)
+        {
+            buffPoolListPrefabs.Add(go);
+        }
+
+        foreach (GameObject go in buffPoolListPrefabs)
+        {
+            for (int i = 0; i < buffGameObjectMultiplier; i++)
+            {
+                GameObject buff = Instantiate(go, Vector3.zero, Quaternion.identity, buffPool.transform);
+                buff.SetActive(false);
+            }
+        }
+    }
+
+    public void InstantiateBuff(GameObject go, Vector3 spawnPoint)
+    {
+        foreach (Transform child in buffPool.transform)
+        {
+            GameObject childGO = child.gameObject;
+            if (childGO.name.Contains(go.name) && !childGO.activeSelf)
+            {
+                childGO.SetActive(true);
+                childGO.transform.position = spawnPoint;
+                return;
+            }
+        }
+
+        GameObject newGO = Instantiate(go, spawnPoint, Quaternion.identity);
+        newGO.transform.parent = buffPool.transform;
     }
 
     private void GetGroundList(List<GameObject> newGroundList)
