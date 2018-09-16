@@ -65,6 +65,12 @@ public class UI_MainCanvas : MonoBehaviour
         SceneMainManager.Instance.RestartGame("Main");
     }
 
+    public void LoadPlaneSelectScene()
+    {
+        DataManager.Instance.playerScore = 0;
+        SceneMainManager.Instance.RestartGame("PlaneSelect");
+    }
+
     public void DisableSound()
     {
         if (GameManager.Instance.soundOn)
