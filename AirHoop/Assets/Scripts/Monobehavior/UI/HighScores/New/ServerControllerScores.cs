@@ -10,8 +10,7 @@ public class ServerControllerScores : MonoBehaviour
     public ScoresList ScoresList = new ScoresList();
     [SerializeField]
     private string scoreListURL;
-    [SerializeField]
-    private string leaderBoardType = "ACESHIGH";
+    
 
     [SerializeField]
     private GameObject scoresGrid;
@@ -23,6 +22,10 @@ public class ServerControllerScores : MonoBehaviour
     [SerializeField]
     private GameObject playernameTextPrefab;
 
+    public enum ldrBoardType {ACESHIGH,REDBARON, EARHART, FOGG }
+    public ldrBoardType ldrBoardTypeEnum;
+    [SerializeField]
+    private string leaderBoardType = ldrBoardType.ACESHIGH.ToString();
 
 
     private void OnEnable()
@@ -75,10 +78,29 @@ public class ServerControllerScores : MonoBehaviour
             string fixedJsn = fixJson(jsnData);
             ScoresList = JsonUtility.FromJson<ScoresList>(jsnData);
 
-            foreach (var item in ScoresList.Scores)
+            switch (leaderBoardType)
             {
-                InstantiateScore(item.userid, item.player_high_score);
+                case "ACESHIGH":
+                    foreach (var item in ScoresList.Scores)
+                    {
+                        InstantiateScore(item.userid, item.player_high_score);
+                    }
+                    break;
+                case "REDBARON":
+                    break;
+                case "EARHART":
+                    break;
+                case "FOGG":
+                    break;
+                default:
+                    break;
             }
+
+            
+                
+            
+            
+            
         }
     }
 

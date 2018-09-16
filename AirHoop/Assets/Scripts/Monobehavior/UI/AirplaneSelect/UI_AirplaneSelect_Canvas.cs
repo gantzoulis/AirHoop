@@ -209,4 +209,38 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
             costPane.SetActive(true);
         }
     }
+
+    public void ForcePlaneSelection()
+    {
+        PopulatePlaneList();
+        currentAPselection = 0;
+        foreach (GameObject go in airplanePool)
+        {
+            GameObject spawnedPlane = Instantiate(go, airplaneSpawnPos.position, Quaternion.Euler(0, -160, 0));
+            airplanePoolSelection.Add(spawnedPlane);
+        }
+
+        airplanePoolSelection[currentAPselection].GetComponent<Animator>().SetTrigger("PlayAnimation");
+
+        DataManager.Instance.choosenAircraft = DataManager.Instance.airplaneList[currentAPselection].aircraft;
+
+        if (DataManager.Instance.airplaneList[currentAPselection].playerOwned)
+        {
+            planeSelect.SetActive(true);
+            planeSelectLocked.SetActive(false);
+            costPane.SetActive(false);
+            airplaneNameText.GetComponent<Text>().text = DataManager.Instance.airplaneList[currentAPselection].aircraft.aircraftName;
+        }
+        else
+        {
+            planeSelect.SetActive(false);
+            planeSelectLocked.SetActive(true);
+            costPane.SetActive(true);
+            costPaneText.GetComponent<Text>().text = DataManager.Instance.airplaneList[currentAPselection].airPlaneCost.ToString();
+            airplaneNameText.GetComponent<Text>().text = DataManager.Instance.airplaneList[currentAPselection].aircraft.aircraftName;
+        }
+        nextAPselection = currentAPselection + 1;
+        prevAPselection = currentAPselection;
+        leftButton.GetComponent<Button>().interactable = false;
+    }
 }
