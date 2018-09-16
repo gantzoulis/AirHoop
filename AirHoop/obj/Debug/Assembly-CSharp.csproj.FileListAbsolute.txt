@@ -69,3 +69,5 @@ E:\Programs\Unity\Git\AirHoop\AirHoop\Temp\bin\Debug\UnityEditor.iOS.Extensions.
 E:\Programs\Unity\Git\AirHoop\AirHoop\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 E:\Programs\Unity\Git\AirHoop\AirHoop\obj\Debug\Assembly-CSharp.dll
 E:\Programs\Unity\Git\AirHoop\AirHoop\obj\Debug\Assembly-CSharp.pdb
+E:\Programs\Unity\Git\AirHoop\AirHoop\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+E:\Programs\Unity\Git\AirHoop\AirHoop\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

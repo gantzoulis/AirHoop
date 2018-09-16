@@ -8,7 +8,7 @@ public class UI_MainCanvas : MonoBehaviour
 
     private TimeManager timeManager;
     private DistanceManager distanceManager;
-	private AirSpawnManager spawnManager;
+	private AirEnemyManager spawnManager;
 
     [SerializeField]
     private Text distanceText;
@@ -30,7 +30,7 @@ public class UI_MainCanvas : MonoBehaviour
     {
         timeManager = GameObject.Find("TimeManager").gameObject.GetComponent<TimeManager>();
         distanceManager = GameObject.Find("DistanceManager").gameObject.GetComponent<DistanceManager>();
-		spawnManager = GameObject.Find("SpawnManager").gameObject.GetComponent<AirSpawnManager>();
+		spawnManager = GameObject.Find("SpawnManager").gameObject.GetComponent<AirEnemyManager>();
     }
 	
 	// Update is called once per frame
@@ -38,7 +38,7 @@ public class UI_MainCanvas : MonoBehaviour
     {
         //timeText.text = Mathf.RoundToInt(timeManager.flightDuration).ToString();
         timeText.text = timeManager.flightDuration.ToString("F2");
-		bonusLvTimeText.text = spawnManager.coundDownSpecialTime.ToString("F2");
+		bonusLvTimeText.text = spawnManager.showTimeinUI.ToString("F2");
         distanceText.text = Mathf.RoundToInt(distanceManager.maxDistance).ToString() + "  meters";
         scoreUIElement.GetComponent<Text>().text = DataManager.Instance.playerScore.ToString();
         CheckGameOver();
