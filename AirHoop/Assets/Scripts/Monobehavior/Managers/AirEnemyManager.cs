@@ -143,7 +143,11 @@ public class AirEnemyManager : MonoBehaviour
                 break;
             case true:
                 AirLevelBonus tempAirEnemyLevelBonus = airSpawnLevelList[airSpawnLevelListIndex].airLevelBonus;
-                GameObject tempAirBonusStage = tempAirEnemyLevelBonus.bonusLevelPrefabs[Random.Range(0, tempAirEnemyLevelBonus.bonusLevelPrefabs.Count)];               
+                GameObject tempAirBonusStage = tempAirEnemyLevelBonus.bonusLevelPrefabs[Random.Range(0, tempAirEnemyLevelBonus.bonusLevelPrefabs.Count)];
+
+                AirLevel tempNextAirEnemyLevel = airSpawnLevelList[airSpawnLevelListIndex + 1].airLevel;
+                airSpawnPointToReach.transform.position = new Vector3(airSpawnPoint.transform.position.x + tempNextAirEnemyLevel.distanceToSpawn, airSpawnPoint.transform.position.y, airSpawnPoint.transform.position.z);
+                buffSpawnPointToReach.transform.position = new Vector3(buffSpawnPoint.transform.position.x + tempNextAirEnemyLevel.buffDistanceToSpawn, buffSpawnPoint.transform.position.y, buffSpawnPoint.transform.position.z);
 
                 offsetTime = (Vector3.Distance(player.transform.position, airSpawnPoint.transform.position) / player.GetComponent<Aircraft_motor>().aircraft.speed) - 3f;
                

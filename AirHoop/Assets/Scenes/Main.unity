@@ -139,8 +139,8 @@ Transform:
   m_LocalPosition: {x: 30, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1974443879}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &69494605
 GameObject:
@@ -168,7 +168,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &77015777
 GameObject:
@@ -701,6 +701,7 @@ MonoBehaviour:
       - {fileID: 1322139870062798, guid: dc3e5ad531239664ca5a594a1f7e3b85, type: 2}
       - {fileID: 1326283043761592, guid: 6c461cd3d9164af4aa097305652a6441, type: 2}
       - {fileID: 1231844535307106, guid: 5733cee7f12694547a034cdf101d0258, type: 2}
+      - {fileID: 1833559402869698, guid: a8b9869cae38c6049a33c68e0b6248a7, type: 2}
       distanceToSpawn: 40
       timeLimitPerSpawn: 10
       levelLength: 50
@@ -3330,8 +3331,9 @@ Transform:
   - {fileID: 77015778}
   - {fileID: 1644985415}
   - {fileID: 2021190842}
+  - {fileID: 45896901}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1992487748
 GameObject:
