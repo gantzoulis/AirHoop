@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class ServerTalk : MonoBehaviour
@@ -21,6 +22,8 @@ public class ServerTalk : MonoBehaviour
     }
     #endregion
 
+
+    [Header("Server Connections")]
     [SerializeField]
     private string serverURL;
 
@@ -34,11 +37,28 @@ public class ServerTalk : MonoBehaviour
     [SerializeField]
     private string purchagePlaneURL;
 
-    //public int currentPlaneCost;
-    /*
-    [Header("Player Information - From server")]
-    public PlayerDataClass playerData = new PlayerDataClass();
-    */
+    [Header("UI Related")]
+    public GameObject srvMesBoxObj;
+    [SerializeField]
+    private GameObject loginUIObj;
+    public Text serverMessageBox;
+    public bool srvMesBoxToggle = false;
+
+    
+
+    /*****************************
+     * 
+     *  Unity related
+     *
+     ****************************/
+
+    void Update()
+    {
+        //Debug.Log("Server Talk");
+        
+        
+    }
+
     /*****************************************
      * IEnumerators
      *****************************************/
@@ -52,26 +72,40 @@ public class ServerTalk : MonoBehaviour
         authForm.AddField("php_action", "authorize");
 
         UnityWebRequest www = UnityWebRequest.Post(getUrl, authForm);
-
+        srvMesBoxObj.SetActive(true);
+        loginUIObj.SetActive(false);
+        serverMessageBox.text = "Connecting To Server";
         //yield return www.Send()
         yield return www.SendWebRequest();
 
         if (www.isNetworkError)
         {
             Debug.Log(www.error);
+            //srvMesBoxObj.SetActive(true);
             string errorReportingMessage = "Oops. Something went wrong. (error 0x000-Connection Error)";
+            serverMessageBox.text = errorReportingMessage;
             Debug.Log(errorReportingMessage);
+            loginUIObj.SetActive(true);
             //ShowErrorMessage(errorReportingMessage);
         }
         else
         {
             string jsnData = www.downloadHandler.text;
             //Debug.Log(jsnData);
+            string successReportingMessage = "User is Logged On! Welcome Pilot";
+            serverMessageBox.text = successReportingMessage;
             ServerManager.Instance.playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
             ServerManager.Instance._Get_PlayerData();
+            StartCoroutine(_CloseMessageBox());
         }
     }
 
+    IEnumerator _CloseMessageBox()
+    {
+        yield return new WaitForSeconds(3);
+        srvMesBoxObj.SetActive(false);
+        //loginUIObj.SetActive(false);
+    }
 
     IEnumerator _UpdatePlayerScores(string _userID)
     {

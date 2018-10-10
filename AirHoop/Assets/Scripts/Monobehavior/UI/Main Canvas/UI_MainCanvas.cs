@@ -25,6 +25,9 @@ public class UI_MainCanvas : MonoBehaviour
     [SerializeField]
     private GameObject soundOffImage;
 
+    [SerializeField]
+    private bool isMute;
+
     // Use this for initialization
     void Start ()
     {
@@ -86,6 +89,12 @@ public class UI_MainCanvas : MonoBehaviour
             soundOffImage.SetActive(false);
         }
 
+    }
+
+    public void MuteSound()
+    {
+        isMute = !isMute;
+        AudioListener.volume = isMute ? 0 : 1;
     }
 
 }

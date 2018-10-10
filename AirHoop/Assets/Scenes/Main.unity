@@ -1038,7 +1038,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1128377263}
-        m_MethodName: DisableSound
+        m_MethodName: MuteSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2002,6 +2002,7 @@ MonoBehaviour:
   scoreUIElement: {fileID: 1069674292}
   gameOverImage: {fileID: 169017310}
   soundOffImage: {fileID: 910620093}
+  isMute: 0
 --- !u!1001 &1179521654
 Prefab:
   m_ObjectHideFlags: 0
