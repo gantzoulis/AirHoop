@@ -18,6 +18,12 @@ public class UI_MainMenuCanvas : MonoBehaviour
     public GameObject useridPanel;
     private bool userIDAnimation = false;
 
+    [SerializeField]
+    private bool gameDevelopmentMode;
+    [SerializeField]
+    private string gameDeveloperUser;
+
+
 	// Use this for initialization
 	void Start ()
     {
@@ -35,6 +41,10 @@ public class UI_MainMenuCanvas : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadMultiply))
         {
             Debug.Log("* is Pressed");
+            if (gameDevelopmentMode)
+            {
+                ServerTalk.Instance.GetPlayerData(gameDeveloperUser);
+            }
             if (userIDAnimation == false)
             {
                 PlayUserIdAnimation();

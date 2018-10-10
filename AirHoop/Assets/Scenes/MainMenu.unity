@@ -759,6 +759,8 @@ MonoBehaviour:
   difficultyMenu: {fileID: 868154260}
   UI_AirplaneEffect: {fileID: 8300000, guid: 6c8d66307f68faa42a94a48d4847f5b7, type: 3}
   useridPanel: {fileID: 1284969151}
+  gameDevelopmentMode: 1
+  gameDeveloperUser: gantzoulis
 --- !u!82 &346189067
 AudioSource:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
-/AirHoop/Assets/AssetStoreTools*
+/AirHoop/Assets/AssetStoreTools
 
 # Visual Studio 2015 cache directory
 /.vs/
@@ -35,4 +35,4 @@ sysinfo.txt
 
 # Builds
 *.apk
-*.unitypackage
+*.unitypackage(edited)
