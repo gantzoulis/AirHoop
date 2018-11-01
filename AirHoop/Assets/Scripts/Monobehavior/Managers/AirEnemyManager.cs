@@ -102,6 +102,8 @@ public class AirEnemyManager : MonoBehaviour
             currentLevelIntex = airSpawnLevelListIndex;
         }
 
+        airSpawnPoint.transform.position = new Vector3(Mathf.Abs(player.transform.position.x) + offSetSpawn, 0, 0);
+
         switch (airSpawnLevelList[airSpawnLevelListIndex].isBonusLevel)
         {
             case false:
@@ -189,5 +191,13 @@ public class AirEnemyManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         specialLVTimeLabel.SetActive(true);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(airSpawnPoint.transform.position, 1);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(airSpawnPointToReach.transform.position, 1);
     }
 }
