@@ -46,6 +46,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        ServerTalk.Instance.GetPlayerData(DataManager.Instance.playerName);
         PopulatePlaneList();
         currentAPselection = 0;
         foreach (GameObject go in airplanePool)

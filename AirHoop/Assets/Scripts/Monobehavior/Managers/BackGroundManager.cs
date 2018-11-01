@@ -85,8 +85,11 @@ public class BackGroundManager : MonoBehaviour
 
     void Update()
     {
-        SpawnBackground();
-        SpawnFrontground();
+        if (!DataManager.Instance.gameOver)
+        {
+            SpawnBackground();
+            SpawnFrontground();
+        }
     }
 
     private void SpawnBackground()

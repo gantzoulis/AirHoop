@@ -86,7 +86,10 @@ public class AirEnemyManager : MonoBehaviour
 
     void Update()
     {
-        SpawnAirEnemy();
+        if (!DataManager.Instance.gameOver)
+        {
+            SpawnAirEnemy();
+        }
     }
 
 

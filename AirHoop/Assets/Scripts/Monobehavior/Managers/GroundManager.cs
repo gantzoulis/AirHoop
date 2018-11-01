@@ -37,7 +37,11 @@ public class GroundManager : MonoBehaviour
 
     void Update()
     {
-        SpawnGround();
+        if (!DataManager.Instance.gameOver)
+        {
+            SpawnGround();
+        }
+        
     }
 
     private void SpawnGround()

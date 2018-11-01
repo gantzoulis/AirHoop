@@ -11,11 +11,14 @@ public class Ground : MonoBehaviour
 
 	void Update()
 	{
-		if ((DataManager.Instance.playerObject.transform.position.x - this.gameObject.transform.position.x > 100) && doItOnce)
-		{
-			StartCoroutine(DestroyGround());
-			doItOnce = false;
-		}
+        if (!DataManager.Instance.gameOver)
+        {
+            if ((DataManager.Instance.playerObject.transform.position.x - this.gameObject.transform.position.x > 100) && doItOnce)
+            {
+                StartCoroutine(DestroyGround());
+                doItOnce = false;
+            }
+        }
 	}
 
 	IEnumerator DestroyGround()

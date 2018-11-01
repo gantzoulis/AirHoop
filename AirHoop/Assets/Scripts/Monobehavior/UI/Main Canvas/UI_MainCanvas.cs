@@ -64,12 +64,14 @@ public class UI_MainCanvas : MonoBehaviour
 
     public void RestartSurvivalGame()
     {
+        ServerTalk.Instance.UpdatePlayerScores();
         DataManager.Instance.playerScore = 0;
         SceneMainManager.Instance.RestartGame("Main");
     }
 
     public void LoadPlaneSelectScene()
     {
+        ServerTalk.Instance.UpdatePlayerScores();
         DataManager.Instance.playerScore = 0;
         SceneMainManager.Instance.RestartGame("PlaneSelect");
     }

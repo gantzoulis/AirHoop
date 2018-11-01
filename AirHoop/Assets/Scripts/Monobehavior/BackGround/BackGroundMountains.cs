@@ -10,11 +10,15 @@ public class BackGroundMountains : MonoBehaviour
 
 	void Update()
 	{
-		if ((DataManager.Instance.playerObject.transform.position.x - this.gameObject.transform.position.x > 100) && doItOnce)
-		{
-			StartCoroutine(DestroyMountain());
-			doItOnce = false;
-		}
+        if (!DataManager.Instance.gameOver)
+        {
+            if ((DataManager.Instance.playerObject.transform.position.x - this.gameObject.transform.position.x > 100) && doItOnce)
+            {
+                StartCoroutine(DestroyMountain());
+                doItOnce = false;
+            }
+        }
+		
 	}
 
 	IEnumerator DestroyMountain()

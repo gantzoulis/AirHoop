@@ -19,12 +19,15 @@ public class Cloud : MonoBehaviour
 	void Update()
 	{
 		CloudSpeed();
-
-		if ((DataManager.Instance.playerObject.transform.position.x - this.gameObject.transform.position.x > 100) && doItOnce)
-		{
-			StartCoroutine(DestroyCloud());
-			doItOnce = false;
-		}
+        if (!DataManager.Instance.gameOver)
+        {
+            if ((DataManager.Instance.playerObject.transform.position.x - this.gameObject.transform.position.x > 100) && doItOnce)
+            {
+                StartCoroutine(DestroyCloud());
+                doItOnce = false;
+            }
+        }
+		
 	}
 
 	private void CloudSpeed()

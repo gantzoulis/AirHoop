@@ -22,7 +22,11 @@ public class EnemyPlaneHorizontalMove : MonoBehaviour
 	void Update ()
     {
         gameObject.transform.Translate(Vector3.left * Time.deltaTime * airplaneSpeed);
-        DeactivateThroughDistance();
+        if (!DataManager.Instance.gameOver)
+        {
+            DeactivateThroughDistance();
+        }
+        
     }
 
 	IEnumerator DestroyPlanes()
