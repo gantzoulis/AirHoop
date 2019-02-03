@@ -42,6 +42,12 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
     private List<GameObject> airplanePool = new List<GameObject>();
     private List<GameObject> airplanePoolSelection = new List<GameObject>();
 
+    [SerializeField]
+    private AudioClip purchargeSound;
+    [SerializeField]
+    private float soundVolume;
+    
+
 
     // Use this for initialization
     void Start ()
@@ -184,6 +190,7 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
 
     public void CheckAndUpdateCurrencies()
     {
+        ServerManager.Instance._Get_PlayerData();
         playerCoinsText.GetComponent<Text>().text = DataManager.Instance.playerCoins.ToString();
         playerPremiumText.GetComponent<Text>().text = DataManager.Instance.playerTriodinium.ToString();
     }
@@ -192,7 +199,12 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
     {
         ServerTalk.Instance.PurchagePlane(
             DataManager.Instance.userID, 
-            DataManager.Instance.airplaneList[currentPlaneIndex].aircraft.aircraftName);
+            DataManager.Instance.airplaneList[currentPlaneIndex].aircraft.aircraftName
+        );
+
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.PlayOneShot(purchargeSound, soundVolume);
+
     }
 
     public void CheckPurchageOptions(int _currentPlaneIndex)

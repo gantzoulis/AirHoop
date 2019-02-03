@@ -71,7 +71,7 @@ public class UI_MainCanvas : MonoBehaviour
 
     public void LoadPlaneSelectScene()
     {
-        ServerTalk.Instance.UpdatePlayerScores();
+        //ServerTalk.Instance.UpdatePlayerScores();
         DataManager.Instance.playerScore = 0;
         SceneMainManager.Instance.RestartGame("PlaneSelect");
     }

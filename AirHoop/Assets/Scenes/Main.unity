@@ -423,6 +423,8 @@ MonoBehaviour:
   totalScoreText: {fileID: 2002892737}
   distanceManager: {fileID: 1992487748}
   timeManager: {fileID: 1017311440}
+  playAgainBtn: {fileID: 1594805553}
+  backBtn: {fileID: 582332117}
 --- !u!1 &213239211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,7 +1256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &582332118
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2709,7 +2711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1594805554
 RectTransform:
   m_ObjectHideFlags: 0

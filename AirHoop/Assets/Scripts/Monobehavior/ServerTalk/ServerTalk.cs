@@ -109,9 +109,7 @@ public class ServerTalk : MonoBehaviour
 
     IEnumerator _UpdatePlayerScores(string _userID)
     {
-        //Debug.Log("Coroutine started " + _userID);
         string getUrl = serverScoresURL;
-        //Debug.Log("GetURL is " + getUrl);
         
         WWWForm updUserForm = new WWWForm();
         updUserForm.AddField("php_userID", _userID);
@@ -124,7 +122,6 @@ public class ServerTalk : MonoBehaviour
 
         UnityWebRequest www = UnityWebRequest.Post(getUrl, updUserForm);
 
-        //yield return www.Send()
         yield return www.SendWebRequest();
 
         if (www.isNetworkError)
@@ -132,32 +129,24 @@ public class ServerTalk : MonoBehaviour
             Debug.Log(www.error);
             string errorReportingMessage = "Oops. Something went wrong. (error 0x000-Connection Error)";
             Debug.Log(errorReportingMessage);
-            //ShowErrorMessage(errorReportingMessage);
         }
         else
         {
-            //string jsnData = www.downloadHandler.text;
             string serverData = www.downloadHandler.text;
             Debug.Log("Player Was updated"+ serverData);
-            //ServerManager.Instance.BuildPlayerData(jsnData);
             ServerManager.Instance.playerData = JsonUtility.FromJson<PlayerDataClass>(serverData);
-            //playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
-            //Debug.Log(ServerManager.Instance.playerData.player_nation);
         }
     }
 
     IEnumerator _GetAirplaneCost(string _planeID, int _elementID)
     {
-        //Debug.Log("Coroutine started " + _userID);
         string getUrl = planeCostsURL;
-        //Debug.Log("GetURL is " + getUrl);
 
         WWWForm updPlaneForm = new WWWForm();
         updPlaneForm.AddField("php_planeID", _planeID);
         
         UnityWebRequest www = UnityWebRequest.Post(getUrl, updPlaneForm);
 
-        //yield return www.Send()
         yield return www.SendWebRequest();
 
         if (www.isNetworkError)
@@ -165,7 +154,6 @@ public class ServerTalk : MonoBehaviour
             Debug.Log(www.error);
             string errorReportingMessage = "Oops. Something went wrong. (error 0x000-Connection Error)";
             Debug.Log(errorReportingMessage);
-            //ShowErrorMessage(errorReportingMessage);
         }
         else
         {
@@ -177,7 +165,6 @@ public class ServerTalk : MonoBehaviour
 
     IEnumerator _GetAirplaneOwn(string _userID, string _planeID, int _elementID)
     {
-        //Debug.Log("Coroutine started " + _userID);
         string getUrl = planeOwnURL;
         Debug.Log("GetURL is " + getUrl + "user: " + _userID + "plane: " + _planeID);
 
@@ -187,7 +174,6 @@ public class ServerTalk : MonoBehaviour
 
         UnityWebRequest www = UnityWebRequest.Post(getUrl, updPlaneForm);
 
-        //yield return www.Send()
         yield return www.SendWebRequest();
 
         if (www.isNetworkError)
