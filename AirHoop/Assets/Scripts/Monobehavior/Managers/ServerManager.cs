@@ -67,6 +67,7 @@ public class ServerManager : MonoBehaviour
     {
         Debug.Log("Building Aircraft Catalogue");
         int elementID = 0;
+        DataManager.Instance.airplaneList.Clear();
         foreach (Aircraft aircraft in airplaneList.aircrafts)
         {
             PlayerAirplaneSelection currentPlane = new PlayerAirplaneSelection();

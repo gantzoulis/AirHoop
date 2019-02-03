@@ -94,9 +94,9 @@ public class ServerTalk : MonoBehaviour
             //Debug.Log(jsnData);
             string successReportingMessage = "User is Logged On! Welcome Pilot";
             serverMessageBox.text = successReportingMessage;
-            ServerManager.Instance.playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
-            ServerManager.Instance._Get_PlayerData();
             StartCoroutine(_CloseMessageBox());
+            ServerManager.Instance._Get_PlayerData();
+            ServerManager.Instance.playerData = JsonUtility.FromJson<PlayerDataClass>(jsnData);
         }
     }
 
@@ -242,7 +242,8 @@ public class ServerTalk : MonoBehaviour
                 ServerManager.Instance.RebuildPlaneSelection(_userID);
             }
             Debug.Log("PHP Says: " + serverData);
-            
+            AudioSource buyButtonAudio = GameObject.Find("Buy").GetComponent<AudioSource>();
+            buyButtonAudio.Play();
         }
     }
     /*****************************************
