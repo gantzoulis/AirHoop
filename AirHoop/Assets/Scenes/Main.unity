@@ -743,12 +743,53 @@ MonoBehaviour:
       - {fileID: 1231844535307106, guid: a82f834e73532c74796590768f1da235, type: 2}
       distanceToSpawn: 30
       timeLimitPerSpawn: 10
+      levelLength: 100
+      buffs:
+      - {fileID: 1723156176145020, guid: 7e7d95a399c382a4a9c9e597cb595025, type: 2}
+      - {fileID: 1336573013015864, guid: f8a5b9018e0734c4eb4a453775f8d679, type: 2}
+      - {fileID: 1169670338141594, guid: c527e851c71d36843864eff8c71d5e12, type: 2}
+      buffDistanceToSpawn: 50
+    airLevelBonus:
+      LevelName: 
+      bonusLevelPrefabs: []
+      bonusLevelTime: 0
+      offSet: 0
+  - isBonusLevel: 1
+    airLevel:
+      LevelName: Level 2
+      airEnemies:
+      - {fileID: 1103414053835306, guid: 02db2144ff99bb84db7f31be83eb05f2, type: 2}
+      - {fileID: 1322139870062798, guid: b058e42833d7297409e866270d393229, type: 2}
+      - {fileID: 1326283043761592, guid: 8c1fa997551da0347ac432551865f82f, type: 2}
+      - {fileID: 1231844535307106, guid: a82f834e73532c74796590768f1da235, type: 2}
+      distanceToSpawn: 30
+      timeLimitPerSpawn: 10
       levelLength: 0
       buffs:
       - {fileID: 1723156176145020, guid: 7e7d95a399c382a4a9c9e597cb595025, type: 2}
       - {fileID: 1336573013015864, guid: f8a5b9018e0734c4eb4a453775f8d679, type: 2}
       - {fileID: 1169670338141594, guid: c527e851c71d36843864eff8c71d5e12, type: 2}
       buffDistanceToSpawn: 50
+    airLevelBonus:
+      LevelName: Level 2 - Bonus
+      bonusLevelPrefabs:
+      - {fileID: 1185377550252352, guid: b713784ecd3d4ec438c05fd728dfae58, type: 2}
+      bonusLevelTime: 15
+      offSet: 5
+  - isBonusLevel: 0
+    airLevel:
+      LevelName: Level 3
+      airEnemies:
+      - {fileID: 1103414053835306, guid: a4bea508e5ad31344a273911fbdb3db7, type: 2}
+      - {fileID: 1103414053835306, guid: fa5c0d466cb52ea458f984c5978dfd2e, type: 2}
+      - {fileID: 1072494537349814, guid: 21d8e046bd72ebf4098d9c751724dbbd, type: 2}
+      distanceToSpawn: 25
+      timeLimitPerSpawn: 8
+      levelLength: 0
+      buffs:
+      - {fileID: 1169670338141594, guid: 51f7943e68d1555408a7bf8687ab4a1c, type: 2}
+      - {fileID: 1723156176145020, guid: 75bfc7aa716c3904caf974591c8f7f6d, type: 2}
+      buffDistanceToSpawn: 70
     airLevelBonus:
       LevelName: 
       bonusLevelPrefabs: []
