@@ -55,8 +55,6 @@ public class ServerTalk : MonoBehaviour
     void Update()
     {
         //Debug.Log("Server Talk");
-        
-        
     }
 
     /*****************************************
@@ -64,7 +62,7 @@ public class ServerTalk : MonoBehaviour
      *****************************************/
     IEnumerator _GetPlayerData(string _userID)
     {
-        Debug.Log("_GetPlayerData for user: " + _userID);
+        Debug.Log("[ServerTalk] _GetPlayerData for user: " + _userID);
         string getUrl = serverURL;
 
         WWWForm authForm = new WWWForm();
@@ -166,7 +164,7 @@ public class ServerTalk : MonoBehaviour
     IEnumerator _GetAirplaneOwn(string _userID, string _planeID, int _elementID)
     {
         string getUrl = planeOwnURL;
-        Debug.Log("GetURL is " + getUrl + "user: " + _userID + "plane: " + _planeID);
+        //Debug.Log("GetURL is " + getUrl + "user: " + _userID + "plane: " + _planeID);
 
         WWWForm updPlaneForm = new WWWForm();
         updPlaneForm.AddField("php_userID", _userID);
@@ -187,7 +185,7 @@ public class ServerTalk : MonoBehaviour
         {
             bool isOwned = false;
             string serverData = www.downloadHandler.text;
-            Debug.Log("PHP Says: " + serverData);
+            //Debug.Log("PHP Says: " + serverData);
             int currentPlaneOwn = Convert.ToInt32(serverData);
             if (currentPlaneOwn == 1)
             {
@@ -245,7 +243,7 @@ public class ServerTalk : MonoBehaviour
 
     public void GetPlayerData(string _userID)
     {
-        Debug.Log("Connecting to server for " + _userID);
+        Debug.Log("[ServerTalk] Connecting to server for " + _userID);
         StartCoroutine(_GetPlayerData(_userID));
         ServerManager.Instance.BuildPlaneSelection(_userID);
     }
@@ -255,7 +253,6 @@ public class ServerTalk : MonoBehaviour
         string userID = DataManager.Instance.playerName;
         Debug.Log("Updating Players Scores for "+ userID);
         StartCoroutine(_UpdatePlayerScores(userID));
-        Debug.Log("Updating Players Scores");
     }
 
     public void GetPlaneCost(string planeID,int elementID)
@@ -265,7 +262,7 @@ public class ServerTalk : MonoBehaviour
 
     public void GetPlaneOwn(string userID, string planeID, int elementID)
     {
-        Debug.Log("Getting ownership for " + userID);
+        Debug.Log("[ServerTalk] Getting ownership for " + userID);
         StartCoroutine(_GetAirplaneOwn(userID, planeID, elementID));
     }
     /*

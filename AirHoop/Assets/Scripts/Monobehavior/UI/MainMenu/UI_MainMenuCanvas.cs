@@ -59,6 +59,20 @@ public class UI_MainMenuCanvas : MonoBehaviour
         }
 	}
 
+    public void LoginButton()
+    {
+        if (userIDAnimation == false)
+        {
+            PlayUserIdAnimation();
+            userIDAnimation = !userIDAnimation;
+        }
+        else
+        {
+            PlayUserIdAnimationReverse();
+            userIDAnimation = !userIDAnimation;
+        }
+    }
+
     public void PlayMainMenuAnimation()
     {
         playButton.GetComponent<Animator>().SetTrigger("PlayAnimation");
@@ -91,7 +105,7 @@ public class UI_MainMenuCanvas : MonoBehaviour
         //ServerManager.Instance._userID = userText;
         ServerManager.Instance.playerData.userid = userText;
         DataManager.Instance.userID = userText;
-        Debug.Log("Update UserID : "+ userText);
+        Debug.Log("[UI] Setting UserID to : "+ userText);
         ServerTalk.Instance.GetPlayerData(userText);
         
     } 

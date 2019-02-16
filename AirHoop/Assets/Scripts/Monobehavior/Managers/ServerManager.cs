@@ -58,6 +58,7 @@ public class ServerManager : MonoBehaviour
     
     public void _Get_PlayerData()
     {
+        Debug.Log("[Server Manager] Syncronizing Datamanager with me");
         DataManager.Instance.playerName = playerData.userid;
         DataManager.Instance.playerCoins = playerData.player_coins;
         DataManager.Instance.playerTriodinium = playerData.player_triodinium;
@@ -65,7 +66,7 @@ public class ServerManager : MonoBehaviour
     
     public void BuildPlaneSelection(string _userID)
     {
-        Debug.Log("Building Aircraft Catalogue");
+        Debug.Log("[Server manager] Building Aircraft Catalogue");
         int elementID = 0;
         DataManager.Instance.airplaneList.Clear();
         foreach (Aircraft aircraft in airplaneList.aircrafts)
@@ -82,9 +83,9 @@ public class ServerManager : MonoBehaviour
 
     public void RebuildPlaneSelection (string _userID)
     {
-        Debug.Log("Rebuilding Indexes");
+        Debug.Log("[Server Manager] Rebuilding Indexes");
         DataManager.Instance.airplaneList.Clear();
-        Debug.Log("Cleared airplane list");
+        Debug.Log("[Server Manager] Cleared airplane list");
         BuildPlaneSelection(_userID);
         _Get_PlayerData();
     }

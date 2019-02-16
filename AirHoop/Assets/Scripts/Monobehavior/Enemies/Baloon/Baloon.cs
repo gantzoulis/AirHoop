@@ -56,7 +56,11 @@ public class Baloon : MonoBehaviour
 	void Update()
 	{
 		MoveBaloon();
-        DeactivateThroughDistance();
+        if (!DataManager.Instance.gameOver)
+        {
+            DeactivateThroughDistance();
+        }
+        
 	}
 
 	private void MoveBaloon()

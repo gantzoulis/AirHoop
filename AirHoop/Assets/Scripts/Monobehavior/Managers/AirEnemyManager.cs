@@ -196,8 +196,11 @@ public class AirEnemyManager : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(airSpawnPoint.transform.position, 1);
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(airSpawnPointToReach.transform.position, 1);
+        if (!DataManager.Instance.gameOver)
+        {
+            Gizmos.DrawSphere(airSpawnPoint.transform.position, 1);
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(airSpawnPointToReach.transform.position, 1);
+        }
     }
 }

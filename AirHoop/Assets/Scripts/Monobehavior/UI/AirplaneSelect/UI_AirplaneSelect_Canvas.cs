@@ -38,32 +38,49 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
     private GameObject costPane;
     [SerializeField]
     private int currentPlaneIndex = 0;
-
+    [SerializeField]
     private List<GameObject> airplanePool = new List<GameObject>();
+    [SerializeField]
     private List<GameObject> airplanePoolSelection = new List<GameObject>();
 
     [SerializeField]
     private AudioClip purchargeSound;
     [SerializeField]
     private float soundVolume;
-    
 
+    private void Awake()
+    {
+        Debug.Log("UI_AirplaneSelect is awaken");
+        InitializePlaneSelectScene();
+    }
 
     // Use this for initialization
     void Start ()
+    {
+        
+	}
+	
+	void Update ()
+    {
+        CheckArrowButtons();
+        CheckAndUpdateCurrencies();
+        CheckPurchageOptions(currentPlaneIndex);
+    }
+
+    public void InitializePlaneSelectScene()
     {
         ServerTalk.Instance.GetPlayerData(DataManager.Instance.playerName);
         PopulatePlaneList();
         currentAPselection = 0;
         foreach (GameObject go in airplanePool)
         {
-            GameObject spawnedPlane = Instantiate(go,airplaneSpawnPos.position, Quaternion.Euler(0, -160, 0));
+            GameObject spawnedPlane = Instantiate(go, airplaneSpawnPos.position, Quaternion.Euler(0, -160, 0));
             airplanePoolSelection.Add(spawnedPlane);
         }
 
         airplanePoolSelection[currentAPselection].GetComponent<Animator>().SetTrigger("PlayAnimation");
 
-        
+
 
         DataManager.Instance.choosenAircraft = DataManager.Instance.airplaneList[currentAPselection].aircraft;
 
@@ -85,13 +102,6 @@ public class UI_AirplaneSelect_Canvas : MonoBehaviour
         nextAPselection = currentAPselection + 1;
         prevAPselection = currentAPselection;
         leftButton.GetComponent<Button>().interactable = false;
-	}
-	
-	void Update ()
-    {
-        CheckArrowButtons();
-        CheckAndUpdateCurrencies();
-        CheckPurchageOptions(currentPlaneIndex);
     }
 
     public void ShowNextPlane()
